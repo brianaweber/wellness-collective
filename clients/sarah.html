@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The WELLness Collective — Client Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #7a8c6e;
+      --sage-light: #a8b89a;
+      --sage-pale: #eef1eb;
+      --sand: #c4a882;
+      --sand-light: #ddc9aa;
+      --cream: #faf7f2;
+      --taupe: #8a7968;
+      --taupe-dark: #5c5042;
+      --olive: #6b7355;
+      --white: #ffffff;
+      --text: #3a3228;
+      --text-light: #7a6e62;
+      --border: #e0d8ce;
+      --checked-bg: #eef1eb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--taupe-dark);
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--sage);
+    }
+
+    .header-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #f0ede6 0%, #e8ede0 50%, #ede8e0 100%);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(122,140,110,0.12), transparent 70%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,168,130,0.15), transparent 70%);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 300;
+      color: var(--taupe-dark);
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .hero-sub {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem 1.4rem;
+      text-align: center;
+      min-width: 100px;
+      backdrop-filter: blur(4px);
+    }
+
+    .stat-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--sage);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    /* ── NAV TABS ── */
+    .tab-nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .tab-nav::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      padding: 1rem 1.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover { color: var(--sage); }
+
+    .tab-btn.active {
+      color: var(--sage);
+      border-bottom-color: var(--sage);
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── SECTION HEADERS ── */
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sand);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--taupe-dark);
+      line-height: 1.2;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--sage-light);
+      margin: 1rem 0 1.5rem;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      cursor: pointer;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--taupe-dark);
+    }
+
+    .card-day {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+    }
+
+    .card-toggle {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--sage-pale);
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      color: var(--sage);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .card.collapsed .card-toggle { transform: rotate(-90deg); }
+    .card.collapsed .card-body { display: none; }
+
+    /* ── WORKOUT SECTIONS ── */
+    .workout-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .workout-section-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sand);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── EXERCISE TABLE ── */
+    .exercise-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .exercise-table th {
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 600;
+      text-align: left;
+      padding: 0.4rem 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exercise-table td {
+      padding: 0.7rem 0.6rem;
+      font-size: 0.8rem;
+      color: var(--text);
+      border-bottom: 1px solid #f0ebe3;
+      vertical-align: middle;
+    }
+
+    .exercise-table tr:last-child td { border-bottom: none; }
+
+    .exercise-name {
+      font-weight: 500;
+    }
+
+    .exercise-note {
+      font-size: 0.7rem;
+      color: var(--text-light);
+      margin-top: 0.15rem;
+    }
+
+    .check-cell {
+      width: 36px;
+      text-align: center;
+    }
+
+    .check-box {
+      width: 20px; height: 20px;
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      margin: 0 auto;
+    }
+
+    .check-box.checked {
+      background: var(--sage);
+      border-color: var(--sage);
+    }
+
+    .check-box.checked::after {
+      content: '✓';
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    /* ── WARMUP / COOLDOWN PILLS ── */
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      background: var(--sage-pale);
+      border: 1px solid #d4dbc8;
+      border-radius: 20px;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.72rem;
+      color: var(--olive);
+      font-weight: 500;
+    }
+
+    .pill span {
+      color: var(--text-light);
+      font-weight: 400;
+      margin-left: 0.3rem;
+    }
+
+    /* ── CONDITIONING BADGE ── */
+    .conditioning-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.8rem 1rem;
+      background: linear-gradient(90deg, #f5f0e8, #f0ede6);
+      border-radius: 10px;
+      border-left: 3px solid var(--sand);
+    }
+
+    .conditioning-icon { font-size: 1rem; }
+    .conditioning-text { font-size: 0.78rem; color: var(--taupe); }
+    .optional-badge {
+      margin-left: auto;
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sand);
+      font-weight: 600;
+    }
+
+    /* ── HABIT TRACKER ── */
+    .habits-grid {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .habit-row {
+      display: grid;
+      grid-template-columns: 1fr repeat(7, 36px);
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.8rem 1rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .habit-name {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .habit-goal {
+      font-size: 0.65rem;
+      color: var(--text-light);
+      margin-top: 0.1rem;
+    }
+
+    .day-header {
+      display: grid;
+      grid-template-columns: 1fr repeat(7, 36px);
+      gap: 0.4rem;
+      padding: 0 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .day-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* ── WEEK PROGRESS BAR ── */
+    .week-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .week-tab {
+      padding: 0.45rem 1rem;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--text-light);
+      transition: all 0.2s;
+    }
+
+    .week-tab.active {
+      background: var(--sage);
+      color: white;
+      border-color: var(--sage);
+    }
+
+    /* ── PROGRESS TRACKER ── */
+    .progress-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .progress-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.2rem;
+    }
+
+    .progress-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-input {
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px solid var(--border);
+      background: transparent;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--taupe-dark);
+      padding: 0.3rem 0;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .progress-input:focus { border-bottom-color: var(--sage); }
+
+    .progress-input::placeholder {
+      color: var(--border);
+      font-style: italic;
+    }
+
+    /* ── GOAL SECTION ── */
+    .goal-banner {
+      background: linear-gradient(135deg, #e8ede0, #ede3d5);
+      border: 1px solid #d4dbc8;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .goal-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--olive);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .goal-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--taupe-dark);
+      line-height: 1.4;
+    }
+
+    /* ── CHECK-IN TEXTAREAS ── */
+    .checkin-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .checkin-field label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .checkin-field textarea {
+      width: 100%;
+      min-height: 80px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--white);
+      padding: 0.8rem 1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      color: var(--text);
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .checkin-field textarea:focus { border-color: var(--sage); }
+
+    /* ── SAVE BUTTON ── */
+    .save-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--sage);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 0.8rem 1.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 1rem;
+    }
+
+    .save-btn:hover { background: var(--olive); }
+
+    /* ── WEEK OVERVIEW TIMELINE ── */
+    .timeline {
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .timeline-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .timeline-row.current {
+      border-color: var(--sage);
+      background: var(--sage-pale);
+    }
+
+    .week-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--sage-light);
+      min-width: 32px;
+    }
+
+    .timeline-row.current .week-num { color: var(--sage); }
+
+    .week-info { flex: 1; }
+
+    .week-focus-text {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .current-badge {
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: var(--sage);
+      color: white;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    .portal-footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      margin-top: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+
+    .footer-coach {
+      font-size: 0.65rem;
+      color: var(--text-light);
+      margin-top: 0.3rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tab-panel.active { animation: fadeUp 0.35s ease forwards; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero { padding: 2.5rem 1.2rem 2rem; }
+      .hero-stats { gap: 0.8rem; }
+      .stat { padding: 0.7rem 1rem; min-width: 80px; }
+      .main { padding: 1.5rem 1rem 3rem; }
+      .card { padding: 1.2rem; }
+      .habit-row { grid-template-columns: 1fr repeat(7, 28px); gap: 0.25rem; }
+      .day-header { grid-template-columns: 1fr repeat(7, 28px); gap: 0.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">The <span>WELL</span>ness Collective</div>
+  <div class="header-tag">Client Portal</div>
+</header>
+
+<div class="hero" id="heroSection">
+  <div class="hero-eyebrow">6-Week Coaching Program</div>
+  <h1>Welcome, <em id="clientFirstName">Sarah</em></h1>
+  <div class="hero-sub" id="heroSub">Started May 19, 2025 · Coach Briana Weber</div>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-val" id="statSteps">8,000</span>
+      <span class="stat-label">Daily Steps</span>
+    </div>
+    <div class="stat">
+      <span class="stat-val" id="statProtein">120g</span>
+      <span class="stat-label">Protein Goal</span>
+    </div>
+    <div class="stat">
+      <span class="stat-val" id="statWater">80 oz</span>
+      <span class="stat-label">Water Goal</span>
+    </div>
+    <div class="stat">
+      <span class="stat-val" id="statSplit">4</span>
+      <span class="stat-label">Days / Week</span>
+    </div>
+  </div>
+</div>
+
+<nav class="tab-nav" id="tabNav">
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="workouts">This Week</button>
+  <button class="tab-btn" data-tab="habits">Habits</button>
+  <button class="tab-btn" data-tab="checkin">Check-In</button>
+  <button class="tab-btn" data-tab="progress">Progress</button>
+</nav>
+
+<main class="main">
+
+  <!-- ── OVERVIEW TAB ── -->
+  <div class="tab-panel active" id="tab-overview">
+    <div class="section-header">
+      <div class="section-eyebrow">Your Journey</div>
+      <h2 class="section-title">Program Overview</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="goal-banner">
+      <div class="goal-label">Your Goal</div>
+      <div class="goal-text" id="clientGoal">"Build strength, improve energy, and feel confident in my body again"</div>
+    </div>
+
+    <div class="timeline" id="weekTimeline"></div>
+  </div>
+
+  <!-- ── WORKOUTS TAB ── -->
+  <div class="tab-panel" id="tab-workouts">
+    <div class="section-header">
+      <div class="section-eyebrow">Week 1</div>
+      <h2 class="section-title">This Week's Workouts</h2>
+      <div class="divider"></div>
+    </div>
+    <div id="workoutCards"></div>
+  </div>
+
+  <!-- ── HABITS TAB ── -->
+  <div class="tab-panel" id="tab-habits">
+    <div class="section-header">
+      <div class="section-eyebrow">Daily Non-Negotiables</div>
+      <h2 class="section-title">Habit Tracker</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="card">
+      <div class="day-header">
+        <div></div>
+        <div class="day-label">M</div>
+        <div class="day-label">T</div>
+        <div class="day-label">W</div>
+        <div class="day-label">T</div>
+        <div class="day-label">F</div>
+        <div class="day-label">S</div>
+        <div class="day-label">S</div>
+      </div>
+      <div class="habits-grid" id="habitsGrid"></div>
+    </div>
+  </div>
+
+  <!-- ── CHECK-IN TAB ── -->
+  <div class="tab-panel" id="tab-checkin">
+    <div class="section-header">
+      <div class="section-eyebrow">Weekly Reflection</div>
+      <h2 class="section-title">Check-In</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="card">
+      <div class="checkin-grid">
+        <div class="checkin-field">
+          <label>Energy Levels This Week</label>
+          <textarea id="ci-energy" placeholder="How has your energy been?"></textarea>
+        </div>
+        <div class="checkin-field">
+          <label>Wins This Week</label>
+          <textarea id="ci-wins" placeholder="What went well?"></textarea>
+        </div>
+        <div class="checkin-field">
+          <label>Challenges</label>
+          <textarea id="ci-challenges" placeholder="What felt hard or got in the way?"></textarea>
+        </div>
+        <div class="checkin-field">
+          <label>What I'm Most Proud Of</label>
+          <textarea id="ci-proud" placeholder="Celebrate something..."></textarea>
+        </div>
+        <div class="checkin-field">
+          <label>Focus for Next Week</label>
+          <textarea id="ci-next" placeholder="What needs more attention?"></textarea>
+        </div>
+      </div>
+      <button class="save-btn" onclick="saveCheckin()">✓ &nbsp;Save Check-In</button>
+    </div>
+  </div>
+
+  <!-- ── PROGRESS TAB ── -->
+  <div class="tab-panel" id="tab-progress">
+    <div class="section-header">
+      <div class="section-eyebrow">Track Your Journey</div>
+      <h2 class="section-title">Progress Log</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="week-tabs" id="progressWeekTabs"></div>
+
+    <div class="progress-grid" id="progressGrid">
+      <div class="progress-card">
+        <div class="progress-label">Weight</div>
+        <input class="progress-input" type="text" placeholder="—" />
+      </div>
+      <div class="progress-card">
+        <div class="progress-label">Energy (1–10)</div>
+        <input class="progress-input" type="text" placeholder="—" />
+      </div>
+      <div class="progress-card">
+        <div class="progress-label">Sleep Quality</div>
+        <input class="progress-input" type="text" placeholder="—" />
+      </div>
+      <div class="progress-card">
+        <div class="progress-label">Mood (1–10)</div>
+        <input class="progress-input" type="text" placeholder="—" />
+      </div>
+      <div class="progress-card" style="grid-column: 1 / -1;">
+        <div class="progress-label">Notes</div>
+        <input class="progress-input" type="text" placeholder="Anything to remember this week..." />
+      </div>
+    </div>
+
+    <button class="save-btn" onclick="saveProgress()">✓ &nbsp;Save Progress</button>
+  </div>
+
+</main>
+
+<footer class="portal-footer">
+  <div class="footer-logo">The WELLness Collective</div>
+  <div class="footer-coach" id="footerCoach">Coached by Briana Weber</div>
+</footer>
+
+<script>
+// ── LOAD CLIENT DATA ──
+// In GitHub Pages, this fetches from the JSON file.
+// For demo purposes, data is embedded below.
+const CLIENT_DATA = {
+  "client": {
+    "name": "Sarah",
+    "fullName": "Sarah Mitchell",
+    "startDate": "May 19, 2025",
+    "goal": "Build strength, improve energy, and feel confident in my body again",
+    "feelGoal": "Strong, energized, and proud of myself",
+    "coach": "Briana Weber",
+    "split": 4,
+    "stepGoal": "8,000",
+    "proteinGoal": "120g",
+    "waterGoal": "80 oz",
+    "weeklyFocus": [
+      "Build confidence and consistency",
+      "Increase total movement",
+      "Add training volume",
+      "Increase strength and endurance",
+      "Peak effort week",
+      "Deload and recovery"
+    ]
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "focus": "Build confidence and consistency",
+      "workouts": [
+        {
+          "day": "Monday",
+          "label": "Back / Shoulders / Triceps",
+          "warmup": [
+            { "exercise": "Arm circles", "detail": "30 sec each direction" },
+            { "exercise": "Band pull-aparts", "detail": "15 reps" }
+          ],
+          "strength": [
+            { "exercise": "Dumbbell shoulder press", "sets": 2, "reps": "12", "notes": "Start light, focus on form" },
+            { "exercise": "Dumbbell row", "sets": 2, "reps": "12 each side", "notes": "" },
+            { "exercise": "Lateral raises", "sets": 2, "reps": "15", "notes": "Light weight" },
+            { "exercise": "Tricep overhead extension", "sets": 2, "reps": "12", "notes": "" },
+            { "exercise": "Face pulls (band)", "sets": 2, "reps": "15", "notes": "" }
+          ],
+          "conditioning": { "exercise": "10 min walk or light cardio", "optional": true },
+          "cooldown": [
+            { "exercise": "Doorway chest stretch", "detail": "30 sec each side" },
+            { "exercise": "Child's pose", "detail": "60 sec" }
+          ]
+        },
+        {
+          "day": "Wednesday",
+          "label": "Lower Body",
+          "warmup": [
+            { "exercise": "Glute bridges", "detail": "15 reps" },
+            { "exercise": "Leg swings", "detail": "10 each side" }
+          ],
+          "strength": [
+            { "exercise": "Goblet squat", "sets": 2, "reps": "12", "notes": "Hold dumbbell at chest" },
+            { "exercise": "Romanian deadlift", "sets": 2, "reps": "12", "notes": "Hinge at hips" },
+            { "exercise": "Reverse lunge", "sets": 2, "reps": "10 each side", "notes": "" },
+            { "exercise": "Lateral band walk", "sets": 2, "reps": "15 each direction", "notes": "" },
+            { "exercise": "Calf raises", "sets": 2, "reps": "20", "notes": "" }
+          ],
+          "conditioning": { "exercise": "5 min incline walk", "optional": true },
+          "cooldown": [
+            { "exercise": "Hip flexor stretch", "detail": "45 sec each side" },
+            { "exercise": "Seated hamstring stretch", "detail": "45 sec each side" }
+          ]
+        },
+        {
+          "day": "Friday",
+          "label": "Chest / Biceps",
+          "warmup": [
+            { "exercise": "Shoulder rolls", "detail": "30 sec" },
+            { "exercise": "Push-up negatives", "detail": "5 slow reps" }
+          ],
+          "strength": [
+            { "exercise": "Dumbbell chest press", "sets": 2, "reps": "12", "notes": "" },
+            { "exercise": "Incline dumbbell press", "sets": 2, "reps": "12", "notes": "" },
+            { "exercise": "Chest fly", "sets": 2, "reps": "12", "notes": "Control the movement" },
+            { "exercise": "Dumbbell curl", "sets": 2, "reps": "12", "notes": "" },
+            { "exercise": "Hammer curl", "sets": 2, "reps": "12", "notes": "" }
+          ],
+          "conditioning": { "exercise": "10 min steady state cardio", "optional": true },
+          "cooldown": [
+            { "exercise": "Chest opener stretch", "detail": "45 sec" },
+            { "exercise": "Bicep wall stretch", "detail": "30 sec each side" }
+          ]
+        },
+        {
+          "day": "Saturday",
+          "label": "Glutes + Core",
+          "warmup": [
+            { "exercise": "Donkey kicks", "detail": "15 each side" },
+            { "exercise": "Dead bugs", "detail": "8 each side" }
+          ],
+          "strength": [
+            { "exercise": "Hip thrust", "sets": 2, "reps": "15", "notes": "Drive through heels" },
+            { "exercise": "Sumo squat", "sets": 2, "reps": "12", "notes": "" },
+            { "exercise": "Cable kickback (or band)", "sets": 2, "reps": "15 each side", "notes": "" },
+            { "exercise": "Plank", "sets": 2, "reps": "30 sec hold", "notes": "" },
+            { "exercise": "Dead bug", "sets": 2, "reps": "8 each side", "notes": "Slow and controlled" }
+          ],
+          "conditioning": { "exercise": "15 min walk outside", "optional": true },
+          "cooldown": [
+            { "exercise": "Figure-four stretch", "detail": "45 sec each side" },
+            { "exercise": "Cat-cow", "detail": "60 sec" }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+const data = CLIENT_DATA;
+const client = data.client;
+const STORAGE_KEY = `wellness_${client.name.toLowerCase()}`;
+
+// ── POPULATE HERO ──
+document.getElementById('clientFirstName').textContent = client.name;
+document.getElementById('heroSub').textContent = `Started ${client.startDate} · Coach ${client.coach}`;
+document.getElementById('statSteps').textContent = client.stepGoal;
+document.getElementById('statProtein').textContent = client.proteinGoal;
+document.getElementById('statWater').textContent = client.waterGoal;
+document.getElementById('statSplit').textContent = client.split;
+document.getElementById('clientGoal').textContent = `"${client.goal}"`;
+document.getElementById('footerCoach').textContent = `Coached by ${client.coach}`;
+
+// ── OVERVIEW TIMELINE ──
+const timeline = document.getElementById('weekTimeline');
+client.weeklyFocus.forEach((focus, i) => {
+  const row = document.createElement('div');
+  row.className = `timeline-row${i === 0 ? ' current' : ''}`;
+  row.innerHTML = `
+    <div class="week-num">${i + 1}</div>
+    <div class="week-info">
+      <div class="week-focus-text">${focus}</div>
+    </div>
+    ${i === 0 ? '<span class="current-badge">Current</span>' : ''}
+  `;
+  timeline.appendChild(row);
+});
+
+// ── BUILD WORKOUT CARDS ──
+const workoutCards = document.getElementById('workoutCards');
+const week1 = data.weeks[0];
+
+week1.workouts.forEach((workout, wi) => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="card-header" onclick="toggleCard(this)">
+      <div>
+        <div class="card-day">${workout.day}</div>
+        <div class="card-title">${workout.label}</div>
+      </div>
+      <button class="card-toggle">▾</button>
+    </div>
+    <div class="card-body">
+
+      <div class="workout-section">
+        <div class="workout-section-label">Warm-Up</div>
+        <div class="pill-list">
+          ${workout.warmup.map(w => `<div class="pill">${w.exercise}<span>${w.detail}</span></div>`).join('')}
+        </div>
+      </div>
+
+      <div class="workout-section">
+        <div class="workout-section-label">Strength Work</div>
+        <table class="exercise-table">
+          <thead>
+            <tr>
+              <th>Exercise</th>
+              <th>Sets</th>
+              <th>Reps</th>
+              <th class="check-cell">✓</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${workout.strength.map((ex, ei) => `
+              <tr>
+                <td>
+                  <div class="exercise-name">${ex.exercise}</div>
+                  ${ex.notes ? `<div class="exercise-note">${ex.notes}</div>` : ''}
+                </td>
+                <td>${ex.sets}</td>
+                <td>${ex.reps}</td>
+                <td class="check-cell">
+                  <div class="check-box" id="chk-${wi}-${ei}" onclick="toggleCheck(this, 'chk-${wi}-${ei}')"></div>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+
+      ${workout.conditioning ? `
+      <div class="workout-section">
+        <div class="workout-section-label">Conditioning</div>
+        <div class="conditioning-row">
+          <span class="conditioning-icon">🚶</span>
+          <span class="conditioning-text">${workout.conditioning.exercise}</span>
+          ${workout.conditioning.optional ? '<span class="optional-badge">Optional</span>' : ''}
+        </div>
+      </div>` : ''}
+
+      <div class="workout-section">
+        <div class="workout-section-label">Cooldown</div>
+        <div class="pill-list">
+          ${workout.cooldown.map(c => `<div class="pill">${c.exercise}<span>${c.detail}</span></div>`).join('')}
+        </div>
+      </div>
+
+    </div>
+  `;
+  workoutCards.appendChild(card);
+});
+
+// ── BUILD HABIT TRACKER ──
+const habits = [
+  { name: 'Protein Goal', goal: client.proteinGoal, key: 'protein' },
+  { name: 'Hydration', goal: client.waterGoal, key: 'water' },
+  { name: 'LMNT Electrolytes', goal: 'Daily', key: 'lmnt' },
+  { name: 'Movement', goal: 'Daily', key: 'movement' },
+  { name: 'Step Goal', goal: client.stepGoal + ' steps', key: 'steps' },
+  { name: 'Sleep Priority', goal: '7–8 hrs', key: 'sleep' },
+];
+
+const habitsGrid = document.getElementById('habitsGrid');
+habits.forEach(habit => {
+  const row = document.createElement('div');
+  row.className = 'habit-row';
+  const checks = [0,1,2,3,4,5,6].map(d => `
+    <div class="check-box" id="h-${habit.key}-${d}" onclick="toggleCheck(this, 'h-${habit.key}-${d}')"></div>
+  `).join('');
+  row.innerHTML = `
+    <div>
+      <div class="habit-name">${habit.name}</div>
+      <div class="habit-goal">${habit.goal}</div>
+    </div>
+    ${checks}
+  `;
+  habitsGrid.appendChild(row);
+});
+
+// ── PROGRESS WEEK TABS ──
+const progressWeekTabs = document.getElementById('progressWeekTabs');
+for (let w = 1; w <= 6; w++) {
+  const btn = document.createElement('button');
+  btn.className = `week-tab${w === 1 ? ' active' : ''}`;
+  btn.textContent = `Week ${w}`;
+  btn.onclick = () => {
+    document.querySelectorAll('.week-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+  };
+  progressWeekTabs.appendChild(btn);
+}
+
+// ── TAB NAVIGATION ──
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+  });
+});
+
+// ── TOGGLE WORKOUT CARD ──
+function toggleCard(header) {
+  const card = header.closest('.card');
+  card.classList.toggle('collapsed');
+}
+
+// ── CHECK BOX TOGGLE (saves to localStorage) ──
+function toggleCheck(el, id) {
+  el.classList.toggle('checked');
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  saved[id] = el.classList.contains('checked');
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+}
+
+// ── SAVE CHECK-IN ──
+function saveCheckin() {
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  saved.checkin = {
+    energy: document.getElementById('ci-energy').value,
+    wins: document.getElementById('ci-wins').value,
+    challenges: document.getElementById('ci-challenges').value,
+    proud: document.getElementById('ci-proud').value,
+    next: document.getElementById('ci-next').value,
+    savedAt: new Date().toLocaleDateString()
+  };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+  const btn = document.querySelector('#tab-checkin .save-btn');
+  btn.textContent = '✓  Saved!';
+  setTimeout(() => btn.innerHTML = '✓ &nbsp;Save Check-In', 2000);
+}
+
+// ── SAVE PROGRESS ──
+function saveProgress() {
+  const btn = document.querySelector('#tab-progress .save-btn');
+  btn.textContent = '✓  Saved!';
+  setTimeout(() => btn.innerHTML = '✓ &nbsp;Save Progress', 2000);
+}
+
+// ── RESTORE SAVED STATE ──
+window.addEventListener('load', () => {
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  Object.keys(saved).forEach(id => {
+    if (id === 'checkin') return;
+    const el = document.getElementById(id);
+    if (el && saved[id]) el.classList.add('checked');
+  });
+  if (saved.checkin) {
+    const ci = saved.checkin;
+    if (ci.energy) document.getElementById('ci-energy').value = ci.energy;
+    if (ci.wins) document.getElementById('ci-wins').value = ci.wins;
+    if (ci.challenges) document.getElementById('ci-challenges').value = ci.challenges;
+    if (ci.proud) document.getElementById('ci-proud').value = ci.proud;
+    if (ci.next) document.getElementById('ci-next').value = ci.next;
+  }
+});
+</script>
+
+</body>
+</html>
