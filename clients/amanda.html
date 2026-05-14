@@ -341,6 +341,30 @@
       text-align: center;
     }
 
+    .weight-input {
+      width: 54px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.3rem 0.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      color: var(--text);
+      text-align: center;
+      background: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .weight-input:focus {
+      border-color: var(--sage);
+      background: white;
+    }
+
+    .weight-input::placeholder {
+      color: var(--border);
+      font-size: 0.65rem;
+    }
+
     .check-box {
       width: 20px; height: 20px;
       border: 1.5px solid var(--border);
@@ -740,6 +764,7 @@
   <button class="tab-btn" data-tab="habits">Habits</button>
   <button class="tab-btn" data-tab="checkin">Check-In</button>
   <button class="tab-btn" data-tab="progress">Progress</button>
+  <button class="tab-btn" data-tab="booking">Book a Session</button>
 </nav>
 
 <main class="main">
@@ -861,6 +886,80 @@
     </div>
 
     <button class="save-btn" onclick="saveProgress()">✓ &nbsp;Save Progress</button>
+  </div>
+
+  <!-- ── BOOKING TAB ── -->
+  <div class="tab-panel" id="tab-booking">
+    <div class="section-header">
+      <div class="section-eyebrow">Work With Coach Briana</div>
+      <h2 class="section-title">Book a Session</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- PRICING -->
+    <div class="card" style="margin-bottom:1.2rem;">
+      <div class="section-eyebrow" style="margin-bottom:1.2rem;">Session Pricing</div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:1rem;">
+
+        <div style="border:1px solid var(--border); border-radius:12px; padding:1.2rem; text-align:center;">
+          <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.5rem;">Single Session</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$65</div>
+          <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem;">60 minutes</div>
+        </div>
+
+        <div style="border:1.5px solid var(--sage); border-radius:12px; padding:1.2rem; text-align:center; background:var(--sage-pale); position:relative;">
+          <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:var(--sage); color:white; font-size:0.55rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:0.2rem 0.8rem; border-radius:20px; white-space:nowrap;">Save $30</div>
+          <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.5rem;">6 Sessions</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$360</div>
+          <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem;">$60/session · Save $5 each</div>
+        </div>
+
+        <div style="border:1px solid var(--border); border-radius:12px; padding:1.2rem; text-align:center;">
+          <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.5rem;">12 Sessions</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$660</div>
+          <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem;">$55/session · Save $10 each</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOOK BUTTON -->
+    <div class="card" style="margin-bottom:1.2rem; text-align:center;">
+      <div class="section-eyebrow" style="margin-bottom:0.8rem;">Schedule Your Session</div>
+      <p style="font-size:0.8rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Click below to view Briana's availability and book your next session. You'll receive a confirmation email once your session is scheduled.</p>
+      <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="save-btn" style="display:inline-flex; text-decoration:none; margin-top:0;">📅 &nbsp;View Availability & Book</a>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="card" style="margin-bottom:1.2rem;">
+      <div class="section-eyebrow" style="margin-bottom:0.8rem;">Payment Options</div>
+      <p style="font-size:0.8rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Payment is due at the time of booking. Choose the option that works best for you.</p>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem;">
+
+        <a href="https://venmo.com/briana-weber-1" target="_blank" style="display:flex; align-items:center; gap:0.8rem; padding:1rem 1.2rem; border:1px solid var(--border); border-radius:12px; text-decoration:none; transition:all 0.2s; background:white;" onmouseover="this.style.borderColor='var(--sage)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="width:36px; height:36px; background:#008CFF; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;">V</div>
+          <div>
+            <div style="font-size:0.72rem; font-weight:600; color:var(--text);">Pay with Venmo</div>
+            <div style="font-size:0.65rem; color:var(--text-light);">@briana-weber-1</div>
+          </div>
+        </a>
+
+        <button onclick="payLater()" style="display:flex; align-items:center; gap:0.8rem; padding:1rem 1.2rem; border:1px solid var(--border); border-radius:12px; cursor:pointer; transition:all 0.2s; background:white; text-align:left; width:100%;" onmouseover="this.style.borderColor='var(--sage)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="width:36px; height:36px; background:var(--sage-pale); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;">🗓</div>
+          <div>
+            <div style="font-size:0.72rem; font-weight:600; color:var(--text);">Pay Later</div>
+            <div style="font-size:0.65rem; color:var(--text-light);">Notify coach, pay before session</div>
+          </div>
+        </button>
+
+      </div>
+
+      <div id="payLaterConfirm" style="display:none; margin-top:1rem; padding:0.8rem 1rem; background:var(--sage-pale); border-radius:10px; border-left:3px solid var(--sage);">
+        <p style="font-size:0.75rem; color:var(--olive); font-weight:500;">✓ Got it! Coach Briana has been notified. Please send payment before your session.</p>
+      </div>
+    </div>
+
   </div>
 
 </main>
@@ -1328,86 +1427,77 @@ const CLIENT_DATA = {
     },
     {
       "week": 6,
-      "focus": "Deload and recovery",
+      "focus": "Deload — rest, recover, and celebrate",
+      "deload": true,
       "workouts": [
         {
           "day": "Monday",
-          "label": "Back / Shoulders / Triceps",
-          "warmup": [
-            { "exercise": "Band pull-aparts", "detail": "15 reps" },
-            { "exercise": "Shoulder rolls", "detail": "30 sec" }
-          ],
+          "label": "Full Body Stretch + Breathwork",
+          "warmup": [],
           "strength": [
-            { "exercise": "Dumbbell shoulder press", "sets": 2, "reps": "12", "notes": "Drop weight to W2 level — this is recovery week" },
-            { "exercise": "Dumbbell row", "sets": 2, "reps": "12 each side", "notes": "Light and controlled" },
-            { "exercise": "Lateral raises", "sets": 2, "reps": "15", "notes": "" },
-            { "exercise": "Tricep kickback", "sets": 2, "reps": "12 each side", "notes": "" },
-            { "exercise": "Face pulls", "sets": 2, "reps": "15", "notes": "" }
+            { "exercise": "Neck rolls + shoulder circles", "sets": 1, "reps": "60 sec each", "notes": "Slow and intentional" },
+            { "exercise": "Cat-cow", "sets": 1, "reps": "10 breaths", "notes": "Sync with breath" },
+            { "exercise": "Thread the needle", "sets": 1, "reps": "45 sec each side", "notes": "" },
+            { "exercise": "Child's pose", "sets": 1, "reps": "90 sec", "notes": "Let your body fully relax" },
+            { "exercise": "Box breathing", "sets": 1, "reps": "5 min", "notes": "Inhale 4 counts, hold 4, exhale 4, hold 4" }
           ],
-          "conditioning": { "exercise": "10 min easy walk", "optional": true },
+          "conditioning": { "exercise": "20–30 min easy walk outside", "optional": false },
           "cooldown": [
-            { "exercise": "Full upper body stretch flow", "detail": "5 min" },
-            { "exercise": "Child's pose", "detail": "90 sec" }
+            { "exercise": "Legs up the wall", "detail": "5 min" },
+            { "exercise": "Savasana", "detail": "5 min — you earned this" }
           ]
         },
         {
           "day": "Wednesday",
-          "label": "Lower Body",
-          "warmup": [
-            { "exercise": "Glute bridges", "detail": "15 reps" },
-            { "exercise": "Hip circles", "detail": "10 each direction" }
-          ],
+          "label": "Lower Body Mobility + Recovery",
+          "warmup": [],
           "strength": [
-            { "exercise": "Goblet squat", "sets": 2, "reps": "12", "notes": "Light weight, focus on depth and form" },
-            { "exercise": "Romanian deadlift", "sets": 2, "reps": "12", "notes": "Lighter than peak weeks" },
-            { "exercise": "Reverse lunge", "sets": 2, "reps": "10 each side", "notes": "Bodyweight or very light" },
-            { "exercise": "Dead bug", "sets": 2, "reps": "8 each side", "notes": "Slow and intentional" },
-            { "exercise": "Calf raises", "sets": 2, "reps": "15", "notes": "" }
+            { "exercise": "Hip circles", "sets": 1, "reps": "10 each direction", "notes": "" },
+            { "exercise": "Hip flexor stretch", "sets": 1, "reps": "60 sec each side", "notes": "Breathe into the stretch" },
+            { "exercise": "Pigeon pose", "sets": 1, "reps": "90 sec each side", "notes": "Use a pillow under your hip if needed" },
+            { "exercise": "Seated hamstring stretch", "sets": 1, "reps": "60 sec each side", "notes": "" },
+            { "exercise": "Figure-four stretch", "sets": 1, "reps": "60 sec each side", "notes": "" },
+            { "exercise": "Supine spinal twist", "sets": 1, "reps": "60 sec each side", "notes": "Let gravity do the work" }
           ],
-          "conditioning": { "exercise": "15 min easy walk", "optional": true },
+          "conditioning": { "exercise": "Sauna session — 15–20 min if available", "optional": true },
           "cooldown": [
-            { "exercise": "Hip flexor stretch", "detail": "60 sec each side" },
-            { "exercise": "Pigeon pose", "detail": "60 sec each side" }
+            { "exercise": "Legs up the wall", "detail": "5 min" },
+            { "exercise": "Deep belly breathing", "detail": "3 min" }
           ]
         },
         {
           "day": "Friday",
-          "label": "Chest / Biceps",
-          "warmup": [
-            { "exercise": "Arm swings", "detail": "30 sec" },
-            { "exercise": "Push-up negatives", "detail": "5 slow reps" }
-          ],
+          "label": "Upper Body Mobility + Self Care",
+          "warmup": [],
           "strength": [
-            { "exercise": "Dumbbell chest press", "sets": 2, "reps": "12", "notes": "Light — this is a feel-good session" },
-            { "exercise": "Push-up", "sets": 2, "reps": "8", "notes": "" },
-            { "exercise": "Incline dumbbell fly", "sets": 2, "reps": "12", "notes": "Light and controlled" },
-            { "exercise": "Dumbbell curl", "sets": 2, "reps": "12", "notes": "" },
-            { "exercise": "Hammer curl", "sets": 2, "reps": "12", "notes": "" }
+            { "exercise": "Doorway chest opener", "sets": 1, "reps": "45 sec each side", "notes": "" },
+            { "exercise": "Overhead tricep stretch", "sets": 1, "reps": "45 sec each side", "notes": "" },
+            { "exercise": "Cross-body shoulder stretch", "sets": 1, "reps": "45 sec each side", "notes": "" },
+            { "exercise": "Wrist circles + forearm stretch", "sets": 1, "reps": "60 sec", "notes": "Often neglected — feels amazing" },
+            { "exercise": "Foam roll upper back", "sets": 1, "reps": "2 min", "notes": "Pause on tight spots" },
+            { "exercise": "Neck side stretch", "sets": 1, "reps": "45 sec each side", "notes": "" }
           ],
-          "conditioning": { "exercise": "10 min easy cardio", "optional": true },
+          "conditioning": { "exercise": "Epsom salt bath or sauna — 20 min", "optional": true },
           "cooldown": [
-            { "exercise": "Chest opener", "detail": "60 sec" },
-            { "exercise": "Full arm stretch", "detail": "2 min" }
+            { "exercise": "Journaling or gratitude practice", "detail": "5 min — what changed in 6 weeks?" },
+            { "exercise": "Rest", "detail": "You showed up every week. That matters." }
           ]
         },
         {
           "day": "Saturday",
-          "label": "Glutes + Core",
-          "warmup": [
-            { "exercise": "Donkey kicks", "detail": "12 each side" },
-            { "exercise": "Fire hydrants", "detail": "12 each side" }
-          ],
+          "label": "Celebration Walk + Reflection",
+          "warmup": [],
           "strength": [
-            { "exercise": "Hip thrust", "sets": 2, "reps": "15", "notes": "Moderate weight, enjoy the movement" },
-            { "exercise": "Sumo squat", "sets": 2, "reps": "12", "notes": "" },
-            { "exercise": "Glute bridge", "sets": 2, "reps": "15", "notes": "Pause and squeeze at top" },
-            { "exercise": "Dead bug", "sets": 2, "reps": "8 each side", "notes": "Finish strong" },
-            { "exercise": "Plank hold", "sets": 2, "reps": "30 sec", "notes": "Breathe and be proud of how far you've come" }
+            { "exercise": "Full body stretch flow", "sets": 1, "reps": "10 min", "notes": "Move through whatever feels good" },
+            { "exercise": "Deep squat hold", "sets": 1, "reps": "60 sec", "notes": "Just a mobility check-in, no weight" },
+            { "exercise": "World's greatest stretch", "sets": 1, "reps": "5 each side", "notes": "" },
+            { "exercise": "Cat-cow into child's pose", "sets": 1, "reps": "5 min", "notes": "" },
+            { "exercise": "Savasana", "sets": 1, "reps": "10 min", "notes": "Final rest. You did the thing." }
           ],
-          "conditioning": { "exercise": "20 min walk — celebrate!", "optional": true },
+          "conditioning": { "exercise": "30–45 min walk — go somewhere beautiful if you can", "optional": false },
           "cooldown": [
-            { "exercise": "Full body stretch flow", "detail": "10 min" },
-            { "exercise": "Savasana / rest", "detail": "You earned it" }
+            { "exercise": "Take your Week 6 progress photos", "detail": "Compare to Week 1 — notice everything" },
+            { "exercise": "Fill in your Final Reflection", "detail": "Check the Progress tab" }
           ]
         }
       ]
@@ -1480,6 +1570,7 @@ function buildWorkoutCards(weekNum) {
                 <th>Exercise</th>
                 <th>Sets</th>
                 <th>Reps</th>
+                <th>Weight</th>
                 <th class="check-cell">✓</th>
               </tr>
             </thead>
@@ -1492,6 +1583,7 @@ function buildWorkoutCards(weekNum) {
                   </td>
                   <td>${ex.sets}</td>
                   <td>${ex.reps}</td>
+                  <td><input type="text" class="weight-input" id="wt-w${weekNum}-${wi}-${ei}" placeholder="lbs" oninput="saveWeight(this, 'wt-w${weekNum}-${wi}-${ei}')" /></td>
                   <td class="check-cell">
                     <div class="check-box" id="chk-w${weekNum}-${wi}-${ei}" onclick="toggleCheck(this, 'chk-w${weekNum}-${wi}-${ei}')"></div>
                   </td>
@@ -1523,12 +1615,14 @@ function buildWorkoutCards(weekNum) {
     workoutCards.appendChild(card);
   });
 
-  // Restore checked state for this week
+  // Restore checked state and weights for this week
   const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
   Object.keys(saved).forEach(id => {
     if (id === 'checkin') return;
     const el = document.getElementById(id);
-    if (el && saved[id]) el.classList.add('checked');
+    if (!el) return;
+    if (el.classList.contains('check-box') && saved[id]) el.classList.add('checked');
+    if (el.classList.contains('weight-input') && saved[id]) el.value = saved[id];
   });
 }
 
@@ -1600,6 +1694,30 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
   });
 });
+
+// ── PAY LATER ──
+async function payLater() {
+  const confirm = document.getElementById('payLaterConfirm');
+  confirm.style.display = 'block';
+  try {
+    await fetch('https://formspree.io/f/mkoyejrw', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'Notification': 'Pay Later Request',
+        'Client Name': client.fullName,
+        'Message': `${client.name} has selected Pay Later for their session. Please confirm payment before the session.`
+      })
+    });
+  } catch(e) {{ }}
+}
+
+// ── SAVE WEIGHT ──
+function saveWeight(el, id) {
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  saved[id] = el.value;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+}
 
 // ── TOGGLE WORKOUT CARD ──
 function toggleCard(header) {
@@ -1696,7 +1814,9 @@ window.addEventListener('load', () => {
   Object.keys(saved).forEach(id => {
     if (id === 'checkin') return;
     const el = document.getElementById(id);
-    if (el && saved[id]) el.classList.add('checked');
+    if (!el) return;
+    if (el.classList.contains('check-box') && saved[id]) el.classList.add('checked');
+    if (el.classList.contains('weight-input') && saved[id]) el.value = saved[id];
   });
 });
 </script>
