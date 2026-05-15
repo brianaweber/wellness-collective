@@ -762,6 +762,7 @@
   <button class="tab-btn active" data-tab="overview">Overview</button>
   <button class="tab-btn" data-tab="workouts">This Week</button>
   <button class="tab-btn" data-tab="habits">Habits</button>
+  <button class="tab-btn" data-tab="nutrition">Nutrition</button>
   <button class="tab-btn" data-tab="checkin">Check-In</button>
   <button class="tab-btn" data-tab="progress">Progress</button>
   <button class="tab-btn" data-tab="booking">Book a Session</button>
@@ -816,6 +817,53 @@
       </div>
       <div class="habits-grid" id="habitsGrid"></div>
     </div>
+  </div>
+
+  <!-- ── NUTRITION TAB ── -->
+  <div class="tab-panel" id="tab-nutrition">
+    <div class="section-header">
+      <div class="section-eyebrow">Nourish Your Body</div>
+      <h2 class="section-title">Meal Guide</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- INTRO CARD -->
+    <div class="card" style="margin-bottom:1.2rem; background:linear-gradient(135deg,var(--sage-pale),#f5f0e8);">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; color:var(--taupe-dark); margin-bottom:0.8rem;">"Food is information for your body — choose foods that work with you, not against you."</div>
+      <p style="font-size:0.78rem; color:var(--text-light); line-height:1.8;">This guide is built around your protein goal of <strong>80g minimum per day</strong> with a focus on hormone-healthy and gut-healthy whole foods. Meals are family-friendly and designed to be simple, satisfying, and sustainable. Aim for 3 of these meals per week — mix and match as you like!</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.2rem;">
+        <div style="background:white; border-radius:10px; padding:0.6rem 1rem; text-align:center; flex:1; min-width:80px;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--sage);">80g+</div>
+          <div style="font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600;">Protein Goal</div>
+        </div>
+        <div style="background:white; border-radius:10px; padding:0.6rem 1rem; text-align:center; flex:1; min-width:80px;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--sage);">3x</div>
+          <div style="font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600;">Meals/Week</div>
+        </div>
+        <div style="background:white; border-radius:10px; padding:0.6rem 1rem; text-align:center; flex:1; min-width:80px;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--sage);">🌿</div>
+          <div style="font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600;">Hormone Healthy</div>
+        </div>
+        <div style="background:white; border-radius:10px; padding:0.6rem 1rem; text-align:center; flex:1; min-width:80px;">
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--sage);">🦠</div>
+          <div style="font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600;">Gut Healthy</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEEK SELECTOR -->
+    <div class="week-tabs" id="nutritionWeekTabs" style="margin-bottom:1.5rem;"></div>
+
+    <!-- MEAL CARDS CONTAINER -->
+    <div id="nutritionMeals"></div>
+
+    <!-- GROCERY LIST -->
+    <div class="card" style="margin-top:1.5rem;">
+      <div class="section-eyebrow" style="margin-bottom:1rem;">Weekly Grocery List</div>
+      <p style="font-size:0.75rem; color:var(--text-light); margin-bottom:1.2rem; line-height:1.7;">Everything you need for this week's 3 meals. Check off as you shop!</p>
+      <div id="groceryList"></div>
+    </div>
+
   </div>
 
   <!-- ── CHECK-IN TAB ── -->
@@ -1695,6 +1743,354 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+// ── NUTRITION DATA ──
+const NUTRITION_WEEKS = [
+  {
+    week: 1,
+    meals: [
+      {
+        name: "Sheet Pan Chicken Thighs with Roasted Vegetables",
+        tag: "Hormone + Gut Healthy",
+        why: "Chicken provides lean protein to support muscle recovery. Broccoli and sweet potato are rich in fiber and phytonutrients that support hormone balance.",
+        servings: "4 servings",
+        macros: { protein: "38g", carbs: "32g", fat: "14g", fiber: "6g", calories: "410" },
+        ingredients: ["4 bone-in chicken thighs", "2 cups broccoli florets", "1 large sweet potato, cubed", "2 tbsp olive oil", "1 tsp garlic powder", "1 tsp paprika", "Salt + pepper"],
+        instructions: "Preheat oven to 400°F. Toss vegetables in olive oil and seasoning. Place chicken and veggies on a sheet pan. Roast 35-40 min until chicken reaches 165°F."
+      },
+      {
+        name: "Ground Turkey Taco Bowls",
+        tag: "High Protein + Family Favorite",
+        why: "Ground turkey is a lean, versatile protein. Black beans add fiber and prebiotics to feed your gut microbiome. A crowd-pleaser the whole family will eat!",
+        servings: "4 servings",
+        macros: { protein: "34g", carbs: "38g", fat: "10g", fiber: "9g", calories: "390" },
+        ingredients: ["1 lb ground turkey", "1 can black beans, drained", "1 cup brown rice", "1 cup salsa", "1 tsp cumin", "1 tsp chili powder", "1 avocado", "Greek yogurt (sour cream sub)", "Shredded romaine"],
+        instructions: "Brown turkey with spices. Warm beans. Serve over rice with salsa, avocado, romaine, and a dollop of Greek yogurt instead of sour cream."
+      },
+      {
+        name: "Salmon + Quinoa Power Bowl",
+        tag: "Hormone Healthy · Omega-3 Rich",
+        why: "Salmon is one of the best hormone-supporting foods — rich in omega-3s that reduce inflammation and support estrogen balance. Quinoa is a complete protein with all essential amino acids.",
+        servings: "2 servings",
+        macros: { protein: "42g", carbs: "35g", fat: "18g", fiber: "5g", calories: "470" },
+        ingredients: ["2 salmon fillets (6 oz each)", "1 cup quinoa", "2 cups spinach", "1/2 cucumber, sliced", "1/4 cup cherry tomatoes", "2 tbsp olive oil", "1 lemon", "2 tbsp tahini", "1 tsp honey"],
+        instructions: "Cook quinoa per package. Season salmon with olive oil, lemon, salt + pepper. Pan-sear 4 min per side. Whisk tahini + lemon + honey for dressing. Assemble bowls."
+      }
+    ],
+    grocery: {
+      protein: ["4 bone-in chicken thighs", "1 lb ground turkey", "2 salmon fillets (6 oz each)"],
+      produce: ["2 cups broccoli florets", "1 large sweet potato", "1 avocado", "Shredded romaine", "2 cups spinach", "1/2 cucumber", "Cherry tomatoes", "1 lemon"],
+      pantry: ["1 can black beans", "1 cup brown rice", "1 cup quinoa", "1 cup salsa", "Olive oil", "Tahini", "Honey"],
+      dairy: ["Plain Greek yogurt (16 oz)"],
+      spices: ["Garlic powder", "Paprika", "Cumin", "Chili powder", "Salt + pepper"]
+    }
+  },
+  {
+    week: 2,
+    meals: [
+      {
+        name: "Greek Chicken Meatballs with Tzatziki + Pita",
+        tag: "Gut Healthy · Family Friendly",
+        why: "Greek yogurt in the tzatziki provides probiotics for gut health. Chicken meatballs are easy to batch cook and loved by kids and adults alike.",
+        servings: "4 servings",
+        macros: { protein: "36g", carbs: "30g", fat: "12g", fiber: "3g", calories: "380" },
+        ingredients: ["1.5 lb ground chicken", "1/4 cup breadcrumbs", "1 egg", "2 cloves garlic", "1 tsp dried oregano", "1 tsp cumin", "Whole wheat pita", "1 cup Greek yogurt", "1/2 cucumber grated", "Fresh dill", "1 lemon"],
+        instructions: "Mix chicken, breadcrumbs, egg, garlic, and spices. Form into balls. Bake at 400°F for 20 min. Mix yogurt, cucumber, dill, and lemon for tzatziki. Serve in pitas."
+      },
+      {
+        name: "One-Pan Beef + Veggie Stir Fry with Rice",
+        tag: "High Protein · Quick + Easy",
+        why: "Lean beef provides iron and zinc — both important for women's hormone health. Bell peppers are loaded with Vitamin C which helps with iron absorption.",
+        servings: "4 servings",
+        macros: { protein: "32g", carbs: "42g", fat: "11g", fiber: "4g", calories: "400" },
+        ingredients: ["1 lb lean ground beef or sirloin strips", "2 bell peppers, sliced", "1 cup snap peas", "2 cups jasmine rice", "3 tbsp coconut aminos or low-sodium soy sauce", "1 tbsp sesame oil", "2 cloves garlic", "1 tsp ginger", "Green onions"],
+        instructions: "Cook rice. Sauté garlic and ginger in sesame oil. Add beef, cook through. Add veggies and coconut aminos. Stir fry 3-4 min. Serve over rice, top with green onions."
+      },
+      {
+        name: "White Bean + Kale Soup with Turkey Sausage",
+        tag: "Gut + Hormone Healthy · Batch Cook",
+        why: "White beans are one of the best prebiotic foods for gut health. Kale supports estrogen detoxification. Makes a huge batch — freeze half for a busy week!",
+        servings: "6 servings",
+        macros: { protein: "28g", carbs: "34g", fat: "8g", fiber: "10g", calories: "350" },
+        ingredients: ["3 turkey sausage links, sliced", "2 cans white beans, drained", "4 cups chicken broth", "3 cups kale, chopped", "1 can diced tomatoes", "3 cloves garlic", "1 onion, diced", "2 tbsp olive oil", "1 tsp Italian seasoning", "Parmesan for topping"],
+        instructions: "Sauté onion and garlic in olive oil. Add sausage, cook 5 min. Add broth, tomatoes, beans, and seasoning. Simmer 15 min. Add kale last 5 min. Top with parmesan."
+      }
+    ],
+    grocery: {
+      protein: ["1.5 lb ground chicken", "1 lb lean ground beef or sirloin", "3 turkey sausage links"],
+      produce: ["2 bell peppers", "1 cup snap peas", "3 cups kale", "1 onion", "1 cucumber", "Fresh dill", "Green onions", "1 lemon"],
+      pantry: ["2 cans white beans", "1 can diced tomatoes", "4 cups chicken broth", "Coconut aminos or low-sodium soy sauce", "Sesame oil", "Jasmine rice", "Whole wheat pita", "Breadcrumbs", "Olive oil"],
+      dairy: ["Plain Greek yogurt (16 oz)", "Parmesan cheese", "1 egg"],
+      spices: ["Oregano", "Cumin", "Ginger", "Italian seasoning", "Garlic (fresh)"]
+    }
+  },
+  {
+    week: 3,
+    meals: [
+      {
+        name: "Baked Cod Tacos with Mango Slaw",
+        tag: "Hormone Healthy · Light + Fresh",
+        why: "Cod is a lean white fish high in protein and selenium — a mineral essential for thyroid health and hormone production. Cabbage feeds beneficial gut bacteria.",
+        servings: "4 servings",
+        macros: { protein: "30g", carbs: "36g", fat: "9g", fiber: "5g", calories: "360" },
+        ingredients: ["1.5 lb cod fillets", "8 small corn tortillas", "2 cups purple cabbage, shredded", "1 mango, diced", "1/4 cup cilantro", "1 lime", "2 tbsp olive oil", "1 tsp cumin", "1 tsp garlic powder", "Greek yogurt for sauce"],
+        instructions: "Season cod with olive oil and spices. Bake at 400°F for 12-15 min. Mix cabbage, mango, cilantro, lime juice for slaw. Thin Greek yogurt with lime for sauce. Assemble tacos."
+      },
+      {
+        name: "Chicken + Sweet Potato Curry",
+        tag: "Anti-Inflammatory · Gut Healthy",
+        why: "Turmeric in curry powder is one of the most powerful anti-inflammatory spices. Sweet potato feeds good gut bacteria and helps stabilize blood sugar for steady energy.",
+        servings: "4 servings",
+        macros: { protein: "35g", carbs: "40g", fat: "13g", fiber: "7g", calories: "420" },
+        ingredients: ["1.5 lb chicken breast, cubed", "2 sweet potatoes, cubed", "1 can coconut milk", "1 can diced tomatoes", "1 onion", "3 cloves garlic", "1 tbsp curry powder", "1 tsp turmeric", "1 tsp ginger", "2 cups spinach", "Jasmine rice"],
+        instructions: "Sauté onion, garlic, ginger. Add chicken, cook through. Add curry powder and turmeric. Pour in coconut milk and tomatoes. Add sweet potato. Simmer 20 min. Stir in spinach. Serve over rice."
+      },
+      {
+        name: "Egg + Veggie Breakfast Burritos (Meal Prep)",
+        tag: "High Protein · Meal Prep Friendly",
+        why: "Eggs are one of the most complete hormone-supporting foods — rich in choline, vitamin D, and healthy fats. Make a batch of 8 and freeze for easy grab-and-go breakfasts all week!",
+        servings: "8 burritos",
+        macros: { protein: "22g", carbs: "28g", fat: "11g", fiber: "4g", calories: "300" },
+        ingredients: ["8 large eggs", "1 cup egg whites", "1 bell pepper, diced", "1/2 onion, diced", "1 cup black beans", "1 cup shredded cheese", "8 whole wheat tortillas", "1 cup salsa", "Avocado", "1 tsp cumin", "Olive oil"],
+        instructions: "Scramble eggs and egg whites with veggies and spices. Warm beans. Layer eggs, beans, cheese, salsa, and avocado in tortillas. Wrap tightly. Eat fresh or wrap individually and freeze."
+      }
+    ],
+    grocery: {
+      protein: ["1.5 lb cod fillets", "1.5 lb chicken breast", "8 large eggs", "1 carton egg whites"],
+      produce: ["1 mango", "2 cups purple cabbage", "2 sweet potatoes", "2 cups spinach", "1 bell pepper", "1 onion (+ 1 more)", "3 cloves garlic", "Fresh cilantro", "2 limes", "1 avocado"],
+      pantry: ["8 small corn tortillas", "8 whole wheat tortillas", "1 can coconut milk", "1 can diced tomatoes", "1 can black beans", "1 cup salsa", "Jasmine rice", "Olive oil"],
+      dairy: ["1 cup shredded cheese", "Plain Greek yogurt"],
+      spices: ["Curry powder", "Turmeric", "Ginger", "Cumin", "Garlic powder"]
+    }
+  },
+  {
+    week: 4,
+    meals: [
+      {
+        name: "Slow Cooker Turkey Chili",
+        tag: "High Protein · Batch Cook · Family Favorite",
+        why: "A full-family crowd pleaser that practically makes itself. Kidney beans are excellent prebiotics and help stabilize blood sugar. Perfect for busy training weeks.",
+        servings: "6 servings",
+        macros: { protein: "34g", carbs: "38g", fat: "8g", fiber: "11g", calories: "390" },
+        ingredients: ["1.5 lb ground turkey", "2 cans kidney beans", "1 can black beans", "1 can diced tomatoes", "1 cup chicken broth", "1 onion", "3 cloves garlic", "2 tbsp chili powder", "1 tsp cumin", "1 tsp smoked paprika", "Greek yogurt + shredded cheese to top"],
+        instructions: "Brown turkey with onion and garlic. Add everything to slow cooker. Cook on low 6-8 hrs or high 3-4 hrs. Serve topped with Greek yogurt and cheese."
+      },
+      {
+        name: "Teriyaki Salmon Rice Bowls",
+        tag: "Omega-3 Rich · Hormone Healthy",
+        why: "Second salmon meal of the program — omega-3s are so important for women's hormones, inflammation, and brain health that eating it twice every 4 weeks is ideal.",
+        servings: "4 servings",
+        macros: { protein: "40g", carbs: "44g", fat: "16g", fiber: "4g", calories: "490" },
+        ingredients: ["4 salmon fillets (6 oz each)", "2 cups jasmine rice", "2 cups edamame", "2 cups shredded carrots", "4 tbsp coconut aminos", "2 tbsp honey", "1 tbsp rice vinegar", "1 tsp sesame oil", "1 tsp garlic powder", "Sesame seeds", "Green onions"],
+        instructions: "Mix coconut aminos, honey, vinegar, and garlic for teriyaki sauce. Marinate salmon 15 min. Pan sear or bake at 400°F 12-15 min, basting with sauce. Serve over rice with edamame, carrots, and toppings."
+      },
+      {
+        name: "Stuffed Bell Peppers with Ground Beef + Rice",
+        tag: "Family Friendly · Balanced Meal",
+        why: "A complete, balanced meal in one package. Ground beef provides iron, zinc, and B12 — all critical for women's energy and hormone production.",
+        servings: "4 servings",
+        macros: { protein: "30g", carbs: "36g", fat: "12g", fiber: "5g", calories: "400" },
+        ingredients: ["4 large bell peppers", "1 lb lean ground beef", "1 cup brown rice, cooked", "1 can diced tomatoes", "1 cup shredded mozzarella", "1 onion, diced", "3 cloves garlic", "1 tsp Italian seasoning", "1 tsp cumin", "Olive oil"],
+        instructions: "Halve and hollow peppers. Sauté onion, garlic, beef. Mix with rice, tomatoes, and spices. Fill peppers, top with cheese. Bake at 375°F for 30 min covered, 10 min uncovered."
+      }
+    ],
+    grocery: {
+      protein: ["1.5 lb ground turkey", "4 salmon fillets (6 oz each)", "1 lb lean ground beef"],
+      produce: ["1 onion (+ 1 more)", "4 large bell peppers", "2 cups shredded carrots", "Green onions", "3 cloves garlic (+ 3 more)"],
+      pantry: ["2 cans kidney beans", "1 can black beans (x2)", "2 cans diced tomatoes", "1 cup chicken broth", "2 cups edamame (frozen)", "Jasmine rice", "Brown rice", "Coconut aminos", "Honey", "Rice vinegar", "Sesame oil", "Sesame seeds", "Olive oil"],
+      dairy: ["Greek yogurt", "Shredded cheese", "Shredded mozzarella"],
+      spices: ["Chili powder", "Cumin", "Smoked paprika", "Italian seasoning", "Garlic powder"]
+    }
+  },
+  {
+    week: 5,
+    meals: [
+      {
+        name: "Chicken Fajita Sheet Pan",
+        tag: "High Protein · Quick · Family Favorite",
+        why: "Bell peppers provide Vitamin C to support iron absorption and adrenal health. This is a peak-week meal — high protein, moderate carbs, easy to make.",
+        servings: "4 servings",
+        macros: { protein: "38g", carbs: "30g", fat: "12g", fiber: "5g", calories: "400" },
+        ingredients: ["1.5 lb chicken breast, sliced", "3 bell peppers, sliced", "1 large onion, sliced", "2 tbsp olive oil", "1 tbsp fajita seasoning", "Whole wheat tortillas or rice", "Greek yogurt", "Avocado", "Salsa", "Lime"],
+        instructions: "Toss chicken and veggies in olive oil and fajita seasoning. Spread on sheet pan. Roast at 425°F for 22-25 min. Serve in tortillas or over rice with toppings."
+      },
+      {
+        name: "Lemon Herb Baked Chicken Thighs + Asparagus",
+        tag: "Hormone Healthy · Simple + Clean",
+        why: "Asparagus is a natural prebiotic and one of the best foods for liver detox — your liver processes excess estrogen, so supporting it matters. Lemon supports digestion.",
+        servings: "4 servings",
+        macros: { protein: "36g", carbs: "12g", fat: "16g", fiber: "4g", calories: "380" },
+        ingredients: ["4 bone-in chicken thighs", "1 bunch asparagus", "3 tbsp olive oil", "1 lemon (zest + juice)", "4 cloves garlic", "1 tsp dried rosemary", "1 tsp dried thyme", "Salt + pepper"],
+        instructions: "Marinate chicken in olive oil, lemon, garlic, and herbs for 30 min minimum. Place on sheet pan with asparagus. Roast at 400°F for 35-40 min. Rest 5 min before serving."
+      },
+      {
+        name: "High-Protein Overnight Oats (Meal Prep — 5 jars)",
+        tag: "Gut Healthy · Easy Breakfast Prep",
+        why: "Oats are one of the best prebiotic foods. Chia seeds support gut health and provide omega-3s. Make 5 jars Sunday night for an entire week of ready-made breakfasts.",
+        servings: "5 servings",
+        macros: { protein: "24g", carbs: "40g", fat: "10g", fiber: "8g", calories: "360" },
+        ingredients: ["2.5 cups rolled oats", "5 scoops vanilla protein powder", "5 tbsp chia seeds", "2.5 cups almond milk", "1.25 cups Greek yogurt", "5 tsp honey", "2.5 tsp cinnamon", "Fresh berries for topping"],
+        instructions: "In each of 5 mason jars, combine 1/2 cup oats, 1 scoop protein powder, 1 tbsp chia seeds, 1/2 cup almond milk, 1/4 cup Greek yogurt, 1 tsp honey, 1/2 tsp cinnamon. Stir, seal, refrigerate overnight. Top with berries before eating."
+      }
+    ],
+    grocery: {
+      protein: ["1.5 lb chicken breast", "4 bone-in chicken thighs", "1 tub vanilla protein powder (if needed)"],
+      produce: ["3 bell peppers", "2 large onions", "1 bunch asparagus", "2 lemons", "Fresh berries", "Avocado"],
+      pantry: ["Whole wheat tortillas", "Rolled oats (large container)", "Chia seeds", "Almond milk", "Honey", "Cinnamon", "Olive oil", "Salsa"],
+      dairy: ["Greek yogurt (large tub)", "5 mason jars (or reuse)"],
+      spices: ["Fajita seasoning", "Rosemary", "Thyme", "Garlic (fresh)", "Salt + pepper"]
+    }
+  },
+  {
+    week: 6,
+    meals: [
+      {
+        name: "Nourishing Chicken Bone Broth Soup",
+        tag: "Gut Healing · Deload Week · Restorative",
+        why: "Bone broth is one of the most healing foods for your gut lining. This is your deload week — nourish your body from the inside out with this deeply restorative soup.",
+        servings: "6 servings",
+        macros: { protein: "28g", carbs: "24g", fat: "8g", fiber: "5g", calories: "300" },
+        ingredients: ["1 rotisserie chicken, shredded", "6 cups bone broth", "3 carrots, sliced", "3 stalks celery, sliced", "1 onion, diced", "3 cloves garlic", "2 cups egg noodles or rice", "Fresh parsley", "1 lemon", "Olive oil", "Salt + pepper"],
+        instructions: "Sauté onion, garlic, carrots, celery in olive oil. Add bone broth and bring to simmer. Add shredded chicken and noodles. Cook 10 min. Finish with lemon juice and fresh parsley."
+      },
+      {
+        name: "Smoked Salmon + Avocado Toast with Poached Eggs",
+        tag: "Omega-3 Rich · Hormone Healthy · Celebratory",
+        why: "You made it to Week 6! This is a celebration meal. Smoked salmon + eggs + avocado is a powerhouse of healthy fats, omega-3s, and complete protein. You deserve this.",
+        servings: "2 servings",
+        macros: { protein: "30g", carbs: "28g", fat: "22g", fiber: "6g", calories: "440" },
+        ingredients: ["4 oz smoked salmon", "4 eggs", "2 slices sourdough bread (gut-healthy fermented!)", "1 avocado", "1 lemon", "Everything bagel seasoning", "Fresh dill", "Capers (optional)", "Red onion, thinly sliced"],
+        instructions: "Toast sourdough. Mash avocado with lemon, salt, and seasoning. Poach eggs 3-4 min. Layer toast with avocado, smoked salmon, poached egg, red onion, dill, and capers."
+      },
+      {
+        name: "Feel-Good Buddha Bowl",
+        tag: "Anti-Inflammatory · Gut + Hormone Healthy",
+        why: "A celebration of everything you've built over 6 weeks. Packed with fiber, prebiotics, healthy fats, and complete protein — this is what eating for your body looks like.",
+        servings: "2 servings",
+        macros: { protein: "26g", carbs: "44g", fat: "18g", fiber: "10g", calories: "450" },
+        ingredients: ["1 cup quinoa", "1 can chickpeas, drained + roasted", "2 cups mixed greens", "1 cup roasted sweet potato", "1/2 avocado", "1/4 cup shredded purple cabbage", "2 tbsp pumpkin seeds", "Tahini dressing: 2 tbsp tahini, 1 lemon, 1 tsp honey, 1 clove garlic, 2 tbsp water"],
+        instructions: "Cook quinoa. Toss chickpeas in olive oil + cumin, roast at 400°F 25 min until crispy. Roast sweet potato. Assemble bowls. Whisk tahini dressing ingredients. Drizzle over bowl."
+      }
+    ],
+    grocery: {
+      protein: ["1 rotisserie chicken", "4 oz smoked salmon", "4 large eggs", "1 can chickpeas"],
+      produce: ["3 carrots", "3 stalks celery", "1 onion", "3 cloves garlic", "Fresh parsley", "1 avocado (+ 1/2 more)", "1 sweet potato", "2 cups mixed greens", "1/4 cup purple cabbage", "Red onion", "Fresh dill", "3 lemons"],
+      pantry: ["6 cups bone broth", "Egg noodles or rice", "Sourdough bread", "1 cup quinoa", "Tahini", "Honey", "Pumpkin seeds", "Capers (optional)", "Olive oil", "Cumin"],
+      dairy: [],
+      spices: ["Everything bagel seasoning", "Salt + pepper"]
+    }
+  }
+];
+
+// ── BUILD NUTRITION TAB ──
+function buildNutritionWeekSelector() {
+  const container = document.getElementById('nutritionWeekTabs');
+  container.innerHTML = '';
+  for (let w = 1; w <= 6; w++) {
+    const btn = document.createElement('button');
+    btn.className = `week-tab${w === 1 ? ' active' : ''}`;
+    btn.textContent = `Week ${w}`;
+    btn.dataset.week = w;
+    btn.onclick = () => {
+      document.querySelectorAll('#nutritionWeekTabs .week-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      buildNutritionMeals(w);
+    };
+    container.appendChild(btn);
+  }
+}
+
+function buildNutritionMeals(weekNum) {
+  const container = document.getElementById('nutritionMeals');
+  const groceryContainer = document.getElementById('groceryList');
+  const weekData = NUTRITION_WEEKS[weekNum - 1];
+  container.innerHTML = '';
+
+  weekData.meals.forEach((meal, mi) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.marginBottom = '1.2rem';
+    card.innerHTML = `
+      <div class="card-header" onclick="toggleCard(this)">
+        <div>
+          <div class="card-day">Meal ${mi + 1} · ${meal.tag}</div>
+          <div class="card-title">${meal.name}</div>
+        </div>
+        <button class="card-toggle">▾</button>
+      </div>
+      <div class="card-body">
+        <div style="background:var(--sage-pale); border-radius:10px; padding:0.8rem 1rem; margin-bottom:1.2rem; border-left:3px solid var(--sage);">
+          <div style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); font-weight:600; margin-bottom:0.3rem;">Why This Meal</div>
+          <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">${meal.why}</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:0.5rem; margin-bottom:1.2rem;">
+          ${[
+            ['Protein', meal.macros.protein],
+            ['Carbs', meal.macros.carbs],
+            ['Fat', meal.macros.fat],
+            ['Fiber', meal.macros.fiber],
+            ['Calories', meal.macros.calories]
+          ].map(([label, val]) => `
+            <div style="background:white; border:1px solid var(--border); border-radius:10px; padding:0.5rem; text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--sage); font-weight:500;">${val}</div>
+              <div style="font-size:0.55rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600;">${label}</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;">
+          <div>
+            <div class="workout-section-label" style="margin-bottom:0.6rem;">Ingredients · ${meal.servings}</div>
+            <ul style="list-style:none; padding:0;">
+              ${meal.ingredients.map(ing => `<li style="font-size:0.75rem; color:var(--text-light); padding:0.3rem 0; border-bottom:1px solid #f5f0e8; display:flex; align-items:flex-start; gap:0.5rem;"><span style="color:var(--sage-light); flex-shrink:0;">·</span>${ing}</li>`).join('')}
+            </ul>
+          </div>
+          <div>
+            <div class="workout-section-label" style="margin-bottom:0.6rem;">Instructions</div>
+            <p style="font-size:0.75rem; color:var(--text-light); line-height:1.8;">${meal.instructions}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  // Build grocery list
+  const grocery = weekData.grocery;
+  const categories = [
+    { label: 'Protein', key: 'protein', color: '#e8f0e4' },
+    { label: 'Produce', key: 'produce', color: '#eef1eb' },
+    { label: 'Pantry', key: 'pantry', color: '#f5f0e8' },
+    { label: 'Dairy + Eggs', key: 'dairy', color: '#faf7f2' },
+    { label: 'Spices + Seasonings', key: 'spices', color: '#f0ede6' }
+  ];
+
+  groceryContainer.innerHTML = categories.map(cat => {
+    if (!grocery[cat.key] || grocery[cat.key].length === 0) return '';
+    return `
+      <div style="margin-bottom:1rem;">
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.5rem; padding-bottom:0.3rem; border-bottom:1px solid var(--border);">${cat.label}</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr)); gap:0.4rem;">
+          ${grocery[cat.key].map((item, idx) => `
+            <div style="display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.5rem; background:${cat.color}; border-radius:6px;">
+              <div class="check-box" id="groc-w${weekNum}-${cat.key}-${idx}" onclick="toggleCheck(this, 'groc-w${weekNum}-${cat.key}-${idx}')" style="width:16px; height:16px; flex-shrink:0;"></div>
+              <span style="font-size:0.72rem; color:var(--text);">${item}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Restore grocery check states
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  Object.keys(saved).forEach(id => {
+    if (!id.startsWith('groc-')) return;
+    const el = document.getElementById(id);
+    if (el && saved[id]) el.classList.add('checked');
+  });
+}
+
 // ── PAY LATER ──
 async function payLater() {
   const confirm = document.getElementById('payLaterConfirm');
@@ -1798,6 +2194,8 @@ function saveProgress() {
 // ── INIT ──
 buildWeekSelector();
 buildWorkoutCards(1);
+buildNutritionWeekSelector();
+buildNutritionMeals(1);
 
 // ── RESTORE SAVED STATE ──
 window.addEventListener('load', () => {
