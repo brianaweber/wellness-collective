@@ -440,6 +440,61 @@
       margin-bottom: 1.5rem;
     }
 
+    /* ── LEAD FORMS ── */
+    .lead-form {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      animation: fadeUp 0.3s ease forwards;
+    }
+    .lead-form-label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+    .lead-input {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 0.9rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text);
+      background: var(--cream);
+      outline: none;
+      margin-bottom: 0.6rem;
+      transition: border-color 0.2s;
+    }
+    .lead-input:focus { border-color: var(--sage); background: white; }
+    .lead-submit {
+      width: 100%;
+      background: var(--sage);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.7rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.2rem;
+    }
+    .lead-submit:hover { background: var(--olive); }
+    .lead-confirm {
+      margin-top: 0.8rem;
+      padding: 0.6rem 0.8rem;
+      background: var(--sage-pale);
+      border-radius: 8px;
+      border-left: 3px solid var(--sage);
+      font-size: 0.72rem;
+      color: var(--olive);
+      font-weight: 500;
+    }
+
     .coming-soon {
       background: linear-gradient(135deg, #f0ede6, #e8ede0);
       border: 1px dashed var(--sage-light);
@@ -703,6 +758,7 @@
     <li><a href="#story">My Story</a></li>
     <li><a href="#offerings">Work With Me</a></li>
     <li><a href="#sessions">Sessions</a></li>
+    <li><a href="#foundation">The Foundation</a></li>
     <li><a href="https://calendly.com/briweber/new-meeting" target="_blank" class="nav-cta">Book Now</a></li>
   </ul>
 </nav>
@@ -716,7 +772,7 @@
       <p class="hero-tagline">refresh <span>·</span> restore <span>·</span> renew at the Well</p>
     </div>
     <div class="fade-up">
-      <p class="hero-body">You are a woman who does it all — the kids, the work, the holding-it-together. The WELLness Collective is where you finally pour back into yourself. Not perfectly. Not without chaos. But consistently, sustainably, and with strength.</p>
+      <p class="hero-body">You are a woman who does it all — the kids, the work, the holding-it-all-together. The WELLness Collective is where you finally pour back into yourself. What if your fitness plan wasn't about doing more, but simply building consistent, sustainable habits that allow you to feel good in your own body? Your body is amazing — and at the Well, we learn to work <em>with</em> it, not against it. We move because it feels good, not to punish ourselves. Whether you're brand new to wellness or a seasoned gym veteran, you are welcome here. Come to the Well. Feel refreshed.</p>
     </div>
     <div class="hero-btns fade-up">
       <a href="#offerings" class="btn-primary">Explore Programs</a>
@@ -786,7 +842,14 @@
       <p class="offering-desc">A fully personalized 6-week strength and wellness program built around your life, your goals, and your schedule. Includes an initial 60-minute coaching session, a custom digital portal, and weekly virtual check-ins.</p>
       <div class="offering-price">$150</div>
       <p class="offering-price-note">One-time investment · Includes 1 hr coaching session</p>
-      <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-primary" style="width:100%; justify-content:center;">Get Started</a>
+      <button class="btn-primary" style="width:100%; justify-content:center;" onclick="toggleLeadForm('form-6week', this)">Get Started</button>
+      <div id="form-6week" class="lead-form" style="display:none;">
+        <p class="lead-form-label">Let's get you started! Drop your info and Briana will be in touch.</p>
+        <input type="text" placeholder="Your name" id="f6-name" class="lead-input" />
+        <input type="email" placeholder="Your email" id="f6-email" class="lead-input" />
+        <button class="lead-submit" onclick="submitLead('f6', '6-Week Program')">Send My Info →</button>
+        <div id="f6-confirm" class="lead-confirm" style="display:none;">✓ Got it! Briana will reach out soon.</div>
+      </div>
     </div>
 
     <div class="offering-card">
@@ -795,7 +858,14 @@
       <p class="offering-desc">Stay connected, keep progressing. Monthly access to updated programs, community support, and ongoing coaching — designed for the woman who wants to keep building on her foundation.</p>
       <div class="offering-price" style="font-size:1.3rem; color: var(--taupe);">Details Coming Soon</div>
       <p class="offering-price-note">Join the waitlist to be first to know</p>
-      <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-secondary" style="width:100%; justify-content:center;">Join Waitlist</a>
+      <button class="btn-secondary" style="width:100%; justify-content:center;" onclick="toggleLeadForm('form-momentum', this)">Join Waitlist</button>
+      <div id="form-momentum" class="lead-form" style="display:none;">
+        <p class="lead-form-label">You'll be first to know when the Momentum Membership launches!</p>
+        <input type="text" placeholder="Your name" id="fm-name" class="lead-input" />
+        <input type="email" placeholder="Your email" id="fm-email" class="lead-input" />
+        <button class="lead-submit" onclick="submitLead('fm', 'Momentum Membership Waitlist')">Join the Waitlist →</button>
+        <div id="fm-confirm" class="lead-confirm" style="display:none;">✓ You're on the list! We'll be in touch.</div>
+      </div>
     </div>
 
     <div class="offering-card coming-soon">
@@ -804,7 +874,14 @@
       <p class="offering-desc">An intimate weekend retreat for women ready to go deeper. Nourishing meals, movement, community, and space to breathe — all in a beautiful lakeside setting. Intentional and transformative.</p>
       <div class="offering-price">Coming Soon</div>
       <p class="offering-price-note">Limited spots · Alexandria area · 2025</p>
-      <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-secondary" style="width:100%; justify-content:center;">Get Notified</a>
+      <button class="btn-secondary" style="width:100%; justify-content:center;" onclick="toggleLeadForm('form-retreat', this)">Get Notified</button>
+      <div id="form-retreat" class="lead-form" style="display:none;">
+        <p class="lead-form-label">Be the first to know when retreat details drop — spots will be limited!</p>
+        <input type="text" placeholder="Your name" id="fr-name" class="lead-input" />
+        <input type="email" placeholder="Your email" id="fr-email" class="lead-input" />
+        <button class="lead-submit" onclick="submitLead('fr', 'Wellness Retreat Notification')">Notify Me →</button>
+        <div id="fr-confirm" class="lead-confirm" style="display:none;">✓ You're on the list! Stay tuned.</div>
+      </div>
     </div>
 
   </div>
@@ -860,6 +937,128 @@
   <div class="divider-line"></div>
 </div>
 
+</div>
+
+<!-- ── THE FOUNDATION ── -->
+<section id="foundation" style="padding:5rem 3rem; background: linear-gradient(180deg, #f0ede6 0%, var(--cream) 100%);">
+  <div style="max-width:1100px; margin:0 auto;">
+
+    <!-- HEADER -->
+    <div style="text-align:center; max-width:700px; margin:0 auto 3.5rem;">
+      <p class="section-eyebrow">A WELLness Collective Program</p>
+      <h2 class="section-title" style="font-size:clamp(2.2rem,4vw,3.2rem);">The <em>Foundation</em></h2>
+      <p style="font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin:0.5rem 0 1.5rem;">For Young Female Athletes · Ages 9–14</p>
+      <div style="width:40px; height:1px; background:var(--sage-light); margin:0 auto 1.5rem;"></div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; color:var(--taupe-dark); line-height:1.6; margin-bottom:1rem;">"We develop self-talk and beliefs about ourselves at very young ages. Knowledge is power."</p>
+      <p style="font-size:0.82rem; color:var(--text-light); line-height:1.9; max-width:620px; margin:0 auto;">The Foundation is about giving young girls exactly that — a foundation. A place to build strength, discover confidence, and develop the habits, beliefs, and self-knowledge that will carry them through life. Inside and out. On the field and off it.</p>
+    </div>
+
+    <!-- PILLARS -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin-bottom:3.5rem;">
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--sage); font-weight:500; margin-bottom:0.5rem;">Strength</div>
+        <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">Build real, functional strength and conditioning designed to prevent injury and develop athletic confidence.</p>
+      </div>
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--sage); font-weight:500; margin-bottom:0.5rem;">Mobility</div>
+        <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">Develop balance, flexibility, and body awareness — the foundation of every great athlete.</p>
+      </div>
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--sage); font-weight:500; margin-bottom:0.5rem;">Mindset</div>
+        <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">Learn healthy self-talk, set meaningful goals, and build the mental habits that create lifelong confidence.</p>
+      </div>
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--sage); font-weight:500; margin-bottom:0.5rem;">Community</div>
+        <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">Train alongside other young women who are showing up for themselves. There is power in that room.</p>
+      </div>
+    </div>
+
+    <!-- PROGRAM DETAILS BANNER -->
+    <div style="background:var(--taupe-dark); border-radius:20px; padding:2.5rem 3rem; margin-bottom:3rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:1.5rem; text-align:center;">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--sand-light); font-weight:300;">10</div>
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.5); font-weight:600; margin-top:0.2rem;">Week Program</div>
+      </div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--sand-light); font-weight:300;">3x</div>
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.5); font-weight:600; margin-top:0.2rem;">Per Week Max</div>
+      </div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--sand-light); font-weight:300;">60</div>
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.5); font-weight:600; margin-top:0.2rem;">Min Sessions</div>
+      </div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--sand-light); font-weight:300;">8–10</div>
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.5); font-weight:600; margin-top:0.2rem;">Spots Per Session</div>
+      </div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--sand-light); font-weight:300;">Ages 9–14</div>
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.5); font-weight:600; margin-top:0.2rem;">Female Athletes</div>
+      </div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--sand-light); font-weight:300;">June 2</div>
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.5); font-weight:600; margin-top:0.2rem;">Program Starts</div>
+      </div>
+    </div>
+
+    <!-- PRICING -->
+    <div style="text-align:center; margin-bottom:2rem;">
+      <p class="section-eyebrow">Investment</p>
+      <h3 class="section-title" style="font-size:1.8rem; text-align:center;">Simple, <em>honest pricing</em></h3>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:1rem; margin-bottom:2.5rem;">
+
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.6rem;">Drop-In</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$25</div>
+        <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem; line-height:1.5;">Per session<br>No commitment</div>
+      </div>
+
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.6rem;">5 Sessions</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$110</div>
+        <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem; line-height:1.5;">$22/session<br>Save $15</div>
+      </div>
+
+      <div style="background:white; border:1.5px solid var(--sage); border-radius:16px; padding:1.5rem; text-align:center; background:var(--sage-pale); position:relative;">
+        <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:var(--sage); color:white; font-size:0.55rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:0.2rem 0.8rem; border-radius:20px; white-space:nowrap;">1x Per Week</div>
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.6rem;">10 Sessions</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$200</div>
+        <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem; line-height:1.5;">$20/session<br>Save $50</div>
+      </div>
+
+      <div style="background:white; border:1.5px solid var(--sage); border-radius:16px; padding:1.5rem; text-align:center; background:var(--sage-pale); position:relative;">
+        <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:var(--sage); color:white; font-size:0.55rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:0.2rem 0.8rem; border-radius:20px; white-space:nowrap;">2x Per Week</div>
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.6rem;">20 Sessions</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$360</div>
+        <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem; line-height:1.5;">$18/session<br>Save $100</div>
+      </div>
+
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center; position:relative;">
+        <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:var(--taupe-dark); color:white; font-size:0.55rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:0.2rem 0.8rem; border-radius:20px; white-space:nowrap;">Full Program</div>
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.6rem;">30 Sessions</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$480</div>
+        <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem; line-height:1.5;">$16/session · 3x/week<br>Save $270 · Best Value</div>
+      </div>
+
+    </div>
+
+    <!-- LEAD CAPTURE -->
+    <div style="background:white; border:1px solid var(--border); border-radius:20px; padding:2.5rem; text-align:center; max-width:600px; margin:0 auto;">
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--taupe-dark); margin-bottom:0.5rem;">Reserve Your Daughter's Spot</h3>
+      <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Sessions are limited to 8–10 girls per slot. Drop your info below and Briana will reach out with scheduling details and next steps.</p>
+      <input type="text" placeholder="Parent name" id="fd-parent" class="lead-input" />
+      <input type="text" placeholder="Daughter's name + age" id="fd-daughter" class="lead-input" />
+      <input type="email" placeholder="Your email" id="fd-email" class="lead-input" />
+      <input type="text" placeholder="Sport(s) she plays (optional)" id="fd-sport" class="lead-input" />
+      <button class="lead-submit" onclick="submitFoundation()" style="margin-top:0.5rem;">Reserve Her Spot →</button>
+      <div id="fd-confirm" class="lead-confirm" style="display:none; text-align:left;">✓ Wonderful! Briana will be in touch soon with all the details. Your daughter is going to love this.</div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-logo">The <span>Well</span><span style="color:var(--taupe-dark)">ness Collective</span></div>
@@ -873,5 +1072,80 @@
   <p class="footer-copy">© 2026 The WELLness Collective · Briana Weber · Alexandria, MN</p>
 </footer>
 
+<script>
+// ── SUBMIT FOUNDATION LEAD ──
+async function submitFoundation() {
+  const parent = document.getElementById('fd-parent').value.trim();
+  const daughter = document.getElementById('fd-daughter').value.trim();
+  const email = document.getElementById('fd-email').value.trim();
+  const sport = document.getElementById('fd-sport').value.trim();
+  const confirm = document.getElementById('fd-confirm');
+
+  if (!parent || !daughter || !email) {
+    alert('Please fill in your name, your daughter\'s name, and your email.');
+    return;
+  }
+
+  try {
+    await fetch('https://formspree.io/f/mdabrwdk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'Name': parent,
+        'Email': email,
+        'Interest': 'The Foundation — Young Athletes Program',
+        'Daughter Name + Age': daughter,
+        'Sport(s)': sport || 'Not specified',
+        'Submitted': new Date().toLocaleDateString()
+      })
+    });
+  } catch(e) {}
+
+  confirm.style.display = 'block';
+  document.getElementById('fd-parent').value = '';
+  document.getElementById('fd-daughter').value = '';
+  document.getElementById('fd-email').value = '';
+  document.getElementById('fd-sport').value = '';
+}
+
+// ── LEAD FORM TOGGLE ──
+function toggleLeadForm(formId, btn) {
+  const form = document.getElementById(formId);
+  const isOpen = form.style.display !== 'none';
+  // Close all forms first
+  document.querySelectorAll('.lead-form').forEach(f => f.style.display = 'none');
+  // Toggle this one
+  if (!isOpen) form.style.display = 'block';
+}
+
+// ── SUBMIT LEAD ──
+async function submitLead(prefix, interest) {
+  const name = document.getElementById(`${prefix}-name`).value.trim();
+  const email = document.getElementById(`${prefix}-email`).value.trim();
+  const confirm = document.getElementById(`${prefix}-confirm`);
+
+  if (!name || !email) {
+    alert('Please enter your name and email.');
+    return;
+  }
+
+  try {
+    await fetch('https://formspree.io/f/mdabrwdk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'Name': name,
+        'Email': email,
+        'Interest': interest,
+        'Submitted': new Date().toLocaleDateString()
+      })
+    });
+  } catch(e) {}
+
+  confirm.style.display = 'block';
+  document.getElementById(`${prefix}-name`).value = '';
+  document.getElementById(`${prefix}-email`).value = '';
+}
+</script>
 </body>
 </html>
