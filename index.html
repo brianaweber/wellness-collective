@@ -95,7 +95,7 @@
     /* OFFERINGS */
     .offerings { background: linear-gradient(180deg, var(--cream) 0%, #f0ede6 100%); padding: 5rem 3rem; }
     .offerings-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
-    .offerings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .offerings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 800px; margin: 0 auto; }
     .offering-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem 2rem; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
     .offering-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(92,80,66,0.1); }
     .offering-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--sage-light), var(--sand)); }
@@ -174,6 +174,8 @@
     <li><a href="#offerings">Work With Me</a></li>
     <li><a href="#sessions">Sessions</a></li>
     <li><a href="#foundation">The Foundation</a></li>
+    <li><a href="https://new.myzyia.com/BRIANAWEBER/en_US/" target="_blank" style="color:var(--sand) !important;">Shop Zyia</a></li>
+    <li><a href="lmnt-order.html" style="color:var(--sand) !important;">Order LMNT</a></li>
     <li><a href="https://calendly.com/briweber/new-meeting" target="_blank" class="nav-cta">Book Now</a></li>
   </ul>
 </nav>
@@ -183,11 +185,12 @@
   <div class="hero-left">
     <div class="fade-up">
       <p class="hero-eyebrow">Healing · Strength · Renewal</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:0.95rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--taupe); margin-bottom:0.5rem;">The WELLness Collective</p>
       <h1 class="hero-title">Come back<br>to <em>yourself.</em></h1>
-      <p class="hero-tagline">refresh <span>·</span> restore <span>·</span> renew at the Well</p>
+      <p class="hero-tagline">refresh <span>·</span> restore <span>·</span> renew at The Well</p>
     </div>
     <div class="fade-up">
-      <p class="hero-body">You are a woman who does it all — the kids, the work, the holding-it-all-together. The WELLness Collective is where you finally pour back into yourself. What if your fitness plan wasn't about doing more, but simply building consistent, sustainable habits that allow you to feel good in your own body? Your body is amazing — and at the Well, we learn to work <em>with</em> it, not against it. We move because it feels good, not to punish ourselves. Whether you're brand new to wellness or a seasoned gym veteran, you are welcome here. Come to the Well. Feel refreshed.</p>
+      <p class="hero-body">You are a woman who does it all — the kids, the work, the holding-it-all-together. The WELLness Collective is where you pour back into yourself, the place where you refill your cup, so that you can continue to pour into others. Health isn't about doing more, working harder... it's about becoming more of who you were created to be. Whole. Strong. Grounded. Joyful. <em>WELL.</em></p>
     </div>
     <div class="hero-btns fade-up">
       <a href="#offerings" class="btn-primary" style="width:auto;">Explore Programs</a>
@@ -243,27 +246,10 @@
   </div>
   <div class="offerings-grid">
 
-    <div class="offering-card">
-      <p class="offering-subtitle">Signature Program</p>
-      <h3 class="offering-title">6-Week Program</h3>
-      <p class="offering-desc">A fully personalized 6-week strength and wellness program built around your life, your goals, and your schedule. Includes an initial 60-minute coaching session, a custom digital portal, and weekly virtual check-ins. Clients also have the option to add on additional 1:1 sessions at any time.</p>
-      <div class="offering-price">$150</div>
-      <p class="offering-price-note">One-time investment · Includes 1 hr coaching session</p>
-      <button class="btn-primary" onclick="toggleLeadForm('form-6week', this)">Get Started</button>
-      <div id="form-6week" class="lead-form" style="display:none;">
-        <p class="lead-form-label">Let's get you started! Drop your info and Briana will be in touch.</p>
-        <input type="text" placeholder="Your name" id="f6-name" class="lead-input" />
-        <input type="email" placeholder="Your email" id="f6-email" class="lead-input" />
-        <button class="lead-submit" onclick="submitLead('f6', '6-Week Program')">Send My Info →</button>
-        <div id="f6-confirm" class="lead-confirm" style="display:none;">✓ Got it! Briana will reach out soon.</div>
-      </div>
-    </div>
-
-
     <div class="offering-card coming-soon">
       <p class="offering-subtitle">Immersive Experience</p>
       <h3 class="offering-title">Wellness Retreat</h3>
-      <p class="offering-desc">An intimate weekend retreat for women ready to go deeper. Nourishing meals, movement, community, and space to breathe — all in a beautiful lakeside setting. Intentional and transformative.</p>
+      <p class="offering-desc">An intentional and transformative weekend retreat for women ready to go deeper. Nourishing meals, movement, community, and space to breathe — all in a beautiful lakeside setting.</p>
       <div class="offering-price">Coming Soon</div>
       <p class="offering-price-note">Limited spots · Alexandria area · 2026</p>
       <button class="btn-secondary" onclick="toggleLeadForm('form-retreat', this)">Get Notified</button>
@@ -282,50 +268,184 @@
 <!-- SESSIONS -->
 <section class="sessions" id="sessions">
   <div class="sessions-header">
-    <p class="section-eyebrow">1:1 Personal Training</p>
-    <h2 class="section-title" style="text-align:center;">In-Person <em>Sessions</em></h2>
-    <p style="font-size:0.82rem; color:var(--text-light); max-width:500px; margin:1rem auto 0; line-height:1.8; text-align:center;">Work directly with Briana in a personalized, one-on-one setting. Book a single session or save with a package.</p>
+    <p class="section-eyebrow">Work With Me</p>
+    <h2 class="section-title" style="text-align:center;">Simple, <em>honest pricing</em></h2>
+    <p style="font-size:0.82rem; color:var(--text-light); max-width:520px; margin:1rem auto 0; line-height:1.8; text-align:center;">One membership. Fresh programming every month. Add sessions whenever you want.</p>
   </div>
 
-  <div class="pricing-grid">
-    <div class="pricing-card">
-      <p class="pricing-sessions">Single Session</p>
-      <div class="pricing-amount">$65</div>
-      <p class="pricing-per">per session · 60 minutes</p>
-      <div style="height:28px; margin-bottom:1.5rem;"></div>
-      <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-primary">Book Now</a>
-    </div>
-
-    <div class="pricing-card featured">
-      <div class="featured-badge">Save $30 Total</div>
-      <p class="pricing-sessions">6-Session Package</p>
-      <div class="pricing-amount">$360</div>
-      <p class="pricing-per">$60 per session · Save $5/session</p>
-      <div class="pricing-savings">Best Value for Starters</div>
-      <button class="btn-primary" onclick="toggleLeadForm('form-pkg6', this)">Reserve Package</button>
-      <div id="form-pkg6" class="lead-form" style="display:none;">
-        <p class="lead-form-label">Reserve your 6-session package. Briana will follow up with payment details via Venmo.</p>
-        <input type="text" placeholder="Your name" id="p6-name" class="lead-input" />
-        <input type="email" placeholder="Your email" id="p6-email" class="lead-input" />
-        <button class="lead-submit" onclick="submitLead('p6', '6-Session Package — $360')">Reserve My Spot →</button>
-        <div id="p6-confirm" class="lead-confirm" style="display:none;">✓ Reserved! Briana will reach out with payment details shortly.</div>
+  <!-- MEMBERSHIP -->
+  <div style="max-width:600px; margin:0 auto 3.5rem;">
+    <div style="background:linear-gradient(135deg, var(--taupe-dark), #4a3c30); border-radius:24px; padding:2.5rem; text-align:center; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle, rgba(122,140,110,0.2), transparent 70%);"></div>
+      <p style="font-size:0.6rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--sage-light); font-weight:600; margin-bottom:0.8rem;">Monthly Membership</p>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:400; color:var(--cream); margin-bottom:0.3rem;">The WELLness Collective</h3>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; color:var(--sand-light); line-height:1; margin:1rem 0 0.3rem;">$49</div>
+      <div style="font-size:0.7rem; color:rgba(250,247,242,0.5); margin-bottom:1.5rem;">per month · cancel anytime</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; text-align:left; margin-bottom:2rem;">
+        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Personal training portal</div>
+        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Fresh workouts monthly</div>
+        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Nutrition guide + grocery lists</div>
+        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Habit + progress tracking</div>
+        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Weekly check-ins</div>
+        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Private Facebook community</div>
+        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Discounted session rates</div>
+        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Cancel anytime</div>
+      </div>
+      <button class="btn-primary" style="background:var(--sage); font-size:0.72rem;" onclick="toggleLeadForm('form-membership', this)">Join the Collective →</button>
+      <div id="form-membership" class="lead-form" style="display:none; background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); margin-top:1.2rem;">
+        <p class="lead-form-label" style="color:rgba(250,247,242,0.7);">Drop your info and Briana will reach out within 48 hrs to get you set up!</p>
+        <input type="text" placeholder="Your name" id="mem-name" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
+        <input type="email" placeholder="Your email" id="mem-email" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
+        <button class="lead-submit" onclick="submitLead('mem', 'Membership — $49/month')">Send My Info →</button>
+        <div id="mem-confirm" class="lead-confirm" style="display:none; background:rgba(122,140,110,0.3); color:var(--sage-pale);">✓ You're in! Briana will be in touch soon. 🌿</div>
       </div>
     </div>
+  </div>
 
-    <div class="pricing-card">
-      <p class="pricing-sessions">12-Session Package</p>
-      <div class="pricing-amount">$660</div>
-      <p class="pricing-per">$55 per session · Save $10/session</p>
-      <div class="pricing-savings">Save $120 Total</div>
-      <button class="btn-primary" onclick="toggleLeadForm('form-pkg12', this)">Reserve Package</button>
-      <div id="form-pkg12" class="lead-form" style="display:none;">
-        <p class="lead-form-label">Reserve your 12-session package. Briana will follow up with payment details via Venmo.</p>
-        <input type="text" placeholder="Your name" id="p12-name" class="lead-input" />
-        <input type="email" placeholder="Your email" id="p12-email" class="lead-input" />
-        <button class="lead-submit" onclick="submitLead('p12', '12-Session Package — $660')">Reserve My Spot →</button>
-        <div id="p12-confirm" class="lead-confirm" style="display:none;">✓ Reserved! Briana will reach out with payment details shortly.</div>
-      </div>
+  <!-- SESSIONS -->
+  <div style="max-width:900px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:2rem;">
+      <p class="section-eyebrow">Add-On Sessions</p>
+      <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; max-width:500px; margin:0.5rem auto 0;">Members get discounted rates! Book single sessions or save more with a package.</p>
     </div>
+
+    <!-- MEMBER VS NON-MEMBER TOGGLE -->
+    <div style="display:flex; justify-content:center; gap:0; margin-bottom:2rem;">
+      <button id="toggle-member" onclick="showRates('member')" style="padding:0.6rem 1.8rem; border:1.5px solid var(--sage); border-radius:30px 0 0 30px; background:var(--sage); color:white; font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer;">Member Rates</button>
+      <button id="toggle-nonmember" onclick="showRates('nonmember')" style="padding:0.6rem 1.8rem; border:1.5px solid var(--sage); border-left:none; border-radius:0 30px 30px 0; background:transparent; color:var(--sage); font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer;">Non-Member Rates</button>
+    </div>
+
+    <!-- MEMBER RATES -->
+    <div id="rates-member">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1rem;">
+
+        <div class="pricing-card">
+          <p class="pricing-sessions">Semi-Private<br><span style="font-size:0.6rem; color:var(--text-light);">2–3 people</span></p>
+          <div class="pricing-amount">$35</div>
+          <p class="pricing-per">per person · single session</p>
+          <div class="pricing-savings">6-pack $32/ea · 12-pack $30/ea</div>
+          <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-primary">Book Now</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="featured-badge">Member Rate</div>
+          <p class="pricing-sessions">1:1 Gym Session</p>
+          <div class="pricing-amount">$65</div>
+          <p class="pricing-per">single session · 60 min</p>
+          <div class="pricing-savings">6-pack $55/ea · 12-pack $50/ea</div>
+          <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-primary">Book Now</a>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-sessions">1:1 In-Home</p>
+          <div class="pricing-amount">$75</div>
+          <p class="pricing-per">Briana travels to you · 60 min</p>
+          <div class="pricing-savings">6-pack $65/ea · 12-pack $60/ea</div>
+          <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-primary">Book Now</a>
+        </div>
+
+      </div>
+
+      <!-- MEMBER PACKAGES -->
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:16px; padding:1.5rem; margin-bottom:1rem;">
+        <div class="section-eyebrow" style="margin-bottom:1rem;">Session Packages — Member Pricing</div>
+        <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:0.5rem;">
+          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; padding:0.4rem 0.6rem;">Package</div>
+          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; text-align:center; padding:0.4rem;">6 Sessions</div>
+          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; text-align:center; padding:0.4rem;">12 Sessions</div>
+
+          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:var(--cream); border-radius:6px;">Semi-Private (per person)</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$192</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$360</div>
+
+          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:white; border-radius:6px;">1:1 Gym</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:white; border-radius:6px;">$330</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:white; border-radius:6px;">$600</div>
+
+          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:var(--cream); border-radius:6px;">1:1 In-Home</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$390</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$720</div>
+        </div>
+        <div style="margin-top:1.2rem; text-align:center;">
+          <button class="btn-secondary" style="width:auto; display:inline-flex;" onclick="toggleLeadForm('form-member-pkg', this)">Reserve a Package →</button>
+          <div id="form-member-pkg" class="lead-form" style="display:none; max-width:420px; margin:1rem auto 0; text-align:left;">
+            <p class="lead-form-label">Tell us which package you want and Briana will follow up with payment details via Venmo.</p>
+            <input type="text" placeholder="Your name" id="mpkg-name" class="lead-input" />
+            <input type="email" placeholder="Your email" id="mpkg-email" class="lead-input" />
+            <input type="text" placeholder="Which package? e.g. 6-session gym" id="mpkg-pkg" class="lead-input" />
+            <button class="lead-submit" onclick="submitPackage('mpkg', 'Member Session Package')">Reserve My Package →</button>
+            <div id="mpkg-confirm" class="lead-confirm" style="display:none;">✓ Reserved! Briana will be in touch shortly.</div>
+          </div>
+        </div>
+      </div>
+
+<!-- NON-MEMBER RATES -->
+    <div id="rates-nonmember" style="display:none;">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1rem;">
+
+        <div class="pricing-card">
+          <p class="pricing-sessions">Semi-Private<br><span style="font-size:0.6rem; color:var(--text-light);">2–3 people</span></p>
+          <div class="pricing-amount">$45</div>
+          <p class="pricing-per">per person · single session</p>
+          <div class="pricing-savings">6-pack $38/ea · 12-pack $35/ea</div>
+          <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-primary">Book Now</a>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-sessions">1:1 Gym Session</p>
+          <div class="pricing-amount">$75</div>
+          <p class="pricing-per">single session · 60 min</p>
+          <div class="pricing-savings">6-pack $65/ea · 12-pack $60/ea</div>
+          <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-primary">Book Now</a>
+        </div>
+
+        <div class="pricing-card">
+          <p class="pricing-sessions">1:1 In-Home</p>
+          <div class="pricing-amount">$85</div>
+          <p class="pricing-per">Briana travels to you · 60 min</p>
+          <div class="pricing-savings">6-pack $75/ea · 12-pack $70/ea</div>
+          <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-primary">Book Now</a>
+        </div>
+
+      </div>
+
+      <!-- NON-MEMBER PACKAGES -->
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:16px; padding:1.5rem; margin-bottom:1rem;">
+        <div class="section-eyebrow" style="margin-bottom:1rem;">Session Packages — Non-Member Pricing</div>
+        <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:0.5rem;">
+          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; padding:0.4rem 0.6rem;">Package</div>
+          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; text-align:center; padding:0.4rem;">6 Sessions</div>
+          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; text-align:center; padding:0.4rem;">12 Sessions</div>
+
+          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:var(--cream); border-radius:6px;">Semi-Private (per person)</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$228</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$420</div>
+
+          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:white; border-radius:6px;">1:1 Gym</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:white; border-radius:6px;">$390</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:white; border-radius:6px;">$720</div>
+
+          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:var(--cream); border-radius:6px;">1:1 In-Home</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$450</div>
+          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$840</div>
+        </div>
+        <p style="font-size:0.72rem; color:var(--sage); text-align:center; margin-top:1rem; font-style:italic;">💡 Join the membership and save on every session.</p>
+        <div style="margin-top:1rem; text-align:center;">
+          <button class="btn-secondary" style="width:auto; display:inline-flex;" onclick="toggleLeadForm('form-nonmember-pkg', this)">Reserve a Package →</button>
+          <div id="form-nonmember-pkg" class="lead-form" style="display:none; max-width:420px; margin:1rem auto 0; text-align:left;">
+            <p class="lead-form-label">Tell us which package you want and Briana will follow up with payment details via Venmo.</p>
+            <input type="text" placeholder="Your name" id="nmpkg-name" class="lead-input" />
+            <input type="email" placeholder="Your email" id="nmpkg-email" class="lead-input" />
+            <input type="text" placeholder="Which package? e.g. 6-session gym" id="nmpkg-pkg" class="lead-input" />
+            <button class="lead-submit" onclick="submitPackage('nmpkg', 'Non-Member Session Package')">Reserve My Package →</button>
+            <div id="nmpkg-confirm" class="lead-confirm" style="display:none;">✓ Reserved! Briana will be in touch shortly.</div>
+          </div>
+        </div>
+      </div>
+
+>
+    </div>
+
   </div>
 
 </section>
@@ -340,15 +460,27 @@
       <h2 class="section-title" style="font-size:clamp(2.2rem,4vw,3.2rem);">The <em>Foundation</em></h2>
       <p style="font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin:0.5rem 0 1.5rem;">For Young Female Athletes · Ages 9–14</p>
       <div style="width:40px; height:1px; background:var(--sage-light); margin:0 auto 1.5rem;"></div>
-      <p style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-style:italic; color:var(--taupe-dark); line-height:1.6; margin-bottom:1rem;">"We develop self-talk and beliefs about ourselves at very young ages. Knowledge is power."</p>
-      <p style="font-size:0.82rem; color:var(--text-light); line-height:1.9; max-width:620px; margin:0 auto;">The Foundation is about giving young girls exactly that — a foundation. A place to build strength, discover confidence, and develop the habits, beliefs, and self-knowledge that will carry them through life.</p>
+<p style="font-size:0.82rem; color:var(--text-light); line-height:1.9; max-width:620px; margin:0 auto;">The Foundation is about giving young girls exactly that — a foundation. A place to build strength, discover confidence, and develop the habits, beliefs, and self-knowledge that will carry them through life.</p>
+      <p style="font-size:0.78rem; color:var(--sage); margin-top:0.8rem; font-style:italic;">Multiple sessions offered each week — choose what fits best into your schedule!</p>
     </div>
 
     <div class="foundation-pillars">
-      <div class="pillar-card"><div class="pillar-title">Strength</div><p class="pillar-desc">Build real, functional strength and conditioning designed to prevent injury and develop athletic confidence.</p></div>
-      <div class="pillar-card"><div class="pillar-title">Mobility</div><p class="pillar-desc">Develop balance, flexibility, and body awareness — the foundation of every great athlete.</p></div>
-      <div class="pillar-card"><div class="pillar-title">Mindset</div><p class="pillar-desc">Learn healthy self-talk, set meaningful goals, and build the mental habits that create lifelong confidence.</p></div>
-      <div class="pillar-card"><div class="pillar-title">Community</div><p class="pillar-desc">Train alongside other young women who are showing up for themselves. There is power in that room.</p></div>
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--sage); font-weight:500; margin-bottom:0.5rem;">Strength</div>
+        <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">Build real, functional strength and conditioning designed to prevent injury and develop athletic confidence.</p>
+      </div>
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--sage); font-weight:500; margin-bottom:0.5rem;">Mobility</div>
+        <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">Develop balance, flexibility, and body awareness — the foundation of every great athlete.</p>
+      </div>
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--sage); font-weight:500; margin-bottom:0.5rem;">Mindset</div>
+        <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">Learn healthy self-talk, set meaningful goals, and build the mental habits that create lifelong confidence.</p>
+      </div>
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--sage); font-weight:500; margin-bottom:0.5rem;">Community</div>
+        <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">Train alongside other young women who are showing up for themselves. There is power in that room.</p>
+      </div>
     </div>
 
     <div class="foundation-stats">
@@ -361,17 +493,16 @@
     </div>
 
     <!-- FOUNDATION PRICING -->
+    <div style="text-align:center; margin-bottom:2rem;">
+      <p class="section-eyebrow">Investment</p>
+    </div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(175px,1fr)); gap:1rem; margin-bottom:2.5rem;">
       <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
         <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.6rem;">Drop-In</div>
         <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$25</div>
-        <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem; line-height:1.5;">Per session<br>No commitment</div>
+        <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem; line-height:1.5;">Per session · No commitment</div>
       </div>
-      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
-        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.6rem;">5 Sessions</div>
-        <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$110</div>
-        <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem; line-height:1.5;">$22/session · Save $15</div>
-      </div>
+
       <div style="background:var(--sage-pale); border:1.5px solid var(--sage); border-radius:16px; padding:1.5rem; text-align:center; position:relative;">
         <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:var(--sage); color:white; font-size:0.55rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:0.2rem 0.8rem; border-radius:20px; white-space:nowrap;">1x Per Week</div>
         <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.6rem;">10 Sessions</div>
@@ -388,7 +519,7 @@
         <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:var(--taupe-dark); color:white; font-size:0.55rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:0.2rem 0.8rem; border-radius:20px; white-space:nowrap;">Full Program · 3x/week</div>
         <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.6rem;">30 Sessions</div>
         <div style="font-family:'Cormorant Garamond',serif; font-size:2.4rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$480</div>
-        <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem; line-height:1.5;">$16/session · Save $270<br>Best Value</div>
+        <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem; line-height:1.5;">$16/session · Save $270 · Best Value</div>
       </div>
     </div>
 
@@ -406,17 +537,16 @@
   </div>
 </section>
 
-<div style="max-width:700px; margin:3rem auto 0; padding: 0 1.5rem;">
-    <div class="consult-banner">
-      <h3 class="consult-title">Not sure where to start?</h3>
-      <p class="consult-body">Book a free 20-minute consultation call with Briana. We'll talk through your goals, your lifestyle, and find the path that fits your life — no pressure, no commitment.</p>
-      <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-primary" style="width:auto; display:inline-flex;">Book a Free Consultation Call</a>
-    </div>
+<div style="max-width:700px; margin:3rem auto 0; padding:0 1.5rem;">
+  <div class="consult-banner">
+    <h3 class="consult-title">Not sure where to start?</h3>
+    <p class="consult-body">Book a free 20-minute consultation call with Briana. We'll talk through your goals, your lifestyle, and find the path that fits your life — no pressure, no commitment.</p>
+    <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="btn-primary" style="width:auto; display:inline-flex;">Book a Free Consultation Call</a>
   </div>
+</div>
 
 <div class="section-divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">The <span class="well">Well</span>ness Collective</div>
   <div class="footer-tagline">refresh · restore · renew at the Well</div>
@@ -425,6 +555,8 @@
     <li><a href="#offerings">Programs</a></li>
     <li><a href="#sessions">Sessions</a></li>
     <li><a href="#foundation">The Foundation</a></li>
+    <li><a href="https://new.myzyia.com/BRIANAWEBER/en_US/" target="_blank">Shop Zyia</a></li>
+    <li><a href="lmnt-order.html">Order LMNT</a></li>
     <li><a href="https://calendly.com/briweber/new-meeting" target="_blank">Book Now</a></li>
   </ul>
   <p class="footer-copy">© 2026 The WELLness Collective · Briana Weber · Alexandria, MN</p>
@@ -433,7 +565,15 @@
 <script>
 const FORMSPREE_LEADS = 'https://formspree.io/f/mdabrwdk';
 
-// Toggle inline lead forms — closes others when opening new one
+function showRates(type) {
+  document.getElementById('rates-member').style.display = type === 'member' ? 'block' : 'none';
+  document.getElementById('rates-nonmember').style.display = type === 'nonmember' ? 'block' : 'none';
+  document.getElementById('toggle-member').style.background = type === 'member' ? 'var(--sage)' : 'transparent';
+  document.getElementById('toggle-member').style.color = type === 'member' ? 'white' : 'var(--sage)';
+  document.getElementById('toggle-nonmember').style.background = type === 'nonmember' ? 'var(--sage)' : 'transparent';
+  document.getElementById('toggle-nonmember').style.color = type === 'nonmember' ? 'white' : 'var(--sage)';
+}
+
 function toggleLeadForm(formId, btn) {
   const form = document.getElementById(formId);
   const isOpen = form.style.display !== 'none';
@@ -441,7 +581,6 @@ function toggleLeadForm(formId, btn) {
   if (!isOpen) form.style.display = 'block';
 }
 
-// Generic lead submission
 async function submitLead(prefix, interest) {
   const nameEl = document.getElementById(`${prefix}-name`);
   const emailEl = document.getElementById(`${prefix}-email`);
@@ -461,7 +600,25 @@ async function submitLead(prefix, interest) {
   emailEl.value = '';
 }
 
-// Foundation lead submission
+async function submitPackage(prefix, interest) {
+  const name = document.getElementById(`${prefix}-name`).value.trim();
+  const email = document.getElementById(`${prefix}-email`).value.trim();
+  const pkg = document.getElementById(`${prefix}-pkg`).value.trim();
+  const confirm = document.getElementById(`${prefix}-confirm`);
+  if (!name || !email) { alert('Please enter your name and email.'); return; }
+  try {
+    await fetch(FORMSPREE_LEADS, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ 'Name': name, 'Email': email, 'Interest': interest, 'Package': pkg || 'Not specified', 'Submitted': new Date().toLocaleDateString() })
+    });
+  } catch(e) {}
+  confirm.style.display = 'block';
+  document.getElementById(`${prefix}-name`).value = '';
+  document.getElementById(`${prefix}-email`).value = '';
+  document.getElementById(`${prefix}-pkg`).value = '';
+}
+
 async function submitFoundation() {
   const parent = document.getElementById('fd-parent').value.trim();
   const daughter = document.getElementById('fd-daughter').value.trim();
