@@ -766,6 +766,7 @@
   <button class="tab-btn" data-tab="checkin">Check-In</button>
   <button class="tab-btn" data-tab="progress">Progress</button>
   <button class="tab-btn" data-tab="booking">Book a Session</button>
+  <button class="tab-btn" data-tab="sessions">My Sessions</button>
 </nav>
 
 <main class="main">
@@ -947,35 +948,53 @@
     <!-- PRICING -->
     <div class="card" style="margin-bottom:1.2rem;">
       <div class="section-eyebrow" style="margin-bottom:1.2rem;">Session Pricing</div>
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:1rem;">
 
-        <div style="border:1px solid var(--border); border-radius:12px; padding:1.2rem; text-align:center;">
-          <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.5rem;">Single Session</div>
-          <div style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$65</div>
-          <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem;">60 minutes</div>
+      <!-- MEMBER RATES -->
+      <div style="margin-bottom:1.2rem;">
+        <div style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); font-weight:600; margin-bottom:0.8rem; padding-bottom:0.4rem; border-bottom:1px solid var(--border);">Your Member Rates</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px,1fr)); gap:0.6rem;">
+          <div style="border:1px solid var(--border); border-radius:12px; padding:1rem; text-align:center;">
+            <div style="font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.2rem;">Semi-Private</div>
+            <div style="font-size:0.6rem; color:var(--text-light); margin-bottom:0.4rem;">Max 3 people</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$35</div>
+            <div style="font-size:0.62rem; color:var(--text-light); margin-top:0.2rem;">per person</div>
+            <div style="font-size:0.6rem; color:var(--olive); margin-top:0.3rem;">6-pack $32 · 12-pack $30</div>
+          </div>
+          <div style="border:1.5px solid var(--sage); border-radius:12px; padding:1rem; text-align:center; background:var(--sage-pale);">
+            <div style="font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.4rem;">1:1 Gym</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$65</div>
+            <div style="font-size:0.62rem; color:var(--text-light); margin-top:0.2rem;">per session</div>
+            <div style="font-size:0.6rem; color:var(--olive); margin-top:0.3rem;">6-pack $55 · 12-pack $50</div>
+          </div>
+          <div style="border:1px solid var(--border); border-radius:12px; padding:1rem; text-align:center;">
+            <div style="font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.4rem;">1:1 In-Home</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$75</div>
+            <div style="font-size:0.62rem; color:var(--text-light); margin-top:0.2rem;">per session</div>
+            <div style="font-size:0.6rem; color:var(--olive); margin-top:0.3rem;">6-pack $65 · 12-pack $60</div>
+          </div>
         </div>
-
-        <div style="border:1.5px solid var(--sage); border-radius:12px; padding:1.2rem; text-align:center; background:var(--sage-pale); position:relative;">
-          <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); background:var(--sage); color:white; font-size:0.55rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; padding:0.2rem 0.8rem; border-radius:20px; white-space:nowrap;">Save $30</div>
-          <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.5rem;">6 Sessions</div>
-          <div style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$360</div>
-          <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem;">$60/session · Save $5 each</div>
-        </div>
-
-        <div style="border:1px solid var(--border); border-radius:12px; padding:1.2rem; text-align:center;">
-          <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.5rem;">12 Sessions</div>
-          <div style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--taupe-dark); font-weight:400; line-height:1;">$660</div>
-          <div style="font-size:0.68rem; color:var(--text-light); margin-top:0.3rem;">$55/session · Save $10 each</div>
-        </div>
-
       </div>
     </div>
 
-    <!-- BOOK BUTTON -->
+        <!-- BOOK BUTTON -->
     <div class="card" style="margin-bottom:1.2rem; text-align:center;">
       <div class="section-eyebrow" style="margin-bottom:0.8rem;">Schedule Your Session</div>
       <p style="font-size:0.8rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Click below to view Briana's availability and book your next session. You'll receive a confirmation email once your session is scheduled.</p>
       <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="save-btn" style="display:inline-flex; text-decoration:none; margin-top:0;">📅 &nbsp;View Availability & Book</a>
+    </div>
+
+    <!-- RESERVE PACKAGE -->
+    <div class="card" style="margin-bottom:1.2rem;">
+      <div class="section-eyebrow" style="margin-bottom:0.8rem;">Book a Package</div>
+      <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; margin-bottom:1.2rem;">Save more with a session package. Tell Briana which package you want and she'll follow up with payment details via Venmo.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:0.6rem; margin-bottom:1.2rem; font-size:0.72rem; color:var(--text-light);">
+        <div>Semi-private: 6-pack $32/ea · 12-pack $30/ea</div>
+        <div>1:1 Gym: 6-pack $55/ea · 12-pack $50/ea</div>
+        <div>1:1 In-Home: 6-pack $65/ea · 12-pack $60/ea</div>
+      </div>
+      <input type="text" class="weight-input" id="pkg-choice" placeholder="e.g. 6-session gym" style="width:100%; max-width:300px; border-radius:8px; padding:0.6rem 0.8rem; font-size:0.78rem;" />
+      <button class="save-btn" style="margin-top:0.8rem; display:inline-flex;" onclick="reservePackage()">Reserve My Package →</button>
+      <div id="pkg-confirm" class="lead-confirm" style="display:none; margin-top:0.8rem;">✓ Reserved! Briana will reach out with payment details shortly.</div>
     </div>
 
     <!-- PAYMENT -->
@@ -1008,6 +1027,63 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- ── MY SESSIONS TAB ── -->
+  <div class="tab-panel" id="tab-sessions">
+    <div class="section-header">
+      <div class="section-eyebrow">Your Training History</div>
+      <h2 class="section-title">My Sessions</h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- LOADING STATE -->
+    <div id="sessionsLoading" class="card" style="text-align:center; padding:2.5rem;">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--text-light); font-style:italic;">Loading your session data...</div>
+    </div>
+
+    <!-- ERROR STATE -->
+    <div id="sessionsError" class="card" style="display:none; text-align:center; padding:2rem;">
+      <div style="font-size:0.78rem; color:var(--text-light);">Unable to load session data right now. Please try again later or contact Coach Briana.</div>
+    </div>
+
+    <!-- SESSION DATA -->
+    <div id="sessionsData" style="display:none;">
+
+      <!-- PUNCH CARD -->
+      <div class="card" style="margin-bottom:1.2rem;">
+        <div class="section-eyebrow" style="margin-bottom:1.2rem;">Session Balance</div>
+        <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.5rem;">
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:3.5rem; color:var(--sage); font-weight:300; line-height:1;" id="sessionsRemaining">—</div>
+            <div style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-light); font-weight:600; margin-top:0.2rem;">Remaining</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:3.5rem; color:var(--taupe); font-weight:300; line-height:1;" id="sessionsUsed">—</div>
+            <div style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-light); font-weight:600; margin-top:0.2rem;">Used</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:3.5rem; color:var(--sand); font-weight:300; line-height:1;" id="sessionsPurchased">—</div>
+            <div style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-light); font-weight:600; margin-top:0.2rem;">Purchased</div>
+          </div>
+        </div>
+
+        <!-- PUNCH CARD VISUAL -->
+        <div id="punchCard" style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;"></div>
+
+        <!-- LOW BALANCE WARNING -->
+        <div id="lowBalanceWarning" style="display:none; padding:0.8rem 1rem; background:#fdf3e7; border-radius:10px; border-left:3px solid var(--sand);">
+          <p style="font-size:0.75rem; color:var(--taupe); font-weight:500;">⚡ You're running low on sessions! Book more to keep your momentum going.</p>
+        </div>
+      </div>
+
+      <!-- SESSION LOG -->
+      <div class="card">
+        <div class="section-eyebrow" style="margin-bottom:1rem;">Session History</div>
+        <div id="sessionLog"></div>
+      </div>
+
+    </div>
   </div>
 
 </main>
@@ -1572,13 +1648,13 @@ document.getElementById('footerCoach').textContent = `Coached by ${client.coach}
 const timeline = document.getElementById('weekTimeline');
 client.weeklyFocus.forEach((focus, i) => {
   const row = document.createElement('div');
-  row.className = `timeline-row${i === 0 ? ' current' : ''}`;
+  row.className = `timeline-row`;
   row.innerHTML = `
     <div class="week-num">${i + 1}</div>
     <div class="week-info">
       <div class="week-focus-text">${focus}</div>
     </div>
-    ${i === 0 ? '<span class="current-badge">Current</span>' : ''}
+    <span style="font-size:0.58rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600;">Week ${i+1} Focus</span>
   `;
   timeline.appendChild(row);
 });
@@ -1701,6 +1777,7 @@ const habits = [
   { name: 'Movement', goal: 'Daily', key: 'movement' },
   { name: 'Step Goal', goal: client.stepGoal + ' steps', key: 'steps' },
   { name: 'Sleep Priority', goal: '7–8 hrs', key: 'sleep' },
+  { name: 'Personal Development', goal: '30 min daily', key: 'pd' },
 ];
 
 const habitsGrid = document.getElementById('habitsGrid');
@@ -2091,6 +2168,141 @@ function buildNutritionMeals(weekNum) {
   });
 }
 
+// ── RESERVE PACKAGE ──
+async function reservePackage() {
+  const pkg = document.getElementById('pkg-choice').value.trim();
+  const confirm = document.getElementById('pkg-confirm');
+  if (!pkg) { alert('Please tell us which package you want!'); return; }
+  try {
+    await fetch('https://formspree.io/f/mkoyejrw', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'Notification': 'Package Reservation',
+        'Client Name': client.fullName,
+        'Package Requested': pkg,
+        'Message': `${client.name} would like to reserve a session package: ${pkg}`
+      })
+    });
+  } catch(e) {}
+  confirm.style.display = 'block';
+  document.getElementById('pkg-choice').value = '';
+}
+
+// ── SESSION TRACKER ──
+const SHEET_API = 'https://script.google.com/macros/s/AKfycbyPeRa6UJazc8QoJp8Jhly1GpuwHexQEhkIrKC_nOxuZH_8Gtw1gdb84J-2ITEDTaTi/exec';
+
+async function loadSessions() {
+  try {
+    const res = await fetch(SHEET_API);
+    const json = await res.json();
+    const rows = json.rows;
+
+    if (!rows || rows.length < 2) {
+      document.getElementById('sessionsLoading').style.display = 'none';
+      document.getElementById('sessionsError').style.display = 'block';
+      return;
+    }
+
+    // Parse rows — skip header row
+    let totalPurchased = 0;
+    let totalUsed = 0;
+    const sessionLog = [];
+
+    rows.slice(1).forEach(row => {
+      const date = row[0];
+      const type = row[1];
+      const amount = parseInt(row[2]) || 0;
+      const notes = row[3] || '';
+      const used = row[4];
+
+      if (!date) return;
+
+      // If it's a purchase row
+      if (type && type.toString().toLowerCase().includes('purchas')) {
+        totalPurchased += amount;
+        sessionLog.push({ date, type: 'Purchase', detail: `${amount} sessions purchased`, notes, isPurchase: true });
+      } else if (used === true || used === 'TRUE' || used === '✓' || used === 'yes' || used === 'Yes') {
+        // It's a used session
+        totalUsed += 1;
+        sessionLog.push({ date, type: type || 'Session', detail: notes || 'Session completed', notes, isPurchase: false });
+      }
+    });
+
+    const remaining = totalPurchased - totalUsed;
+
+    // Update counters
+    document.getElementById('sessionsPurchased').textContent = totalPurchased;
+    document.getElementById('sessionsUsed').textContent = totalUsed;
+    document.getElementById('sessionsRemaining').textContent = remaining;
+
+    // Build punch card
+    const punchCard = document.getElementById('punchCard');
+    punchCard.innerHTML = '';
+    for (let i = 0; i < totalPurchased; i++) {
+      const dot = document.createElement('div');
+      const isUsed = i < totalUsed;
+      dot.style.cssText = `
+        width: 36px; height: 36px; border-radius: 50%;
+        background: ${isUsed ? 'var(--sage)' : 'var(--sage-pale)'};
+        border: 2px solid ${isUsed ? 'var(--sage)' : 'var(--border)'};
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.7rem; color: ${isUsed ? 'white' : 'var(--border)'};
+        font-weight: 700; transition: all 0.3s;
+      `;
+      dot.textContent = isUsed ? '✓' : (i + 1);
+      punchCard.appendChild(dot);
+    }
+
+    // Low balance warning
+    if (remaining <= 3 && remaining > 0) {
+      document.getElementById('lowBalanceWarning').style.display = 'block';
+    }
+
+    // Build session log
+    const logEl = document.getElementById('sessionLog');
+    if (sessionLog.length === 0) {
+      logEl.innerHTML = '<p style="font-size:0.78rem; color:var(--text-light); font-style:italic;">No sessions logged yet.</p>';
+    } else {
+      logEl.innerHTML = [...sessionLog].reverse().map(s => `
+        <div style="display:flex; align-items:center; gap:1rem; padding:0.75rem 0; border-bottom:1px solid #f5f0e8;">
+          <div style="
+            width: 32px; height: 32px; border-radius: 50%; flex-shrink:0;
+            background: ${s.isPurchase ? '#fdf3e7' : 'var(--sage-pale)'};
+            border: 1.5px solid ${s.isPurchase ? 'var(--sand)' : 'var(--sage-light)'};
+            display:flex; align-items:center; justify-content:center;
+            font-size:0.65rem;
+          ">${s.isPurchase ? '💳' : '✓'}</div>
+          <div style="flex:1;">
+            <div style="font-size:0.78rem; font-weight:600; color:var(--text);">${s.type}</div>
+            <div style="font-size:0.68rem; color:var(--text-light);">${s.detail}</div>
+          </div>
+          <div style="font-size:0.68rem; color:var(--text-light); white-space:nowrap;">${s.date}</div>
+        </div>
+      `).join('');
+    }
+
+    // Show data, hide loading
+    document.getElementById('sessionsLoading').style.display = 'none';
+    document.getElementById('sessionsData').style.display = 'block';
+
+  } catch(err) {
+    document.getElementById('sessionsLoading').style.display = 'none';
+    document.getElementById('sessionsError').style.display = 'block';
+  }
+}
+
+// Load sessions when tab is clicked
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.tab === 'sessions') {
+        loadSessions();
+      }
+    });
+  });
+});
+
 // ── PAY LATER ──
 async function payLater() {
   const confirm = document.getElementById('payLaterConfirm');
@@ -2207,6 +2419,7 @@ window.addEventListener('load', () => {
     if (ci.challenges) document.getElementById('ci-challenges').value = ci.challenges;
     if (ci.proud) document.getElementById('ci-proud').value = ci.proud;
     if (ci.next) document.getElementById('ci-next').value = ci.next;
+    if (ci.pd) document.getElementById('ci-pd').value = ci.pd;
   }
   // Restore habit checkboxes
   Object.keys(saved).forEach(id => {
