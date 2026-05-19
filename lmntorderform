@@ -367,7 +367,7 @@ async function submitOrder() {
   btn.textContent = 'Placing order...';
 
   try {
-    await fetch('https://formspree.io/f/mdabrwdk', {
+    await fetch('https://formspree.io/f/mzdwzgld', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(collectOrder())
