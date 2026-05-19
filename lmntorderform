@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order LMNT — The WELLness Collective</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #7a8c6e;
+      --sage-light: #a8b89a;
+      --sage-pale: #eef1eb;
+      --sand: #c4a882;
+      --cream: #faf7f2;
+      --taupe: #8a7968;
+      --taupe-dark: #5c5042;
+      --olive: #6b7355;
+      --white: #ffffff;
+      --text: #3a3228;
+      --text-light: #7a6e62;
+      --border: #e0d8ce;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+
+    /* HEADER */
+    .header {
+      background: var(--taupe-dark);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .header-eyebrow { font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--sage-light); font-weight: 600; margin-bottom: 0.8rem; }
+    .header-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; color: var(--cream); line-height: 1.15; margin-bottom: 0.5rem; }
+    .header-title em { font-style: italic; color: var(--sand); }
+    .header-sub { font-size: 0.75rem; color: rgba(250,247,242,0.55); line-height: 1.7; max-width: 480px; margin: 0 auto; }
+
+    /* MAIN */
+    .main { max-width: 680px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+    /* MEMBER BANNER */
+    .member-banner {
+      background: linear-gradient(135deg, var(--sage-pale), #e8ede0);
+      border: 1.5px solid var(--sage-light);
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .member-check-wrap { flex-shrink: 0; }
+    .member-checkbox { width: 22px; height: 22px; border: 2px solid var(--sage); border-radius: 6px; cursor: pointer; appearance: none; background: white; transition: all 0.2s; }
+    .member-checkbox:checked { background: var(--sage); border-color: var(--sage); }
+    .member-checkbox:checked::after { content: '✓'; display: block; color: white; font-size: 0.75rem; font-weight: 700; text-align: center; line-height: 18px; }
+    .member-text { flex: 1; }
+    .member-label { font-size: 0.78rem; font-weight: 600; color: var(--taupe-dark); margin-bottom: 0.2rem; }
+    .member-note { font-size: 0.68rem; color: var(--olive); }
+    .member-badge { background: var(--sage); color: white; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+
+    /* FIELDS */
+    .section-eyebrow { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 1rem; }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; margin-bottom: 1.2rem; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .field-group { margin-bottom: 1.2rem; }
+    .field-group:last-child { margin-bottom: 0; }
+    .field-group label { display: block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); margin-bottom: 0.5rem; }
+    .required { color: var(--sand); margin-left: 0.2rem; }
+    input[type="text"], input[type="email"], input[type="tel"], textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 10px;
+      padding: 0.75rem 1rem; font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+      color: var(--text); background: var(--cream); outline: none; transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus { border-color: var(--sage); background: white; }
+    textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
+
+    /* FLAVOR GRID */
+    .flavor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .flavor-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 1rem; border: 1.5px solid var(--border); border-radius: 12px;
+      background: var(--white); transition: border-color 0.2s;
+    }
+    .flavor-row.has-quantity { border-color: var(--sage); background: var(--sage-pale); }
+    .flavor-info { flex: 1; }
+    .flavor-name { font-size: 0.78rem; font-weight: 600; color: var(--text); }
+    .flavor-size { font-size: 0.62rem; color: var(--text-light); margin-top: 0.1rem; }
+    .flavor-price { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--sage); font-weight: 500; margin: 0 0.8rem; }
+    .qty-wrap { display: flex; align-items: center; gap: 0.4rem; }
+    .qty-btn {
+      width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--border);
+      background: white; font-size: 1rem; color: var(--taupe); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+      font-family: 'Montserrat', sans-serif; font-weight: 500; line-height: 1;
+    }
+    .qty-btn:hover { border-color: var(--sage); color: var(--sage); }
+    .qty-display { font-size: 0.85rem; font-weight: 600; color: var(--text); min-width: 20px; text-align: center; }
+
+    /* ORDER SUMMARY */
+    .summary-box { background: linear-gradient(135deg, var(--sage-pale), #f0ede6); border: 1px solid var(--sage-light); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.2rem; }
+    .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0; font-size: 0.78rem; color: var(--text); border-bottom: 1px solid rgba(224,216,206,0.5); }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-row.total { font-weight: 600; font-size: 0.85rem; color: var(--taupe-dark); padding-top: 0.8rem; }
+    .summary-row.savings { color: var(--olive); font-style: italic; }
+    .summary-empty { font-size: 0.75rem; color: var(--text-light); font-style: italic; text-align: center; padding: 0.5rem 0; }
+    .summary-label { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; color: var(--taupe-dark); margin-bottom: 1rem; }
+
+    /* SUBMIT */
+    .btn-submit {
+      width: 100%; background: var(--sage); color: white; border: none; border-radius: 30px;
+      padding: 1rem 2rem; font-family: 'Montserrat', sans-serif; font-size: 0.72rem;
+      font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-submit:hover { background: var(--olive); transform: translateY(-1px); }
+    .btn-submit:disabled { background: var(--border); cursor: not-allowed; transform: none; }
+
+    /* THANK YOU */
+    .thank-you { display: none; text-align: center; padding: 3rem 1.5rem; }
+    .ty-icon { font-size: 3rem; margin-bottom: 1.5rem; }
+    .ty-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--taupe-dark); margin-bottom: 1rem; }
+    .ty-title em { font-style: italic; color: var(--sage); }
+    .ty-body { font-size: 0.8rem; color: var(--text-light); line-height: 1.8; max-width: 420px; margin: 0 auto 1.5rem; }
+    .ty-sig { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--taupe); }
+
+    /* FOOTER */
+    .form-footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 0.62rem; color: var(--text-light); letter-spacing: 0.1em; }
+
+    @media (max-width: 560px) {
+      .field-row { grid-template-columns: 1fr; }
+      .flavor-grid { grid-template-columns: 1fr; }
+      .main { padding: 1.5rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <p class="header-eyebrow">The WELLness Collective</p>
+  <h1 class="header-title">Order <em>LMNT</em></h1>
+  <p class="header-sub">Zero sugar electrolytes — recommended daily for hydration, energy, and recovery. Members get an exclusive discount on every order.</p>
+</div>
+
+<div class="main">
+
+  <!-- MEMBER TOGGLE -->
+  <div class="member-banner">
+    <div class="member-check-wrap">
+      <input type="checkbox" class="member-checkbox" id="isMember" onchange="updatePrices()" />
+    </div>
+    <div class="member-text">
+      <div class="member-label">I'm a WELLness Collective Member</div>
+      <div class="member-note">Check this box to unlock your member discount. Briana will verify your membership before fulfilling your order.</div>
+    </div>
+    <div class="member-badge">Save $2/box</div>
+  </div>
+
+  <!-- CONTACT INFO -->
+  <div class="card">
+    <div class="section-eyebrow">Your Info</div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>First Name <span class="required">*</span></label>
+        <input type="text" id="firstName" placeholder="Your first name" />
+      </div>
+      <div class="field-group">
+        <label>Last Name <span class="required">*</span></label>
+        <input type="text" id="lastName" placeholder="Your last name" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label>Email <span class="required">*</span></label>
+        <input type="email" id="email" placeholder="your@email.com" />
+      </div>
+      <div class="field-group">
+        <label>Phone</label>
+        <input type="tel" id="phone" placeholder="(000) 000-0000" />
+      </div>
+    </div>
+    <div class="field-group">
+      <label>Delivery or Pickup?</label>
+      <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:0.3rem;">
+        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.78rem; font-weight:400; color:var(--text); text-transform:none; letter-spacing:0; cursor:pointer;">
+          <input type="radio" name="delivery" value="Pickup" style="accent-color:var(--sage);"> Pickup
+        </label>
+        <label style="display:flex; align-items:center; gap:0.5rem; font-size:0.78rem; font-weight:400; color:var(--text); text-transform:none; letter-spacing:0; cursor:pointer;">
+          <input type="radio" name="delivery" value="Delivery" style="accent-color:var(--sage);"> Delivery
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLAVOR SELECTION -->
+  <div class="card">
+    <div class="section-eyebrow">Select Your Flavors</div>
+    <p style="font-size:0.72rem; color:var(--text-light); margin-bottom:1.2rem; line-height:1.7;">Each box contains 12 stick packs. Select quantity for each flavor you'd like to order.</p>
+
+    <div class="flavor-grid" id="flavorGrid">
+      <!-- Flavors injected by JS -->
+    </div>
+
+    <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border);">
+      <p style="font-size:0.65rem; color:var(--text-light); font-style:italic;">Each box = 12 stick packs · <span id="priceNote">$18/box · Members $16/box</span></p>
+    </div>
+  </div>
+
+  <!-- ORDER SUMMARY -->
+  <div class="summary-box">
+    <div class="summary-label">Order Summary</div>
+    <div id="summaryItems">
+      <div class="summary-empty">No items selected yet — choose your flavors above!</div>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="card">
+    <div class="section-eyebrow">Additional Notes</div>
+    <div class="field-group">
+      <label>Anything else?</label>
+      <textarea id="notes" placeholder="Special requests, questions for Briana, etc..."></textarea>
+    </div>
+  </div>
+
+  <button class="btn-submit" id="submitBtn" onclick="submitOrder()">Place My Order →</button>
+
+  <!-- THANK YOU -->
+  <div class="thank-you" id="thankYou">
+    <div class="ty-icon">🌿</div>
+    <h2 class="ty-title">Order <em>received!</em></h2>
+    <p class="ty-body">Briana will reach out within 48 hours to confirm your order and arrange payment via Venmo. Stay salty! 💧</p>
+    <p class="ty-sig">— Coach Briana Weber 🤍</p>
+  </div>
+
+</div>
+
+<div class="form-footer">
+  The WELLness Collective · Coach Briana Weber · alexandriawell.com
+</div>
+
+<script>
+const FLAVORS = [
+  'Lemonade Salt',
+  'Lemonade Iced Tea',
+  'Citrus Salt',
+  'Orange Salt',
+  'Raspberry Salt',
+  'Watermelon Salt',
+  'Grapefruit Salt',
+  'Variety'
+];
+
+const PRICE_MEMBER = 16;
+const PRICE_NONMEMBER = 18;
+
+let quantities = {};
+FLAVORS.forEach(f => quantities[f] = 0);
+
+// Build flavor grid
+function buildFlavorGrid() {
+  const grid = document.getElementById('flavorGrid');
+  grid.innerHTML = FLAVORS.map(flavor => `
+    <div class="flavor-row" id="row-${flavor.replace(/\s/g,'_')}">
+      <div class="flavor-info">
+        <div class="flavor-name">${flavor}</div>
+        <div class="flavor-size">12 stick packs</div>
+      </div>
+      <div class="flavor-price" id="price-${flavor.replace(/\s/g,'_')}">$18</div>
+      <div class="qty-wrap">
+        <button class="qty-btn" onclick="changeQty('${flavor}', -1)">−</button>
+        <div class="qty-display" id="qty-${flavor.replace(/\s/g,'_')}">0</div>
+        <button class="qty-btn" onclick="changeQty('${flavor}', 1)">+</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function changeQty(flavor, delta) {
+  quantities[flavor] = Math.max(0, (quantities[flavor] || 0) + delta);
+  const key = flavor.replace(/\s/g,'_');
+  document.getElementById(`qty-${key}`).textContent = quantities[flavor];
+  const row = document.getElementById(`row-${key}`);
+  row.classList.toggle('has-quantity', quantities[flavor] > 0);
+  updateSummary();
+}
+
+function updatePrices() {
+  const isMember = document.getElementById('isMember').checked;
+  const price = isMember ? PRICE_MEMBER : PRICE_NONMEMBER;
+  FLAVORS.forEach(flavor => {
+    const key = flavor.replace(/\s/g,'_');
+    const el = document.getElementById(`price-${key}`);
+    if (el) el.textContent = `$${price}`;
+  });
+  document.getElementById('priceNote').textContent = isMember
+    ? `$${PRICE_MEMBER}/box · Member rate applied ✓`
+    : `$${PRICE_NONMEMBER}/box · Members save $2/box`;
+  updateSummary();
+}
+
+function updateSummary() {
+  const isMember = document.getElementById('isMember').checked;
+  const price = isMember ? PRICE_MEMBER : PRICE_NONMEMBER;
+  const retailPrice = PRICE_NONMEMBER;
+
+  const items = FLAVORS.filter(f => quantities[f] > 0);
+  const summaryEl = document.getElementById('summaryItems');
+
+  if (items.length === 0) {
+    summaryEl.innerHTML = '<div class="summary-empty">No items selected yet — choose your flavors above!</div>';
+    return;
+  }
+
+  let total = 0;
+  let retailTotal = 0;
+  let rows = items.map(f => {
+    const subtotal = quantities[f] * price;
+    total += subtotal;
+    retailTotal += quantities[f] * retailPrice;
+    return `<div class="summary-row">
+      <span>${f} × ${quantities[f]}</span>
+      <span>$${subtotal}</span>
+    </div>`;
+  }).join('');
+
+  const savings = retailTotal - total;
+  rows += `<div class="summary-row total"><span>Total</span><span>$${total}</span></div>`;
+  if (isMember && savings > 0) {
+    rows += `<div class="summary-row savings"><span>🌿 Member savings</span><span>−$${savings}</span></div>`;
+  }
+
+  summaryEl.innerHTML = rows;
+}
+
+function collectOrder() {
+  const isMember = document.getElementById('isMember').checked;
+  const price = isMember ? PRICE_MEMBER : PRICE_NONMEMBER;
+  const items = FLAVORS.filter(f => quantities[f] > 0);
+  const total = items.reduce((sum, f) => sum + quantities[f] * price, 0);
+  const delivery = document.querySelector('input[name="delivery"]:checked');
+
+  return {
+    'Name': `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`.trim(),
+    'Email': document.getElementById('email').value,
+    'Phone': document.getElementById('phone').value,
+    'Member': isMember ? 'Yes — member discount applied' : 'No',
+    'Delivery/Pickup': delivery ? delivery.value : 'Not specified',
+    'Order': items.map(f => `${f} × ${quantities[f]}`).join(', '),
+    'Price Per Box': `$${price}`,
+    'Order Total': `$${total}`,
+    'Notes': document.getElementById('notes').value,
+    'Interest': 'LMNT Order',
+    'Submitted': new Date().toLocaleDateString()
+  };
+}
+
+async function submitOrder() {
+  const firstName = document.getElementById('firstName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const items = FLAVORS.filter(f => quantities[f] > 0);
+
+  if (!firstName) { alert('Please enter your first name.'); return; }
+  if (!email) { alert('Please enter your email.'); return; }
+  if (items.length === 0) { alert('Please select at least one flavor!'); return; }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Placing order...';
+
+  try {
+    await fetch('https://formspree.io/f/mdabrwdk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(collectOrder())
+    });
+  } catch(e) {}
+
+  document.querySelectorAll('.card, .member-banner, .summary-box, #submitBtn').forEach(el => el.style.display = 'none');
+  document.getElementById('thankYou').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Init
+buildFlavorGrid();
+</script>
+
+</body>
+</html>
