@@ -168,6 +168,7 @@
       .story-img { padding-right: 0; margin-bottom: 3rem; }
       .story-content { padding-left: 0; }
       .offerings-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .offerings-grid > div[style*="grid-column"] { grid-column: 1 !important; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
       .offerings, .sessions { padding: 4rem 1.5rem; }
     }
@@ -254,34 +255,41 @@
     <p class="section-eyebrow">Work With Me</p>
     <h2 class="section-title" style="font-size:clamp(2rem,3vw,2.8rem); text-align:center;">Choose your path<br><em>to the Well</em></h2>
   </div>
-  <div class="offerings-grid">
+  <!-- OFFERINGS GRID — Membership featured, Retreat + Summer Series smaller -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto; gap:1.5rem; max-width:900px; margin:0 auto;">
 
-    <div style="background:linear-gradient(135deg, var(--taupe-dark), #4a3c30); border-radius:20px; padding:2.5rem 2rem; position:relative; overflow:hidden;">
+    <!-- MEMBERSHIP — spans full width on top -->
+    <div style="grid-column:1/-1; background:linear-gradient(135deg, var(--taupe-dark), #4a3c30); border-radius:20px; padding:2.5rem; position:relative; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center;">
       <div style="position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle, rgba(122,140,110,0.2), transparent 70%);"></div>
-      <p style="font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sage-light); font-weight:600; margin-bottom:1rem;">Monthly Membership</p>
-      <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:400; color:var(--cream); margin-bottom:0.3rem;">The WELLness Collective</h3>
-      <div style="font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:300; color:var(--sand-light); line-height:1; margin:0.8rem 0 0.3rem;">$49</div>
-      <div style="font-size:0.7rem; color:rgba(250,247,242,0.5); margin-bottom:1.2rem;">per month · cancel anytime</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; text-align:left; margin-bottom:1.5rem;">
-        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Personal training portal</div>
-        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Fresh workouts monthly</div>
-        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Nutrition guide + grocery lists</div>
-        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Habit + progress tracking</div>
-        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Weekly check-ins</div>
-        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Private Facebook community</div>
-        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Discounted session rates</div>
-        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Cancel anytime</div>
+      <div>
+        <p style="font-size:0.6rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--sage-light); font-weight:600; margin-bottom:0.8rem;">Monthly Membership</p>
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:400; color:var(--cream); margin-bottom:0.3rem;">The WELLness Collective</h3>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:300; color:var(--sand-light); line-height:1; margin:0.8rem 0 0.3rem;">$49</div>
+        <div style="font-size:0.7rem; color:rgba(250,247,242,0.5); margin-bottom:1.5rem;">per month · cancel anytime</div>
+        <button class="btn-primary" style="background:var(--sage); font-size:0.72rem; width:auto; display:inline-flex;" onclick="toggleLeadForm('form-membership', this)">Join the Collective →</button>
+        <div id="form-membership" class="lead-form" style="display:none; background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); margin-top:1.2rem;">
+          <p class="lead-form-label" style="color:rgba(250,247,242,0.7);">Drop your info and Briana will reach out within 48 hrs to get you set up!</p>
+          <input type="text" placeholder="Your name" id="mem-name" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
+          <input type="email" placeholder="Your email" id="mem-email" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
+          <button class="lead-submit" onclick="submitLead('mem', 'Membership — $49/month')">Send My Info →</button>
+          <div id="mem-confirm" class="lead-confirm" style="display:none; background:rgba(122,140,110,0.3); color:var(--sage-pale);">✓ You're in! Briana will be in touch soon. 🌿</div>
+        </div>
       </div>
-      <button class="btn-primary" style="background:var(--sage); font-size:0.72rem;" onclick="toggleLeadForm('form-membership', this)">Join the Collective →</button>
-      <div id="form-membership" class="lead-form" style="display:none; background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); margin-top:1.2rem;">
-        <p class="lead-form-label" style="color:rgba(250,247,242,0.7);">Drop your info and Briana will reach out within 48 hrs to get you set up!</p>
-        <input type="text" placeholder="Your name" id="mem-name" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
-        <input type="email" placeholder="Your email" id="mem-email" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
-        <button class="lead-submit" onclick="submitLead('mem', 'Membership — $49/month')">Send My Info →</button>
-        <div id="mem-confirm" class="lead-confirm" style="display:none; background:rgba(122,140,110,0.3); color:var(--sage-pale);">✓ You're in! Briana will be in touch soon. 🌿</div>
+      <div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Personal training portal</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Fresh workouts monthly</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Nutrition guide + grocery lists</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Habit + progress tracking</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Weekly check-ins</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Private Facebook community</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Discounted session rates</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Cancel anytime</div>
+        </div>
       </div>
     </div>
 
+    <!-- WELLNESS RETREAT -->
     <div class="offering-card coming-soon">
       <p class="offering-subtitle">Immersive Experience</p>
       <h3 class="offering-title">Wellness Retreat</h3>
@@ -298,7 +306,25 @@
       </div>
     </div>
 
+    <!-- SUMMER STRENGTH SERIES -->
+    <div class="offering-card coming-soon">
+      <p class="offering-subtitle">Special Event Series · In Collaboration with Nice Juicery</p>
+      <h3 class="offering-title">Summer Strength Series</h3>
+      <p class="offering-desc">A series of private pop-up training events this summer — intimate, intentional, and energizing. Spots are limited and registration is required. Details dropping soon!</p>
+      <div class="offering-price">Coming Soon</div>
+      <p class="offering-price-note">Private events · Limited spots · Summer 2026</p>
+      <button class="btn-secondary" onclick="toggleLeadForm('form-summer', this)">Notify Me!</button>
+      <div id="form-summer" class="lead-form" style="display:none;">
+        <p class="lead-form-label">Get on the list and be first to know when Summer Strength Series dates drop!</p>
+        <input type="text" placeholder="Your name" id="fs-name" class="lead-input" />
+        <input type="email" placeholder="Your email" id="fs-email" class="lead-input" />
+        <button class="lead-submit" onclick="submitLead('fs', 'Summer Strength Series — Nice Juicery Collab')">Notify Me →</button>
+        <div id="fs-confirm" class="lead-confirm" style="display:none;">✓ You're on the list! Details coming soon. 🌿</div>
+      </div>
+    </div>
+
   </div>
+
 </section>
 
 <!-- SESSIONS -->
