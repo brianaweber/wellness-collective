@@ -3,695 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The WELLness Collective — Client Portal</title>
+  <title>The WELLness Collective — Sarah</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --sage: #7a8c6e;
-      --sage-light: #a8b89a;
-      --sage-pale: #eef1eb;
-      --sand: #c4a882;
-      --sand-light: #ddc9aa;
-      --cream: #faf7f2;
-      --taupe: #8a7968;
-      --taupe-dark: #5c5042;
-      --olive: #6b7355;
-      --white: #ffffff;
-      --text: #3a3228;
-      --text-light: #7a6e62;
-      --border: #e0d8ce;
-      --checked-bg: #eef1eb;
+      --sage: #7a8c6e; --sage-light: #a8b89a; --sage-pale: #eef1eb;
+      --sand: #c4a882; --sand-light: #ddc9aa; --cream: #faf7f2;
+      --taupe: #8a7968; --taupe-dark: #5c5042; --olive: #6b7355;
+      --white: #ffffff; --text: #3a3228; --text-light: #7a6e62; --border: #e0d8ce;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      min-height: 100vh;
-    }
+    /* HEADER */
+    .site-header { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 500; letter-spacing: 0.12em; color: var(--taupe-dark); text-transform: uppercase; }
+    .logo span { color: var(--sage); }
+    .header-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); font-weight: 500; }
 
-    /* ── HEADER ── */
-    .site-header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #f0ede6 0%, #e8ede0 50%, #ede8e0 100%); padding: 4rem 2rem 3rem; text-align: center; }
+    .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sage); font-weight: 600; margin-bottom: 1rem; }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 300; color: var(--taupe-dark); line-height: 1.15; margin-bottom: 0.5rem; }
+    .hero h1 em { font-style: italic; color: var(--sage); }
+    .hero-sub { font-size: 0.8rem; letter-spacing: 0.1em; color: var(--text-light); margin-bottom: 2rem; }
+    .hero-stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+    .stat { background: rgba(255,255,255,0.7); border: 1px solid var(--border); border-radius: 12px; padding: 0.9rem 1.4rem; text-align: center; min-width: 100px; }
+    .stat-val { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--sage); display: block; }
+    .stat-label { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-top: 0.2rem; }
 
-    .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      color: var(--taupe-dark);
-      text-transform: uppercase;
-    }
-
-    .logo span {
-      color: var(--sage);
-    }
-
-    .header-tag {
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      font-weight: 500;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      background: linear-gradient(135deg, #f0ede6 0%, #e8ede0 50%, #ede8e0 100%);
-      padding: 4rem 2rem 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 240px; height: 240px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(122,140,110,0.12), transparent 70%);
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -40px; left: -40px;
-      width: 180px; height: 180px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(196,168,130,0.15), transparent 70%);
-    }
-
-    .hero-eyebrow {
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--sage);
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.4rem, 5vw, 3.6rem);
-      font-weight: 300;
-      color: var(--taupe-dark);
-      line-height: 1.15;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--sage);
-    }
-
-    .hero-sub {
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      color: var(--text-light);
-      margin-bottom: 2rem;
-      font-weight: 400;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      background: rgba(255,255,255,0.7);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 0.9rem 1.4rem;
-      text-align: center;
-      min-width: 100px;
-      backdrop-filter: blur(4px);
-    }
-
-    .stat-val {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: var(--sage);
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      font-weight: 600;
-      margin-top: 0.2rem;
-    }
-
-    /* ── NAV TABS ── */
-    .tab-nav {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      display: flex;
-      gap: 0;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-
+    /* TABS */
+    .tab-nav { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
     .tab-nav::-webkit-scrollbar { display: none; }
-
-    .tab-btn {
-      padding: 1rem 1.4rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-
+    .tab-btn { padding: 1rem 1.4rem; font-family: 'Montserrat', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
     .tab-btn:hover { color: var(--sage); }
+    .tab-btn.active { color: var(--sage); border-bottom-color: var(--sage); }
 
-    .tab-btn.active {
-      color: var(--sage);
-      border-bottom-color: var(--sage);
-    }
-
-    /* ── MAIN LAYOUT ── */
-    .main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
-    }
-
+    /* MAIN */
+    .main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
     .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
+    .tab-panel.active { display: block; animation: fadeUp 0.35s ease forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ── SECTION HEADERS ── */
-    .section-header {
-      margin-bottom: 2rem;
-    }
+    /* SECTIONS */
+    .section-header { margin-bottom: 2rem; }
+    .section-eyebrow { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--taupe-dark); line-height: 1.2; }
+    .divider { width: 40px; height: 1px; background: var(--sage-light); margin: 1rem 0 1.5rem; }
 
-    .section-eyebrow {
-      font-size: 0.6rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--sand);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 400;
-      color: var(--taupe-dark);
-      line-height: 1.2;
-    }
-
-    .divider {
-      width: 40px;
-      height: 1px;
-      background: var(--sage-light);
-      margin: 1rem 0 1.5rem;
-    }
-
-    /* ── CARDS ── */
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.8rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.2rem;
-      cursor: pointer;
-    }
-
-    .card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: var(--taupe-dark);
-    }
-
-    .card-day {
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--sage);
-      font-weight: 600;
-    }
-
-    .card-toggle {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      background: var(--sage-pale);
-      border: none;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-      color: var(--sage);
-      transition: transform 0.3s;
-      flex-shrink: 0;
-    }
-
+    /* CARDS */
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; margin-bottom: 1.2rem; }
+    .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; cursor: pointer; }
+    .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--taupe-dark); }
+    .card-day { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); font-weight: 600; }
+    .card-toggle { width: 28px; height: 28px; border-radius: 50%; background: var(--sage-pale); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--sage); transition: transform 0.3s; flex-shrink: 0; }
     .card.collapsed .card-toggle { transform: rotate(-90deg); }
     .card.collapsed .card-body { display: none; }
 
-    /* ── WORKOUT SECTIONS ── */
-    .workout-section {
-      margin-bottom: 1.5rem;
-    }
-
-    .workout-section-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--sand);
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* ── EXERCISE TABLE ── */
-    .exercise-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .exercise-table th {
-      font-size: 0.58rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      font-weight: 600;
-      text-align: left;
-      padding: 0.4rem 0.6rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .exercise-table td {
-      padding: 0.7rem 0.6rem;
-      font-size: 0.8rem;
-      color: var(--text);
-      border-bottom: 1px solid #f0ebe3;
-      vertical-align: middle;
-    }
-
+    /* WORKOUT */
+    .workout-section { margin-bottom: 1.5rem; }
+    .workout-section-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+    .exercise-table { width: 100%; border-collapse: collapse; }
+    .exercise-table th { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--border); }
+    .exercise-table td { padding: 0.7rem 0.6rem; font-size: 0.8rem; color: var(--text); border-bottom: 1px solid #f0ebe3; vertical-align: middle; }
     .exercise-table tr:last-child td { border-bottom: none; }
-
-    .exercise-name {
-      font-weight: 500;
-    }
-
-    .exercise-note {
-      font-size: 0.7rem;
-      color: var(--text-light);
-      margin-top: 0.15rem;
-    }
-
-    .check-cell {
-      width: 36px;
-      text-align: center;
-    }
-
-    .check-box {
-      width: 20px; height: 20px;
-      border: 1.5px solid var(--border);
-      border-radius: 5px;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s;
-      margin: 0 auto;
-    }
-
-    .check-box.checked {
-      background: var(--sage);
-      border-color: var(--sage);
-    }
-
-    .check-box.checked::after {
-      content: '✓';
-      color: white;
-      font-size: 0.7rem;
-      font-weight: 700;
-    }
-
-    /* ── WARMUP / COOLDOWN PILLS ── */
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .pill {
-      background: var(--sage-pale);
-      border: 1px solid #d4dbc8;
-      border-radius: 20px;
-      padding: 0.35rem 0.8rem;
-      font-size: 0.72rem;
-      color: var(--olive);
-      font-weight: 500;
-    }
-
-    .pill span {
-      color: var(--text-light);
-      font-weight: 400;
-      margin-left: 0.3rem;
-    }
-
-    /* ── CONDITIONING BADGE ── */
-    .conditioning-row {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 0.8rem 1rem;
-      background: linear-gradient(90deg, #f5f0e8, #f0ede6);
-      border-radius: 10px;
-      border-left: 3px solid var(--sand);
-    }
-
-    .conditioning-icon { font-size: 1rem; }
+    .exercise-name { font-weight: 500; }
+    .exercise-note { font-size: 0.7rem; color: var(--text-light); margin-top: 0.15rem; }
+    .check-cell { width: 36px; text-align: center; }
+    .check-box { width: 20px; height: 20px; border: 1.5px solid var(--border); border-radius: 5px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; margin: 0 auto; }
+    .check-box.checked { background: var(--sage); border-color: var(--sage); }
+    .check-box.checked::after { content: "✓"; color: white; font-size: 0.7rem; font-weight: 700; }
+    .weight-input { width: 54px; border: 1px solid var(--border); border-radius: 6px; padding: 0.3rem 0.4rem; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; color: var(--text); text-align: center; background: var(--cream); outline: none; transition: border-color 0.2s; }
+    .weight-input:focus { border-color: var(--sage); background: white; }
+    .pill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .pill { background: var(--sage-pale); border: 1px solid #d4dbc8; border-radius: 20px; padding: 0.35rem 0.8rem; font-size: 0.72rem; color: var(--olive); font-weight: 500; }
+    .pill span { color: var(--text-light); font-weight: 400; margin-left: 0.3rem; }
+    .conditioning-row { display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 1rem; background: linear-gradient(90deg, #f5f0e8, #f0ede6); border-radius: 10px; border-left: 3px solid var(--sand); }
     .conditioning-text { font-size: 0.78rem; color: var(--taupe); }
-    .optional-badge {
-      margin-left: auto;
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--sand);
-      font-weight: 600;
-    }
+    .optional-badge { margin-left: auto; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sand); font-weight: 600; }
 
-    /* ── HABIT TRACKER ── */
-    .habits-grid {
-      display: grid;
-      gap: 0.8rem;
-    }
+    /* WEEK TABS */
+    .week-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .week-tab { padding: 0.45rem 1rem; border-radius: 20px; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: var(--white); color: var(--text-light); transition: all 0.2s; }
+    .week-tab.active { background: var(--sage); color: white; border-color: var(--sage); }
 
-    .habit-row {
-      display: grid;
-      grid-template-columns: 1fr repeat(7, 36px);
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.8rem 1rem;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-    }
+    /* HABITS */
+    .habits-grid { display: grid; gap: 0.8rem; }
+    .habit-row { display: grid; grid-template-columns: 1fr repeat(7, 36px); align-items: center; gap: 0.4rem; padding: 0.8rem 1rem; background: var(--white); border: 1px solid var(--border); border-radius: 12px; }
+    .habit-name { font-size: 0.75rem; font-weight: 500; color: var(--text); }
+    .habit-goal { font-size: 0.65rem; color: var(--text-light); margin-top: 0.1rem; }
+    .day-header { display: grid; grid-template-columns: 1fr repeat(7, 36px); gap: 0.4rem; padding: 0 1rem; margin-bottom: 0.4rem; }
+    .day-label { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); text-align: center; font-weight: 600; }
 
-    .habit-name {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--text);
-    }
+    /* GOAL BANNER */
+    .goal-banner { background: linear-gradient(135deg, #e8ede0, #ede3d5); border: 1px solid #d4dbc8; border-radius: 16px; padding: 2rem; text-align: center; margin-bottom: 1.5rem; }
+    .goal-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--olive); font-weight: 600; margin-bottom: 0.8rem; }
+    .goal-text { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; font-style: italic; color: var(--taupe-dark); line-height: 1.4; }
 
-    .habit-goal {
-      font-size: 0.65rem;
-      color: var(--text-light);
-      margin-top: 0.1rem;
-    }
+    /* TIMELINE */
+    .timeline { display: grid; gap: 0.6rem; }
+    .timeline-row { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; background: var(--white); border: 1px solid var(--border); border-radius: 12px; }
+    .week-num { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--sage-light); min-width: 32px; }
+    .week-info { flex: 1; }
+    .week-focus-text { font-size: 0.8rem; font-weight: 500; color: var(--text); }
 
-    .day-header {
-      display: grid;
-      grid-template-columns: 1fr repeat(7, 36px);
-      gap: 0.4rem;
-      padding: 0 1rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .day-label {
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      text-align: center;
-      font-weight: 600;
-    }
-
-    /* ── WEEK PROGRESS BAR ── */
-    .week-tabs {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .week-tab {
-      padding: 0.45rem 1rem;
-      border-radius: 20px;
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1px solid var(--border);
-      background: var(--white);
-      color: var(--text-light);
-      transition: all 0.2s;
-    }
-
-    .week-tab.active {
-      background: var(--sage);
-      color: white;
-      border-color: var(--sage);
-    }
-
-    /* ── PROGRESS TRACKER ── */
-    .progress-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .progress-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.2rem;
-    }
-
-    .progress-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .progress-input {
-      width: 100%;
-      border: none;
-      border-bottom: 1.5px solid var(--border);
-      background: transparent;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      color: var(--taupe-dark);
-      padding: 0.3rem 0;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .progress-input:focus { border-bottom-color: var(--sage); }
-
-    .progress-input::placeholder {
-      color: var(--border);
-      font-style: italic;
-    }
-
-    /* ── GOAL SECTION ── */
-    .goal-banner {
-      background: linear-gradient(135deg, #e8ede0, #ede3d5);
-      border: 1px solid #d4dbc8;
-      border-radius: 16px;
-      padding: 2rem;
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .goal-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--olive);
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-    }
-
-    .goal-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--taupe-dark);
-      line-height: 1.4;
-    }
-
-    /* ── CHECK-IN TEXTAREAS ── */
-    .checkin-grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .checkin-field label {
-      display: block;
-      font-size: 0.65rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--taupe);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .checkin-field textarea {
-      width: 100%;
-      min-height: 80px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--white);
-      padding: 0.8rem 1rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.8rem;
-      color: var(--text);
-      resize: vertical;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
+    /* CHECK-IN */
+    .checkin-grid { display: grid; gap: 1rem; }
+    .checkin-field label { display: block; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--taupe); font-weight: 600; margin-bottom: 0.5rem; }
+    .checkin-field textarea { width: 100%; min-height: 80px; border: 1px solid var(--border); border-radius: 10px; background: var(--white); padding: 0.8rem 1rem; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--text); resize: vertical; outline: none; transition: border-color 0.2s; }
     .checkin-field textarea:focus { border-color: var(--sage); }
 
-    /* ── SAVE BUTTON ── */
-    .save-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--sage);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 0.8rem 1.8rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 1rem;
-    }
+    /* PROGRESS */
+    .progress-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .progress-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem; }
+    .progress-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 0.5rem; }
+    .progress-input { width: 100%; border: none; border-bottom: 1.5px solid var(--border); background: transparent; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--taupe-dark); padding: 0.3rem 0; outline: none; transition: border-color 0.2s; }
+    .progress-input:focus { border-bottom-color: var(--sage); }
 
+    /* NUTRITION */
+    .lead-confirm { margin-top: 0.8rem; padding: 0.6rem 0.8rem; background: var(--sage-pale); border-radius: 8px; border-left: 3px solid var(--sage); font-size: 0.72rem; color: var(--olive); font-weight: 500; }
+
+    /* BOOKING */
+    .save-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--sage); color: white; border: none; border-radius: 10px; padding: 0.8rem 1.8rem; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: 1rem; }
     .save-btn:hover { background: var(--olive); }
 
-    /* ── WEEK OVERVIEW TIMELINE ── */
-    .timeline {
-      display: grid;
-      gap: 0.6rem;
-    }
+    /* FOOTER */
+    .portal-footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); margin-top: 1rem; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--taupe); }
+    .footer-coach { font-size: 0.65rem; color: var(--text-light); margin-top: 0.3rem; }
 
-    .timeline-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.2rem;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      transition: border-color 0.2s;
-    }
-
-    .timeline-row.current {
-      border-color: var(--sage);
-      background: var(--sage-pale);
-    }
-
-    .week-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 300;
-      color: var(--sage-light);
-      min-width: 32px;
-    }
-
-    .timeline-row.current .week-num { color: var(--sage); }
-
-    .week-info { flex: 1; }
-
-    .week-focus-text {
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .current-badge {
-      font-size: 0.58rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      background: var(--sage);
-      color: white;
-      padding: 0.2rem 0.7rem;
-      border-radius: 20px;
-      font-weight: 600;
-    }
-
-    /* ── FOOTER ── */
-    .portal-footer {
-      text-align: center;
-      padding: 2rem;
-      border-top: 1px solid var(--border);
-      margin-top: 1rem;
-    }
-
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--taupe);
-    }
-
-    .footer-coach {
-      font-size: 0.65rem;
-      color: var(--text-light);
-      margin-top: 0.3rem;
-      letter-spacing: 0.1em;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .tab-panel.active { animation: fadeUp 0.35s ease forwards; }
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
       .hero { padding: 2.5rem 1.2rem 2rem; }
       .hero-stats { gap: 0.8rem; }
@@ -710,67 +150,75 @@
   <div class="header-tag">Client Portal</div>
 </header>
 
-<div class="hero" id="heroSection">
-  <div class="hero-eyebrow">6-Week Coaching Program</div>
-  <h1>Welcome, <em id="clientFirstName">Sarah</em></h1>
-  <div class="hero-sub" id="heroSub">Started May 19, 2025 · Coach Briana Weber</div>
+<div class="hero">
+  <div class="hero-eyebrow">Monthly Membership</div>
+  <h1>Welcome, <em id="heroName">Sarah</em></h1>
+  <div class="hero-sub" id="heroSub">Started June 1, 2026 &middot; Coach Briana Weber</div>
   <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-val" id="statSteps">8,000</span>
-      <span class="stat-label">Daily Steps</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val" id="statProtein">120g</span>
-      <span class="stat-label">Protein Goal</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val" id="statWater">80 oz</span>
-      <span class="stat-label">Water Goal</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val" id="statSplit">4</span>
-      <span class="stat-label">Days / Week</span>
-    </div>
+    <div class="stat"><span class="stat-val">8,000</span><span class="stat-label">Daily Steps</span></div>
+    <div class="stat"><span class="stat-val">100g</span><span class="stat-label">Protein Goal</span></div>
+    <div class="stat"><span class="stat-val">80 oz</span><span class="stat-label">Water Goal</span></div>
+    <div class="stat"><span class="stat-val">5</span><span class="stat-label">Days / Week</span></div>
   </div>
 </div>
 
-<nav class="tab-nav" id="tabNav">
+<nav class="tab-nav">
   <button class="tab-btn active" data-tab="overview">Overview</button>
-  <button class="tab-btn" data-tab="workouts">This Week</button>
+  <button class="tab-btn" data-tab="workouts">Workouts</button>
+  <button class="tab-btn" data-tab="nutrition">Nutrition</button>
   <button class="tab-btn" data-tab="habits">Habits</button>
   <button class="tab-btn" data-tab="checkin">Check-In</button>
   <button class="tab-btn" data-tab="progress">Progress</button>
+  <button class="tab-btn" data-tab="booking">Book a Session</button>
 </nav>
 
 <main class="main">
 
-  <!-- ── OVERVIEW TAB ── -->
+  <!-- OVERVIEW -->
   <div class="tab-panel active" id="tab-overview">
     <div class="section-header">
       <div class="section-eyebrow">Your Journey</div>
       <h2 class="section-title">Program Overview</h2>
       <div class="divider"></div>
     </div>
-
     <div class="goal-banner">
       <div class="goal-label">Your Goal</div>
-      <div class="goal-text" id="clientGoal">"Build strength, improve energy, and feel confident in my body again"</div>
+      <div class="goal-text">"Build strength, improve energy, and feel confident in my body again!"</div>
     </div>
-
     <div class="timeline" id="weekTimeline"></div>
   </div>
 
-  <!-- ── WORKOUTS TAB ── -->
+  <!-- WORKOUTS -->
   <div class="tab-panel" id="tab-workouts">
     <div class="section-header">
-      <div class="section-eyebrow">Week 1</div>
-      <h2 class="section-title">This Week's Workouts</h2>
+      <div class="section-eyebrow" id="workoutEyebrow">Week 1</div>
+      <h2 class="section-title">Workouts</h2>
       <div class="divider"></div>
     </div>
+    <div class="week-tabs" id="workoutWeekSelector"></div>
     <div id="workoutCards"></div>
   </div>
 
-  <!-- ── HABITS TAB ── -->
+  <!-- NUTRITION -->
+  <div class="tab-panel" id="tab-nutrition">
+    <div class="section-header">
+      <div class="section-eyebrow">Nourish Your Body</div>
+      <h2 class="section-title">Meal Guide</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="card" style="margin-bottom:1.2rem; background:linear-gradient(135deg,var(--sage-pale),#f5f0e8);">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; color:var(--taupe-dark); margin-bottom:0.8rem;">"Food is information for your body — choose foods that work with you, not against you."</div>
+      <p style="font-size:0.78rem; color:var(--text-light); line-height:1.8;">This guide is built around your protein goal of <strong>100g minimum per day</strong> with a focus on hormone-healthy and gut-healthy whole foods. Aim for 3 of these meals per week.</p>
+    </div>
+    <div class="week-tabs" id="nutritionWeekTabs"></div>
+    <div id="nutritionMeals"></div>
+    <div class="card" style="margin-top:1.5rem;">
+      <div class="section-eyebrow" style="margin-bottom:1rem;">Weekly Grocery List</div>
+      <div id="groceryList"></div>
+    </div>
+  </div>
+
+  <!-- HABITS -->
   <div class="tab-panel" id="tab-habits">
     <div class="section-header">
       <div class="section-eyebrow">Daily Non-Negotiables</div>
@@ -780,19 +228,14 @@
     <div class="card">
       <div class="day-header">
         <div></div>
-        <div class="day-label">M</div>
-        <div class="day-label">T</div>
-        <div class="day-label">W</div>
-        <div class="day-label">T</div>
-        <div class="day-label">F</div>
-        <div class="day-label">S</div>
-        <div class="day-label">S</div>
+        <div class="day-label">M</div><div class="day-label">T</div><div class="day-label">W</div>
+        <div class="day-label">T</div><div class="day-label">F</div><div class="day-label">S</div><div class="day-label">S</div>
       </div>
       <div class="habits-grid" id="habitsGrid"></div>
     </div>
   </div>
 
-  <!-- ── CHECK-IN TAB ── -->
+  <!-- CHECK-IN -->
   <div class="tab-panel" id="tab-checkin">
     <div class="section-header">
       <div class="section-eyebrow">Weekly Reflection</div>
@@ -801,399 +244,435 @@
     </div>
     <div class="card">
       <div class="checkin-grid">
-        <div class="checkin-field">
-          <label>Energy Levels This Week</label>
-          <textarea id="ci-energy" placeholder="How has your energy been?"></textarea>
-        </div>
-        <div class="checkin-field">
-          <label>Wins This Week</label>
-          <textarea id="ci-wins" placeholder="What went well?"></textarea>
-        </div>
-        <div class="checkin-field">
-          <label>Challenges</label>
-          <textarea id="ci-challenges" placeholder="What felt hard or got in the way?"></textarea>
-        </div>
-        <div class="checkin-field">
-          <label>What I'm Most Proud Of</label>
-          <textarea id="ci-proud" placeholder="Celebrate something..."></textarea>
-        </div>
-        <div class="checkin-field">
-          <label>Focus for Next Week</label>
-          <textarea id="ci-next" placeholder="What needs more attention?"></textarea>
-        </div>
+        <div class="checkin-field"><label>Energy Levels This Week</label><textarea id="ci-energy" placeholder="How has your energy been?"></textarea></div>
+        <div class="checkin-field"><label>Wins This Week</label><textarea id="ci-wins" placeholder="What went well?"></textarea></div>
+        <div class="checkin-field"><label>Challenges</label><textarea id="ci-challenges" placeholder="What felt hard or got in the way?"></textarea></div>
+        <div class="checkin-field"><label>What I am Most Proud Of</label><textarea id="ci-proud" placeholder="Celebrate something..."></textarea></div>
+        <div class="checkin-field"><label>Focus for Next Week</label><textarea id="ci-next" placeholder="What needs more attention?"></textarea></div>
+        <div class="checkin-field"><label>Personal Development</label><textarea id="ci-pd" placeholder="What inspired you during your personal development this week?"></textarea></div>
       </div>
-      <button class="save-btn" onclick="saveCheckin()">✓ &nbsp;Save Check-In</button>
+      <button class="save-btn" onclick="saveCheckin()">Save Check-In</button>
     </div>
   </div>
 
-  <!-- ── PROGRESS TAB ── -->
+  <!-- PROGRESS -->
   <div class="tab-panel" id="tab-progress">
     <div class="section-header">
       <div class="section-eyebrow">Track Your Journey</div>
       <h2 class="section-title">Progress Log</h2>
       <div class="divider"></div>
     </div>
-
     <div class="week-tabs" id="progressWeekTabs"></div>
+    <div class="progress-grid">
+      <div class="progress-card"><div class="progress-label">Weight</div><input class="progress-input" type="text" placeholder="—" /></div>
+      <div class="progress-card"><div class="progress-label">Energy (1-10)</div><input class="progress-input" type="text" placeholder="—" /></div>
+      <div class="progress-card"><div class="progress-label">Sleep Quality</div><input class="progress-input" type="text" placeholder="—" /></div>
+      <div class="progress-card"><div class="progress-label">Mood (1-10)</div><input class="progress-input" type="text" placeholder="—" /></div>
+      <div class="progress-card" style="grid-column:1/-1;"><div class="progress-label">Notes</div><input class="progress-input" type="text" placeholder="Anything to remember this week..." /></div>
+    </div>
+    <button class="save-btn" onclick="saveProgress()">Save Progress</button>
+  </div>
 
-    <div class="progress-grid" id="progressGrid">
-      <div class="progress-card">
-        <div class="progress-label">Weight</div>
-        <input class="progress-input" type="text" placeholder="—" />
-      </div>
-      <div class="progress-card">
-        <div class="progress-label">Energy (1–10)</div>
-        <input class="progress-input" type="text" placeholder="—" />
-      </div>
-      <div class="progress-card">
-        <div class="progress-label">Sleep Quality</div>
-        <input class="progress-input" type="text" placeholder="—" />
-      </div>
-      <div class="progress-card">
-        <div class="progress-label">Mood (1–10)</div>
-        <input class="progress-input" type="text" placeholder="—" />
-      </div>
-      <div class="progress-card" style="grid-column: 1 / -1;">
-        <div class="progress-label">Notes</div>
-        <input class="progress-input" type="text" placeholder="Anything to remember this week..." />
+  <!-- BOOKING -->
+  <div class="tab-panel" id="tab-booking">
+    <div class="section-header">
+      <div class="section-eyebrow">Work With Coach Briana</div>
+      <h2 class="section-title">Book a Session</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="card" style="margin-bottom:1.2rem;">
+      <div class="section-eyebrow" style="margin-bottom:1.2rem;">Your Member Rates</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px,1fr)); gap:0.6rem;">
+        <div style="border:1px solid var(--border); border-radius:12px; padding:1rem; text-align:center;">
+          <div style="font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.2rem;">Semi-Private</div>
+          <div style="font-size:0.6rem; color:var(--text-light); margin-bottom:0.4rem;">Max 3 people</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--taupe-dark);">$35</div>
+          <div style="font-size:0.6rem; color:var(--olive); margin-top:0.3rem;">6-pack $32 · 12-pack $30</div>
+        </div>
+        <div style="border:1.5px solid var(--sage); border-radius:12px; padding:1rem; text-align:center; background:var(--sage-pale);">
+          <div style="font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.4rem;">1:1 Gym</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--taupe-dark);">$65</div>
+          <div style="font-size:0.6rem; color:var(--olive); margin-top:0.3rem;">6-pack $55 · 12-pack $50</div>
+        </div>
+        <div style="border:1px solid var(--border); border-radius:12px; padding:1rem; text-align:center;">
+          <div style="font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.4rem;">1:1 In-Home</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--taupe-dark);">$75</div>
+          <div style="font-size:0.6rem; color:var(--olive); margin-top:0.3rem;">6-pack $65 · 12-pack $60</div>
+        </div>
       </div>
     </div>
-
-    <button class="save-btn" onclick="saveProgress()">✓ &nbsp;Save Progress</button>
+    <div class="card" style="margin-bottom:1.2rem;">
+      <div class="section-eyebrow" style="margin-bottom:0.8rem;">Book a Package</div>
+      <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; margin-bottom:1.2rem;">Save more with a session package. Tell Briana which package you want and she will follow up with payment details via Venmo.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:0.6rem; margin-bottom:1.2rem; font-size:0.72rem; color:var(--text-light);">
+        <div>Semi-private: 6-pack $192 · 12-pack $360</div>
+        <div>1:1 Gym: 6-pack $330 · 12-pack $600</div>
+        <div>1:1 In-Home: 6-pack $390 · 12-pack $720</div>
+      </div>
+      <input type="text" id="pkg-choice" placeholder="e.g. 6-session gym" style="width:100%; max-width:300px; border:1px solid var(--border); border-radius:8px; padding:0.6rem 0.8rem; font-size:0.78rem; font-family:'Montserrat',sans-serif; outline:none; background:var(--cream);" />
+      <button class="save-btn" onclick="reservePackage()">Reserve My Package</button>
+      <div id="pkg-confirm" style="display:none;" class="lead-confirm">Reserved! Briana will reach out with payment details shortly.</div>
+    </div>
+    <div class="card" style="margin-bottom:1.2rem; text-align:center;">
+      <div class="section-eyebrow" style="margin-bottom:0.8rem;">Schedule Your Session</div>
+      <p style="font-size:0.8rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Click below to view Briana's availability and book your next session.</p>
+      <a href="https://calendly.com/briweber" target="_blank" class="save-btn" style="display:inline-flex; text-decoration:none; margin-top:0;">View Availability and Book</a>
+    </div>
+    <div class="card">
+      <div class="section-eyebrow" style="margin-bottom:0.8rem;">Payment Options</div>
+      <p style="font-size:0.8rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Payment is due at the time of booking.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:1rem;">
+        <a href="https://venmo.com/briana-weber-1" target="_blank" style="display:flex; align-items:center; gap:0.8rem; padding:1rem 1.2rem; border:1px solid var(--border); border-radius:12px; text-decoration:none; background:white;">
+          <div style="width:36px; height:36px; background:#008CFF; border-radius:8px; display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-size:0.9rem; flex-shrink:0;">V</div>
+          <div><div style="font-size:0.72rem; font-weight:600; color:var(--text);">Pay with Venmo</div><div style="font-size:0.65rem; color:var(--text-light);">@briana-weber-1</div></div>
+        </a>
+        <button onclick="payLater()" style="display:flex; align-items:center; gap:0.8rem; padding:1rem 1.2rem; border:1px solid var(--border); border-radius:12px; cursor:pointer; background:white; text-align:left; width:100%;">
+          <div style="width:36px; height:36px; background:var(--sage-pale); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;">🗓</div>
+          <div><div style="font-size:0.72rem; font-weight:600; color:var(--text);">Pay Later</div><div style="font-size:0.65rem; color:var(--text-light);">Notify coach, pay before session</div></div>
+        </button>
+      </div>
+      <div id="payLaterConfirm" style="display:none; margin-top:1rem; padding:0.8rem 1rem; background:var(--sage-pale); border-radius:10px; border-left:3px solid var(--sage);">
+        <p style="font-size:0.75rem; color:var(--olive); font-weight:500;">Got it! Coach Briana has been notified. Please send payment before your session.</p>
+      </div>
+    </div>
   </div>
 
 </main>
 
 <footer class="portal-footer">
   <div class="footer-logo">The WELLness Collective</div>
-  <div class="footer-coach" id="footerCoach">Coached by Briana Weber</div>
+  <div class="footer-coach">Coached by Briana Weber</div>
 </footer>
 
 <script>
-// ── LOAD CLIENT DATA ──
-// In GitHub Pages, this fetches from the JSON file.
-// For demo purposes, data is embedded below.
-const CLIENT_DATA = {
-  "client": {
-    "name": "Sarah",
-    "fullName": "Sarah Mitchell",
-    "startDate": "May 19, 2025",
-    "goal": "Build strength, improve energy, and feel confident in my body again",
-    "feelGoal": "Strong, energized, and proud of myself",
-    "coach": "Briana Weber",
-    "split": 4,
-    "stepGoal": "8,000",
-    "proteinGoal": "120g",
-    "waterGoal": "80 oz",
-    "weeklyFocus": [
-      "Build confidence and consistency",
-      "Increase total movement",
-      "Add training volume",
-      "Increase strength and endurance",
-      "Peak effort week",
-      "Deload and recovery"
-    ]
-  },
-  "weeks": [
-    {
-      "week": 1,
-      "focus": "Build confidence and consistency",
-      "workouts": [
-        {
-          "day": "Monday",
-          "label": "Back / Shoulders / Triceps",
-          "warmup": [
-            { "exercise": "Arm circles", "detail": "30 sec each direction" },
-            { "exercise": "Band pull-aparts", "detail": "15 reps" }
-          ],
-          "strength": [
-            { "exercise": "Dumbbell shoulder press", "sets": 2, "reps": "12", "notes": "Start light, focus on form" },
-            { "exercise": "Dumbbell row", "sets": 2, "reps": "12 each side", "notes": "" },
-            { "exercise": "Lateral raises", "sets": 2, "reps": "15", "notes": "Light weight" },
-            { "exercise": "Tricep overhead extension", "sets": 2, "reps": "12", "notes": "" },
-            { "exercise": "Face pulls (band)", "sets": 2, "reps": "15", "notes": "" }
-          ],
-          "conditioning": { "exercise": "10 min walk or light cardio", "optional": true },
-          "cooldown": [
-            { "exercise": "Doorway chest stretch", "detail": "30 sec each side" },
-            { "exercise": "Child's pose", "detail": "60 sec" }
-          ]
-        },
-        {
-          "day": "Wednesday",
-          "label": "Lower Body",
-          "warmup": [
-            { "exercise": "Glute bridges", "detail": "15 reps" },
-            { "exercise": "Leg swings", "detail": "10 each side" }
-          ],
-          "strength": [
-            { "exercise": "Goblet squat", "sets": 2, "reps": "12", "notes": "Hold dumbbell at chest" },
-            { "exercise": "Romanian deadlift", "sets": 2, "reps": "12", "notes": "Hinge at hips" },
-            { "exercise": "Reverse lunge", "sets": 2, "reps": "10 each side", "notes": "" },
-            { "exercise": "Lateral band walk", "sets": 2, "reps": "15 each direction", "notes": "" },
-            { "exercise": "Calf raises", "sets": 2, "reps": "20", "notes": "" }
-          ],
-          "conditioning": { "exercise": "5 min incline walk", "optional": true },
-          "cooldown": [
-            { "exercise": "Hip flexor stretch", "detail": "45 sec each side" },
-            { "exercise": "Seated hamstring stretch", "detail": "45 sec each side" }
-          ]
-        },
-        {
-          "day": "Friday",
-          "label": "Chest / Biceps",
-          "warmup": [
-            { "exercise": "Shoulder rolls", "detail": "30 sec" },
-            { "exercise": "Push-up negatives", "detail": "5 slow reps" }
-          ],
-          "strength": [
-            { "exercise": "Dumbbell chest press", "sets": 2, "reps": "12", "notes": "" },
-            { "exercise": "Incline dumbbell press", "sets": 2, "reps": "12", "notes": "" },
-            { "exercise": "Chest fly", "sets": 2, "reps": "12", "notes": "Control the movement" },
-            { "exercise": "Dumbbell curl", "sets": 2, "reps": "12", "notes": "" },
-            { "exercise": "Hammer curl", "sets": 2, "reps": "12", "notes": "" }
-          ],
-          "conditioning": { "exercise": "10 min steady state cardio", "optional": true },
-          "cooldown": [
-            { "exercise": "Chest opener stretch", "detail": "45 sec" },
-            { "exercise": "Bicep wall stretch", "detail": "30 sec each side" }
-          ]
-        },
-        {
-          "day": "Saturday",
-          "label": "Glutes + Core",
-          "warmup": [
-            { "exercise": "Donkey kicks", "detail": "15 each side" },
-            { "exercise": "Dead bugs", "detail": "8 each side" }
-          ],
-          "strength": [
-            { "exercise": "Hip thrust", "sets": 2, "reps": "15", "notes": "Drive through heels" },
-            { "exercise": "Sumo squat", "sets": 2, "reps": "12", "notes": "" },
-            { "exercise": "Cable kickback (or band)", "sets": 2, "reps": "15 each side", "notes": "" },
-            { "exercise": "Plank", "sets": 2, "reps": "30 sec hold", "notes": "" },
-            { "exercise": "Dead bug", "sets": 2, "reps": "8 each side", "notes": "Slow and controlled" }
-          ],
-          "conditioning": { "exercise": "15 min walk outside", "optional": true },
-          "cooldown": [
-            { "exercise": "Figure-four stretch", "detail": "45 sec each side" },
-            { "exercise": "Cat-cow", "detail": "60 sec" }
-          ]
-        }
-      ]
-    }
+const STORAGE_KEY = 'wellness_sarah_demo';
+const FORMSPREE_CHECKIN = 'https://formspree.io/f/mkoyejrw';
+
+const CLIENT = {
+  name: 'Sarah',
+  fullName: 'Sarah Johnson',
+  startDate: 'June 1, 2026',
+  goal: 'Build strength, improve energy, and feel confident in my body again!',
+  coach: 'Briana Weber',
+  proteinGoal: '100g',
+  waterGoal: '80 oz',
+  stepGoal: '8,000',
+  weeklyFocus: [
+    'Build confidence and consistency',
+    'Increase total movement',
+    'Add training volume',
+    'Peak effort + Deload'
   ]
 };
 
-const data = CLIENT_DATA;
-const client = data.client;
-const STORAGE_KEY = `wellness_${client.name.toLowerCase()}`;
+const WORKOUT_WEEKS = [{"week": 1, "focus": "Build confidence and consistency", "workouts": [{"day": "Day 1", "label": "Back / Shoulders / Triceps", "warmup": [{"exercise": "Arm circles", "detail": "30 sec each direction"}, {"exercise": "Band pull-aparts", "detail": "15 reps"}], "strength": [{"exercise": "Dumbbell shoulder press", "sets": 2, "reps": "12", "notes": "Start light, focus on form"}, {"exercise": "Dumbbell row", "sets": 2, "reps": "12 each side", "notes": "Elbow drives back"}, {"exercise": "Lateral raises", "sets": 2, "reps": "15", "notes": "Light weight, control the descent"}, {"exercise": "Tricep overhead extension", "sets": 2, "reps": "12", "notes": ""}, {"exercise": "Face pulls (band)", "sets": 2, "reps": "15", "notes": "Great for posture"}], "conditioning": {"exercise": "10 min walk or light cardio", "optional": true}, "cooldown": [{"exercise": "Doorway chest stretch", "detail": "30 sec each side"}, {"exercise": "Child's pose", "detail": "60 sec"}]}, {"day": "Day 2", "label": "Lower Body", "warmup": [{"exercise": "Glute bridges", "detail": "15 reps"}, {"exercise": "Leg swings", "detail": "10 each side"}], "strength": [{"exercise": "Goblet squat", "sets": 2, "reps": "12", "notes": "Hold dumbbell at chest"}, {"exercise": "Romanian deadlift", "sets": 2, "reps": "12", "notes": "Hinge at hips, soft knee"}, {"exercise": "Reverse lunge", "sets": 2, "reps": "10 each side", "notes": ""}, {"exercise": "Lateral band walk", "sets": 2, "reps": "15 each direction", "notes": ""}, {"exercise": "Dead bug", "sets": 2, "reps": "8 each side", "notes": "Keep low back pressed to floor"}], "conditioning": {"exercise": "5 min incline walk", "optional": true}, "cooldown": [{"exercise": "Hip flexor stretch", "detail": "45 sec each side"}, {"exercise": "Seated hamstring stretch", "detail": "45 sec each side"}]}, {"day": "Day 3", "label": "Chest / Biceps", "warmup": [{"exercise": "Shoulder rolls", "detail": "30 sec"}, {"exercise": "Push-up negatives", "detail": "5 slow reps"}], "strength": [{"exercise": "Dumbbell chest press", "sets": 2, "reps": "12", "notes": ""}, {"exercise": "Incline dumbbell press", "sets": 2, "reps": "12", "notes": ""}, {"exercise": "Chest fly", "sets": 2, "reps": "12", "notes": "Control the movement"}, {"exercise": "Dumbbell curl", "sets": 2, "reps": "12", "notes": ""}, {"exercise": "Hammer curl", "sets": 2, "reps": "12", "notes": ""}], "conditioning": {"exercise": "10 min steady state cardio", "optional": true}, "cooldown": [{"exercise": "Chest opener stretch", "detail": "45 sec"}, {"exercise": "Bicep wall stretch", "detail": "30 sec each side"}]}, {"day": "Day 4", "label": "Glutes + Core", "warmup": [{"exercise": "Donkey kicks", "detail": "15 each side"}, {"exercise": "Fire hydrants", "detail": "12 each side"}], "strength": [{"exercise": "Hip thrust", "sets": 2, "reps": "15", "notes": "Drive through heels"}, {"exercise": "Sumo squat", "sets": 2, "reps": "12", "notes": ""}, {"exercise": "Band kickback", "sets": 2, "reps": "15 each side", "notes": "Squeeze at the top"}, {"exercise": "Dead bug", "sets": 2, "reps": "8 each side", "notes": "Slow and controlled, lower back stays flat"}, {"exercise": "Plank hold", "sets": 2, "reps": "30 sec", "notes": ""}], "conditioning": {"exercise": "15 min walk outside", "optional": true}, "cooldown": [{"exercise": "Figure-four stretch", "detail": "45 sec each side"}, {"exercise": "Cat-cow", "detail": "60 sec"}]}, {"day": "Day 5", "label": "Full Body + Conditioning", "warmup": [{"exercise": "World's greatest stretch", "detail": "5 each side"}, {"exercise": "Arm + leg swings", "detail": "30 sec each"}], "strength": [{"exercise": "Dumbbell squat", "sets": 2, "reps": "12", "notes": ""}, {"exercise": "Bent-over row", "sets": 2, "reps": "12", "notes": "Flat back, hinge at hips"}, {"exercise": "Push-up", "sets": 2, "reps": "8-10", "notes": "Modify on knees if needed"}, {"exercise": "Glute bridge", "sets": 2, "reps": "15", "notes": "Pause 2 sec at top"}, {"exercise": "Dead bug", "sets": 2, "reps": "8 each side", "notes": "Finish strong"}], "conditioning": {"exercise": "15 min walk or easy cardio", "optional": true}, "cooldown": [{"exercise": "Full body stretch flow", "detail": "5 min"}, {"exercise": "Child's pose", "detail": "90 sec"}]}]}, {"week": 2, "focus": "Increase total movement", "workouts": [{"day": "Day 1", "label": "Back / Shoulders / Triceps", "warmup": [{"exercise": "Band pull-aparts", "detail": "20 reps"}, {"exercise": "Shoulder circles", "detail": "30 sec each direction"}], "strength": [{"exercise": "Dumbbell shoulder press", "sets": 3, "reps": "12", "notes": "Slight weight increase from W1"}, {"exercise": "Bent-over row", "sets": 3, "reps": "12", "notes": "Hinge at hips, flat back"}, {"exercise": "Lateral raises", "sets": 2, "reps": "15", "notes": ""}, {"exercise": "Tricep kickback", "sets": 2, "reps": "12 each side", "notes": "Full extension at bottom"}, {"exercise": "Rear delt fly", "sets": 2, "reps": "12", "notes": "Light weight, squeeze shoulder blades"}], "conditioning": {"exercise": "10 min walk or bike", "optional": true}, "cooldown": [{"exercise": "Cross-body shoulder stretch", "detail": "30 sec each side"}, {"exercise": "Child's pose", "detail": "60 sec"}]}, {"day": "Day 2", "label": "Lower Body", "warmup": [{"exercise": "Glute bridges", "detail": "15 reps"}, {"exercise": "Hip circles", "detail": "10 each direction"}], "strength": [{"exercise": "Dumbbell squat", "sets": 3, "reps": "12", "notes": "Add weight from W1"}, {"exercise": "Romanian deadlift", "sets": 3, "reps": "12", "notes": "Slight weight increase"}, {"exercise": "Walking lunge", "sets": 2, "reps": "10 each side", "notes": "Add dumbbells if bodyweight felt easy"}, {"exercise": "Single-leg glute bridge", "sets": 2, "reps": "12 each side", "notes": "Control the movement"}, {"exercise": "Dead bug", "sets": 3, "reps": "8 each side", "notes": "Exhale as you extend"}], "conditioning": {"exercise": "10 min incline walk", "optional": true}, "cooldown": [{"exercise": "Hip flexor stretch", "detail": "45 sec each side"}, {"exercise": "Pigeon pose", "detail": "45 sec each side"}]}, {"day": "Day 3", "label": "Chest / Biceps", "warmup": [{"exercise": "Arm swings", "detail": "30 sec"}, {"exercise": "Push-up hold", "detail": "3 x 5 sec at bottom"}], "strength": [{"exercise": "Dumbbell chest press", "sets": 3, "reps": "12", "notes": "Slight weight increase from W1"}, {"exercise": "Push-up", "sets": 2, "reps": "8-10", "notes": "Full range of motion"}, {"exercise": "Incline dumbbell fly", "sets": 2, "reps": "12", "notes": "Slight bend in elbows"}, {"exercise": "Alternating dumbbell curl", "sets": 3, "reps": "10 each side", "notes": ""}, {"exercise": "Concentration curl", "sets": 2, "reps": "12 each side", "notes": "Slow and controlled"}], "conditioning": {"exercise": "10 min steady state cardio", "optional": true}, "cooldown": [{"exercise": "Chest opener stretch", "detail": "45 sec"}, {"exercise": "Wrist circles", "detail": "30 sec"}]}, {"day": "Day 4", "label": "Glutes + Core", "warmup": [{"exercise": "Donkey kicks", "detail": "15 each side"}, {"exercise": "Banded clamshells", "detail": "15 each side"}], "strength": [{"exercise": "Hip thrust", "sets": 3, "reps": "12", "notes": "Add weight if bodyweight felt easy"}, {"exercise": "Sumo squat", "sets": 3, "reps": "12", "notes": "Hold a dumbbell at chest"}, {"exercise": "Cable kickback (or band)", "sets": 2, "reps": "15 each side", "notes": ""}, {"exercise": "Dead bug", "sets": 3, "reps": "8 each side", "notes": "Slow exhale as you extend"}, {"exercise": "Plank hold", "sets": 2, "reps": "35 sec", "notes": ""}], "conditioning": {"exercise": "15 min walk outside", "optional": true}, "cooldown": [{"exercise": "Figure-four stretch", "detail": "45 sec each side"}, {"exercise": "Cat-cow into child's pose", "detail": "60 sec"}]}, {"day": "Day 5", "label": "Full Body + Conditioning", "warmup": [{"exercise": "Hip circles", "detail": "10 each direction"}, {"exercise": "Arm circles", "detail": "30 sec each direction"}], "strength": [{"exercise": "Goblet squat", "sets": 3, "reps": "12", "notes": "Pause at bottom"}, {"exercise": "Dumbbell row", "sets": 3, "reps": "12 each side", "notes": ""}, {"exercise": "Dumbbell chest press", "sets": 2, "reps": "12", "notes": ""}, {"exercise": "Step-up", "sets": 2, "reps": "10 each side", "notes": "Use a sturdy chair or bench"}, {"exercise": "Dead bug", "sets": 2, "reps": "8 each side", "notes": ""}], "conditioning": {"exercise": "15 min walk", "optional": true}, "cooldown": [{"exercise": "Full body stretch", "detail": "5 min"}, {"exercise": "Seated forward fold", "detail": "60 sec"}]}]}, {"week": 3, "focus": "Add training volume", "workouts": [{"day": "Day 1", "label": "Back / Shoulders / Triceps", "warmup": [{"exercise": "Band pull-aparts", "detail": "20 reps"}, {"exercise": "Overhead reach stretch", "detail": "30 sec each side"}], "strength": [{"exercise": "Arnold press", "sets": 3, "reps": "10", "notes": "Rotate palms as you press up"}, {"exercise": "Dumbbell row", "sets": 3, "reps": "10 each side", "notes": "Heavier than W2"}, {"exercise": "Upright row", "sets": 3, "reps": "12", "notes": "Elbows lead, light-moderate weight"}, {"exercise": "Tricep overhead extension", "sets": 3, "reps": "12", "notes": "Add weight from W1"}, {"exercise": "Rear delt fly", "sets": 2, "reps": "15", "notes": ""}], "conditioning": {"exercise": "12 min walk or light cardio", "optional": true}, "cooldown": [{"exercise": "Doorway chest stretch", "detail": "30 sec each side"}, {"exercise": "Neck side stretch", "detail": "30 sec each side"}]}, {"day": "Day 2", "label": "Lower Body", "warmup": [{"exercise": "Banded glute bridge", "detail": "15 reps"}, {"exercise": "World's greatest stretch", "detail": "5 each side"}], "strength": [{"exercise": "Conventional deadlift", "sets": 3, "reps": "10", "notes": "Push the floor away, proud chest"}, {"exercise": "Bulgarian split squat", "sets": 3, "reps": "8 each side", "notes": "Rear foot elevated, take your time"}, {"exercise": "Lateral lunge", "sets": 2, "reps": "10 each side", "notes": "Push hips back, chest up"}, {"exercise": "Calf raises", "sets": 3, "reps": "20", "notes": "Pause at top"}, {"exercise": "Dead bug", "sets": 3, "reps": "8 each side", "notes": ""}], "conditioning": {"exercise": "10 min incline walk", "optional": true}, "cooldown": [{"exercise": "Hip flexor stretch", "detail": "45 sec each side"}, {"exercise": "Hamstring stretch", "detail": "45 sec each side"}]}, {"day": "Day 3", "label": "Chest / Biceps", "warmup": [{"exercise": "Arm circles", "detail": "30 sec each direction"}, {"exercise": "Band chest press", "detail": "15 reps"}], "strength": [{"exercise": "Dumbbell chest press", "sets": 3, "reps": "10", "notes": "Heavier than W2"}, {"exercise": "Push-up", "sets": 3, "reps": "10", "notes": "Full range of motion"}, {"exercise": "Incline dumbbell press", "sets": 3, "reps": "10", "notes": ""}, {"exercise": "Dumbbell curl", "sets": 3, "reps": "10", "notes": "Slow on the way down"}, {"exercise": "Zottman curl", "sets": 2, "reps": "10", "notes": "Curl up, rotate and lower slowly"}], "conditioning": {"exercise": "10 min cardio", "optional": true}, "cooldown": [{"exercise": "Chest opener", "detail": "45 sec"}, {"exercise": "Bicep wall stretch", "detail": "30 sec each side"}]}, {"day": "Day 4", "label": "Glutes + Core", "warmup": [{"exercise": "Donkey kicks", "detail": "15 each side"}, {"exercise": "Banded clamshells", "detail": "15 each side"}], "strength": [{"exercise": "Hip thrust", "sets": 3, "reps": "10", "notes": "Push to heavier weight this week"}, {"exercise": "Romanian deadlift", "sets": 3, "reps": "10", "notes": "Focus on the hamstring stretch"}, {"exercise": "Step-up with dumbbells", "sets": 3, "reps": "10 each side", "notes": "Use a sturdy chair or bench"}, {"exercise": "Dead bug", "sets": 3, "reps": "10 each side", "notes": "Slow exhale as you extend"}, {"exercise": "Plank hold", "sets": 3, "reps": "40 sec", "notes": ""}], "conditioning": {"exercise": "15 min walk", "optional": true}, "cooldown": [{"exercise": "Figure-four stretch", "detail": "45 sec each side"}, {"exercise": "Seated forward fold", "detail": "60 sec"}]}, {"day": "Day 5", "label": "Full Body + Conditioning", "warmup": [{"exercise": "Glute bridges", "detail": "15 reps"}, {"exercise": "World's greatest stretch", "detail": "5 each side"}], "strength": [{"exercise": "Conventional deadlift", "sets": 3, "reps": "8", "notes": "Focus on form"}, {"exercise": "Push-up", "sets": 3, "reps": "10", "notes": ""}, {"exercise": "Dumbbell shoulder press", "sets": 2, "reps": "12", "notes": ""}, {"exercise": "Walking lunge", "sets": 2, "reps": "10 each side", "notes": ""}, {"exercise": "Dead bug", "sets": 3, "reps": "8 each side", "notes": "Finish strong"}], "conditioning": {"exercise": "15 min walk or easy cardio", "optional": true}, "cooldown": [{"exercise": "Full body stretch flow", "detail": "10 min"}, {"exercise": "Child's pose", "detail": "90 sec"}]}]}, {"week": 4, "focus": "Peak effort + Deload", "workouts": [{"day": "Day 1", "label": "Back / Shoulders / Triceps", "warmup": [{"exercise": "Band pull-aparts", "detail": "20 reps"}, {"exercise": "Cat-cow", "detail": "60 sec"}], "strength": [{"exercise": "Dumbbell shoulder press", "sets": 4, "reps": "10", "notes": "Heaviest of the month"}, {"exercise": "Bent-over row", "sets": 4, "reps": "10", "notes": "Control the lowering phase"}, {"exercise": "Lateral raises", "sets": 3, "reps": "12", "notes": ""}, {"exercise": "Tricep overhead extension", "sets": 3, "reps": "10", "notes": "Heaviest yet"}, {"exercise": "Face pulls", "sets": 3, "reps": "15", "notes": "Never skip these"}], "conditioning": {"exercise": "12 min walk or cardio", "optional": true}, "cooldown": [{"exercise": "Doorway stretch", "detail": "30 sec each side"}, {"exercise": "Child's pose", "detail": "90 sec"}]}, {"day": "Day 2", "label": "Lower Body", "warmup": [{"exercise": "Banded glute bridge", "detail": "20 reps"}, {"exercise": "Hip circles", "detail": "10 each direction"}], "strength": [{"exercise": "Conventional deadlift", "sets": 4, "reps": "8", "notes": "Heaviest deadlift of the month"}, {"exercise": "Goblet squat", "sets": 3, "reps": "12", "notes": "Pause 2 sec at the bottom"}, {"exercise": "Walking lunge", "sets": 3, "reps": "12 each side", "notes": "Heaviest yet"}, {"exercise": "Dead bug", "sets": 3, "reps": "10 each side", "notes": "Stay slow and intentional"}, {"exercise": "Single-leg calf raise", "sets": 3, "reps": "15 each side", "notes": ""}], "conditioning": {"exercise": "10 min incline walk", "optional": true}, "cooldown": [{"exercise": "Pigeon pose", "detail": "60 sec each side"}, {"exercise": "Hamstring stretch", "detail": "45 sec each side"}]}, {"day": "Day 3", "label": "Chest / Biceps", "warmup": [{"exercise": "Push-up hold", "detail": "3 x 5 sec at bottom"}, {"exercise": "Arm circles", "detail": "30 sec"}], "strength": [{"exercise": "Dumbbell chest press", "sets": 4, "reps": "8", "notes": "Heaviest of the month"}, {"exercise": "Incline dumbbell press", "sets": 4, "reps": "10", "notes": ""}, {"exercise": "Push-up", "sets": 3, "reps": "12-15", "notes": "Push for max reps with good form"}, {"exercise": "Dumbbell curl", "sets": 4, "reps": "8", "notes": "Heaviest of the month"}, {"exercise": "Zottman curl", "sets": 3, "reps": "10", "notes": ""}], "conditioning": {"exercise": "15 min cardio", "optional": true}, "cooldown": [{"exercise": "Chest opener", "detail": "60 sec"}, {"exercise": "Bicep wall stretch", "detail": "30 sec each side"}]}, {"day": "Day 4", "label": "Glutes + Core", "warmup": [{"exercise": "Banded clamshells", "detail": "20 each side"}, {"exercise": "Donkey kicks", "detail": "15 each side"}], "strength": [{"exercise": "Hip thrust", "sets": 4, "reps": "8", "notes": "Heaviest of the month, full pause at top"}, {"exercise": "Romanian deadlift", "sets": 4, "reps": "8", "notes": "Heaviest RDL of the month"}, {"exercise": "Step-up with dumbbells", "sets": 3, "reps": "12 each side", "notes": ""}, {"exercise": "Dead bug", "sets": 4, "reps": "10 each side", "notes": "Stay slow and intentional"}, {"exercise": "Plank hold", "sets": 3, "reps": "50 sec", "notes": "You've got this"}], "conditioning": {"exercise": "20 min walk", "optional": true}, "cooldown": [{"exercise": "Figure-four stretch", "detail": "60 sec each side"}, {"exercise": "Seated forward fold", "detail": "60 sec"}]}, {"day": "Day 5", "label": "Recovery + Mobility", "warmup": [], "strength": [{"exercise": "Full body stretch flow", "sets": 1, "reps": "10 min", "notes": "Move through whatever feels good"}, {"exercise": "Cat-cow", "sets": 1, "reps": "10 breaths", "notes": "Sync with breath"}, {"exercise": "Pigeon pose", "sets": 1, "reps": "90 sec each side", "notes": ""}, {"exercise": "Dead bug", "sets": 2, "reps": "8 each side", "notes": "Light and intentional"}, {"exercise": "Child's pose", "sets": 1, "reps": "90 sec", "notes": "You showed up all month. That matters."}], "conditioning": {"exercise": "30 min walk \u2014 celebrate your month!", "optional": false}, "cooldown": [{"exercise": "Savasana / rest", "detail": "You earned it \ud83c\udf3f"}]}]}];
 
-// ── POPULATE HERO ──
-document.getElementById('clientFirstName').textContent = client.name;
-document.getElementById('heroSub').textContent = `Started ${client.startDate} · Coach ${client.coach}`;
-document.getElementById('statSteps').textContent = client.stepGoal;
-document.getElementById('statProtein').textContent = client.proteinGoal;
-document.getElementById('statWater').textContent = client.waterGoal;
-document.getElementById('statSplit').textContent = client.split;
-document.getElementById('clientGoal').textContent = `"${client.goal}"`;
-document.getElementById('footerCoach').textContent = `Coached by ${client.coach}`;
+const NUTRITION_WEEKS = [{"week": 1, "meals": [{"name": "Sheet Pan Chicken Thighs with Roasted Vegetables", "tag": "Hormone + Gut Healthy", "why": "Chicken provides lean protein to support muscle recovery. Broccoli and sweet potato are rich in fiber and phytonutrients that support hormone balance.", "servings": "4 servings", "macros": {"protein": "38g", "carbs": "32g", "fat": "14g", "fiber": "6g", "calories": "410"}, "ingredients": ["4 bone-in chicken thighs", "2 cups broccoli florets", "1 large sweet potato cubed", "2 tbsp olive oil", "1 tsp garlic powder", "1 tsp paprika", "Salt + pepper"], "instructions": "Preheat oven to 400\u00b0F. Toss vegetables in olive oil and seasoning. Place chicken and veggies on a sheet pan. Roast 35-40 min until chicken reaches 165\u00b0F."}, {"name": "Ground Turkey Taco Bowls", "tag": "High Protein + Family Favorite", "why": "Ground turkey is a lean versatile protein. Black beans add fiber and prebiotics to feed your gut microbiome. A crowd-pleaser the whole family will eat!", "servings": "4 servings", "macros": {"protein": "34g", "carbs": "38g", "fat": "10g", "fiber": "9g", "calories": "390"}, "ingredients": ["1 lb ground turkey", "1 can black beans drained", "1 cup brown rice", "1 cup salsa", "1 tsp cumin", "1 tsp chili powder", "1 avocado", "Greek yogurt", "Shredded romaine"], "instructions": "Brown turkey with spices. Warm beans. Serve over rice with salsa, avocado, romaine, and a dollop of Greek yogurt instead of sour cream."}, {"name": "Salmon + Quinoa Power Bowl", "tag": "Hormone Healthy \u00b7 Omega-3 Rich", "why": "Salmon is one of the best hormone-supporting foods \u2014 rich in omega-3s that reduce inflammation and support estrogen balance. Quinoa is a complete protein.", "servings": "2 servings", "macros": {"protein": "42g", "carbs": "35g", "fat": "18g", "fiber": "5g", "calories": "470"}, "ingredients": ["2 salmon fillets (6 oz each)", "1 cup quinoa", "2 cups spinach", "1/2 cucumber sliced", "Cherry tomatoes", "2 tbsp olive oil", "1 lemon", "2 tbsp tahini", "1 tsp honey"], "instructions": "Cook quinoa per package. Season salmon with olive oil, lemon, salt + pepper. Pan-sear 4 min per side. Whisk tahini + lemon + honey for dressing. Assemble bowls."}], "grocery": {"protein": ["4 bone-in chicken thighs", "1 lb ground turkey", "2 salmon fillets (6 oz each)"], "produce": ["2 cups broccoli florets", "1 large sweet potato", "1 avocado", "Shredded romaine", "2 cups spinach", "1/2 cucumber", "Cherry tomatoes", "1 lemon"], "pantry": ["1 can black beans", "1 cup brown rice", "1 cup quinoa", "1 cup salsa", "Olive oil", "Tahini", "Honey"], "dairy": ["Plain Greek yogurt (16 oz)"], "spices": ["Garlic powder", "Paprika", "Cumin", "Chili powder", "Salt + pepper"]}}, {"week": 2, "meals": [{"name": "Greek Chicken Meatballs with Tzatziki + Pita", "tag": "Gut Healthy \u00b7 Family Friendly", "why": "Greek yogurt in the tzatziki provides probiotics for gut health. Chicken meatballs are easy to batch cook and loved by kids and adults alike.", "servings": "4 servings", "macros": {"protein": "36g", "carbs": "30g", "fat": "12g", "fiber": "3g", "calories": "380"}, "ingredients": ["1.5 lb ground chicken", "1/4 cup breadcrumbs", "1 egg", "2 cloves garlic", "1 tsp dried oregano", "1 tsp cumin", "Whole wheat pita", "1 cup Greek yogurt", "1/2 cucumber grated", "Fresh dill", "1 lemon"], "instructions": "Mix chicken, breadcrumbs, egg, garlic, and spices. Form into balls. Bake at 400\u00b0F for 20 min. Mix yogurt, cucumber, dill, and lemon for tzatziki. Serve in pitas."}, {"name": "One-Pan Beef + Veggie Stir Fry with Rice", "tag": "High Protein \u00b7 Quick + Easy", "why": "Lean beef provides iron and zinc \u2014 both important for women's hormone health. Bell peppers are loaded with Vitamin C which helps with iron absorption.", "servings": "4 servings", "macros": {"protein": "32g", "carbs": "42g", "fat": "11g", "fiber": "4g", "calories": "400"}, "ingredients": ["1 lb lean ground beef or sirloin strips", "2 bell peppers sliced", "1 cup snap peas", "2 cups jasmine rice", "3 tbsp coconut aminos", "1 tbsp sesame oil", "2 cloves garlic", "1 tsp ginger", "Green onions"], "instructions": "Cook rice. Saut\u00e9 garlic and ginger in sesame oil. Add beef, cook through. Add veggies and coconut aminos. Stir fry 3-4 min. Serve over rice, top with green onions."}, {"name": "White Bean + Kale Soup with Turkey Sausage", "tag": "Gut + Hormone Healthy \u00b7 Batch Cook", "why": "White beans are one of the best prebiotic foods for gut health. Kale supports estrogen detoxification. Makes a huge batch \u2014 freeze half for a busy week!", "servings": "6 servings", "macros": {"protein": "28g", "carbs": "34g", "fat": "8g", "fiber": "10g", "calories": "350"}, "ingredients": ["3 turkey sausage links sliced", "2 cans white beans drained", "4 cups chicken broth", "3 cups kale chopped", "1 can diced tomatoes", "3 cloves garlic", "1 onion diced", "2 tbsp olive oil", "1 tsp Italian seasoning", "Parmesan for topping"], "instructions": "Saut\u00e9 onion and garlic in olive oil. Add sausage, cook 5 min. Add broth, tomatoes, beans, and seasoning. Simmer 15 min. Add kale last 5 min. Top with parmesan."}], "grocery": {"protein": ["1.5 lb ground chicken", "1 lb lean ground beef or sirloin", "3 turkey sausage links"], "produce": ["2 bell peppers", "1 cup snap peas", "3 cups kale", "1 onion", "1 cucumber", "Fresh dill", "Green onions", "1 lemon"], "pantry": ["2 cans white beans", "1 can diced tomatoes", "4 cups chicken broth", "Coconut aminos", "Sesame oil", "Jasmine rice", "Whole wheat pita", "Breadcrumbs", "Olive oil"], "dairy": ["Plain Greek yogurt (16 oz)", "Parmesan cheese", "1 egg"], "spices": ["Oregano", "Cumin", "Ginger", "Italian seasoning", "Garlic"]}}, {"week": 3, "meals": [{"name": "Chicken + Sweet Potato Curry", "tag": "Anti-Inflammatory \u00b7 Gut Healthy", "why": "Turmeric in curry powder is one of the most powerful anti-inflammatory spices. Sweet potato feeds good gut bacteria and helps stabilize blood sugar for steady energy.", "servings": "4 servings", "macros": {"protein": "35g", "carbs": "40g", "fat": "13g", "fiber": "7g", "calories": "420"}, "ingredients": ["1.5 lb chicken breast cubed", "2 sweet potatoes cubed", "1 can coconut milk", "1 can diced tomatoes", "1 onion", "3 cloves garlic", "1 tbsp curry powder", "1 tsp turmeric", "1 tsp ginger", "2 cups spinach", "Jasmine rice"], "instructions": "Saut\u00e9 onion, garlic, ginger. Add chicken, cook through. Add curry powder and turmeric. Pour in coconut milk and tomatoes. Add sweet potato. Simmer 20 min. Stir in spinach. Serve over rice."}, {"name": "Baked Cod Tacos with Mango Slaw", "tag": "Hormone Healthy \u00b7 Light + Fresh", "why": "Cod is a lean white fish high in protein and selenium \u2014 a mineral essential for thyroid health and hormone production. Cabbage feeds beneficial gut bacteria.", "servings": "4 servings", "macros": {"protein": "30g", "carbs": "36g", "fat": "9g", "fiber": "5g", "calories": "360"}, "ingredients": ["1.5 lb cod fillets", "8 small corn tortillas", "2 cups purple cabbage shredded", "1 mango diced", "1/4 cup cilantro", "1 lime", "2 tbsp olive oil", "1 tsp cumin", "1 tsp garlic powder", "Greek yogurt for sauce"], "instructions": "Season cod with olive oil and spices. Bake at 400\u00b0F for 12-15 min. Mix cabbage, mango, cilantro, lime juice for slaw. Thin Greek yogurt with lime for sauce. Assemble tacos."}, {"name": "High-Protein Overnight Oats (Meal Prep \u2014 5 jars)", "tag": "Gut Healthy \u00b7 Easy Breakfast Prep", "why": "Oats are one of the best prebiotic foods. Chia seeds support gut health and provide omega-3s. Make 5 jars Sunday night for an entire week of ready-made breakfasts.", "servings": "5 servings", "macros": {"protein": "24g", "carbs": "40g", "fat": "10g", "fiber": "8g", "calories": "360"}, "ingredients": ["2.5 cups rolled oats", "5 scoops vanilla protein powder", "5 tbsp chia seeds", "2.5 cups almond milk", "1.25 cups Greek yogurt", "5 tsp honey", "2.5 tsp cinnamon", "Fresh berries for topping"], "instructions": "In each of 5 mason jars, combine 1/2 cup oats, 1 scoop protein powder, 1 tbsp chia seeds, 1/2 cup almond milk, 1/4 cup Greek yogurt, 1 tsp honey, 1/2 tsp cinnamon. Stir, seal, refrigerate overnight. Top with berries."}], "grocery": {"protein": ["1.5 lb chicken breast", "1.5 lb cod fillets", "1 tub vanilla protein powder"], "produce": ["2 sweet potatoes", "2 cups spinach", "1 mango", "2 cups purple cabbage", "1 onion", "3 cloves garlic", "Fresh cilantro", "2 limes", "Fresh berries", "1 avocado"], "pantry": ["1 can coconut milk", "1 can diced tomatoes", "8 small corn tortillas", "Jasmine rice", "Rolled oats", "Chia seeds", "Almond milk", "Honey", "Olive oil"], "dairy": ["Greek yogurt (large tub)"], "spices": ["Curry powder", "Turmeric", "Ginger", "Cumin", "Garlic powder", "Cinnamon"]}}, {"week": 4, "meals": [{"name": "Nourishing Chicken Bone Broth Soup", "tag": "Gut Healing \u00b7 Restorative \u00b7 End of Month", "why": "Bone broth is one of the most healing foods for your gut lining. Week 4 is your peak week \u2014 nourish your body deeply so you recover well and finish strong.", "servings": "6 servings", "macros": {"protein": "28g", "carbs": "24g", "fat": "8g", "fiber": "5g", "calories": "300"}, "ingredients": ["1 rotisserie chicken shredded", "6 cups bone broth", "3 carrots sliced", "3 stalks celery sliced", "1 onion diced", "3 cloves garlic", "2 cups egg noodles or rice", "Fresh parsley", "1 lemon", "Olive oil", "Salt + pepper"], "instructions": "Saut\u00e9 onion, garlic, carrots, celery in olive oil. Add bone broth and bring to simmer. Add shredded chicken and noodles. Cook 10 min. Finish with lemon juice and fresh parsley."}, {"name": "Teriyaki Salmon Rice Bowls", "tag": "Omega-3 Rich \u00b7 Hormone Healthy", "why": "Omega-3s are so important for women's hormones, inflammation, and brain health. This is your second salmon meal of the month \u2014 intentionally placed in week 4.", "servings": "4 servings", "macros": {"protein": "40g", "carbs": "44g", "fat": "16g", "fiber": "4g", "calories": "490"}, "ingredients": ["4 salmon fillets (6 oz each)", "2 cups jasmine rice", "2 cups edamame", "2 cups shredded carrots", "4 tbsp coconut aminos", "2 tbsp honey", "1 tbsp rice vinegar", "1 tsp sesame oil", "Sesame seeds", "Green onions"], "instructions": "Mix coconut aminos, honey, vinegar, and garlic for teriyaki sauce. Marinate salmon 15 min. Pan sear or bake at 400\u00b0F 12-15 min, basting with sauce. Serve over rice with edamame, carrots, and toppings."}, {"name": "Feel-Good Buddha Bowl", "tag": "Anti-Inflammatory \u00b7 Gut + Hormone Healthy \u00b7 Celebration", "why": "A celebration of everything you built this month. Packed with fiber, prebiotics, healthy fats, and complete protein \u2014 this is what eating for your body looks like.", "servings": "2 servings", "macros": {"protein": "26g", "carbs": "44g", "fat": "18g", "fiber": "10g", "calories": "450"}, "ingredients": ["1 cup quinoa", "1 can chickpeas drained + roasted", "2 cups mixed greens", "1 cup roasted sweet potato", "1/2 avocado", "1/4 cup purple cabbage", "2 tbsp pumpkin seeds", "2 tbsp tahini", "1 lemon", "1 tsp honey", "1 clove garlic", "2 tbsp water"], "instructions": "Cook quinoa. Toss chickpeas in olive oil + cumin, roast at 400\u00b0F 25 min until crispy. Roast sweet potato. Assemble bowls. Whisk tahini dressing. Drizzle over bowl."}], "grocery": {"protein": ["1 rotisserie chicken", "4 salmon fillets (6 oz each)", "1 can chickpeas"], "produce": ["3 carrots", "3 stalks celery", "1 onion", "3 cloves garlic", "Fresh parsley", "1 avocado", "1 sweet potato", "2 cups mixed greens", "1/4 cup purple cabbage", "Green onions", "3 lemons"], "pantry": ["6 cups bone broth", "Egg noodles or rice", "1 cup quinoa", "2 cups edamame (frozen)", "Jasmine rice", "Coconut aminos", "Honey", "Rice vinegar", "Sesame oil", "Sesame seeds", "Pumpkin seeds", "Tahini", "Olive oil"], "dairy": [], "spices": ["Cumin", "Salt + pepper"]}}];
 
-// ── OVERVIEW TIMELINE ──
-const timeline = document.getElementById('weekTimeline');
-client.weeklyFocus.forEach((focus, i) => {
-  const row = document.createElement('div');
-  row.className = `timeline-row${i === 0 ? ' current' : ''}`;
-  row.innerHTML = `
-    <div class="week-num">${i + 1}</div>
-    <div class="week-info">
-      <div class="week-focus-text">${focus}</div>
-    </div>
-    ${i === 0 ? '<span class="current-badge">Current</span>' : ''}
-  `;
-  timeline.appendChild(row);
-});
-
-// ── BUILD WORKOUT CARDS ──
-const workoutCards = document.getElementById('workoutCards');
-const week1 = data.weeks[0];
-
-week1.workouts.forEach((workout, wi) => {
-  const card = document.createElement('div');
-  card.className = 'card';
-  card.innerHTML = `
-    <div class="card-header" onclick="toggleCard(this)">
-      <div>
-        <div class="card-day">${workout.day}</div>
-        <div class="card-title">${workout.label}</div>
-      </div>
-      <button class="card-toggle">▾</button>
-    </div>
-    <div class="card-body">
-
-      <div class="workout-section">
-        <div class="workout-section-label">Warm-Up</div>
-        <div class="pill-list">
-          ${workout.warmup.map(w => `<div class="pill">${w.exercise}<span>${w.detail}</span></div>`).join('')}
-        </div>
-      </div>
-
-      <div class="workout-section">
-        <div class="workout-section-label">Strength Work</div>
-        <table class="exercise-table">
-          <thead>
-            <tr>
-              <th>Exercise</th>
-              <th>Sets</th>
-              <th>Reps</th>
-              <th class="check-cell">✓</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${workout.strength.map((ex, ei) => `
-              <tr>
-                <td>
-                  <div class="exercise-name">${ex.exercise}</div>
-                  ${ex.notes ? `<div class="exercise-note">${ex.notes}</div>` : ''}
-                </td>
-                <td>${ex.sets}</td>
-                <td>${ex.reps}</td>
-                <td class="check-cell">
-                  <div class="check-box" id="chk-${wi}-${ei}" onclick="toggleCheck(this, 'chk-${wi}-${ei}')"></div>
-                </td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>
-      </div>
-
-      ${workout.conditioning ? `
-      <div class="workout-section">
-        <div class="workout-section-label">Conditioning</div>
-        <div class="conditioning-row">
-          <span class="conditioning-icon">🚶</span>
-          <span class="conditioning-text">${workout.conditioning.exercise}</span>
-          ${workout.conditioning.optional ? '<span class="optional-badge">Optional</span>' : ''}
-        </div>
-      </div>` : ''}
-
-      <div class="workout-section">
-        <div class="workout-section-label">Cooldown</div>
-        <div class="pill-list">
-          ${workout.cooldown.map(c => `<div class="pill">${c.exercise}<span>${c.detail}</span></div>`).join('')}
-        </div>
-      </div>
-
-    </div>
-  `;
-  workoutCards.appendChild(card);
-});
-
-// ── BUILD HABIT TRACKER ──
-const habits = [
-  { name: 'Protein Goal', goal: client.proteinGoal, key: 'protein' },
-  { name: 'Hydration', goal: client.waterGoal, key: 'water' },
+const HABITS = [
+  { name: 'Protein Goal', goal: CLIENT.proteinGoal, key: 'protein' },
+  { name: 'Hydration', goal: CLIENT.waterGoal, key: 'water' },
   { name: 'LMNT Electrolytes', goal: 'Daily', key: 'lmnt' },
   { name: 'Movement', goal: 'Daily', key: 'movement' },
-  { name: 'Step Goal', goal: client.stepGoal + ' steps', key: 'steps' },
-  { name: 'Sleep Priority', goal: '7–8 hrs', key: 'sleep' },
+  { name: 'Step Goal', goal: CLIENT.stepGoal + ' steps', key: 'steps' },
+  { name: 'Sleep Priority', goal: '7-8 hrs', key: 'sleep' },
+  { name: 'Personal Development', goal: '30 min daily', key: 'pd' }
 ];
 
-const habitsGrid = document.getElementById('habitsGrid');
-habits.forEach(habit => {
-  const row = document.createElement('div');
-  row.className = 'habit-row';
-  const checks = [0,1,2,3,4,5,6].map(d => `
-    <div class="check-box" id="h-${habit.key}-${d}" onclick="toggleCheck(this, 'h-${habit.key}-${d}')"></div>
-  `).join('');
-  row.innerHTML = `
-    <div>
-      <div class="habit-name">${habit.name}</div>
-      <div class="habit-goal">${habit.goal}</div>
-    </div>
-    ${checks}
-  `;
-  habitsGrid.appendChild(row);
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', function() {
+  buildTimeline();
+  buildWeekSelector('workoutWeekSelector', 4, buildWorkoutCards);
+  buildWeekSelector('nutritionWeekTabs', 4, buildNutritionMeals);
+  buildWeekSelector('progressWeekTabs', 4, null);
+  buildWorkoutCards(1);
+  buildNutritionMeals(1);
+  buildHabits();
+  restoreState();
 });
 
-// ── PROGRESS WEEK TABS ──
-const progressWeekTabs = document.getElementById('progressWeekTabs');
-for (let w = 1; w <= 6; w++) {
-  const btn = document.createElement('button');
-  btn.className = `week-tab${w === 1 ? ' active' : ''}`;
-  btn.textContent = `Week ${w}`;
-  btn.onclick = () => {
-    document.querySelectorAll('.week-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-  };
-  progressWeekTabs.appendChild(btn);
-}
-
-// ── TAB NAVIGATION ──
+// ── TABS ──
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
-    document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
   });
 });
 
-// ── TOGGLE WORKOUT CARD ──
-function toggleCard(header) {
-  const card = header.closest('.card');
-  card.classList.toggle('collapsed');
+// ── TIMELINE ──
+function buildTimeline() {
+  const el = document.getElementById('weekTimeline');
+  CLIENT.weeklyFocus.forEach((focus, i) => {
+    const row = document.createElement('div');
+    row.className = 'timeline-row';
+    row.innerHTML = '<div class="week-num">' + (i+1) + '</div><div class="week-info"><div class="week-focus-text">Week ' + (i+1) + ' Focus: ' + focus + '</div></div>';
+    el.appendChild(row);
+  });
 }
 
-// ── CHECK BOX TOGGLE (saves to localStorage) ──
-function toggleCheck(el, id) {
+// ── WEEK SELECTOR ──
+function buildWeekSelector(containerId, count, callback) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  for (let w = 1; w <= count; w++) {
+    const btn = document.createElement('button');
+    btn.className = 'week-tab' + (w === 1 ? ' active' : '');
+    btn.textContent = 'Week ' + w;
+    btn.addEventListener('click', function() {
+      container.querySelectorAll('.week-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      if (callback) callback(w);
+    });
+    container.appendChild(btn);
+  }
+}
+
+// ── WORKOUTS ──
+function buildWorkoutCards(weekNum) {
+  const container = document.getElementById('workoutCards');
+  container.innerHTML = '';
+  const eyebrow = document.getElementById('workoutEyebrow');
+  const weekData = WORKOUT_WEEKS[weekNum - 1];
+  if (eyebrow) eyebrow.textContent = 'Week ' + weekNum + ' - ' + weekData.focus;
+
+  weekData.workouts.forEach(function(workout, wi) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    const warmupHtml = workout.warmup.length > 0
+      ? '<div class="workout-section"><div class="workout-section-label">Warm-Up</div><div class="pill-list">' +
+        workout.warmup.map(w => '<div class="pill">' + w.exercise + '<span>' + w.detail + '</span></div>').join('') +
+        '</div></div>'
+      : '';
+    const strengthRows = workout.strength.map(function(ex, ei) {
+      return '<tr><td><div class="exercise-name">' + ex.exercise + '</div>' +
+        (ex.notes ? '<div class="exercise-note">' + ex.notes + '</div>' : '') + '</td>' +
+        '<td>' + ex.sets + '</td><td>' + ex.reps + '</td>' +
+        '<td><input type="text" class="weight-input" id="wt-w' + weekNum + '-' + wi + '-' + ei + '" placeholder="lbs" oninput="saveWeight(this.id, this.value)" /></td>' +
+        '<td class="check-cell"><div class="check-box" id="chk-w' + weekNum + '-' + wi + '-' + ei + '" onclick="toggleCheck(this.id)"></div></td></tr>';
+    }).join('');
+    const condHtml = workout.conditioning
+      ? '<div class="workout-section"><div class="workout-section-label">Conditioning</div><div class="conditioning-row"><span class="conditioning-text">' + workout.conditioning.exercise + '</span>' + (workout.conditioning.optional ? '<span class="optional-badge">Optional</span>' : '') + '</div></div>'
+      : '';
+    const cooldownHtml = workout.cooldown.length > 0
+      ? '<div class="workout-section"><div class="workout-section-label">Cooldown</div><div class="pill-list">' +
+        workout.cooldown.map(c => '<div class="pill">' + c.exercise + '<span>' + c.detail + '</span></div>').join('') +
+        '</div></div>'
+      : '';
+    card.innerHTML =
+      '<div class="card-header" onclick="toggleCard(this)">' +
+        '<div><div class="card-day">' + workout.day + '</div><div class="card-title">' + workout.label + '</div></div>' +
+        '<button class="card-toggle">&#9662;</button>' +
+      '</div>' +
+      '<div class="card-body">' + warmupHtml +
+        '<div class="workout-section"><div class="workout-section-label">Strength Work</div>' +
+        '<table class="exercise-table"><thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Weight</th><th class="check-cell">&#10003;</th></tr></thead>' +
+        '<tbody>' + strengthRows + '</tbody></table></div>' +
+        condHtml + cooldownHtml + '</div>';
+    container.appendChild(card);
+  });
+  restoreWorkoutState(weekNum);
+}
+
+// ── NUTRITION ──
+function buildNutritionMeals(weekNum) {
+  const container = document.getElementById('nutritionMeals');
+  const groceryContainer = document.getElementById('groceryList');
+  container.innerHTML = '';
+  const weekData = NUTRITION_WEEKS[weekNum - 1];
+
+  weekData.meals.forEach(function(meal, mi) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.marginBottom = '1.2rem';
+    const macroHtml = [['Protein', meal.macros.protein], ['Carbs', meal.macros.carbs], ['Fat', meal.macros.fat], ['Fiber', meal.macros.fiber], ['Calories', meal.macros.calories]]
+      .map(function(m) {
+        return '<div style="background:white; border:1px solid var(--border); border-radius:10px; padding:0.5rem; text-align:center;">' +
+          '<div style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--sage);">' + m[1] + '</div>' +
+          '<div style="font-size:0.55rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light);">' + m[0] + '</div></div>';
+      }).join('');
+    card.innerHTML =
+      '<div class="card-header" onclick="toggleCard(this)">' +
+        '<div><div class="card-day">Meal ' + (mi+1) + ' - ' + meal.tag + '</div><div class="card-title">' + meal.name + '</div></div>' +
+        '<button class="card-toggle">&#9662;</button></div>' +
+      '<div class="card-body">' +
+        '<div style="background:var(--sage-pale); border-radius:10px; padding:0.8rem 1rem; margin-bottom:1.2rem; border-left:3px solid var(--sage);">' +
+          '<div style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage); font-weight:600; margin-bottom:0.3rem;">Why This Meal</div>' +
+          '<p style="font-size:0.75rem; color:var(--text-light); line-height:1.7;">' + meal.why + '</p></div>' +
+        '<div style="display:grid; grid-template-columns:repeat(5,1fr); gap:0.5rem; margin-bottom:1.2rem;">' + macroHtml + '</div>' +
+        '<div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;">' +
+          '<div><div class="workout-section-label" style="margin-bottom:0.6rem;">Ingredients - ' + meal.servings + '</div>' +
+            '<ul style="list-style:none; padding:0;">' +
+            meal.ingredients.map(ing => '<li style="font-size:0.75rem; color:var(--text-light); padding:0.3rem 0; border-bottom:1px solid #f5f0e8;">- ' + ing + '</li>').join('') +
+            '</ul></div>' +
+          '<div><div class="workout-section-label" style="margin-bottom:0.6rem;">Instructions</div>' +
+            '<p style="font-size:0.75rem; color:var(--text-light); line-height:1.8;">' + meal.instructions + '</p></div>' +
+        '</div></div>';
+    container.appendChild(card);
+  });
+
+  const categories = [
+    { label: 'Protein', key: 'protein', color: '#e8f0e4' },
+    { label: 'Produce', key: 'produce', color: '#eef1eb' },
+    { label: 'Pantry', key: 'pantry', color: '#f5f0e8' },
+    { label: 'Dairy + Eggs', key: 'dairy', color: '#faf7f2' },
+    { label: 'Spices', key: 'spices', color: '#f0ede6' }
+  ];
+
+  groceryContainer.innerHTML = categories.map(function(cat) {
+    if (!weekData.grocery[cat.key] || weekData.grocery[cat.key].length === 0) return '';
+    return '<div style="margin-bottom:1rem;">' +
+      '<div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:0.5rem; padding-bottom:0.3rem; border-bottom:1px solid var(--border);">' + cat.label + '</div>' +
+      '<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr)); gap:0.4rem;">' +
+      weekData.grocery[cat.key].map(function(item, idx) {
+        const id = 'groc-w' + weekNum + '-' + cat.key + '-' + idx;
+        return '<div style="display:flex; align-items:center; gap:0.5rem; padding:0.4rem 0.5rem; background:' + cat.color + '; border-radius:6px;">' +
+          '<div class="check-box" id="' + id + '" onclick="toggleCheck('' + id + '')" style="width:16px; height:16px; flex-shrink:0;"></div>' +
+          '<span style="font-size:0.72rem; color:var(--text);">' + item + '</span></div>';
+      }).join('') + '</div></div>';
+  }).join('');
+
+  restoreWorkoutState(weekNum);
+}
+
+// ── HABITS ──
+function buildHabits() {
+  const grid = document.getElementById('habitsGrid');
+  HABITS.forEach(function(habit) {
+    const row = document.createElement('div');
+    row.className = 'habit-row';
+    const checks = [0,1,2,3,4,5,6].map(function(d) {
+      const id = 'h-' + habit.key + '-' + d;
+      return '<div class="check-box" id="' + id + '" onclick="toggleCheck('' + id + '')"></div>';
+    }).join('');
+    row.innerHTML = '<div><div class="habit-name">' + habit.name + '</div><div class="habit-goal">' + habit.goal + '</div></div>' + checks;
+    grid.appendChild(row);
+  });
+}
+
+// ── TOGGLE CARD ──
+function toggleCard(header) {
+  header.closest('.card').classList.toggle('collapsed');
+}
+
+// ── CHECK BOX ──
+function toggleCheck(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
   el.classList.toggle('checked');
   const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
   saved[id] = el.classList.contains('checked');
   localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
 }
 
-// ── SAVE CHECK-IN ──
-function saveCheckin() {
+// ── WEIGHT ──
+function saveWeight(id, value) {
   const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  saved.checkin = {
-    energy: document.getElementById('ci-energy').value,
-    wins: document.getElementById('ci-wins').value,
-    challenges: document.getElementById('ci-challenges').value,
-    proud: document.getElementById('ci-proud').value,
-    next: document.getElementById('ci-next').value,
-    savedAt: new Date().toLocaleDateString()
-  };
+  saved[id] = value;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+}
+
+// ── RESTORE STATE ──
+function restoreState() {
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  Object.keys(saved).forEach(function(id) {
+    if (id === 'checkin') {
+      const ci = saved[id];
+      if (ci.energy) document.getElementById('ci-energy').value = ci.energy;
+      if (ci.wins) document.getElementById('ci-wins').value = ci.wins;
+      if (ci.challenges) document.getElementById('ci-challenges').value = ci.challenges;
+      if (ci.proud) document.getElementById('ci-proud').value = ci.proud;
+      if (ci.next) document.getElementById('ci-next').value = ci.next;
+      if (ci.pd) document.getElementById('ci-pd').value = ci.pd;
+      return;
+    }
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.classList.contains('check-box') && saved[id]) el.classList.add('checked');
+    if (el.classList.contains('weight-input') && saved[id]) el.value = saved[id];
+  });
+}
+
+function restoreWorkoutState(weekNum) {
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  Object.keys(saved).forEach(function(id) {
+    if (id === 'checkin') return;
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.classList.contains('check-box') && saved[id]) el.classList.add('checked');
+    if (el.classList.contains('weight-input') && saved[id]) el.value = saved[id];
+  });
+}
+
+// ── SAVE CHECK-IN ──
+async function saveCheckin() {
   const btn = document.querySelector('#tab-checkin .save-btn');
-  btn.textContent = '✓  Saved!';
-  setTimeout(() => btn.innerHTML = '✓ &nbsp;Save Check-In', 2000);
+  const energy = document.getElementById('ci-energy').value;
+  const wins = document.getElementById('ci-wins').value;
+  const challenges = document.getElementById('ci-challenges').value;
+  const proud = document.getElementById('ci-proud').value;
+  const next = document.getElementById('ci-next').value;
+  const pd = document.getElementById('ci-pd').value;
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  saved.checkin = { energy, wins, challenges, proud, next, pd, savedAt: new Date().toLocaleDateString() };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  try {
+    await fetch(FORMSPREE_CHECKIN, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'Client Name': CLIENT.fullName,
+        'Submitted': new Date().toLocaleDateString(),
+        'Energy': energy || '-',
+        'Wins': wins || '-',
+        'Challenges': challenges || '-',
+        'Most Proud Of': proud || '-',
+        'Focus Next Week': next || '-',
+        'Personal Development': pd || '-'
+      })
+    });
+  } catch(e) {}
+  btn.textContent = 'Sent to Coach!';
+  setTimeout(() => { btn.textContent = 'Save Check-In'; btn.disabled = false; }, 3000);
 }
 
 // ── SAVE PROGRESS ──
 function saveProgress() {
   const btn = document.querySelector('#tab-progress .save-btn');
-  btn.textContent = '✓  Saved!';
-  setTimeout(() => btn.innerHTML = '✓ &nbsp;Save Progress', 2000);
+  btn.textContent = 'Saved!';
+  setTimeout(() => { btn.textContent = 'Save Progress'; }, 2000);
 }
 
-// ── RESTORE SAVED STATE ──
-window.addEventListener('load', () => {
-  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  Object.keys(saved).forEach(id => {
-    if (id === 'checkin') return;
-    const el = document.getElementById(id);
-    if (el && saved[id]) el.classList.add('checked');
-  });
-  if (saved.checkin) {
-    const ci = saved.checkin;
-    if (ci.energy) document.getElementById('ci-energy').value = ci.energy;
-    if (ci.wins) document.getElementById('ci-wins').value = ci.wins;
-    if (ci.challenges) document.getElementById('ci-challenges').value = ci.challenges;
-    if (ci.proud) document.getElementById('ci-proud').value = ci.proud;
-    if (ci.next) document.getElementById('ci-next').value = ci.next;
-  }
-});
-</script>
+// ── RESERVE PACKAGE ──
+async function reservePackage() {
+  const pkg = document.getElementById('pkg-choice').value.trim();
+  const confirm = document.getElementById('pkg-confirm');
+  if (!pkg) { alert('Please tell us which package you want!'); return; }
+  try {
+    await fetch(FORMSPREE_CHECKIN, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ 'Notification': 'Package Reservation', 'Client': CLIENT.fullName, 'Package': pkg })
+    });
+  } catch(e) {}
+  confirm.style.display = 'block';
+  document.getElementById('pkg-choice').value = '';
+}
 
+// ── PAY LATER ──
+async function payLater() {
+  document.getElementById('payLaterConfirm').style.display = 'block';
+  try {
+    await fetch(FORMSPREE_CHECKIN, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ 'Notification': 'Pay Later', 'Client': CLIENT.fullName })
+    });
+  } catch(e) {}
+}
+</script>
 </body>
 </html>
