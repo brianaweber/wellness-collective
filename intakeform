@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Client Intake — The WELLness Collective</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #7a8c6e;
+      --sage-light: #a8b89a;
+      --sage-pale: #eef1eb;
+      --sand: #c4a882;
+      --cream: #faf7f2;
+      --taupe: #8a7968;
+      --taupe-dark: #5c5042;
+      --olive: #6b7355;
+      --white: #ffffff;
+      --text: #3a3228;
+      --text-light: #7a6e62;
+      --border: #e0d8ce;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .form-header {
+      background: var(--taupe-dark);
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-header::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(122,140,110,0.2), transparent 70%);
+    }
+
+    .header-eyebrow {
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .header-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+    }
+
+    .header-title em {
+      font-style: italic;
+      color: var(--sand);
+    }
+
+    .header-sub {
+      font-size: 0.78rem;
+      color: rgba(250,247,242,0.6);
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-wrap {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .progress-steps {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .progress-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .progress-step::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    .progress-step:last-child::after { display: none; }
+
+    .step-dot {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 2px solid var(--border);
+      margin: 0 auto 0.4rem;
+      position: relative;
+      z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--text-light);
+      transition: all 0.3s;
+    }
+
+    .progress-step.active .step-dot {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: white;
+    }
+
+    .progress-step.done .step-dot {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: white;
+    }
+
+    .progress-step.done .step-dot::after {
+      content: '✓';
+    }
+
+    .step-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    .progress-step.active .step-label { color: var(--sage); }
+
+    /* ── MAIN ── */
+    .form-main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── SECTIONS ── */
+    .form-section { display: none; }
+    .form-section.active { display: block; animation: fadeUp 0.35s ease forwards; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-intro {
+      margin-bottom: 2rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sand);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--taupe-dark);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--sage); }
+
+    .section-desc {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ── FORM FIELDS ── */
+    .field-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 0.5rem;
+    }
+
+    .field-group label .required {
+      color: var(--sand);
+      margin-left: 0.2rem;
+    }
+
+    .field-hint {
+      font-size: 0.65rem;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+      font-style: italic;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(122,140,110,0.1);
+    }
+
+    textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* ── RADIO / CHECKBOX OPTIONS ── */
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.6rem;
+    }
+
+    .options-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .options-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+    .option-item {
+      position: relative;
+    }
+
+    .option-item input {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+
+    .option-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      color: var(--text);
+      background: var(--white);
+      transition: all 0.2s;
+      line-height: 1.4;
+    }
+
+    .option-label::before {
+      content: '';
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+
+    .option-item input[type="checkbox"] + .option-label::before {
+      border-radius: 4px;
+    }
+
+    .option-item input:checked + .option-label {
+      border-color: var(--sage);
+      background: var(--sage-pale);
+      color: var(--taupe-dark);
+    }
+
+    .option-item input:checked + .option-label::before {
+      background: var(--sage);
+      border-color: var(--sage);
+    }
+
+    /* ── SCALE ── */
+    .scale-wrap {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .scale-btn {
+      flex: 1;
+      padding: 0.6rem 0;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: var(--white);
+      font-size: 0.75rem;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-light);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+
+    .scale-btn:hover { border-color: var(--sage-light); }
+    .scale-btn.selected { background: var(--sage); color: white; border-color: var(--sage); }
+
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.3rem;
+    }
+
+    .scale-labels span {
+      font-size: 0.58rem;
+      color: var(--text-light);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── DIVIDER ── */
+    .field-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.8rem 0;
+    }
+
+    /* ── NAVIGATION ── */
+    .form-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn-back {
+      background: transparent;
+      color: var(--text-light);
+      border: 1.5px solid var(--border);
+      border-radius: 30px;
+      padding: 0.75rem 1.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-back:hover { border-color: var(--sage); color: var(--sage); }
+
+    .btn-next {
+      background: var(--sage);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 0.75rem 2.2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-next:hover { background: var(--olive); transform: translateY(-1px); }
+
+    .step-counter {
+      font-size: 0.62rem;
+      color: var(--text-light);
+      letter-spacing: 0.12em;
+    }
+
+    /* ── SUBMIT ── */
+    .btn-submit {
+      width: 100%;
+      background: var(--taupe-dark);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 1rem 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 1rem;
+    }
+
+    .btn-submit:hover { background: var(--olive); transform: translateY(-1px); }
+
+    /* ── THANK YOU ── */
+    .thank-you {
+      display: none;
+      text-align: center;
+      padding: 4rem 2rem;
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .thank-you-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .thank-you-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--taupe-dark);
+      margin-bottom: 1rem;
+    }
+
+    .thank-you-title em { font-style: italic; color: var(--sage); }
+
+    .thank-you-body {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      max-width: 440px;
+      margin: 0 auto 2rem;
+    }
+
+    .thank-you-sig {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--taupe);
+    }
+
+    /* ── FOOTER ── */
+    .form-footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.62rem;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 560px) {
+      .field-row { grid-template-columns: 1fr; }
+      .options-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+      .form-main { padding: 2rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="form-header">
+  <p class="header-eyebrow">The WELLness Collective · Coach Briana Weber</p>
+  <h1 class="header-title">New Client <em>Intake Form</em></h1>
+  <p class="header-sub">This form helps Briana build your personalized program. Take your time — the more detail you share, the better your program will be tailored to you.</p>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-steps">
+    <div class="progress-step active" id="step-dot-1">
+      <div class="step-dot">1</div>
+      <div class="step-label">About You</div>
+    </div>
+    <div class="progress-step" id="step-dot-2">
+      <div class="step-dot">2</div>
+      <div class="step-label">Goals</div>
+    </div>
+    <div class="progress-step" id="step-dot-3">
+      <div class="step-dot">3</div>
+      <div class="step-label">Training</div>
+    </div>
+    <div class="progress-step" id="step-dot-4">
+      <div class="step-dot">4</div>
+      <div class="step-label">Nutrition</div>
+    </div>
+    <div class="progress-step" id="step-dot-5">
+      <div class="step-dot">5</div>
+      <div class="step-label">Lifestyle</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-main">
+
+  <!-- ── SECTION 1: ABOUT YOU ── -->
+  <div class="form-section active" id="section-1">
+    <div class="section-intro">
+      <p class="section-eyebrow">Step 1 of 5</p>
+      <h2 class="section-title">Let's get to <em>know you.</em></h2>
+      <p class="section-desc">Basic info so Briana can personalize everything for you.</p>
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label>First Name <span class="required">*</span></label>
+        <input type="text" id="firstName" placeholder="Your first name" />
+      </div>
+      <div class="field-group">
+        <label>Last Name <span class="required">*</span></label>
+        <input type="text" id="lastName" placeholder="Your last name" />
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label>Email <span class="required">*</span></label>
+        <input type="email" id="email" placeholder="your@email.com" />
+      </div>
+      <div class="field-group">
+        <label>Phone</label>
+        <input type="text" id="phone" placeholder="(000) 000-0000" />
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label>Age <span class="required">*</span></label>
+        <input type="number" id="age" placeholder="Your age" min="16" max="99" />
+      </div>
+      <div class="field-group">
+        <label>Preferred Start Date</label>
+        <input type="date" id="startDate" />
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>What are you interested in? <span class="required">*</span></label>
+      <div class="options-grid cols-2">
+        <div class="option-item"><input type="radio" name="programInterest" id="pi1" value="Monthly Membership"><label class="option-label" for="pi1">Monthly Membership</label></div>
+        <div class="option-item"><input type="radio" name="programInterest" id="pi2" value="1:1 Gym Sessions"><label class="option-label" for="pi2">1:1 Gym Sessions</label></div>
+        <div class="option-item"><input type="radio" name="programInterest" id="pi3" value="1:1 In-Home Sessions"><label class="option-label" for="pi3">1:1 In-Home Sessions</label></div>
+        <div class="option-item"><input type="radio" name="programInterest" id="pi4" value="Semi-Private Sessions"><label class="option-label" for="pi4">Semi-Private Sessions</label></div>
+        <div class="option-item"><input type="radio" name="programInterest" id="pi5" value="The Foundation (Youth)"><label class="option-label" for="pi5">The Foundation (Youth)</label></div>
+        <div class="option-item"><input type="radio" name="programInterest" id="pi6" value="Not sure yet"><label class="option-label" for="pi6">Not sure yet</label></div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>How did you hear about The WELLness Collective?</label>
+      <div class="options-grid cols-2">
+        <div class="option-item"><input type="radio" name="referral" id="ref1" value="Instagram"><label class="option-label" for="ref1">Instagram</label></div>
+        <div class="option-item"><input type="radio" name="referral" id="ref2" value="Facebook"><label class="option-label" for="ref2">Facebook</label></div>
+        <div class="option-item"><input type="radio" name="referral" id="ref3" value="Friend/Family"><label class="option-label" for="ref3">Friend / Family</label></div>
+        <div class="option-item"><input type="radio" name="referral" id="ref4" value="Existing client"><label class="option-label" for="ref4">Existing Client</label></div>
+        <div class="option-item"><input type="radio" name="referral" id="ref5" value="Other"><label class="option-label" for="ref5">Other</label></div>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <div class="step-counter">Step 1 of 5</div>
+      <button class="btn-next" onclick="nextSection(1)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: GOALS ── -->
+  <div class="form-section" id="section-2">
+    <div class="section-intro">
+      <p class="section-eyebrow">Step 2 of 5</p>
+      <h2 class="section-title">Your <em>goals.</em></h2>
+      <p class="section-desc">What are you working toward? Be as specific as you'd like — this shapes everything.</p>
+    </div>
+
+    <div class="field-group">
+      <label>What is your main goal? <span class="required">*</span></label>
+      <p class="field-hint">Check all that apply</p>
+      <div class="options-grid cols-2">
+        <div class="option-item"><input type="checkbox" id="goal1" value="Build strength"><label class="option-label" for="goal1">Build strength</label></div>
+        <div class="option-item"><input type="checkbox" id="goal2" value="Lose weight"><label class="option-label" for="goal2">Lose weight</label></div>
+        <div class="option-item"><input type="checkbox" id="goal3" value="Improve energy"><label class="option-label" for="goal3">Improve energy</label></div>
+        <div class="option-item"><input type="checkbox" id="goal4" value="Build confidence"><label class="option-label" for="goal4">Build confidence</label></div>
+        <div class="option-item"><input type="checkbox" id="goal5" value="Improve nutrition"><label class="option-label" for="goal5">Improve nutrition</label></div>
+        <div class="option-item"><input type="checkbox" id="goal6" value="Reduce stress"><label class="option-label" for="goal6">Reduce stress</label></div>
+        <div class="option-item"><input type="checkbox" id="goal7" value="Tone + definition"><label class="option-label" for="goal7">Tone + definition</label></div>
+        <div class="option-item"><input type="checkbox" id="goal8" value="Overall wellness"><label class="option-label" for="goal8">Overall wellness</label></div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>In your own words — what do you want to achieve? <span class="required">*</span></label>
+      <p class="field-hint">This shapes everything about your program.</p>
+      <textarea id="goalStatement" placeholder="e.g. I want to feel strong and confident in my body, have more energy for my kids, and build habits that actually stick..."></textarea>
+    </div>
+
+    <div class="field-group">
+      <label>How do you want to feel at the end of your program?</label>
+      <textarea id="feelGoal" placeholder="e.g. Energized, proud, stronger than I've ever been..."></textarea>
+    </div>
+
+    <div class="field-group">
+      <label>What has held you back in the past?</label>
+      <p class="field-hint">No judgment here — this helps Briana build a program that works around real obstacles.</p>
+      <textarea id="obstacles" placeholder="e.g. Busy schedule, motivation, not knowing what to do, injury..."></textarea>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="prevSection(2)">← Back</button>
+      <div class="step-counter">Step 2 of 5</div>
+      <button class="btn-next" onclick="nextSection(2)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 3: TRAINING ── -->
+  <div class="form-section" id="section-3">
+    <div class="section-intro">
+      <p class="section-eyebrow">Step 3 of 5</p>
+      <h2 class="section-title">Your <em>training.</em></h2>
+      <p class="section-desc">Tell Briana about your fitness background so she can meet you exactly where you are.</p>
+    </div>
+
+    <div class="field-group">
+      <label>How would you describe your current fitness level? <span class="required">*</span></label>
+      <div class="options-grid cols-2">
+        <div class="option-item"><input type="radio" name="fitnessLevel" id="fl1" value="Beginner — brand new to working out"><label class="option-label" for="fl1">Beginner — brand new</label></div>
+        <div class="option-item"><input type="radio" name="fitnessLevel" id="fl2" value="Some experience — worked out on and off"><label class="option-label" for="fl2">Some experience — on and off</label></div>
+        <div class="option-item"><input type="radio" name="fitnessLevel" id="fl3" value="Intermediate — consistent for 1-2 years"><label class="option-label" for="fl3">Intermediate — 1–2 years</label></div>
+        <div class="option-item"><input type="radio" name="fitnessLevel" id="fl4" value="Advanced — consistent 3+ years"><label class="option-label" for="fl4">Advanced — 3+ years</label></div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>How many days per week can you commit to training? <span class="required">*</span></label>
+      <div class="options-grid cols-3">
+        <div class="option-item"><input type="radio" name="trainingDays" id="td2" value="2"><label class="option-label" for="td2">2 days</label></div>
+        <div class="option-item"><input type="radio" name="trainingDays" id="td3" value="3"><label class="option-label" for="td3">3 days</label></div>
+        <div class="option-item"><input type="radio" name="trainingDays" id="td4" value="4"><label class="option-label" for="td4">4 days</label></div>
+        <div class="option-item"><input type="radio" name="trainingDays" id="td5" value="5"><label class="option-label" for="td5">5 days</label></div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Where will you be working out? <span class="required">*</span></label>
+      <div class="options-grid cols-2">
+        <div class="option-item"><input type="radio" name="location" id="loc1" value="Gym — full equipment"><label class="option-label" for="loc1">Gym — full equipment</label></div>
+        <div class="option-item"><input type="radio" name="location" id="loc2" value="Home — dumbbells only"><label class="option-label" for="loc2">Home — dumbbells only</label></div>
+        <div class="option-item"><input type="radio" name="location" id="loc3" value="Home — resistance bands"><label class="option-label" for="loc3">Home — resistance bands</label></div>
+        <div class="option-item"><input type="radio" name="location" id="loc4" value="Mix of gym and home"><label class="option-label" for="loc4">Mix of gym + home</label></div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>How long do you have for each workout?</label>
+      <div class="options-grid cols-3">
+        <div class="option-item"><input type="radio" name="duration" id="dur1" value="30 minutes"><label class="option-label" for="dur1">30 min</label></div>
+        <div class="option-item"><input type="radio" name="duration" id="dur2" value="45 minutes"><label class="option-label" for="dur2">45 min</label></div>
+        <div class="option-item"><input type="radio" name="duration" id="dur3" value="60 minutes"><label class="option-label" for="dur3">60 min</label></div>
+        <div class="option-item"><input type="radio" name="duration" id="dur4" value="75+ minutes"><label class="option-label" for="dur4">75+ min</label></div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Do you have any injuries, limitations, or areas to avoid?</label>
+      <textarea id="injuries" placeholder="e.g. Lower back issues, bad knee, shoulder surgery — or none!"></textarea>
+    </div>
+
+    <div class="field-group">
+      <label>Any exercises you love or hate?</label>
+      <p class="field-hint">Totally optional — but helpful!</p>
+      <textarea id="exercisePrefs" placeholder="e.g. Love deadlifts and hip thrusts. Hate burpees. Running is fine..."></textarea>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="prevSection(3)">← Back</button>
+      <div class="step-counter">Step 3 of 5</div>
+      <button class="btn-next" onclick="nextSection(3)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 4: NUTRITION ── -->
+  <div class="form-section" id="section-4">
+    <div class="section-intro">
+      <p class="section-eyebrow">Step 4 of 5</p>
+      <h2 class="section-title">Your <em>nutrition.</em></h2>
+      <p class="section-desc">No food diary required — just a sense of where you're at so Briana can set realistic goals.</p>
+    </div>
+
+    <div class="field-group">
+      <label>How would you describe your current eating habits?</label>
+      <div class="options-grid cols-2">
+        <div class="option-item"><input type="radio" name="eating" id="eat1" value="Pretty healthy overall"><label class="option-label" for="eat1">Pretty healthy overall</label></div>
+        <div class="option-item"><input type="radio" name="eating" id="eat2" value="Good some days, not others"><label class="option-label" for="eat2">Good some days, not others</label></div>
+        <div class="option-item"><input type="radio" name="eating" id="eat3" value="Needs a lot of work"><label class="option-label" for="eat3">Needs a lot of work</label></div>
+        <div class="option-item"><input type="radio" name="eating" id="eat4" value="Not sure where to start"><label class="option-label" for="eat4">Not sure where to start</label></div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Do you track protein intake currently?</label>
+      <div class="options-grid cols-2">
+        <div class="option-item"><input type="radio" name="protein" id="pt1" value="Yes — consistently"><label class="option-label" for="pt1">Yes — consistently</label></div>
+        <div class="option-item"><input type="radio" name="protein" id="pt2" value="Sometimes"><label class="option-label" for="pt2">Sometimes</label></div>
+        <div class="option-item"><input type="radio" name="protein" id="pt3" value="No — but I want to"><label class="option-label" for="pt3">No — but I want to</label></div>
+        <div class="option-item"><input type="radio" name="protein" id="pt4" value="No — not interested in tracking"><label class="option-label" for="pt4">No — not into tracking</label></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-group">
+        <label>Daily protein goal (if known)</label>
+        <input type="text" id="proteinGoal" placeholder="e.g. 100g" />
+      </div>
+      <div class="field-group">
+        <label>Daily water goal (if known)</label>
+        <input type="text" id="waterGoal" placeholder="e.g. 80 oz" />
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Daily step goal (if known)</label>
+      <input type="text" id="stepGoal" placeholder="e.g. 8,000 steps" style="max-width:220px;" />
+    </div>
+
+    <div class="field-group">
+      <label>Any dietary restrictions or preferences?</label>
+      <div class="options-grid cols-2">
+        <div class="option-item"><input type="checkbox" id="diet1" value="Gluten free"><label class="option-label" for="diet1">Gluten free</label></div>
+        <div class="option-item"><input type="checkbox" id="diet2" value="Dairy free"><label class="option-label" for="diet2">Dairy free</label></div>
+        <div class="option-item"><input type="checkbox" id="diet3" value="Vegetarian"><label class="option-label" for="diet3">Vegetarian</label></div>
+        <div class="option-item"><input type="checkbox" id="diet4" value="Vegan"><label class="option-label" for="diet4">Vegan</label></div>
+        <div class="option-item"><input type="checkbox" id="diet5" value="No restrictions"><label class="option-label" for="diet5">No restrictions</label></div>
+        <div class="option-item"><input type="checkbox" id="diet6" value="Other"><label class="option-label" for="diet6">Other</label></div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Anything else about your nutrition Briana should know?</label>
+      <textarea id="nutritionNotes" placeholder="e.g. I skip breakfast, I struggle with late-night snacking, I hate cooking..."></textarea>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="prevSection(4)">← Back</button>
+      <div class="step-counter">Step 4 of 5</div>
+      <button class="btn-next" onclick="nextSection(4)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 5: LIFESTYLE ── -->
+  <div class="form-section" id="section-5">
+    <div class="section-intro">
+      <p class="section-eyebrow">Step 5 of 5</p>
+      <h2 class="section-title">Your <em>lifestyle.</em></h2>
+      <p class="section-desc">Wellness is more than workouts. Help Briana understand the full picture.</p>
+    </div>
+
+    <div class="field-group">
+      <label>How is your sleep? <span class="required">*</span></label>
+      <div class="options-grid cols-2">
+        <div class="option-item"><input type="radio" name="sleep" id="sl1" value="Great — 7-9 hours consistently"><label class="option-label" for="sl1">Great — 7–9 hrs consistently</label></div>
+        <div class="option-item"><input type="radio" name="sleep" id="sl2" value="Okay — some nights better than others"><label class="option-label" for="sl2">Okay — hit or miss</label></div>
+        <div class="option-item"><input type="radio" name="sleep" id="sl3" value="Poor — consistently under 6 hours"><label class="option-label" for="sl3">Poor — under 6 hrs usually</label></div>
+        <div class="option-item"><input type="radio" name="sleep" id="sl4" value="Interrupted — kids, stress, etc"><label class="option-label" for="sl4">Interrupted — kids, stress, etc</label></div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>How would you rate your current stress level?</label>
+      <div class="scale-wrap" id="stressScale">
+        <button class="scale-btn" onclick="selectScale('stress', 1, this)">1</button>
+        <button class="scale-btn" onclick="selectScale('stress', 2, this)">2</button>
+        <button class="scale-btn" onclick="selectScale('stress', 3, this)">3</button>
+        <button class="scale-btn" onclick="selectScale('stress', 4, this)">4</button>
+        <button class="scale-btn" onclick="selectScale('stress', 5, this)">5</button>
+        <button class="scale-btn" onclick="selectScale('stress', 6, this)">6</button>
+        <button class="scale-btn" onclick="selectScale('stress', 7, this)">7</button>
+        <button class="scale-btn" onclick="selectScale('stress', 8, this)">8</button>
+        <button class="scale-btn" onclick="selectScale('stress', 9, this)">9</button>
+        <button class="scale-btn" onclick="selectScale('stress', 10, this)">10</button>
+      </div>
+      <div class="scale-labels">
+        <span>Very low</span>
+        <span>Very high</span>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>How would you rate your current energy levels?</label>
+      <div class="scale-wrap" id="energyScale">
+        <button class="scale-btn" onclick="selectScale('energy', 1, this)">1</button>
+        <button class="scale-btn" onclick="selectScale('energy', 2, this)">2</button>
+        <button class="scale-btn" onclick="selectScale('energy', 3, this)">3</button>
+        <button class="scale-btn" onclick="selectScale('energy', 4, this)">4</button>
+        <button class="scale-btn" onclick="selectScale('energy', 5, this)">5</button>
+        <button class="scale-btn" onclick="selectScale('energy', 6, this)">6</button>
+        <button class="scale-btn" onclick="selectScale('energy', 7, this)">7</button>
+        <button class="scale-btn" onclick="selectScale('energy', 8, this)">8</button>
+        <button class="scale-btn" onclick="selectScale('energy', 9, this)">9</button>
+        <button class="scale-btn" onclick="selectScale('energy', 10, this)">10</button>
+      </div>
+      <div class="scale-labels">
+        <span>Very low</span>
+        <span>Very high</span>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>How busy is your daily life?</label>
+      <div class="options-grid cols-2">
+        <div class="option-item"><input type="radio" name="busy" id="b1" value="Manageable — I have time for myself"><label class="option-label" for="b1">Manageable — I have some time</label></div>
+        <div class="option-item"><input type="radio" name="busy" id="b2" value="Busy — kids, work, life"><label class="option-label" for="b2">Busy — kids, work, life</label></div>
+        <div class="option-item"><input type="radio" name="busy" id="b3" value="Very busy — barely a minute to breathe"><label class="option-label" for="b3">Very busy — barely breathing</label></div>
+        <div class="option-item"><input type="radio" name="busy" id="b4" value="It varies a lot week to week"><label class="option-label" for="b4">Varies week to week</label></div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>What does your support system look like?</label>
+      <p class="field-hint">Who's in your corner? This helps Briana understand your environment.</p>
+      <textarea id="support" placeholder="e.g. Partner is supportive, kids are my motivation, doing this solo..."></textarea>
+    </div>
+
+    <div class="field-group">
+      <label>Is there anything else you'd like Briana to know?</label>
+      <textarea id="anythingElse" placeholder="Medical history, past programs, what's worked before, what hasn't — anything at all..."></textarea>
+    </div>
+
+    <hr class="field-divider" />
+
+    <div class="field-group">
+      <label>I agree to show up for myself. <span class="required">*</span></label>
+      <p class="field-hint">Not perfectly — but consistently. That's all we ask.</p>
+      <div class="options-grid" style="max-width:300px;">
+        <div class="option-item"><input type="checkbox" id="commitment"><label class="option-label" for="commitment">Yes — I'm ready. Let's go.</label></div>
+      </div>
+    </div>
+
+    <button class="btn-submit" onclick="submitForm()">Submit My Intake Form →</button>
+
+    <div class="form-nav" style="border:none; justify-content:flex-start;">
+      <button class="btn-back" onclick="prevSection(5)" style="margin-top:0;">← Back</button>
+    </div>
+  </div>
+
+  <!-- ── THANK YOU ── -->
+  <div class="thank-you" id="thankYou">
+    <div class="thank-you-icon">🌿</div>
+    <h2 class="thank-you-title">You're all set, <em id="thankYouName"></em>.</h2>
+    <p class="thank-you-body">Briana has everything she needs to build your personalized program. She'll be in touch within 48 hours to discuss next steps and get you started.</p>
+    <p class="thank-you-body">In the meantime — you've already done something important. You showed up for yourself.</p>
+    <p class="thank-you-sig">I'll meet you at the Well. — Briana 🤍</p>
+  </div>
+
+</div>
+
+<div class="form-footer">
+  The WELLness Collective · Coach Briana Weber · alexandriawell.com
+</div>
+
+<script>
+let currentSection = 1;
+const totalSections = 5;
+const scaleValues = { stress: null, energy: null };
+
+// ── NAVIGATION ──
+function nextSection(from) {
+  if (!validateSection(from)) return;
+  goToSection(from + 1);
+}
+
+function prevSection(from) {
+  goToSection(from - 1);
+}
+
+function goToSection(to) {
+  document.getElementById(`section-${currentSection}`).classList.remove('active');
+  document.getElementById(`step-dot-${currentSection}`).classList.remove('active');
+  document.getElementById(`step-dot-${currentSection}`).classList.add('done');
+
+  currentSection = to;
+  document.getElementById(`section-${currentSection}`).classList.add('active');
+  document.getElementById(`step-dot-${currentSection}`).classList.add('active');
+  document.getElementById(`step-dot-${currentSection}`).classList.remove('done');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── VALIDATION ──
+function validateSection(section) {
+  if (section === 1) {
+    if (!document.getElementById('firstName').value.trim()) {
+      alert('Please enter your first name.'); return false;
+    }
+    if (!document.getElementById('lastName').value.trim()) {
+      alert('Please enter your last name.'); return false;
+    }
+    if (!document.getElementById('email').value.trim()) {
+      alert('Please enter your email.'); return false;
+    }
+  }
+  if (section === 2) {
+    if (!document.getElementById('goalStatement').value.trim()) {
+      alert('Please tell us your goal — this is the heart of your program!'); return false;
+    }
+  }
+  return true;
+}
+
+// ── SCALE SELECTOR ──
+function selectScale(type, value, btn) {
+  scaleValues[type] = value;
+  const scale = document.getElementById(`${type}Scale`);
+  scale.querySelectorAll('.scale-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+// ── COLLECT FORM DATA ──
+function collectData() {
+  const getChecked = (name) => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(el => el.value).join(', ');
+  const getCheckboxes = (ids) => ids.filter(id => document.getElementById(id)?.checked).map(id => document.getElementById(id).value).join(', ');
+
+  return {
+    // Personal
+    'Program Interest': document.querySelector('input[name="programInterest"]:checked')?.value || 'Not specified',
+    'First Name': document.getElementById('firstName').value,
+    'Last Name': document.getElementById('lastName').value,
+    'Email': document.getElementById('email').value,
+    'Phone': document.getElementById('phone').value,
+    'Age': document.getElementById('age').value,
+    'Preferred Start Date': document.getElementById('startDate').value,
+    'How They Found Briana': getChecked('referral'),
+
+    // Goals
+    'Main Goals': getCheckboxes(['goal1','goal2','goal3','goal4','goal5','goal6','goal7','goal8']),
+    'Goal Statement': document.getElementById('goalStatement').value,
+    'How They Want to Feel': document.getElementById('feelGoal').value,
+    'What Has Held Them Back': document.getElementById('obstacles').value,
+
+    // Training
+    'Fitness Level': getChecked('fitnessLevel'),
+    'Training Days Per Week': getChecked('trainingDays'),
+    'Training Location': getChecked('location'),
+    'Workout Duration': getChecked('duration'),
+    'Injuries / Limitations': document.getElementById('injuries').value,
+    'Exercise Preferences': document.getElementById('exercisePrefs').value,
+
+    // Nutrition
+    'Current Eating Habits': getChecked('eating'),
+    'Protein Tracking': getChecked('protein'),
+    'Protein Goal': document.getElementById('proteinGoal').value,
+    'Water Goal': document.getElementById('waterGoal').value,
+    'Step Goal': document.getElementById('stepGoal').value,
+    'Dietary Restrictions': getCheckboxes(['diet1','diet2','diet3','diet4','diet5','diet6']),
+    'Nutrition Notes': document.getElementById('nutritionNotes').value,
+
+    // Lifestyle
+    'Sleep Quality': getChecked('sleep'),
+    'Stress Level (1-10)': scaleValues.stress || 'Not answered',
+    'Energy Level (1-10)': scaleValues.energy || 'Not answered',
+    'How Busy': getChecked('busy'),
+    'Support System': document.getElementById('support').value,
+    'Anything Else': document.getElementById('anythingElse').value,
+
+    // Meta
+    'Submitted': new Date().toLocaleDateString(),
+    'Interest': 'New Client Intake'
+  };
+}
+
+// ── SUBMIT ──
+async function submitForm() {
+  if (!document.getElementById('commitment').checked) {
+    alert('Please check the commitment box to submit — we\'re in this together!');
+    return;
+  }
+
+  const data = collectData();
+
+  try {
+    await fetch('https://formspree.io/f/meedokda', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch(e) {}
+
+  // Show thank you
+  document.getElementById(`section-5`).style.display = 'none';
+  document.querySelector('.progress-wrap').style.display = 'none';
+  const ty = document.getElementById('thankYou');
+  ty.style.display = 'block';
+  document.getElementById('thankYouName').textContent = data['First Name'];
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
