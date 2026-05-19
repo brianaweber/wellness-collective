@@ -176,7 +176,9 @@
     <li><a href="#foundation">The Foundation</a></li>
     <li><a href="https://new.myzyia.com/BRIANAWEBER/en_US/" target="_blank" style="color:var(--sand) !important;">Shop Zyia</a></li>
     <li><a href="lmnt-order.html" style="color:var(--sand) !important;">Order LMNT</a></li>
-    <li><a href="https://calendly.com/briweber/new-meeting" target="_blank" class="nav-cta">Book Now</a></li>
+    <li><a href="https://new.myzyia.com/BRIANAWEBER/en_US/" target="_blank" style="font-size:0.62rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--sand); text-decoration:none; border:1px solid var(--sand); padding:0.4rem 0.9rem; border-radius:20px; white-space:nowrap;">Shop Zyia</a>
+    <a href="lmnt-order.html" style="font-size:0.62rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--sage); text-decoration:none; border:1px solid var(--sage); padding:0.4rem 0.9rem; border-radius:20px; white-space:nowrap;">Order LMNT</a>
+    <a href="https://calendly.com/briweber/new-meeting" target="_blank" class="nav-cta">Book Now</a></li>
   </ul>
 </nav>
 
@@ -246,6 +248,32 @@
   </div>
   <div class="offerings-grid">
 
+    <div style="background:linear-gradient(135deg, var(--taupe-dark), #4a3c30); border-radius:20px; padding:2.5rem 2rem; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle, rgba(122,140,110,0.2), transparent 70%);"></div>
+      <p style="font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sage-light); font-weight:600; margin-bottom:1rem;">Monthly Membership</p>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:400; color:var(--cream); margin-bottom:0.3rem;">The WELLness Collective</h3>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:300; color:var(--sand-light); line-height:1; margin:0.8rem 0 0.3rem;">$49</div>
+      <div style="font-size:0.7rem; color:rgba(250,247,242,0.5); margin-bottom:1.2rem;">per month · cancel anytime</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.4rem; text-align:left; margin-bottom:1.5rem;">
+        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Personal training portal</div>
+        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Fresh workouts monthly</div>
+        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Nutrition guide + grocery lists</div>
+        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Habit + progress tracking</div>
+        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Weekly check-ins</div>
+        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Private Facebook community</div>
+        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Discounted session rates</div>
+        <div style="font-size:0.68rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.4rem;"><span style="color:var(--sage-light);">✓</span> Cancel anytime</div>
+      </div>
+      <button class="btn-primary" style="background:var(--sage); font-size:0.72rem;" onclick="toggleLeadForm('form-membership', this)">Join the Collective →</button>
+      <div id="form-membership" class="lead-form" style="display:none; background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); margin-top:1.2rem;">
+        <p class="lead-form-label" style="color:rgba(250,247,242,0.7);">Drop your info and Briana will reach out within 48 hrs to get you set up!</p>
+        <input type="text" placeholder="Your name" id="mem-name" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
+        <input type="email" placeholder="Your email" id="mem-email" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
+        <button class="lead-submit" onclick="submitLead('mem', 'Membership — $49/month')">Send My Info →</button>
+        <div id="mem-confirm" class="lead-confirm" style="display:none; background:rgba(122,140,110,0.3); color:var(--sage-pale);">✓ You're in! Briana will be in touch soon. 🌿</div>
+      </div>
+    </div>
+
     <div class="offering-card coming-soon">
       <p class="offering-subtitle">Immersive Experience</p>
       <h3 class="offering-title">Wellness Retreat</h3>
@@ -271,35 +299,6 @@
     <p class="section-eyebrow">Work With Me</p>
     <h2 class="section-title" style="text-align:center;">Simple, <em>honest pricing</em></h2>
     <p style="font-size:0.82rem; color:var(--text-light); max-width:520px; margin:1rem auto 0; line-height:1.8; text-align:center;">One membership. Fresh programming every month. Add sessions whenever you want.</p>
-  </div>
-
-  <!-- MEMBERSHIP -->
-  <div style="max-width:600px; margin:0 auto 3.5rem;">
-    <div style="background:linear-gradient(135deg, var(--taupe-dark), #4a3c30); border-radius:24px; padding:2.5rem; text-align:center; position:relative; overflow:hidden;">
-      <div style="position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle, rgba(122,140,110,0.2), transparent 70%);"></div>
-      <p style="font-size:0.6rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--sage-light); font-weight:600; margin-bottom:0.8rem;">Monthly Membership</p>
-      <h3 style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:400; color:var(--cream); margin-bottom:0.3rem;">The WELLness Collective</h3>
-      <div style="font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; color:var(--sand-light); line-height:1; margin:1rem 0 0.3rem;">$49</div>
-      <div style="font-size:0.7rem; color:rgba(250,247,242,0.5); margin-bottom:1.5rem;">per month · cancel anytime</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; text-align:left; margin-bottom:2rem;">
-        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Personal training portal</div>
-        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Fresh workouts monthly</div>
-        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Nutrition guide + grocery lists</div>
-        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Habit + progress tracking</div>
-        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Weekly check-ins</div>
-        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Private Facebook community</div>
-        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Discounted session rates</div>
-        <div style="font-size:0.72rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Cancel anytime</div>
-      </div>
-      <button class="btn-primary" style="background:var(--sage); font-size:0.72rem;" onclick="toggleLeadForm('form-membership', this)">Join the Collective →</button>
-      <div id="form-membership" class="lead-form" style="display:none; background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); margin-top:1.2rem;">
-        <p class="lead-form-label" style="color:rgba(250,247,242,0.7);">Drop your info and Briana will reach out within 48 hrs to get you set up!</p>
-        <input type="text" placeholder="Your name" id="mem-name" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
-        <input type="email" placeholder="Your email" id="mem-email" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
-        <button class="lead-submit" onclick="submitLead('mem', 'Membership — $49/month')">Send My Info →</button>
-        <div id="mem-confirm" class="lead-confirm" style="display:none; background:rgba(122,140,110,0.3); color:var(--sage-pale);">✓ You're in! Briana will be in touch soon. 🌿</div>
-      </div>
-    </div>
   </div>
 
   <!-- SESSIONS -->
@@ -525,11 +524,18 @@
 
     <!-- FOUNDATION LEAD CAPTURE -->
     <div style="background:white; border:1px solid var(--border); border-radius:20px; padding:2.5rem; text-align:center; max-width:600px; margin:0 auto;">
-      <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--taupe-dark); margin-bottom:0.5rem;">Reserve Your Daughter's Spot</h3>
-      <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Sessions are limited to 8–10 girls per slot. Drop your info below and Briana will reach out with scheduling details and next steps.</p>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--taupe-dark); margin-bottom:0.5rem;">Want More Info?</h3>
+      <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Drop your info below and Briana will reach out with details to help you decide if this is the right fit for your daughter!</p>
+      <a href="https://calendly.com/briweber/new-meeting" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; background:var(--sage); color:white; padding:0.9rem 2rem; border-radius:30px; font-size:0.68rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; text-decoration:none; margin-bottom:1.2rem; width:100%; transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Book Now →</a>
+      <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:1.2rem;">
+        <div style="flex:1; height:1px; background:var(--border);"></div>
+        <span style="font-size:0.62rem; color:var(--text-light); letter-spacing:0.12em; text-transform:uppercase;">or get more info</span>
+        <div style="flex:1; height:1px; background:var(--border);"></div>
+      </div>
       <input type="text" placeholder="Parent name" id="fd-parent" class="lead-input" />
       <input type="text" placeholder="Daughter's name + age" id="fd-daughter" class="lead-input" />
       <input type="email" placeholder="Your email" id="fd-email" class="lead-input" />
+      <input type="tel" placeholder="Phone number" id="fd-phone" class="lead-input" />
       <input type="text" placeholder="Sport(s) she plays (optional)" id="fd-sport" class="lead-input" />
       <button class="lead-submit" onclick="submitFoundation()" style="margin-top:0.5rem;">Reserve Her Spot →</button>
       <div id="fd-confirm" class="lead-confirm" style="display:none; text-align:left;">✓ Wonderful! Briana will be in touch soon. Your daughter is going to love this.</div>
@@ -630,7 +636,7 @@ async function submitFoundation() {
     await fetch(FORMSPREE_LEADS, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ 'Name': parent, 'Email': email, 'Interest': 'The Foundation — Young Athletes Program', 'Daughter Name + Age': daughter, 'Sport(s)': sport || 'Not specified', 'Submitted': new Date().toLocaleDateString() })
+      body: JSON.stringify({ 'Name': parent, 'Email': email, 'Phone': document.getElementById('fd-phone')?.value || 'Not provided', 'Interest': 'The Foundation — Young Athletes Program', 'Daughter Name + Age': daughter, 'Sport(s)': sport || 'Not specified', 'Submitted': new Date().toLocaleDateString() })
     });
   } catch(e) {}
   confirm.style.display = 'block';
