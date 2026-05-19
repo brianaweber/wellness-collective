@@ -169,6 +169,8 @@
       .story-content { padding-left: 0; }
       .offerings-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .offerings-grid > div[style*="grid-column"] { grid-column: 1 !important; }
+      .membership-featured-card { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+      .membership-featured-card > div:last-child { display: none; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
       .offerings, .sessions { padding: 4rem 1.5rem; }
     }
@@ -259,14 +261,15 @@
   <div style="display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto; gap:1.5rem; max-width:900px; margin:0 auto;">
 
     <!-- MEMBERSHIP — spans full width on top -->
-    <div style="grid-column:1/-1; background:linear-gradient(135deg, var(--taupe-dark), #4a3c30); border-radius:20px; padding:2.5rem; position:relative; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center;">
+    <div style="grid-column:1/-1; background:linear-gradient(135deg, var(--taupe-dark), #4a3c30); border-radius:20px; padding:2rem; position:relative; overflow:hidden; display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;" class="membership-featured-card">
       <div style="position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle, rgba(122,140,110,0.2), transparent 70%);"></div>
       <div>
         <p style="font-size:0.6rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--sage-light); font-weight:600; margin-bottom:0.8rem;">Monthly Membership</p>
         <h3 style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:400; color:var(--cream); margin-bottom:0.3rem;">The WELLness Collective</h3>
         <div style="font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:300; color:var(--sand-light); line-height:1; margin:0.8rem 0 0.3rem;">$49</div>
         <div style="font-size:0.7rem; color:rgba(250,247,242,0.5); margin-bottom:1.5rem;">per month · cancel anytime</div>
-        <button class="btn-primary" style="background:var(--sage); font-size:0.72rem; width:auto; display:inline-flex;" onclick="toggleLeadForm('form-membership', this)">Join the Collective →</button>
+        <a href="https://buy.stripe.com/4gM4gydDk8Be9p36AyeZ202" target="_blank" class="btn-primary" style="background:var(--sage); font-size:0.72rem; width:auto; display:inline-flex; text-decoration:none;">Subscribe — $49/month →</a>
+        <p style="font-size:0.62rem; color:rgba(250,247,242,0.45); margin-top:0.5rem;">Secure payment via Stripe · Cancel anytime</p>
         <div id="form-membership" class="lead-form" style="display:none; background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); margin-top:1.2rem;">
           <p class="lead-form-label" style="color:rgba(250,247,242,0.7);">Drop your info and Briana will reach out within 48 hrs to get you set up!</p>
           <input type="text" placeholder="Your name" id="mem-name" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
@@ -476,7 +479,6 @@
         </div>
       </div>
 
->
     </div>
 
   </div>
