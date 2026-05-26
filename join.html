@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join The WELLness Collective</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #7a8c6e; --sage-light: #a8b89a; --sage-pale: #eef1eb;
+      --sand: #c4a882; --cream: #faf7f2; --taupe: #8a7968;
+      --taupe-dark: #5c5042; --olive: #6b7355; --white: #ffffff;
+      --text: #3a3228; --text-light: #7a6e62; --border: #e0d8ce;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+
+    /* HEADER */
+    .header { background: var(--taupe-dark); padding: 2.5rem 1.5rem; text-align: center; }
+    .header-eyebrow { font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--sage-light); font-weight: 600; margin-bottom: 0.8rem; }
+    .header-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; color: var(--cream); margin-bottom: 0.5rem; }
+    .header-title em { font-style: italic; color: var(--sand); }
+    .header-sub { font-size: 0.78rem; color: rgba(250,247,242,0.55); line-height: 1.7; max-width: 480px; margin: 0 auto; }
+
+    /* STEPS */
+    .steps { display: flex; justify-content: center; gap: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; }
+    .step { display: flex; flex-direction: column; align-items: center; flex: 1; max-width: 120px; position: relative; }
+    .step::after { content: ''; position: absolute; top: 12px; left: 50%; width: 100%; height: 2px; background: var(--border); z-index: 0; }
+    .step:last-child::after { display: none; }
+    .step-dot { width: 24px; height: 24px; border-radius: 50%; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 700; color: var(--text-light); position: relative; z-index: 1; transition: all 0.3s; }
+    .step.active .step-dot { background: var(--sage); color: white; }
+    .step.done .step-dot { background: var(--sage); color: white; }
+    .step.done .step-dot::after { content: '✓'; }
+    .step-label { font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-top: 0.4rem; }
+    .step.active .step-label { color: var(--sage); }
+
+    /* MAIN */
+    .main { max-width: 600px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    /* SECTIONS */
+    .section { display: none; }
+    .section.active { display: block; animation: fadeUp 0.35s ease forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .section-eyebrow { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; color: var(--taupe-dark); line-height: 1.2; margin-bottom: 0.5rem; }
+    .section-title em { font-style: italic; color: var(--sage); }
+    .section-desc { font-size: 0.78rem; color: var(--text-light); line-height: 1.7; margin-bottom: 2rem; }
+
+    /* FIELDS */
+    .field { margin-bottom: 1.2rem; }
+    .field label { display: block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); margin-bottom: 0.5rem; }
+    .req { color: var(--sand); margin-left: 0.2rem; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 10px;
+      padding: 0.8rem 1rem; font-family: 'Montserrat', sans-serif; font-size: 0.82rem;
+      color: var(--text); background: var(--white); outline: none; transition: border-color 0.2s;
+      appearance: none;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--sage); }
+    textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+
+    /* OPTIONS */
+    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .opt { position: relative; }
+    .opt input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .opt-label { display: flex; align-items: center; gap: 0.6rem; padding: 0.7rem 1rem; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 0.75rem; color: var(--text); background: var(--white); transition: all 0.2s; }
+    .opt-label::before { content: ''; width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--border); flex-shrink: 0; transition: all 0.2s; }
+    .opt input[type="checkbox"] + .opt-label::before { border-radius: 4px; }
+    .opt input:checked + .opt-label { border-color: var(--sage); background: var(--sage-pale); color: var(--taupe-dark); }
+    .opt input:checked + .opt-label::before { background: var(--sage); border-color: var(--sage); }
+
+    /* WHAT'S INCLUDED */
+    .included-card { background: linear-gradient(135deg, var(--taupe-dark), #4a3c30); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+    .included-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--cream); margin-bottom: 0.3rem; }
+    .included-price { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--sand); line-height: 1; margin: 0.5rem 0 0.3rem; }
+    .included-per { font-size: 0.68rem; color: rgba(250,247,242,0.45); margin-bottom: 1.2rem; }
+    .included-items { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+    .included-item { font-size: 0.68rem; color: rgba(250,247,242,0.8); display: flex; align-items: center; gap: 0.4rem; }
+    .included-item span { color: var(--sage-light); }
+
+    /* STRIPE EMBED */
+    .stripe-section { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.2rem; text-align: center; }
+    .stripe-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--taupe-dark); margin-bottom: 0.5rem; }
+    .stripe-note { font-size: 0.72rem; color: var(--text-light); line-height: 1.6; margin-bottom: 1.2rem; }
+    .stripe-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; background: var(--sage); color: white; border: none; border-radius: 30px; padding: 1rem 2.5rem; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; width: 100%; }
+    .stripe-btn:hover { background: var(--olive); transform: translateY(-1px); }
+    .stripe-btn:disabled { background: var(--border); cursor: not-allowed; transform: none; }
+    .stripe-secure { font-size: 0.62rem; color: var(--text-light); margin-top: 0.8rem; }
+
+    /* NAV */
+    .form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    .btn-back { background: transparent; color: var(--text-light); border: 1.5px solid var(--border); border-radius: 30px; padding: 0.75rem 1.8rem; font-family: 'Montserrat', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+    .btn-back:hover { border-color: var(--sage); color: var(--sage); }
+    .btn-next { background: var(--sage); color: white; border: none; border-radius: 30px; padding: 0.75rem 2.2rem; font-family: 'Montserrat', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+    .btn-next:hover { background: var(--olive); transform: translateY(-1px); }
+    .step-count { font-size: 0.62rem; color: var(--text-light); }
+
+    /* THANK YOU */
+    .thankyou { display: none; text-align: center; padding: 3rem 1.5rem; }
+    .ty-icon { font-size: 3rem; margin-bottom: 1.5rem; }
+    .ty-title { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: var(--taupe-dark); margin-bottom: 1rem; }
+    .ty-title em { font-style: italic; color: var(--sage); }
+    .ty-body { font-size: 0.82rem; color: var(--text-light); line-height: 1.8; max-width: 420px; margin: 0 auto 1.5rem; }
+    .ty-sig { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--taupe); }
+
+    /* FOOTER */
+    .footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 0.62rem; color: var(--text-light); }
+
+    @media (max-width: 500px) {
+      .field-row { grid-template-columns: 1fr; }
+      .options { grid-template-columns: 1fr; }
+      .included-items { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <p class="header-eyebrow">The WELLness Collective</p>
+  <h1 class="header-title">Join <em>the Well.</em></h1>
+  <p class="header-sub">Tell us a little about yourself — then complete your $49/month membership. Briana will have your personal portal ready within 48 hours.</p>
+</div>
+
+<!-- STEP INDICATORS -->
+<div class="steps">
+  <div class="step active" id="step-1">
+    <div class="step-dot">1</div>
+    <div class="step-label">About You</div>
+  </div>
+  <div class="step" id="step-2">
+    <div class="step-dot">2</div>
+    <div class="step-label">Your Goals</div>
+  </div>
+  <div class="step" id="step-3">
+    <div class="step-dot">3</div>
+    <div class="step-label">Training</div>
+  </div>
+  <div class="step" id="step-4">
+    <div class="step-dot">4</div>
+    <div class="step-label">Subscribe</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- SECTION 1: ABOUT YOU -->
+  <div class="section active" id="sec-1">
+    <div class="section-eyebrow">Step 1 of 4</div>
+    <h2 class="section-title">Let's get to <em>know you.</em></h2>
+    <p class="section-desc">Basic info so Briana can build your personalized portal.</p>
+
+    <div class="field-row">
+      <div class="field">
+        <label>First Name <span class="req">*</span></label>
+        <input type="text" id="firstName" placeholder="Your first name" />
+      </div>
+      <div class="field">
+        <label>Last Name <span class="req">*</span></label>
+        <input type="text" id="lastName" placeholder="Your last name" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Email <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="your@email.com" />
+      </div>
+      <div class="field">
+        <label>Phone <span class="req">*</span></label>
+        <input type="tel" id="phone" placeholder="(000) 000-0000" />
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Age</label>
+        <input type="text" id="age" placeholder="Your age" />
+      </div>
+      <div class="field">
+        <label>City / Town</label>
+        <input type="text" id="city" placeholder="e.g. Alexandria, MN" />
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <div></div>
+      <div class="step-count">Step 1 of 4</div>
+      <button class="btn-next" onclick="goTo(2)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- SECTION 2: GOALS -->
+  <div class="section" id="sec-2">
+    <div class="section-eyebrow">Step 2 of 4</div>
+    <h2 class="section-title">Your <em>goals.</em></h2>
+    <p class="section-desc">This shapes everything about your program.</p>
+
+    <div class="field">
+      <label>What are your main goals? <span class="req">*</span></label>
+      <div class="options">
+        <div class="opt"><input type="checkbox" id="g1" value="Build strength"><label class="opt-label" for="g1">Build strength</label></div>
+        <div class="opt"><input type="checkbox" id="g2" value="Lose weight"><label class="opt-label" for="g2">Lose weight</label></div>
+        <div class="opt"><input type="checkbox" id="g3" value="Improve energy"><label class="opt-label" for="g3">Improve energy</label></div>
+        <div class="opt"><input type="checkbox" id="g4" value="Build confidence"><label class="opt-label" for="g4">Build confidence</label></div>
+        <div class="opt"><input type="checkbox" id="g5" value="Better nutrition"><label class="opt-label" for="g5">Better nutrition</label></div>
+        <div class="opt"><input type="checkbox" id="g6" value="Reduce stress"><label class="opt-label" for="g6">Reduce stress</label></div>
+        <div class="opt"><input type="checkbox" id="g7" value="Tone + definition"><label class="opt-label" for="g7">Tone + definition</label></div>
+        <div class="opt"><input type="checkbox" id="g8" value="Overall wellness"><label class="opt-label" for="g8">Overall wellness</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>In your own words — what do you want to achieve? <span class="req">*</span></label>
+      <textarea id="goalStatement" placeholder="e.g. I want to feel strong and confident, have more energy for my kids, and actually stick to something..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What has held you back in the past?</label>
+      <textarea id="painPoints" placeholder="e.g. No time, don't know where to start, motivation, injury, life gets in the way..."></textarea>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="goTo(1)">← Back</button>
+      <div class="step-count">Step 2 of 4</div>
+      <button class="btn-next" onclick="goTo(3)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- SECTION 3: TRAINING PREFS -->
+  <div class="section" id="sec-3">
+    <div class="section-eyebrow">Step 3 of 4</div>
+    <h2 class="section-title">Your <em>training.</em></h2>
+    <p class="section-desc">Help Briana meet you exactly where you are.</p>
+
+    <div class="field">
+      <label>Where would you like to train? <span class="req">*</span></label>
+      <div class="options">
+        <div class="opt"><input type="radio" name="location" id="l1" value="At a gym / studio"><label class="opt-label" for="l1">At a gym / studio</label></div>
+        <div class="opt"><input type="radio" name="location" id="l2" value="At home — Briana comes to me"><label class="opt-label" for="l2">In-home — Briana comes to me</label></div>
+        <div class="opt"><input type="radio" name="location" id="l3" value="Self-guided from my portal"><label class="opt-label" for="l3">Self-guided from portal</label></div>
+        <div class="opt"><input type="radio" name="location" id="l4" value="Mix of options"><label class="opt-label" for="l4">Mix of options</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Current fitness level</label>
+      <div class="options">
+        <div class="opt"><input type="radio" name="level" id="lv1" value="Beginner — brand new"><label class="opt-label" for="lv1">Beginner — brand new</label></div>
+        <div class="opt"><input type="radio" name="level" id="lv2" value="Some experience — on and off"><label class="opt-label" for="lv2">Some experience — on/off</label></div>
+        <div class="opt"><input type="radio" name="level" id="lv3" value="Intermediate — 1-2 years consistent"><label class="opt-label" for="lv3">Intermediate — 1-2 yrs</label></div>
+        <div class="opt"><input type="radio" name="level" id="lv4" value="Advanced — 3+ years consistent"><label class="opt-label" for="lv4">Advanced — 3+ yrs</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Days per week you can commit</label>
+      <div class="options" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="opt"><input type="radio" name="days" id="d2" value="2 days"><label class="opt-label" for="d2">2 days</label></div>
+        <div class="opt"><input type="radio" name="days" id="d3" value="3 days"><label class="opt-label" for="d3">3 days</label></div>
+        <div class="opt"><input type="radio" name="days" id="d4" value="4 days"><label class="opt-label" for="d4">4 days</label></div>
+        <div class="opt"><input type="radio" name="days" id="d5" value="5 days"><label class="opt-label" for="d5">5 days</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Any injuries or limitations?</label>
+      <input type="text" id="injuries" placeholder="e.g. Bad knee, lower back, shoulder — or none!" />
+    </div>
+
+    <div class="field">
+      <label>Protein goal (if you know it)</label>
+      <input type="text" id="proteinGoal" placeholder="e.g. 100g" style="max-width:200px;" />
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="goTo(2)">← Back</button>
+      <div class="step-count">Step 3 of 4</div>
+      <button class="btn-next" onclick="submitAndProceed()">Save & Continue →</button>
+    </div>
+  </div>
+
+  <!-- SECTION 4: SUBSCRIBE -->
+  <div class="section" id="sec-4">
+    <div class="section-eyebrow">Step 4 of 4</div>
+    <h2 class="section-title">Complete your <em>membership.</em></h2>
+    <p class="section-desc">One last step — subscribe below to activate your membership. Briana will build your personal portal within 48 hours and send you your link.</p>
+
+    <div class="included-card">
+      <div class="included-title">The WELLness Collective</div>
+      <div class="included-price">$49</div>
+      <div class="included-per">per month · cancel anytime</div>
+      <div class="included-items">
+        <div class="included-item"><span>✓</span> Personal training portal</div>
+        <div class="included-item"><span>✓</span> Fresh workouts monthly</div>
+        <div class="included-item"><span>✓</span> Nutrition guide + grocery lists</div>
+        <div class="included-item"><span>✓</span> Habit + progress tracking</div>
+        <div class="included-item"><span>✓</span> Weekly check-ins</div>
+        <div class="included-item"><span>✓</span> Private Facebook community</div>
+        <div class="included-item"><span>✓</span> Discounted session rates</div>
+        <div class="included-item"><span>✓</span> Cancel anytime</div>
+      </div>
+    </div>
+
+    <div class="stripe-section">
+      <div class="stripe-title">Secure Monthly Subscription</div>
+      <p class="stripe-note">Click below to complete your $49/month subscription through Stripe. Your information is encrypted and secure. After payment, Briana will reach out within 48 hours with your personal portal link.</p>
+      <a href="https://buy.stripe.com/4gM4gydDk8Be9p36AyeZ202" target="_blank" class="stripe-btn" id="stripeBtn">
+        Subscribe — $49/month →
+      </a>
+      <p class="stripe-secure">🔒 Secured by Stripe · Cancel anytime · No contracts</p>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="goTo(3)">← Back</button>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- THANK YOU -->
+  <div class="thankyou" id="thankyou">
+    <div class="ty-icon">🌿</div>
+    <h2 class="ty-title">Welcome to <em>the Well.</em></h2>
+    <p class="ty-body">Your info has been sent to Briana. Complete your subscription above if you haven't already — then sit tight! Your personal portal will be ready within 48 hours.</p>
+    <p class="ty-body">You're going to love this.</p>
+    <p class="ty-sig">I'll meet you at the Well. — Briana</p>
+  </div>
+
+</div>
+
+<div class="footer">The WELLness Collective · Coach Briana Weber · alexandriawell.com</div>
+
+<script>
+const FORMSPREE = 'https://formspree.io/f/mredozly';
+let currentStep = 1;
+let formData = {};
+
+function goTo(step) {
+  if (step > currentStep && !validate(currentStep)) return;
+  document.getElementById('sec-' + currentStep).classList.remove('active');
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  document.getElementById('step-' + currentStep).classList.add('done');
+  currentStep = step;
+  document.getElementById('sec-' + currentStep).classList.add('active');
+  document.getElementById('step-' + currentStep).classList.add('active');
+  document.getElementById('step-' + currentStep).classList.remove('done');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function validate(step) {
+  if (step === 1) {
+    if (!document.getElementById('firstName').value.trim()) { alert('Please enter your first name.'); return false; }
+    if (!document.getElementById('email').value.trim()) { alert('Please enter your email.'); return false; }
+    if (!document.getElementById('phone').value.trim()) { alert('Please enter your phone number.'); return false; }
+  }
+  if (step === 2) {
+    if (!document.getElementById('goalStatement').value.trim()) { alert('Please tell us your goal!'); return false; }
+  }
+  return true;
+}
+
+function collectData() {
+  const goals = ['g1','g2','g3','g4','g5','g6','g7','g8']
+    .filter(id => document.getElementById(id).checked)
+    .map(id => document.getElementById(id).value).join(', ');
+  const location = document.querySelector('input[name="location"]:checked');
+  const level = document.querySelector('input[name="level"]:checked');
+  const days = document.querySelector('input[name="days"]:checked');
+
+  return {
+    'First Name': document.getElementById('firstName').value,
+    'Last Name': document.getElementById('lastName').value,
+    'Email': document.getElementById('email').value,
+    'Phone': document.getElementById('phone').value,
+    'Age': document.getElementById('age').value,
+    'City': document.getElementById('city').value,
+    'Goals': goals || 'Not specified',
+    'Goal Statement': document.getElementById('goalStatement').value,
+    'Pain Points': document.getElementById('painPoints').value,
+    'Training Location': location ? location.value : 'Not specified',
+    'Fitness Level': level ? level.value : 'Not specified',
+    'Days Per Week': days ? days.value : 'Not specified',
+    'Injuries': document.getElementById('injuries').value || 'None',
+    'Protein Goal': document.getElementById('proteinGoal').value || 'Not specified',
+    'Interest': 'NEW MEMBERSHIP SIGNUP',
+    'Submitted': new Date().toLocaleDateString()
+  };
+}
+
+async function submitAndProceed() {
+  if (!validate(3)) return;
+
+  const btn = document.querySelector('#sec-3 .btn-next');
+  btn.disabled = true;
+  btn.textContent = 'Saving...';
+
+  const data = collectData();
+  formData = data;
+
+  try {
+    await fetch(FORMSPREE, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch(e) {}
+
+  btn.textContent = 'Save & Continue →';
+  btn.disabled = false;
+  goTo(4);
+}
+</script>
+</body>
+</html>
