@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Foundation — Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #7a8c6e; --sage-light: #a8b89a; --sage-pale: #eef1eb;
+      --sand: #c4a882; --cream: #faf7f2; --taupe: #8a7968;
+      --taupe-dark: #5c5042; --olive: #6b7355; --white: #ffffff;
+      --text: #3a3228; --text-light: #7a6e62; --border: #e0d8ce;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+
+    /* HEADER */
+    .header { background: var(--taupe-dark); padding: 2.5rem 1.5rem; text-align: center; position: relative; overflow: hidden; }
+    .header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(122,140,110,0.2), transparent 70%); }
+    .header-eyebrow { font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--sage-light); font-weight: 600; margin-bottom: 0.5rem; }
+    .header-collab { font-size: 0.65rem; color: rgba(250,247,242,0.45); margin-bottom: 0.8rem; letter-spacing: 0.1em; }
+    .header-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 300; color: var(--cream); margin-bottom: 0.5rem; }
+    .header-title em { font-style: italic; color: var(--sand); }
+    .header-sub { font-size: 0.75rem; color: rgba(250,247,242,0.55); line-height: 1.7; max-width: 480px; margin: 0 auto; }
+    .header-badges { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.2rem; }
+    .badge { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.62rem; color: rgba(250,247,242,0.7); letter-spacing: 0.1em; }
+
+    /* PROGRESS */
+    .progress-wrap { background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 1.5rem; position: sticky; top: 0; z-index: 50; }
+    .progress-steps { display: flex; justify-content: center; max-width: 500px; margin: 0 auto; }
+    .prog-step { flex: 1; display: flex; flex-direction: column; align-items: center; position: relative; }
+    .prog-step::after { content: ''; position: absolute; top: 11px; left: 50%; width: 100%; height: 2px; background: var(--border); z-index: 0; }
+    .prog-step:last-child::after { display: none; }
+    .prog-dot { width: 22px; height: 22px; border-radius: 50%; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.58rem; font-weight: 700; color: var(--text-light); position: relative; z-index: 1; transition: all 0.3s; }
+    .prog-step.active .prog-dot { background: var(--sage); color: white; }
+    .prog-step.done .prog-dot { background: var(--sage); color: white; content: '✓'; }
+    .prog-step.done .prog-dot::after { content: '✓'; font-size: 0.65rem; }
+    .prog-label { font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-top: 0.35rem; text-align: center; }
+    .prog-step.active .prog-label { color: var(--sage); }
+
+    /* MAIN */
+    .main { max-width: 620px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    .section { display: none; }
+    .section.active { display: block; animation: fadeUp 0.3s ease forwards; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+    .sec-eyebrow { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 0.4rem; }
+    .sec-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; color: var(--taupe-dark); line-height: 1.2; margin-bottom: 0.4rem; }
+    .sec-title em { font-style: italic; color: var(--sage); }
+    .sec-desc { font-size: 0.76rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.8rem; }
+
+    /* FIELDS */
+    .field { margin-bottom: 1.1rem; }
+    .field label { display: block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--taupe); margin-bottom: 0.4rem; }
+    .req { color: var(--sand); margin-left: 0.2rem; }
+    .hint { font-size: 0.62rem; color: var(--text-light); font-style: italic; margin-bottom: 0.4rem; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], textarea, select {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 10px;
+      padding: 0.75rem 1rem; font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+      color: var(--text); background: var(--white); outline: none; transition: border-color 0.2s; appearance: none;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(122,140,110,0.08); }
+    textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
+
+    /* OPTIONS */
+    .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .opts.cols-1 { grid-template-columns: 1fr; }
+    .opt { position: relative; }
+    .opt input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .opt-lbl { display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 0.9rem; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; font-size: 0.74rem; color: var(--text); background: var(--white); transition: all 0.2s; line-height: 1.3; }
+    .opt-lbl::before { content: ''; width: 15px; height: 15px; border-radius: 50%; border: 1.5px solid var(--border); flex-shrink: 0; transition: all 0.2s; }
+    .opt input[type="checkbox"] + .opt-lbl::before { border-radius: 4px; }
+    .opt input:checked + .opt-lbl { border-color: var(--sage); background: var(--sage-pale); color: var(--taupe-dark); }
+    .opt input:checked + .opt-lbl::before { background: var(--sage); border-color: var(--sage); }
+
+    /* DIVIDER */
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 1.6rem 0; }
+
+    /* WAIVER */
+    .waiver-box { background: #f8f5f0; border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; font-size: 0.72rem; color: var(--text-light); line-height: 1.8; max-height: 180px; overflow-y: auto; margin-bottom: 1rem; }
+    .waiver-box h4 { font-size: 0.7rem; font-weight: 600; color: var(--taupe-dark); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* PRICING CARDS */
+    .pricing-grid { display: grid; gap: 0.8rem; margin-bottom: 1.5rem; }
+    .price-card { border: 2px solid var(--border); border-radius: 14px; padding: 1.2rem 1.4rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 1.2rem; background: var(--white); position: relative; }
+    .price-card:hover { border-color: var(--sage-light); }
+    .price-card.selected { border-color: var(--sage); background: var(--sage-pale); }
+    .price-radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+    .price-card.selected .price-radio { border-color: var(--sage); background: var(--sage); }
+    .price-card.selected .price-radio::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: white; }
+    .price-info { flex: 1; }
+    .price-name { font-size: 0.8rem; font-weight: 600; color: var(--text); }
+    .price-detail { font-size: 0.68rem; color: var(--text-light); margin-top: 0.15rem; }
+    .price-savings { font-size: 0.62rem; color: var(--olive); font-weight: 600; margin-top: 0.15rem; }
+    .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--sage); font-weight: 400; line-height: 1; }
+    .price-best { position: absolute; top: -10px; right: 12px; background: var(--sage); color: white; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.18rem 0.7rem; border-radius: 20px; }
+
+    /* CHECKOUT BUTTON */
+    .checkout-btn { display: flex; align-items: center; justify-content: center; gap: 0.6rem; background: var(--sage); color: white; border: none; border-radius: 30px; padding: 1rem 2rem; font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; width: 100%; text-decoration: none; }
+    .checkout-btn:hover { background: var(--olive); transform: translateY(-1px); }
+    .checkout-btn:disabled { background: var(--border); cursor: not-allowed; transform: none; color: var(--text-light); }
+    .secure-note { font-size: 0.62rem; color: var(--text-light); text-align: center; margin-top: 0.8rem; }
+
+    /* NAV */
+    .form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    .btn-back { background: transparent; color: var(--text-light); border: 1.5px solid var(--border); border-radius: 30px; padding: 0.7rem 1.6rem; font-family: 'Montserrat', sans-serif; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+    .btn-back:hover { border-color: var(--sage); color: var(--sage); }
+    .btn-next { background: var(--sage); color: white; border: none; border-radius: 30px; padding: 0.7rem 2rem; font-family: 'Montserrat', sans-serif; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+    .btn-next:hover { background: var(--olive); transform: translateY(-1px); }
+    .step-ct { font-size: 0.6rem; color: var(--text-light); }
+
+    /* THANK YOU */
+    .thankyou { display: none; text-align: center; padding: 3rem 1rem; }
+    .ty-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
+    .ty-title { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--taupe-dark); margin-bottom: 0.8rem; }
+    .ty-title em { font-style: italic; color: var(--sage); }
+    .ty-body { font-size: 0.8rem; color: var(--text-light); line-height: 1.8; max-width: 420px; margin: 0 auto 1rem; }
+    .ty-sig { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--taupe); }
+
+    .footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 0.6rem; color: var(--text-light); }
+
+    @media (max-width: 500px) {
+      .field-row, .field-row-3 { grid-template-columns: 1fr; }
+      .opts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <p class="header-eyebrow">A WELLness Collective Program</p>
+  <h1 class="header-title">The <em>Foundation</em></h1>
+  <p class="header-sub">A strength and confidence program for young female athletes ages 9–14. Build strength, develop healthy habits, and discover what you're made of.</p>
+  <div class="header-badges">
+    <span class="badge">Ages 9–14</span>
+    <span class="badge">Starts June 1st</span>
+    <span class="badge">8–10 spots per session</span>
+    <span class="badge">55 min sessions</span>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-steps">
+    <div class="prog-step active" id="ps-1"><div class="prog-dot">1</div><div class="prog-label">Athlete</div></div>
+    <div class="prog-step" id="ps-2"><div class="prog-dot">2</div><div class="prog-label">Parent</div></div>
+    <div class="prog-step" id="ps-3"><div class="prog-dot">3</div><div class="prog-label">Health</div></div>
+    <div class="prog-step" id="ps-4"><div class="prog-dot">4</div><div class="prog-label">Goals</div></div>
+    <div class="prog-step" id="ps-5"><div class="prog-dot">5</div><div class="prog-label">Waiver</div></div>
+    <div class="prog-step" id="ps-6"><div class="prog-dot">6</div><div class="prog-label">Checkout</div></div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- SECTION 1: ATHLETE INFO -->
+  <div class="section active" id="sec-1">
+    <div class="sec-eyebrow">Step 1 of 6</div>
+    <h2 class="sec-title">About the <em>Athlete</em></h2>
+    <p class="sec-desc">Tell us about your daughter so Briana can make this program feel personal from day one.</p>
+
+    <div class="field-row">
+      <div class="field"><label>Athlete First Name <span class="req">*</span></label><input type="text" id="athFirst" placeholder="First name" /></div>
+      <div class="field"><label>Athlete Last Name <span class="req">*</span></label><input type="text" id="athLast" placeholder="Last name" /></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Date of Birth <span class="req">*</span></label><input type="date" id="athDOB" /></div>
+      <div class="field"><label>Age <span class="req">*</span></label><input type="text" id="athAge" placeholder="e.g. 12" /></div>
+    </div>
+    <div class="field"><label>School / Grade</label><input type="text" id="athSchool" placeholder="e.g. Alexandria Middle School, 7th grade" /></div>
+    <div class="field">
+      <label>Sports Played</label>
+      <p class="hint">Check all that apply</p>
+      <div class="opts">
+        <div class="opt"><input type="checkbox" id="sp1" value="Soccer"><label class="opt-lbl" for="sp1">Soccer</label></div>
+        <div class="opt"><input type="checkbox" id="sp2" value="Basketball"><label class="opt-lbl" for="sp2">Basketball</label></div>
+        <div class="opt"><input type="checkbox" id="sp3" value="Volleyball"><label class="opt-lbl" for="sp3">Volleyball</label></div>
+        <div class="opt"><input type="checkbox" id="sp4" value="Gymnastics"><label class="opt-lbl" for="sp4">Gymnastics</label></div>
+        <div class="opt"><input type="checkbox" id="sp5" value="Swimming"><label class="opt-lbl" for="sp5">Swimming</label></div>
+        <div class="opt"><input type="checkbox" id="sp6" value="Track / Running"><label class="opt-lbl" for="sp6">Track / Running</label></div>
+        <div class="opt"><input type="checkbox" id="sp7" value="Figure Skating / Hockey"><label class="opt-lbl" for="sp7">Figure Skating / Hockey</label></div>
+        <div class="opt"><input type="checkbox" id="sp8" value="Dance / Cheer"><label class="opt-lbl" for="sp8">Dance / Cheer</label></div>
+        <div class="opt"><input type="checkbox" id="sp9" value="Softball / Baseball"><label class="opt-lbl" for="sp9">Softball / Baseball</label></div>
+        <div class="opt"><input type="checkbox" id="sp10" value="No sport currently"><label class="opt-lbl" for="sp10">No sport currently</label></div>
+      </div>
+    </div>
+    <div class="field"><label>Other sports not listed</label><input type="text" id="spOther" placeholder="e.g. Equestrian, martial arts..." /></div>
+
+    <div class="form-nav">
+      <div></div>
+      <div class="step-ct">Step 1 of 6</div>
+      <button class="btn-next" onclick="goTo(2)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- SECTION 2: PARENT INFO -->
+  <div class="section" id="sec-2">
+    <div class="sec-eyebrow">Step 2 of 6</div>
+    <h2 class="sec-title">Parent / <em>Guardian</em></h2>
+    <p class="sec-desc">Your contact info and relationship to the athlete.</p>
+
+    <div class="field-row">
+      <div class="field"><label>Parent First Name <span class="req">*</span></label><input type="text" id="parFirst" placeholder="First name" /></div>
+      <div class="field"><label>Parent Last Name <span class="req">*</span></label><input type="text" id="parLast" placeholder="Last name" /></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Email <span class="req">*</span></label><input type="email" id="parEmail" placeholder="your@email.com" /></div>
+      <div class="field"><label>Phone <span class="req">*</span></label><input type="tel" id="parPhone" placeholder="(000) 000-0000" /></div>
+    </div>
+    <div class="field">
+      <label>Relationship to Athlete <span class="req">*</span></label>
+      <div class="opts">
+        <div class="opt"><input type="radio" name="rel" id="r1" value="Mother"><label class="opt-lbl" for="r1">Mother</label></div>
+        <div class="opt"><input type="radio" name="rel" id="r2" value="Father"><label class="opt-lbl" for="r2">Father</label></div>
+        <div class="opt"><input type="radio" name="rel" id="r3" value="Guardian"><label class="opt-lbl" for="r3">Guardian</label></div>
+        <div class="opt"><input type="radio" name="rel" id="r4" value="Other"><label class="opt-lbl" for="r4">Other</label></div>
+      </div>
+    </div>
+    <div class="field"><label>Emergency Contact Name <span class="req">*</span></label><input type="text" id="emergName" placeholder="Full name" /></div>
+    <div class="field-row">
+      <div class="field"><label>Emergency Contact Phone <span class="req">*</span></label><input type="tel" id="emergPhone" placeholder="(000) 000-0000" /></div>
+      <div class="field"><label>Relationship to Athlete</label><input type="text" id="emergRel" placeholder="e.g. Father, Aunt..." /></div>
+    </div>
+    <div class="field"><label>How did you hear about The Foundation?</label>
+      <div class="opts">
+        <div class="opt"><input type="radio" name="ref" id="ref1" value="Instagram"><label class="opt-lbl" for="ref1">Instagram</label></div>
+        <div class="opt"><input type="radio" name="ref" id="ref2" value="Facebook"><label class="opt-lbl" for="ref2">Facebook</label></div>
+        <div class="opt"><input type="radio" name="ref" id="ref3" value="Friend or family"><label class="opt-lbl" for="ref3">Friend / Family</label></div>
+        <div class="opt"><input type="radio" name="ref" id="ref5" value="alexandriawell.com"><label class="opt-lbl" for="ref5">Website</label></div>
+        <div class="opt"><input type="radio" name="ref" id="ref6" value="Other"><label class="opt-lbl" for="ref6">Other</label></div>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="goTo(1)">← Back</button>
+      <div class="step-ct">Step 2 of 6</div>
+      <button class="btn-next" onclick="goTo(3)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- SECTION 3: HEALTH -->
+  <div class="section" id="sec-3">
+    <div class="sec-eyebrow">Step 3 of 6</div>
+    <h2 class="sec-title">Health & <em>Physical Info</em></h2>
+    <p class="sec-desc">This helps Briana keep your daughter safe and program appropriately for her body.</p>
+
+    <div class="field">
+      <label>Does your daughter have any current injuries? <span class="req">*</span></label>
+      <div class="opts">
+        <div class="opt"><input type="radio" name="inj" id="inj1" value="No injuries"><label class="opt-lbl" for="inj1">No injuries</label></div>
+        <div class="opt"><input type="radio" name="inj" id="inj2" value="Yes — details below"><label class="opt-lbl" for="inj2">Yes — see details</label></div>
+      </div>
+    </div>
+    <div class="field"><label>Injury details (if any)</label><textarea id="injuries" placeholder="e.g. Sprained ankle recovering, avoid jumping. Or: none."></textarea></div>
+
+    <div class="field">
+      <label>Any medical conditions or physical limitations we should know about?</label>
+      <textarea id="medConditions" placeholder="e.g. Asthma — has inhaler. Hypermobile joints. Or: none."></textarea>
+    </div>
+    <div class="field">
+      <label>Allergies</label>
+      <input type="text" id="allergies" placeholder="e.g. Bee stings, peanuts — or none" />
+    </div>
+    <div class="field">
+      <label>Primary care physician / doctor (optional)</label>
+      <input type="text" id="doctor" placeholder="Dr. Name — clinic name" />
+    </div>
+    <div class="field">
+      <label>Has your daughter had a recent physical exam?</label>
+      <div class="opts">
+        <div class="opt"><input type="radio" name="phys" id="ph1" value="Yes — cleared for physical activity"><label class="opt-lbl" for="ph1">Yes — cleared for activity</label></div>
+        <div class="opt"><input type="radio" name="phys" id="ph2" value="No / not sure"><label class="opt-lbl" for="ph2">No / not sure</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Current fitness / activity level</label>
+      <div class="opts">
+        <div class="opt"><input type="radio" name="fit" id="fit1" value="Very active — plays sports regularly"><label class="opt-lbl" for="fit1">Very active — plays sports</label></div>
+        <div class="opt"><input type="radio" name="fit" id="fit2" value="Moderately active — some activity"><label class="opt-lbl" for="fit2">Moderately active</label></div>
+        <div class="opt"><input type="radio" name="fit" id="fit3" value="Not very active — just starting out"><label class="opt-lbl" for="fit3">Just starting out</label></div>
+        <div class="opt"><input type="radio" name="fit" id="fit4" value="Varies by season"><label class="opt-lbl" for="fit4">Varies by season</label></div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Any previous strength training or gym experience?</label>
+      <div class="opts">
+        <div class="opt"><input type="radio" name="exp" id="exp1" value="None — brand new"><label class="opt-lbl" for="exp1">None — brand new</label></div>
+        <div class="opt"><input type="radio" name="exp" id="exp2" value="A little — tried it a few times"><label class="opt-lbl" for="exp2">A little</label></div>
+        <div class="opt"><input type="radio" name="exp" id="exp3" value="Some — done it with a team or class"><label class="opt-lbl" for="exp3">Some — with team/class</label></div>
+        <div class="opt"><input type="radio" name="exp" id="exp4" value="Yes — regular training"><label class="opt-lbl" for="exp4">Regular training</label></div>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="goTo(2)">← Back</button>
+      <div class="step-ct">Step 3 of 6</div>
+      <button class="btn-next" onclick="goTo(4)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- SECTION 4: GOALS -->
+  <div class="section" id="sec-4">
+    <div class="sec-eyebrow">Step 4 of 6</div>
+    <h2 class="sec-title">Goals & <em>Intentions</em></h2>
+    <p class="sec-desc">What does your daughter hope to get out of The Foundation?</p>
+
+    <div class="field">
+      <label>What are your goals for your daughter? <span class="req">*</span></label>
+      <p class="hint">Check all that apply</p>
+      <div class="opts">
+        <div class="opt"><input type="checkbox" id="gl1" value="Build physical strength"><label class="opt-lbl" for="gl1">Build physical strength</label></div>
+        <div class="opt"><input type="checkbox" id="gl2" value="Improve athletic performance"><label class="opt-lbl" for="gl2">Improve athletic performance</label></div>
+        <div class="opt"><input type="checkbox" id="gl3" value="Injury prevention"><label class="opt-lbl" for="gl3">Injury prevention</label></div>
+        <div class="opt"><input type="checkbox" id="gl4" value="Build confidence"><label class="opt-lbl" for="gl4">Build confidence</label></div>
+        <div class="opt"><input type="checkbox" id="gl5" value="Healthy habits and mindset"><label class="opt-lbl" for="gl5">Healthy habits + mindset</label></div>
+        <div class="opt"><input type="checkbox" id="gl6" value="Community and friendships"><label class="opt-lbl" for="gl6">Community + friendships</label></div>
+        <div class="opt"><input type="checkbox" id="gl7" value="Learn about nutrition"><label class="opt-lbl" for="gl7">Learn about nutrition</label></div>
+        <div class="opt"><input type="checkbox" id="gl8" value="General fitness and wellness"><label class="opt-lbl" for="gl8">General fitness + wellness</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>In your own words — what do you hope she gets out of this program?</label>
+      <textarea id="goalStatement" placeholder="e.g. I want her to feel strong and confident in her body, make new friends, and develop a healthy relationship with fitness before high school..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What does your daughter say she wants to get out of it?</label>
+      <textarea id="athGoal" placeholder="What does SHE say? Even if it's just 'get stronger' or 'my mom signed me up!' — all answers welcome."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Anything else Briana should know about your daughter?</label>
+      <textarea id="anythingElse" placeholder="Personality, what motivates her, fears, things she loves, anything at all..."></textarea>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="goTo(3)">← Back</button>
+      <div class="step-ct">Step 4 of 6</div>
+      <button class="btn-next" onclick="goTo(5)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- SECTION 5: WAIVER -->
+  <div class="section" id="sec-5">
+    <div class="sec-eyebrow">Step 5 of 6</div>
+    <h2 class="sec-title">Waiver & <em>Permissions</em></h2>
+    <p class="sec-desc">Please read and sign the waiver below. All participants under 18 require a parent or guardian signature.</p>
+
+    <div class="waiver-box">
+      <h4>Participation Waiver — The Foundation Program</h4>
+      <p>I, the undersigned parent or legal guardian, give permission for my child to participate in The Foundation, a youth strength and wellness program offered by The WELLness Collective, coached by Briana Weber.</p>
+      <br/>
+      <p><strong>I understand and agree that:</strong></p>
+      <br/>
+      <p>1. Physical activity involves inherent risks. I acknowledge that participation in strength training, conditioning, and movement activities carries the possibility of physical injury.</p>
+      <br/>
+      <p>2. I certify that my child is physically able to participate in athletic activities and has no medical conditions that would prevent participation, except as disclosed in this form.</p>
+      <br/>
+      <p>3. I authorize Briana Weber and The WELLness Collective to obtain emergency medical treatment for my child if I cannot be reached in an emergency.</p>
+      <br/>
+      <p>4. I give permission for photos or videos taken during sessions to be used by The WELLness Collective for promotional purposes, including social media, unless I indicate otherwise below.</p>
+      <br/>
+      <p>5. I release The WELLness Collective, Briana Weber, and any affiliated venues from liability for any injuries sustained during participation, provided reasonable safety standards are followed.</p>
+      <br/>
+      <p>6. I agree to notify Briana Weber of any changes to my child's health or physical condition prior to sessions.</p>
+    </div>
+
+    <div class="field">
+      <label>Photo/video permission <span class="req">*</span></label>
+      <div class="opts">
+        <div class="opt"><input type="radio" name="photo" id="ph_yes" value="Yes — photos and video permitted"><label class="opt-lbl" for="ph_yes">Yes — photos and video are fine</label></div>
+        <div class="opt"><input type="radio" name="photo" id="ph_no" value="No — do not use photos or video of my child"><label class="opt-lbl" for="ph_no">No — please do not use photos/video</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>I agree to the waiver above <span class="req">*</span></label>
+      <div class="opts cols-1">
+        <div class="opt"><input type="checkbox" id="waiverAgree"><label class="opt-lbl" for="waiverAgree">Yes — I have read and agree to the participation waiver</label></div>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label>Parent / Guardian Signature <span class="req">*</span></label>
+        <p class="hint">Type your full name as signature</p>
+        <input type="text" id="signature" placeholder="Full legal name" />
+      </div>
+      <div class="field">
+        <label>Date <span class="req">*</span></label>
+        <input type="date" id="sigDate" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Relationship to athlete <span class="req">*</span></label>
+      <input type="text" id="sigRel" placeholder="e.g. Mother, Father, Legal Guardian" />
+    </div>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="goTo(4)">← Back</button>
+      <div class="step-ct">Step 5 of 6</div>
+      <button class="btn-next" onclick="goTo(6)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- SECTION 6: CHECKOUT -->
+  <div class="section" id="sec-6">
+    <div class="sec-eyebrow">Step 6 of 6</div>
+    <h2 class="sec-title">Choose your <em>package.</em></h2>
+    <p class="sec-desc">Select the option that works best for your schedule and budget. All sessions are 60 minutes. Multiple sessions offered each week — choose what fits!</p>
+
+    <div class="pricing-grid">
+
+      <div class="price-card" id="pkg-single" onclick="selectPackage('single')">
+        <div class="price-radio"></div>
+        <div class="price-info">
+          <div class="price-name">Drop-In Single Session</div>
+          <div class="price-detail">55 min · No commitment · Pay per session</div>
+        </div>
+        <div class="price-amount">$25</div>
+      </div>
+
+      <div class="price-card" id="pkg-10" onclick="selectPackage('10')">
+        <div class="price-best">1x/week</div>
+        <div class="price-radio"></div>
+        <div class="price-info">
+          <div class="price-name">10-Session Pack</div>
+          <div class="price-detail">10 weeks · 1 session per week · 55 min</div>
+          <div class="price-savings">$20/session · Save $50</div>
+        </div>
+        <div class="price-amount">$200</div>
+      </div>
+
+      <div class="price-card" id="pkg-20" onclick="selectPackage('20')">
+        <div class="price-best">2x/week</div>
+        <div class="price-radio"></div>
+        <div class="price-info">
+          <div class="price-name">20-Session Pack</div>
+          <div class="price-detail">10 weeks · 2 sessions per week · 55 min</div>
+          <div class="price-savings">$18/session · Save $100</div>
+        </div>
+        <div class="price-amount">$360</div>
+      </div>
+
+      <div class="price-card" id="pkg-30" onclick="selectPackage('30')">
+        <div class="price-best">Best value</div>
+        <div class="price-radio"></div>
+        <div class="price-info">
+          <div class="price-name">Full Program — 30 Sessions</div>
+          <div class="price-detail">10 weeks · 3 sessions per week · 55 min</div>
+          <div class="price-savings">$15/session · Save $300</div>
+        </div>
+        <div class="price-amount">$450</div>
+      </div>
+
+    </div>
+
+    <button class="checkout-btn" id="checkoutBtn" onclick="submitAndCheckout()" disabled>
+      Select a package to continue
+    </button>
+    <p class="secure-note">🔒 Secured by Stripe · Questions? Text Briana at 970-380-9595</p>
+
+    <div class="form-nav">
+      <button class="btn-back" onclick="goTo(5)">← Back</button>
+      <div></div><div></div>
+    </div>
+  </div>
+
+  <!-- THANK YOU -->
+  <div class="thankyou" id="thankyou">
+    <div class="ty-icon">🌿</div>
+    <h2 class="ty-title">Welcome to <em>The Foundation!</em></h2>
+    <p class="ty-body">Your registration has been received and Briana will be in touch within 48 hours to confirm your session times and get everything set up.</p>
+    <p class="ty-body">Your daughter is going to love this.</p>
+    <p class="ty-sig">— Coach Briana Weber</p>
+  </div>
+
+</div>
+
+<div class="footer">The Foundation · A WELLness Collective Program · alexandriawell.com</div>
+
+<script>
+const FORMSPREE = 'https://formspree.io/f/xqejgeak';
+
+const STRIPE_LINKS = {
+  single: 'https://buy.stripe.com/bJe9AS9n42cQ7gV6AyeZ204',
+  '10':   'https://buy.stripe.com/7sYbJ00Qy2cQ8kZe30eZ205',
+  '20':   'https://buy.stripe.com/28E28q7eWbNqcBff74eZ206',
+  '30':   'https://buy.stripe.com/9B67sKbvc18MfNrcYWeZ207'
+};
+
+const PACKAGE_NAMES = {
+  single: 'Drop-In Single Session — $25',
+  '10':   '10-Session Pack — $200',
+  '20':   '20-Session Pack — $360',
+  '30':   'Full Program 30 Sessions — $450'
+};
+
+let currentStep = 1;
+let selectedPackage = null;
+
+function goTo(step) {
+  if (step > currentStep && !validate(currentStep)) return;
+  document.getElementById('sec-' + currentStep).classList.remove('active');
+  const pd = document.getElementById('ps-' + currentStep);
+  pd.classList.remove('active');
+  pd.classList.add('done');
+  currentStep = step;
+  document.getElementById('sec-' + currentStep).classList.add('active');
+  const pn = document.getElementById('ps-' + currentStep);
+  pn.classList.add('active');
+  pn.classList.remove('done');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function validate(step) {
+  if (step === 1) {
+    if (!document.getElementById('athFirst').value.trim()) { alert('Please enter the athlete\'s first name.'); return false; }
+    if (!document.getElementById('athAge').value.trim()) { alert('Please enter the athlete\'s age.'); return false; }
+  }
+  if (step === 2) {
+    if (!document.getElementById('parFirst').value.trim()) { alert('Please enter parent/guardian name.'); return false; }
+    if (!document.getElementById('parEmail').value.trim()) { alert('Please enter your email.'); return false; }
+    if (!document.getElementById('parPhone').value.trim()) { alert('Please enter your phone number.'); return false; }
+    if (!document.getElementById('emergName').value.trim()) { alert('Please enter an emergency contact.'); return false; }
+    if (!document.getElementById('emergPhone').value.trim()) { alert('Please enter an emergency contact phone number.'); return false; }
+  }
+  if (step === 4) {
+    if (!document.querySelector('input[id^="gl"]:checked') && !document.getElementById('goalStatement').value.trim()) {
+      alert('Please tell us at least one goal for your daughter.'); return false;
+    }
+  }
+  if (step === 5) {
+    if (!document.getElementById('waiverAgree').checked) { alert('Please agree to the waiver to continue.'); return false; }
+    if (!document.getElementById('signature').value.trim()) { alert('Please enter your signature.'); return false; }
+    if (!document.getElementById('sigDate').value) { alert('Please enter today\'s date.'); return false; }
+    const photo = document.querySelector('input[name="photo"]:checked');
+    if (!photo) { alert('Please select a photo/video permission option.'); return false; }
+  }
+  return true;
+}
+
+function selectPackage(pkg) {
+  selectedPackage = pkg;
+  document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected'));
+  document.getElementById('pkg-' + pkg).classList.add('selected');
+  const btn = document.getElementById('checkoutBtn');
+  btn.disabled = false;
+  btn.textContent = 'Complete Registration — ' + PACKAGE_NAMES[pkg].split(' — ')[1] + ' →';
+}
+
+function collectData() {
+  const sports = ['sp1','sp2','sp3','sp4','sp5','sp6','sp7','sp8','sp9','sp10']
+    .filter(id => document.getElementById(id).checked)
+    .map(id => document.getElementById(id).value).join(', ');
+  const goals = ['gl1','gl2','gl3','gl4','gl5','gl6','gl7','gl8']
+    .filter(id => document.getElementById(id).checked)
+    .map(id => document.getElementById(id).value).join(', ');
+  const rel = document.querySelector('input[name="rel"]:checked');
+  const ref = document.querySelector('input[name="ref"]:checked');
+  const inj = document.querySelector('input[name="inj"]:checked');
+  const fit = document.querySelector('input[name="fit"]:checked');
+  const exp = document.querySelector('input[name="exp"]:checked');
+  const phys = document.querySelector('input[name="phys"]:checked');
+  const photo = document.querySelector('input[name="photo"]:checked');
+
+  return {
+    'Interest': 'THE FOUNDATION SIGNUP',
+    'Package Selected': PACKAGE_NAMES[selectedPackage] || 'Not selected',
+    '--- ATHLETE ---': '---',
+    'Athlete Name': document.getElementById('athFirst').value + ' ' + document.getElementById('athLast').value,
+    'Date of Birth': document.getElementById('athDOB').value,
+    'Age': document.getElementById('athAge').value,
+    'School / Grade': document.getElementById('athSchool').value,
+    'Sports': sports || 'None listed',
+    'Other Sports': document.getElementById('spOther').value || 'None',
+    '--- PARENT ---': '---',
+    'Parent Name': document.getElementById('parFirst').value + ' ' + document.getElementById('parLast').value,
+    'Email': document.getElementById('parEmail').value,
+    'Phone': document.getElementById('parPhone').value,
+    'Relationship': rel ? rel.value : 'Not specified',
+    'Emergency Contact': document.getElementById('emergName').value,
+    'Emergency Phone': document.getElementById('emergPhone').value,
+    'How They Heard': ref ? ref.value : 'Not specified',
+    '--- HEALTH ---': '---',
+    'Injuries': inj ? inj.value : 'Not specified',
+    'Injury Details': document.getElementById('injuries').value || 'None',
+    'Medical Conditions': document.getElementById('medConditions').value || 'None',
+    'Allergies': document.getElementById('allergies').value || 'None',
+    'Recent Physical': phys ? phys.value : 'Not specified',
+    'Fitness Level': fit ? fit.value : 'Not specified',
+    'Prior Gym Experience': exp ? exp.value : 'Not specified',
+    '--- GOALS ---': '---',
+    'Goals': goals || 'Not specified',
+    'Parent Goal Statement': document.getElementById('goalStatement').value || 'None',
+    'Athlete Goal Statement': document.getElementById('athGoal').value || 'None',
+    'Anything Else': document.getElementById('anythingElse').value || 'None',
+    '--- WAIVER ---': '---',
+    'Waiver Agreed': document.getElementById('waiverAgree').checked ? 'YES' : 'NO',
+    'Photo Permission': photo ? photo.value : 'Not specified',
+    'Signature': document.getElementById('signature').value,
+    'Signature Date': document.getElementById('sigDate').value,
+    'Signer Relationship': document.getElementById('sigRel').value,
+    'Submitted': new Date().toLocaleDateString()
+  };
+}
+
+async function submitAndCheckout() {
+  if (!selectedPackage) { alert('Please select a package.'); return; }
+  const btn = document.getElementById('checkoutBtn');
+  btn.disabled = true;
+  btn.textContent = 'Saving registration...';
+
+  try {
+    await fetch(FORMSPREE, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(collectData())
+    });
+  } catch(e) {}
+
+  // Show thank you then redirect to Stripe
+  document.getElementById('sec-6').classList.remove('active');
+  document.getElementById('ps-6').classList.add('done');
+  document.getElementById('thankyou').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Redirect to Stripe after 2 seconds
+  setTimeout(() => {
+    window.location.href = STRIPE_LINKS[selectedPackage];
+  }, 2000);
+}
+</script>
+</body>
+</html>
