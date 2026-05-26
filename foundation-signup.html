@@ -459,6 +459,16 @@
         <div class="price-amount">$450</div>
       </div>
 
+      <div class="price-card" id="pkg-later" onclick="selectPackage('later')" style="border-style:dashed;">
+        <div class="price-radio"></div>
+        <div class="price-info">
+          <div class="price-name">Pay Later</div>
+          <div class="price-detail">Venmo · Cash · Check</div>
+          <div class="price-savings">Briana will follow up to arrange payment</div>
+        </div>
+        <div style="font-size:0.75rem; color:var(--text-light); font-weight:600;">I'll pay<br>soon</div>
+      </div>
+
     </div>
 
     <button class="checkout-btn" id="checkoutBtn" onclick="submitAndCheckout()" disabled>
@@ -476,7 +486,7 @@
   <div class="thankyou" id="thankyou">
     <div class="ty-icon">🌿</div>
     <h2 class="ty-title">Welcome to <em>The Foundation!</em></h2>
-    <p class="ty-body">Your registration has been received and Briana will be in touch within 48 hours to confirm your session times and get everything set up.</p>
+    <p class="ty-body" id="ty-msg">Your registration has been received and Briana will be in touch within 48 hours to confirm your session times and get everything set up.</p>
     <p class="ty-body">Your daughter is going to love this.</p>
     <p class="ty-sig">— Coach Briana Weber</p>
   </div>
@@ -499,7 +509,8 @@ const PACKAGE_NAMES = {
   single: 'Drop-In Single Session — $25',
   '10':   '10-Session Pack — $200',
   '20':   '20-Session Pack — $360',
-  '30':   'Full Program 30 Sessions — $450'
+  '30':   'Full Program 30 Sessions — $450',
+  'later': 'Pay Later — Venmo / Cash / Check'
 };
 
 let currentStep = 1;
@@ -552,7 +563,11 @@ function selectPackage(pkg) {
   document.getElementById('pkg-' + pkg).classList.add('selected');
   const btn = document.getElementById('checkoutBtn');
   btn.disabled = false;
-  btn.textContent = 'Complete Registration — ' + PACKAGE_NAMES[pkg].split(' — ')[1] + ' →';
+  if (pkg === 'later') {
+    btn.textContent = 'Complete Registration — Pay Later →';
+  } else {
+    btn.textContent = 'Complete Registration — ' + PACKAGE_NAMES[pkg].split(' — ')[1] + ' →';
+  }
 }
 
 function collectData() {
@@ -625,16 +640,18 @@ async function submitAndCheckout() {
     });
   } catch(e) {}
 
-  // Show thank you then redirect to Stripe
+  // Show thank you
   document.getElementById('sec-6').classList.remove('active');
   document.getElementById('ps-6').classList.add('done');
   document.getElementById('thankyou').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  // Redirect to Stripe after 2 seconds
-  setTimeout(() => {
-    window.location.href = STRIPE_LINKS[selectedPackage];
-  }, 2000);
+  // Redirect to Stripe unless pay later
+  if (selectedPackage !== 'later') {
+    setTimeout(() => {
+      window.location.href = STRIPE_LINKS[selectedPackage];
+    }, 2000);
+  }
 }
 </script>
 </body>
