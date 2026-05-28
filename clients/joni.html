@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The WELLness Collective — Joni</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage:#7a8c6e;--sage-light:#a8b89a;--sage-pale:#eef1eb;
+      --sand:#c4a882;--sand-light:#ddc9aa;--cream:#faf7f2;
+      --taupe:#8a7968;--taupe-dark:#5c5042;--olive:#6b7355;
+      --white:#ffffff;--text:#3a3228;--text-light:#7a6e62;--border:#e0d8ce;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;}
+    .site-header{background:var(--white);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;}
+    .logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;letter-spacing:0.12em;color:var(--taupe-dark);text-transform:uppercase;}
+    .logo span{color:var(--sage);}
+    .header-tag{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-light);font-weight:500;}
+    .hero{background:linear-gradient(135deg,#f0ede6 0%,#e8ede0 50%,#ede8e0 100%);padding:4rem 2rem 3rem;text-align:center;}
+    .hero-eyebrow{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--sage);font-weight:600;margin-bottom:1rem;}
+    .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.6rem);font-weight:300;color:var(--taupe-dark);line-height:1.15;margin-bottom:0.5rem;}
+    .hero h1 em{font-style:italic;color:var(--sage);}
+    .hero-sub{font-size:0.8rem;letter-spacing:0.1em;color:var(--text-light);margin-bottom:2rem;}
+    .hero-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;}
+    .stat{background:rgba(255,255,255,0.7);border:1px solid var(--border);border-radius:12px;padding:0.9rem 1.4rem;text-align:center;min-width:100px;}
+    .stat-val{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--sage);display:block;}
+    .stat-label{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-light);font-weight:600;margin-top:0.2rem;}
+    .tab-nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;overflow-x:auto;scrollbar-width:none;}
+    .tab-nav::-webkit-scrollbar{display:none;}
+    .tab-btn{padding:1rem 1.4rem;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-light);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:all 0.2s;}
+    .tab-btn:hover{color:var(--sage);}
+    .tab-btn.active{color:var(--sage);border-bottom-color:var(--sage);}
+    .main{max-width:860px;margin:0 auto;padding:2.5rem 1.5rem 4rem;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;animation:fadeUp 0.35s ease forwards;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+    .sec-eyebrow{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:0.5rem;}
+    .sec-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--taupe-dark);line-height:1.2;}
+    .divider{width:40px;height:1px;background:var(--sage-light);margin:1rem 0 1.5rem;}
+    .card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.8rem;margin-bottom:1.2rem;}
+    .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;cursor:pointer;}
+    .card-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:var(--taupe-dark);}
+    .card-day{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sage);font-weight:600;}
+    .card-toggle{width:28px;height:28px;border-radius:50%;background:var(--sage-pale);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--sage);transition:transform 0.3s;flex-shrink:0;}
+    .card.collapsed .card-toggle{transform:rotate(-90deg);}
+    .card.collapsed .card-body{display:none;}
+    .ws-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:0.8rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border);}
+    .ex-table{width:100%;border-collapse:collapse;}
+    .ex-table th{font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-light);font-weight:600;text-align:left;padding:0.4rem 0.6rem;border-bottom:1px solid var(--border);}
+    .ex-table td{padding:0.7rem 0.6rem;font-size:0.8rem;color:var(--text);border-bottom:1px solid #f0ebe3;vertical-align:middle;}
+    .ex-table tr:last-child td{border-bottom:none;}
+    .ex-name{font-weight:500;}
+    .ex-note{font-size:0.7rem;color:var(--text-light);margin-top:0.15rem;}
+    .check-cell{width:36px;text-align:center;}
+    .check-box{width:20px;height:20px;border:1.5px solid var(--border);border-radius:5px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;margin:0 auto;}
+    .check-box.checked{background:var(--sage);border-color:var(--sage);}
+    .check-box.checked::after{content:"✓";color:white;font-size:0.7rem;font-weight:700;}
+    .w-input{width:54px;border:1px solid var(--border);border-radius:6px;padding:0.3rem 0.4rem;font-family:'Montserrat',sans-serif;font-size:0.72rem;color:var(--text);text-align:center;background:var(--cream);outline:none;transition:border-color 0.2s;}
+    .w-input:focus{border-color:var(--sage);background:white;}
+    .pill-list{display:flex;flex-wrap:wrap;gap:0.5rem;}
+    .pill{background:var(--sage-pale);border:1px solid #d4dbc8;border-radius:20px;padding:0.35rem 0.8rem;font-size:0.72rem;color:var(--olive);font-weight:500;}
+    .pill span{color:var(--text-light);font-weight:400;margin-left:0.3rem;}
+    .cond-row{display:flex;align-items:center;gap:0.8rem;padding:0.8rem 1rem;background:linear-gradient(90deg,#f5f0e8,#f0ede6);border-radius:10px;border-left:3px solid var(--sand);}
+    .cond-text{font-size:0.78rem;color:var(--taupe);}
+    .opt-badge{margin-left:auto;font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sand);font-weight:600;}
+    .week-tabs{display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+    .week-tab{padding:0.45rem 1rem;border-radius:20px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--white);color:var(--text-light);transition:all 0.2s;}
+    .week-tab.active{background:var(--sage);color:white;border-color:var(--sage);}
+    .habits-grid{display:grid;gap:0.8rem;}
+    .habit-row{display:grid;grid-template-columns:1fr repeat(7,36px);align-items:center;gap:0.4rem;padding:0.8rem 1rem;background:var(--white);border:1px solid var(--border);border-radius:12px;}
+    .habit-name{font-size:0.75rem;font-weight:500;color:var(--text);}
+    .habit-goal{font-size:0.65rem;color:var(--text-light);margin-top:0.1rem;}
+    .day-header{display:grid;grid-template-columns:1fr repeat(7,36px);gap:0.4rem;padding:0 1rem;margin-bottom:0.4rem;}
+    .day-label{font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-light);text-align:center;font-weight:600;}
+    .goal-banner{background:linear-gradient(135deg,#e8ede0,#ede3d5);border:1px solid #d4dbc8;border-radius:16px;padding:2rem;text-align:center;margin-bottom:1.5rem;}
+    .goal-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--olive);font-weight:600;margin-bottom:0.8rem;}
+    .goal-text{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;font-style:italic;color:var(--taupe-dark);line-height:1.4;}
+    .timeline{display:grid;gap:0.6rem;}
+    .timeline-row{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;background:var(--white);border:1px solid var(--border);border-radius:12px;}
+    .week-num{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--sage-light);min-width:32px;}
+    .week-focus-text{font-size:0.8rem;font-weight:500;color:var(--text);}
+    .session-tracker{background:linear-gradient(135deg,var(--taupe-dark),#4a3c30);border-radius:16px;padding:2rem;margin-bottom:1.5rem;text-align:center;}
+    .sessions-big{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:var(--sand-light);line-height:1;}
+    .sessions-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,247,242,0.5);margin-top:0.3rem;}
+    .sessions-pkg{font-size:0.72rem;color:rgba(250,247,242,0.55);margin-top:0.8rem;}
+    .session-log{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+    .log-header{display:grid;grid-template-columns:1fr 2fr 1fr;padding:0.6rem 1rem;background:var(--cream);border-bottom:1px solid var(--border);}
+    .log-header div{font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-light);font-weight:600;}
+    .log-row{display:grid;grid-template-columns:1fr 2fr 1fr;padding:0.8rem 1rem;border-bottom:1px solid #f5f0e8;font-size:0.78rem;color:var(--text);}
+    .log-row:last-child{border-bottom:none;}
+    .log-row.used{background:#f9f7f4;}
+    .badge-used{display:inline-block;background:var(--sage);color:white;font-size:0.6rem;font-weight:600;padding:0.2rem 0.6rem;border-radius:20px;}
+    .badge-avail{display:inline-block;background:var(--sage-pale);color:var(--sage);font-size:0.6rem;font-weight:600;padding:0.2rem 0.6rem;border-radius:20px;border:1px solid var(--sage-light);}
+    .portal-footer{text-align:center;padding:2rem;border-top:1px solid var(--border);margin-top:1rem;}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:0.9rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--taupe);}
+    .footer-coach{font-size:0.65rem;color:var(--text-light);margin-top:0.3rem;}
+    @media(max-width:600px){
+      .hero{padding:2.5rem 1.2rem 2rem;}
+      .main{padding:1.5rem 1rem 3rem;}
+      .card{padding:1.2rem;}
+      .habit-row{grid-template-columns:1fr repeat(7,28px);gap:0.25rem;}
+      .day-header{grid-template-columns:1fr repeat(7,28px);gap:0.25rem;}
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">The <span>WELL</span>ness Collective</div>
+  <div class="header-tag">Client Portal</div>
+</header>
+
+<div class="hero">
+  <div class="hero-eyebrow">Monthly Membership</div>
+  <h1>Welcome, <em>Joni</em></h1>
+  <div class="hero-sub">Started May 27, 2026 &middot; Coach Briana Weber</div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-val">8,000</span><span class="stat-label">Daily Steps</span></div>
+    <div class="stat"><span class="stat-val">80g</span><span class="stat-label">Protein Goal</span></div>
+    <div class="stat"><span class="stat-val">80 oz</span><span class="stat-label">Water Goal</span></div>
+    <div class="stat"><span class="stat-val">2</span><span class="stat-label">Days / Week</span></div>
+  </div>
+</div>
+
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="overview">Overview</button>
+  <button class="tab-btn" data-tab="workouts">Workouts</button>
+  <button class="tab-btn" data-tab="meals">Meals</button>
+  <button class="tab-btn" data-tab="habits">Habits</button>
+  <button class="tab-btn" data-tab="sessions">Session Tracker</button>
+</nav>
+
+<main class="main">
+
+  <!-- OVERVIEW -->
+  <div class="tab-panel active" id="tab-overview">
+    <div class="sec-eyebrow">Your Journey</div>
+    <h2 class="sec-title">Program Overview</h2>
+    <div class="divider"></div>
+    <div class="goal-banner">
+      <div class="goal-label">Your Goal</div>
+      <div class="goal-text">"Tone and strengthen &mdash; feel vibrant and healthy for life."</div>
+    </div>
+    <div class="timeline" id="weekTimeline"></div>
+  </div>
+
+  <!-- WORKOUTS -->
+  <div class="tab-panel" id="tab-workouts">
+    <div class="sec-eyebrow" id="workoutEyebrow">Week 1</div>
+    <h2 class="sec-title">Workouts</h2>
+    <div class="divider"></div>
+    <div class="week-tabs" id="workoutWeekSelector"></div>
+    <div id="workoutCards"></div>
+  </div>
+
+  <!-- MEALS -->
+  <div class="tab-panel" id="tab-meals">
+    <div class="sec-eyebrow">Nourish Your Body</div>
+    <h2 class="sec-title">Meal Guide</h2>
+    <div class="divider"></div>
+    <div class="card" style="margin-bottom:1.2rem;background:linear-gradient(135deg,var(--sage-pale),#f5f0e8);">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--taupe-dark);margin-bottom:0.8rem;">"Good food does not have to be complicated. Simple, real ingredients &mdash; that is nourishment."</div>
+      <p style="font-size:0.78rem;color:var(--text-light);line-height:1.8;">Three meals per week, easy to make for two and easy to scale for company or grandkids. Grocery lists included each week.</p>
+    </div>
+    <div class="week-tabs" id="mealWeekTabs"></div>
+    <div id="mealCards"></div>
+    <div class="card" style="margin-top:1.5rem;">
+      <div class="sec-eyebrow" style="margin-bottom:1rem;">Weekly Grocery List</div>
+      <div id="groceryList"></div>
+    </div>
+  </div>
+
+  <!-- HABITS -->
+  <div class="tab-panel" id="tab-habits">
+    <div class="sec-eyebrow">Daily Non-Negotiables</div>
+    <h2 class="sec-title">Habit Tracker</h2>
+    <div class="divider"></div>
+    <div class="card">
+      <div class="day-header">
+        <div></div>
+        <div class="day-label">M</div><div class="day-label">T</div><div class="day-label">W</div>
+        <div class="day-label">T</div><div class="day-label">F</div><div class="day-label">S</div><div class="day-label">S</div>
+      </div>
+      <div class="habits-grid" id="habitsGrid"></div>
+    </div>
+  </div>
+
+  <!-- SESSION TRACKER -->
+  <div class="tab-panel" id="tab-sessions">
+    <div class="sec-eyebrow">In-Home Sessions</div>
+    <h2 class="sec-title">Session Tracker</h2>
+    <div class="divider"></div>
+    <div class="session-tracker">
+      <div class="sessions-big" id="sessionsRemaining">12</div>
+      <div class="sessions-label">Sessions Remaining</div>
+      <div class="sessions-pkg">12-Session Package &middot; Mon / Wed / Fri &middot; 6:00am &middot; In-Home</div>
+      <div style="display:flex;justify-content:center;gap:2rem;margin-top:1.2rem;flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--sand-light);" id="sessionsUsed">0</div>
+          <div style="font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(250,247,242,0.45);">Used</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--sand-light);">12</div>
+          <div style="font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(250,247,242,0.45);">Purchased</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--sand-light);">May 27, 2026</div>
+          <div style="font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(250,247,242,0.45);">Purchase Date</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sec-eyebrow" style="margin-bottom:1rem;">Session Log</div>
+      <div class="session-log">
+        <div class="log-header">
+          <div>Session</div><div>Date</div><div>Status</div>
+        </div>
+        <div id="sessionLogRows"></div>
+      </div>
+    </div>
+    <div class="card" style="background:var(--sage-pale);border-color:#d4dbc8;">
+      <p style="font-size:0.78rem;color:var(--olive);line-height:1.7;text-align:center;">Your session log is managed by Coach Briana. Sessions and dates are updated after each appointment.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="portal-footer">
+  <div class="footer-logo">The WELLness Collective</div>
+  <div class="footer-coach">Coached by Briana Weber</div>
+</footer>
+
+<script>
+const STORAGE_KEY = 'wellness_joni';
+
+const SESSION_DATA = {
+  purchased: 12,
+  purchaseDate: 'May 27, 2026',
+  sessionsRemaining: 12,
+  log: [
+    { session: 1, date: 'May 27, 2026', notes: 'Free consultation', status: 'consultation' }
+  ]
+};
+
+const WORKOUT_WEEKS = [{"week": 1, "focus": "Establish movement and build body awareness", "workouts": [{"day": "Day 1", "label": "Mobility + Light Strength", "warmup": [{"exercise": "Neck rolls + shoulder circles", "detail": "30 sec each"}, {"exercise": "Standing cat-cow", "detail": "8 slow breaths"}], "strength": [{"exercise": "Bodyweight squat", "sets": 2, "reps": "10", "notes": "Slow and controlled, hold chair if needed"}, {"exercise": "Standing chest press (light band or dumbbells)", "sets": 2, "reps": "10", "notes": "Start very light"}, {"exercise": "Bicep curl", "sets": 2, "reps": "10", "notes": "Light dumbbells"}, {"exercise": "Tricep press (overhead, light)", "sets": 2, "reps": "10", "notes": ""}, {"exercise": "Seated row (band)", "sets": 2, "reps": "10", "notes": "Sit tall, squeeze shoulder blades"}], "conditioning": {"exercise": "10 min gentle walk", "optional": true}, "cooldown": [{"exercise": "Seated forward fold", "detail": "45 sec"}, {"exercise": "Doorway chest stretch", "detail": "30 sec each side"}, {"exercise": "Child's pose", "detail": "60 sec"}]}, {"day": "Day 2", "label": "Yoga Flow + Core", "warmup": [{"exercise": "Deep breathing", "detail": "5 slow breaths in through nose, out through mouth"}, {"exercise": "Gentle spinal twist", "detail": "30 sec each side, seated"}], "strength": [{"exercise": "Cat-cow", "sets": 1, "reps": "10 breaths", "notes": "Sync with breath"}, {"exercise": "Bird-dog", "sets": 2, "reps": "8 each side", "notes": "Slow and controlled \u2014 opposite arm and leg"}, {"exercise": "Glute bridge", "sets": 2, "reps": "12", "notes": "Feet flat, press through heels"}, {"exercise": "Standing lunge (bodyweight)", "sets": 2, "reps": "8 each side", "notes": "Hold wall or chair if needed"}, {"exercise": "Side-lying leg raise", "sets": 2, "reps": "12 each side", "notes": ""}], "conditioning": {"exercise": "5 min gentle walk or light stretching", "optional": true}, "cooldown": [{"exercise": "Figure-four stretch", "detail": "45 sec each side"}, {"exercise": "Legs up the wall or supine twist", "detail": "60 sec each side"}, {"exercise": "Savasana", "detail": "2 min \u2014 just breathe and rest"}]}]}, {"week": 2, "focus": "Build consistency and gentle strength", "workouts": [{"day": "Day 1", "label": "Mobility + Light Strength", "warmup": [{"exercise": "Arm circles + wrist rolls", "detail": "30 sec each"}, {"exercise": "Standing march", "detail": "30 sec"}], "strength": [{"exercise": "Squat to chair (sit and stand)", "sets": 2, "reps": "12", "notes": "Slow lower \u2014 3 seconds down"}, {"exercise": "Romanian deadlift (light dumbbells)", "sets": 2, "reps": "10", "notes": "Hinge at hips, soft knee, flat back"}, {"exercise": "Chest press (dumbbells, lying)", "sets": 2, "reps": "12", "notes": ""}, {"exercise": "Bicep curl", "sets": 2, "reps": "12", "notes": "Slight increase from week 1 if comfortable"}, {"exercise": "Overhead tricep press", "sets": 2, "reps": "12", "notes": ""}], "conditioning": {"exercise": "10-15 min walk", "optional": true}, "cooldown": [{"exercise": "Hip flexor stretch", "detail": "45 sec each side"}, {"exercise": "Chest opener", "detail": "45 sec"}, {"exercise": "Child's pose", "detail": "60 sec"}]}, {"day": "Day 2", "label": "Pilates + Core Flow", "warmup": [{"exercise": "Pelvic tilts", "detail": "10 slow reps, lying on back"}, {"exercise": "Knee to chest pulls", "detail": "8 each side"}], "strength": [{"exercise": "Dead bug", "sets": 2, "reps": "6 each side", "notes": "Lower back stays pressed to floor \u2014 no rush"}, {"exercise": "Glute bridge with hold", "sets": 2, "reps": "10", "notes": "Hold 3 sec at top"}, {"exercise": "Clamshell (band optional)", "sets": 2, "reps": "12 each side", "notes": ""}, {"exercise": "Pilates hundred (modified)", "sets": 1, "reps": "30 pumps", "notes": "Knees bent, head down if needed"}, {"exercise": "Standing lunge", "sets": 2, "reps": "10 each side", "notes": ""}], "conditioning": {"exercise": "10 min gentle walk", "optional": true}, "cooldown": [{"exercise": "Seated spinal twist", "detail": "45 sec each side"}, {"exercise": "Supine figure-four", "detail": "45 sec each side"}, {"exercise": "Savasana", "detail": "2 min"}]}]}, {"week": 3, "focus": "Increase reps and body control", "workouts": [{"day": "Day 1", "label": "Mobility + Strength", "warmup": [{"exercise": "Hip circles", "detail": "10 each direction"}, {"exercise": "Shoulder rolls", "detail": "30 sec each direction"}], "strength": [{"exercise": "Squat (add light dumbbells)", "sets": 3, "reps": "12", "notes": "Hold dumbbells at sides or chest"}, {"exercise": "Romanian deadlift", "sets": 3, "reps": "10", "notes": "Focus on the hamstring stretch"}, {"exercise": "Chest press", "sets": 3, "reps": "12", "notes": ""}, {"exercise": "Alternating bicep curl", "sets": 2, "reps": "10 each side", "notes": ""}, {"exercise": "Lateral raise (very light)", "sets": 2, "reps": "12", "notes": "Slow and controlled"}], "conditioning": {"exercise": "15 min walk", "optional": true}, "cooldown": [{"exercise": "Standing quad stretch", "detail": "30 sec each side"}, {"exercise": "Hamstring stretch", "detail": "45 sec each side"}, {"exercise": "Child's pose", "detail": "60 sec"}]}, {"day": "Day 2", "label": "Yoga + Core", "warmup": [{"exercise": "Cat-cow", "detail": "8 breaths"}, {"exercise": "Seated forward fold", "detail": "30 sec"}], "strength": [{"exercise": "Warrior I (hold)", "sets": 2, "reps": "30 sec each side", "notes": "Use wall for balance if needed"}, {"exercise": "Warrior II (hold)", "sets": 2, "reps": "30 sec each side", "notes": ""}, {"exercise": "Dead bug", "sets": 3, "reps": "8 each side", "notes": ""}, {"exercise": "Glute bridge", "sets": 3, "reps": "12", "notes": ""}, {"exercise": "Modified side plank (on knee)", "sets": 2, "reps": "20 sec each side", "notes": ""}], "conditioning": {"exercise": "10 min walk", "optional": true}, "cooldown": [{"exercise": "Pigeon pose (modified on back)", "detail": "60 sec each side"}, {"exercise": "Neck stretch", "detail": "30 sec each side"}, {"exercise": "Savasana", "detail": "3 min"}]}]}, {"week": 4, "focus": "Maintenance, restoration, and celebration", "workouts": [{"day": "Day 1", "label": "Full Body Light Strength", "warmup": [{"exercise": "Gentle march in place", "detail": "30 sec"}, {"exercise": "Arm + shoulder circles", "detail": "30 sec each"}], "strength": [{"exercise": "Squat", "sets": 3, "reps": "12", "notes": "Your best form yet"}, {"exercise": "Romanian deadlift", "sets": 3, "reps": "12", "notes": ""}, {"exercise": "Chest press", "sets": 3, "reps": "12", "notes": ""}, {"exercise": "Bicep curl", "sets": 2, "reps": "12", "notes": ""}, {"exercise": "Tricep overhead press", "sets": 2, "reps": "12", "notes": ""}], "conditioning": {"exercise": "15-20 min walk", "optional": true}, "cooldown": [{"exercise": "Full body stretch flow", "detail": "5 min"}, {"exercise": "Child's pose", "detail": "90 sec"}]}, {"day": "Day 2", "label": "Restorative Yoga + Mobility", "warmup": [], "strength": [{"exercise": "Full body stretch flow", "sets": 1, "reps": "10 min", "notes": "Move through whatever feels good in your body today"}, {"exercise": "Cat-cow", "sets": 1, "reps": "10 breaths", "notes": ""}, {"exercise": "Seated spinal twist", "sets": 1, "reps": "60 sec each side", "notes": ""}, {"exercise": "Legs up the wall", "sets": 1, "reps": "3 min", "notes": "Just breathe and let your body rest"}, {"exercise": "Savasana", "sets": 1, "reps": "5 min", "notes": "You showed up every week. That matters."}], "conditioning": {"exercise": "30 min walk \u2014 celebrate what you built this month.", "optional": false}, "cooldown": [{"exercise": "Rest", "detail": "You earned it."}]}]}];
+
+const NUTRITION_WEEKS = [{"week": 1, "meals": [{"name": "Lemon Herb Baked Chicken with Roasted Vegetables", "tag": "Easy \u00b7 Serves 2 (scales for company)", "why": "Simple, clean protein with colorful vegetables. Easy to double or triple for company.", "servings": "2 servings", "macros": {"protein": "38g", "carbs": "28g", "fat": "12g", "fiber": "5g", "calories": "380"}, "ingredients": ["2 chicken breasts", "1 zucchini sliced", "1 cup cherry tomatoes", "1 bell pepper sliced", "2 tbsp olive oil", "1 lemon", "2 cloves garlic", "Fresh or dried herbs (thyme, rosemary)", "Salt + pepper"], "instructions": "Preheat oven to 400F. Place chicken and vegetables on a sheet pan. Drizzle with olive oil, squeeze lemon over everything, add garlic and herbs, salt and pepper. Roast 25-30 min until chicken reaches 165F."}, {"name": "Classic Beef and Vegetable Soup", "tag": "Comfort Food \u00b7 Batch Cook \u00b7 Serves 4-6", "why": "A hearty, nourishing soup that gets better the next day. Perfect for two with leftovers, or scale up for when the grandkids visit.", "servings": "4-6 servings", "macros": {"protein": "28g", "carbs": "24g", "fat": "8g", "fiber": "4g", "calories": "290"}, "ingredients": ["1 lb beef stew meat cubed", "3 carrots sliced", "3 stalks celery sliced", "2 potatoes cubed", "1 onion diced", "3 cloves garlic", "4 cups beef broth", "1 can diced tomatoes", "1 tsp Italian seasoning", "Salt + pepper", "Olive oil"], "instructions": "Brown beef in olive oil in a large pot. Add onion and garlic, cook 3 min. Add broth, tomatoes, vegetables, and seasoning. Bring to boil, reduce heat, simmer 45 min until beef is tender. Taste and adjust seasoning."}, {"name": "Baked Salmon with Garlic Butter and Asparagus", "tag": "Quick + Elegant \u00b7 Serves 2", "why": "On the table in under 30 minutes. Impressive enough for company, easy enough for a Tuesday. Salmon supports joint health and energy.", "servings": "2 servings", "macros": {"protein": "42g", "carbs": "8g", "fat": "18g", "fiber": "3g", "calories": "380"}, "ingredients": ["2 salmon fillets (6 oz each)", "1 bunch asparagus trimmed", "3 tbsp butter", "3 cloves garlic minced", "1 lemon", "Salt + pepper", "Fresh dill or parsley (optional)"], "instructions": "Preheat oven to 400F. Place salmon and asparagus on a sheet pan. Melt butter with garlic and pour over salmon. Squeeze lemon over everything. Season with salt and pepper. Bake 12-15 min until salmon flakes easily."}], "grocery": {"protein": ["2 chicken breasts", "1 lb beef stew meat", "2 salmon fillets (6 oz each)"], "produce": ["1 zucchini", "1 cup cherry tomatoes", "1 bell pepper", "3 carrots", "3 stalks celery", "2 potatoes", "1 onion", "1 bunch asparagus", "3 lemons", "Fresh dill or parsley (optional)"], "pantry": ["4 cups beef broth", "1 can diced tomatoes", "Olive oil", "Italian seasoning"], "dairy": ["Butter (1 stick)"], "spices": ["Garlic (2 heads)", "Thyme", "Rosemary", "Salt + pepper"]}}, {"week": 2, "meals": [{"name": "Slow Cooker Pot Roast", "tag": "Set It and Forget It \u00b7 Serves 4-6", "why": "Put it in the slow cooker in the morning, come home to dinner ready. Leftovers are even better the next day. Perfect for company.", "servings": "4-6 servings", "macros": {"protein": "34g", "carbs": "22g", "fat": "14g", "fiber": "3g", "calories": "360"}, "ingredients": ["2-3 lb chuck roast", "4 carrots cut in chunks", "4 potatoes quartered", "1 onion quartered", "3 cloves garlic", "2 cups beef broth", "1 tbsp Worcestershire sauce", "1 tsp thyme", "Salt + pepper"], "instructions": "Season roast with salt and pepper. Place vegetables in slow cooker, set roast on top. Pour broth and Worcestershire over everything. Add garlic and thyme. Cook on LOW 8 hours or HIGH 4-5 hours."}, {"name": "Shrimp Stir Fry with Rice", "tag": "Quick \u00b7 20 Minutes \u00b7 Serves 2", "why": "On the table in 20 minutes. Light, flavorful, and easy to double for guests.", "servings": "2 servings", "macros": {"protein": "32g", "carbs": "38g", "fat": "8g", "fiber": "3g", "calories": "360"}, "ingredients": ["1 lb large shrimp peeled and deveined", "2 cups jasmine rice", "2 cups broccoli florets", "1 cup snap peas", "1 bell pepper sliced", "3 tbsp coconut aminos or soy sauce", "1 tbsp sesame oil", "2 cloves garlic", "1 tsp ginger", "Green onions for topping"], "instructions": "Cook rice. Heat sesame oil in a large pan or wok. Add garlic and ginger, cook 1 min. Add vegetables, stir fry 3-4 min. Add shrimp, cook 2-3 min until pink. Add coconut aminos. Serve over rice, top with green onions."}, {"name": "Tuscan White Bean and Sausage Skillet", "tag": "One Pan \u00b7 Serves 2-4", "why": "One pan, minimal cleanup, on the table in 30 minutes. Comforting and hearty. Easy to scale up for company.", "servings": "2-4 servings", "macros": {"protein": "30g", "carbs": "32g", "fat": "12g", "fiber": "8g", "calories": "360"}, "ingredients": ["3 Italian sausage links sliced", "2 cans white beans drained", "3 cups spinach", "1 can diced tomatoes", "3 cloves garlic", "1 onion diced", "2 tbsp olive oil", "1 tsp Italian seasoning", "Parmesan for topping", "Crusty bread for serving"], "instructions": "Cook sausage in olive oil until browned. Add onion and garlic, cook 3 min. Add tomatoes and beans. Simmer 10 min. Stir in spinach until wilted. Top with parmesan. Serve with crusty bread."}], "grocery": {"protein": ["2-3 lb chuck roast", "1 lb large shrimp", "3 Italian sausage links"], "produce": ["4 carrots", "4 potatoes", "1 onion (+ 1 extra)", "2 cups broccoli florets", "1 cup snap peas", "2 bell peppers", "3 cups spinach", "Green onions"], "pantry": ["2 cups beef broth", "Worcestershire sauce", "2 cans white beans", "1 can diced tomatoes", "Jasmine rice", "Coconut aminos or soy sauce", "Sesame oil", "Olive oil", "Italian seasoning"], "dairy": ["Parmesan cheese"], "spices": ["Garlic (1 head)", "Ginger", "Thyme", "Salt + pepper"]}}, {"week": 3, "meals": [{"name": "Baked Chicken Thighs with Lemon and Herbs", "tag": "Family Favorite \u00b7 Easy \u00b7 Serves 4", "why": "Chicken thighs stay juicy and are hard to overcook \u2014 perfect for a relaxed dinner. Great for company.", "servings": "4 servings", "macros": {"protein": "36g", "carbs": "4g", "fat": "16g", "fiber": "0g", "calories": "320"}, "ingredients": ["4 bone-in chicken thighs", "2 tbsp olive oil", "1 lemon", "3 cloves garlic minced", "1 tsp paprika", "1 tsp Italian seasoning", "Salt + pepper", "Fresh parsley"], "instructions": "Preheat oven to 425F. Mix olive oil, garlic, paprika, Italian seasoning, salt and pepper. Coat chicken thighs. Place in baking dish. Squeeze lemon over top. Bake 35-40 min until skin is golden and internal temp reaches 165F. Garnish with parsley."}, {"name": "Pasta Primavera with Grilled Chicken", "tag": "Crowd Pleaser \u00b7 Serves 4-6", "why": "Everyone loves pasta. Loaded with vegetables and protein. Easy to scale up for grandkid dinners.", "servings": "4-6 servings", "macros": {"protein": "32g", "carbs": "48g", "fat": "10g", "fiber": "5g", "calories": "420"}, "ingredients": ["2 chicken breasts grilled and sliced", "12 oz penne or rotini", "2 cups cherry tomatoes halved", "1 zucchini sliced", "1 cup broccoli", "1 cup peas", "3 cloves garlic", "3 tbsp olive oil", "1/2 cup parmesan", "Fresh basil", "Salt + pepper"], "instructions": "Cook pasta. Saut\u00e9 garlic in olive oil. Add vegetables, cook 5 min. Toss with pasta, chicken, parmesan, and basil. Season with salt and pepper."}, {"name": "Homemade Turkey Meatballs with Marinara", "tag": "Batch Cook \u00b7 Freezer Friendly \u00b7 Serves 4", "why": "Make a big batch and freeze half. Perfect for when the grandkids come over. Serve over pasta, zucchini noodles, or with crusty bread.", "servings": "4 servings", "macros": {"protein": "34g", "carbs": "18g", "fat": "10g", "fiber": "2g", "calories": "310"}, "ingredients": ["1.5 lb ground turkey", "1/4 cup breadcrumbs", "1 egg", "2 cloves garlic minced", "1/4 cup parmesan", "1 tsp Italian seasoning", "Salt + pepper", "1 jar good marinara sauce", "Fresh basil"], "instructions": "Mix turkey, breadcrumbs, egg, garlic, parmesan, and seasoning. Form into balls. Bake at 400F for 20 min. Warm marinara in a pan, add meatballs. Simmer 10 min. Serve over pasta or with bread. Top with fresh basil."}], "grocery": {"protein": ["4 bone-in chicken thighs", "2 chicken breasts", "1.5 lb ground turkey", "1 egg"], "produce": ["3 lemons", "2 cups cherry tomatoes", "2 zucchini", "1 cup broccoli", "1 cup peas (frozen ok)", "Fresh parsley", "Fresh basil"], "pantry": ["12 oz penne or rotini", "1 jar marinara sauce", "Breadcrumbs", "Olive oil"], "dairy": ["Parmesan cheese (block)"], "spices": ["Garlic (1 head)", "Paprika", "Italian seasoning", "Salt + pepper"]}}, {"week": 4, "meals": [{"name": "Sheet Pan Pork Tenderloin with Apples and Sweet Potatoes", "tag": "Fall Comfort \u00b7 Easy \u00b7 Serves 4", "why": "A beautiful one-pan meal that looks impressive but takes almost no effort. Perfect for company.", "servings": "4 servings", "macros": {"protein": "36g", "carbs": "32g", "fat": "10g", "fiber": "4g", "calories": "370"}, "ingredients": ["1 pork tenderloin (about 1.5 lb)", "2 sweet potatoes cubed", "2 apples cored and sliced", "1 onion sliced", "2 tbsp olive oil", "1 tbsp Dijon mustard", "1 tsp rosemary", "1 tsp thyme", "Salt + pepper", "2 tbsp honey"], "instructions": "Preheat oven to 425F. Toss vegetables and apples with olive oil, salt, and pepper. Spread on sheet pan. Rub pork with mustard, honey, rosemary, and thyme. Nestle on top of vegetables. Roast 25-30 min until pork reaches 145F."}, {"name": "Simple Chicken Tortilla Soup", "tag": "Cozy + Easy \u00b7 Serves 4-6 \u00b7 Grandkid Approved", "why": "Kids and adults both love this one. Use a rotisserie chicken to make it even easier. Great for a crowd.", "servings": "4-6 servings", "macros": {"protein": "30g", "carbs": "28g", "fat": "8g", "fiber": "6g", "calories": "310"}, "ingredients": ["1 rotisserie chicken shredded", "1 can black beans drained", "1 can corn drained", "1 can diced tomatoes with green chiles", "4 cups chicken broth", "1 onion diced", "2 cloves garlic", "1 tsp cumin", "1 tsp chili powder", "Tortilla strips", "Sour cream", "Shredded cheese", "Avocado", "Lime"], "instructions": "Saut\u00e9 onion and garlic. Add broth, tomatoes, beans, and corn. Season with cumin and chili powder. Simmer 15 min. Add shredded chicken. Serve topped with tortilla strips, sour cream, cheese, avocado, and lime."}, {"name": "Baked Cod with Lemon Butter and Green Beans", "tag": "Light + Fresh \u00b7 25 Minutes \u00b7 Serves 2", "why": "Light and clean for a week 4 reset. Easy to double. Cod is mild and approachable even for those who are unsure about fish.", "servings": "2 servings", "macros": {"protein": "34g", "carbs": "10g", "fat": "14g", "fiber": "3g", "calories": "310"}, "ingredients": ["2 cod fillets (6 oz each)", "2 cups green beans trimmed", "3 tbsp butter", "2 cloves garlic minced", "1 lemon", "1 tsp paprika", "Salt + pepper", "Fresh parsley"], "instructions": "Preheat oven to 400F. Place cod and green beans on a sheet pan. Melt butter with garlic and pour over fish. Sprinkle with paprika. Squeeze lemon over everything. Bake 12-15 min until fish flakes. Garnish with parsley."}], "grocery": {"protein": ["1 pork tenderloin (1.5 lb)", "1 rotisserie chicken", "2 cod fillets (6 oz each)"], "produce": ["2 sweet potatoes", "2 apples", "1 onion (+ 1 extra)", "2 cups green beans", "1 avocado", "3 lemons", "Fresh parsley"], "pantry": ["1 can black beans", "1 can corn", "1 can diced tomatoes with green chiles", "4 cups chicken broth", "Olive oil", "Dijon mustard", "Honey", "Tortilla strips"], "dairy": ["Butter", "Sour cream", "Shredded cheese"], "spices": ["Garlic (1 head)", "Rosemary", "Thyme", "Cumin", "Chili powder", "Paprika", "Salt + pepper"]}}];
+
+
+const HABITS = [
+  { name: 'Protein Goal', goal: '80g daily', key: 'protein' },
+  { name: 'Hydration', goal: '80 oz daily', key: 'water' },
+  { name: 'LMNT Electrolytes', goal: 'Daily', key: 'lmnt' },
+  { name: 'Movement', goal: 'Daily', key: 'movement' },
+  { name: 'Step Goal', goal: '8,000 steps', key: 'steps' },
+  { name: 'Sleep Priority', goal: '7-8 hrs', key: 'sleep' },
+  { name: 'Personal Development', goal: '30 min daily', key: 'pd' }
+];
+
+document.addEventListener('DOMContentLoaded', function() {
+  buildTimeline();
+  buildWeekSelector('workoutWeekSelector', 4, buildWorkoutCards);
+  buildWeekSelector('mealWeekTabs', 4, buildMealCards);
+  buildWorkoutCards(1);
+  buildMealCards(1);
+  buildHabits();
+  buildSessionLog();
+  restoreState();
+});
+
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+function buildTimeline() {
+  var el = document.getElementById('weekTimeline');
+  var focuses = [
+    'Establish movement and build body awareness',
+    'Build consistency and gentle strength',
+    'Increase reps and body control',
+    'Maintenance, restoration, and celebration'
+  ];
+  focuses.forEach(function(focus, i) {
+    var row = document.createElement('div');
+    row.className = 'timeline-row';
+    row.innerHTML = '<div class="week-num">' + (i+1) + '</div><div class="week-info"><div class="week-focus-text">Week ' + (i+1) + ' Focus: ' + focus + '</div></div>';
+    el.appendChild(row);
+  });
+}
+
+function buildWeekSelector(containerId, count, callback) {
+  var container = document.getElementById(containerId);
+  if (!container) return;
+  for (var w = 1; w <= count; w++) {
+    (function(weekNum) {
+      var btn = document.createElement('button');
+      btn.className = 'week-tab' + (weekNum === 1 ? ' active' : '');
+      btn.textContent = 'Week ' + weekNum;
+      btn.addEventListener('click', function() {
+        container.querySelectorAll('.week-tab').forEach(function(t) { t.classList.remove('active'); });
+        btn.classList.add('active');
+        if (callback) callback(weekNum);
+      });
+      container.appendChild(btn);
+    })(w);
+  }
+}
+
+function buildWorkoutCards(weekNum) {
+  var container = document.getElementById('workoutCards');
+  container.innerHTML = '';
+  var eyebrow = document.getElementById('workoutEyebrow');
+  var weekData = WORKOUT_WEEKS[weekNum - 1];
+  if (eyebrow) eyebrow.textContent = 'Week ' + weekNum + ' - ' + weekData.focus;
+
+  weekData.workouts.forEach(function(workout, wi) {
+    var card = document.createElement('div');
+    card.className = 'card';
+
+    var warmupHtml = '';
+    if (workout.warmup && workout.warmup.length > 0) {
+      warmupHtml = '<div style="margin-bottom:1.2rem;"><div class="ws-label">Warm-Up</div><div class="pill-list">' +
+        workout.warmup.map(function(w) {
+          return '<div class="pill">' + w.exercise + '<span>' + w.detail + '</span></div>';
+        }).join('') + '</div></div>';
+    }
+
+    var strengthRows = workout.strength.map(function(ex, ei) {
+      return '<tr>' +
+        '<td><div class="ex-name">' + ex.exercise + '</div>' + (ex.notes ? '<div class="ex-note">' + ex.notes + '</div>' : '') + '</td>' +
+        '<td>' + ex.sets + '</td>' +
+        '<td>' + ex.reps + '</td>' +
+        '<td><input type="text" class="w-input" id="wt-w' + weekNum + '-' + wi + '-' + ei + '" placeholder="lbs" oninput="saveWeight(this.id, this.value)" /></td>' +
+        '<td class="check-cell"><div class="check-box" id="chk-w' + weekNum + '-' + wi + '-' + ei + '" onclick="toggleCheck(this.id)"></div></td>' +
+        '</tr>';
+    }).join('');
+
+    var condHtml = '';
+    if (workout.conditioning) {
+      condHtml = '<div style="margin-bottom:1.2rem;"><div class="ws-label">Conditioning</div>' +
+        '<div class="cond-row"><span class="cond-text">' + workout.conditioning.exercise + '</span>' +
+        (workout.conditioning.optional ? '<span class="opt-badge">Optional</span>' : '') +
+        '</div></div>';
+    }
+
+    var cooldownHtml = '';
+    if (workout.cooldown && workout.cooldown.length > 0) {
+      cooldownHtml = '<div style="margin-bottom:0.5rem;"><div class="ws-label">Cooldown + Stretch</div><div class="pill-list">' +
+        workout.cooldown.map(function(c) {
+          return '<div class="pill">' + c.exercise + '<span>' + c.detail + '</span></div>';
+        }).join('') + '</div></div>';
+    }
+
+    card.innerHTML =
+      '<div class="card-header" onclick="toggleCard(this)">' +
+        '<div><div class="card-day">' + workout.day + '</div><div class="card-title">' + workout.label + '</div></div>' +
+        '<button class="card-toggle">&#9662;</button>' +
+      '</div>' +
+      '<div class="card-body">' +
+        warmupHtml +
+        '<div style="margin-bottom:1.2rem;"><div class="ws-label">Exercises</div>' +
+        '<table class="ex-table"><thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Weight</th><th class="check-cell">Done</th></tr></thead>' +
+        '<tbody>' + strengthRows + '</tbody></table></div>' +
+        condHtml + cooldownHtml +
+      '</div>';
+
+    container.appendChild(card);
+  });
+  restoreWorkoutState();
+}
+
+function buildMealCards(weekNum) {
+  var container = document.getElementById('mealCards');
+  var groceryContainer = document.getElementById('groceryList');
+  container.innerHTML = '';
+  var weekData = NUTRITION_WEEKS[weekNum - 1];
+
+  weekData.meals.forEach(function(meal, mi) {
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.style.marginBottom = '1.2rem';
+
+    var macroKeys = [['Protein', meal.macros.protein], ['Carbs', meal.macros.carbs], ['Fat', meal.macros.fat], ['Fiber', meal.macros.fiber], ['Calories', meal.macros.calories]];
+    var macroHtml = macroKeys.map(function(m) {
+      return '<div style="background:white;border:1px solid var(--border);border-radius:10px;padding:0.5rem;text-align:center;">' +
+        '<div style="font-size:1.2rem;color:var(--sage);font-weight:500;">' + m[1] + '</div>' +
+        '<div style="font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-light);">' + m[0] + '</div>' +
+        '</div>';
+    }).join('');
+
+    var ingredientList = meal.ingredients.map(function(ing) {
+      return '<li style="font-size:0.75rem;color:var(--text-light);padding:0.3rem 0;border-bottom:1px solid #f5f0e8;">- ' + ing + '</li>';
+    }).join('');
+
+    card.innerHTML =
+      '<div class="card-header" onclick="toggleCard(this)">' +
+        '<div><div class="card-day">Meal ' + (mi+1) + ' &mdash; ' + meal.tag + '</div><div class="card-title">' + meal.name + '</div></div>' +
+        '<button class="card-toggle">&#9662;</button>' +
+      '</div>' +
+      '<div class="card-body">' +
+        '<div style="background:var(--sage-pale);border-radius:10px;padding:0.8rem 1rem;margin-bottom:1.2rem;border-left:3px solid var(--sage);">' +
+          '<div style="font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--sage);font-weight:600;margin-bottom:0.3rem;">Why This Meal</div>' +
+          '<p style="font-size:0.75rem;color:var(--text-light);line-height:1.7;">' + meal.why + '</p>' +
+        '</div>' +
+        '<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0.5rem;margin-bottom:1.2rem;">' + macroHtml + '</div>' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;">' +
+          '<div><div class="ws-label" style="margin-bottom:0.6rem;">Ingredients &mdash; ' + meal.servings + '</div><ul style="list-style:none;padding:0;">' + ingredientList + '</ul></div>' +
+          '<div><div class="ws-label" style="margin-bottom:0.6rem;">Instructions</div><p style="font-size:0.75rem;color:var(--text-light);line-height:1.8;">' + meal.instructions + '</p></div>' +
+        '</div>' +
+      '</div>';
+
+    container.appendChild(card);
+  });
+
+  var categories = [
+    { label: 'Protein', key: 'protein', color: '#e8f0e4' },
+    { label: 'Produce', key: 'produce', color: '#eef1eb' },
+    { label: 'Pantry', key: 'pantry', color: '#f5f0e8' },
+    { label: 'Dairy + Eggs', key: 'dairy', color: '#faf7f2' },
+    { label: 'Spices', key: 'spices', color: '#f0ede6' }
+  ];
+
+  groceryContainer.innerHTML = categories.map(function(cat) {
+    if (!weekData.grocery[cat.key] || weekData.grocery[cat.key].length === 0) return '';
+    var items = weekData.grocery[cat.key].map(function(item, idx) {
+      var id = 'groc-w' + weekNum + '-' + cat.key + '-' + idx;
+      return '<div style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.5rem;background:' + cat.color + ';border-radius:6px;">' +
+        '<div class="check-box" id="' + id + '" onclick="toggleCheck(' + JSON.stringify(id) + ')" style="width:16px;height:16px;flex-shrink:0;"></div>' +
+        '<span style="font-size:0.72rem;color:var(--text);">' + item + '</span>' +
+        '</div>';
+    }).join('');
+    return '<div style="margin-bottom:1rem;">' +
+      '<div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:0.5rem;padding-bottom:0.3rem;border-bottom:1px solid var(--border);">' + cat.label + '</div>' +
+      '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.4rem;">' + items + '</div>' +
+      '</div>';
+  }).join('');
+
+  restoreWorkoutState();
+}
+
+function buildHabits() {
+  var grid = document.getElementById('habitsGrid');
+  HABITS.forEach(function(habit) {
+    var row = document.createElement('div');
+    row.className = 'habit-row';
+    var checks = [0,1,2,3,4,5,6].map(function(d) {
+      var id = 'h-' + habit.key + '-' + d;
+      return '<div class="check-box" id="' + id + '" onclick="toggleCheck(' + JSON.stringify(id) + ')"></div>';
+    }).join('');
+    row.innerHTML = '<div><div class="habit-name">' + habit.name + '</div><div class="habit-goal">' + habit.goal + '</div></div>' + checks;
+    grid.appendChild(row);
+  });
+}
+
+function buildSessionLog() {
+  var container = document.getElementById('sessionLogRows');
+  var remainingEl = document.getElementById('sessionsRemaining');
+  var usedEl = document.getElementById('sessionsUsed');
+  container.innerHTML = '';
+  var usedCount = 0;
+
+  for (var i = 1; i <= SESSION_DATA.purchased; i++) {
+    var logEntry = null;
+    for (var j = 0; j < SESSION_DATA.log.length; j++) {
+      if (SESSION_DATA.log[j].session === i) { logEntry = SESSION_DATA.log[j]; break; }
+    }
+    var row = document.createElement('div');
+    if (logEntry) {
+      usedCount++;
+      row.className = 'log-row used';
+      row.innerHTML =
+        '<div><span class="badge-used">Session ' + i + '</span></div>' +
+        '<div>' + logEntry.date + (logEntry.notes ? ' <span style="color:var(--text-light);font-size:0.68rem;">&mdash; ' + logEntry.notes + '</span>' : '') + '</div>' +
+        '<div><span style="font-size:0.72rem;color:var(--sage);font-weight:500;">Complete</span></div>';
+    } else {
+      row.className = 'log-row';
+      row.innerHTML =
+        '<div style="font-size:0.72rem;color:var(--text-light);">Session ' + i + '</div>' +
+        '<div style="font-size:0.72rem;color:var(--border);">&mdash;</div>' +
+        '<div><span class="badge-avail">Available</span></div>';
+    }
+    container.appendChild(row);
+  }
+
+  var remainingCount = SESSION_DATA.purchased - usedCount;
+  if (remainingEl) remainingEl.textContent = remainingCount;
+  if (usedEl) usedEl.textContent = usedCount;
+}
+
+function toggleCard(header) {
+  header.closest('.card').classList.toggle('collapsed');
+}
+
+function toggleCheck(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.toggle('checked');
+  var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  saved[id] = el.classList.contains('checked');
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+}
+
+function saveWeight(id, value) {
+  var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  saved[id] = value;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+}
+
+function restoreState() {
+  restoreWorkoutState();
+}
+
+function restoreWorkoutState() {
+  var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  Object.keys(saved).forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    if (el.classList.contains('check-box') && saved[id]) el.classList.add('checked');
+    if (el.classList.contains('w-input') && saved[id]) el.value = saved[id];
+  });
+}
+</script>
+</body>
+</html>
