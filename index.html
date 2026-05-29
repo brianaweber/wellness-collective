@@ -170,22 +170,62 @@
       .offerings-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
       .offerings-grid > div[style*="grid-column"] { grid-column: 1 !important; }
       .membership-featured-card { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
-      .membership-featured-card > div:last-child { display: none; }
+      .membership-featured-card > div:last-child { display: block; }
       .pricing-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
       .offerings, .sessions { padding: 4rem 1.5rem; }
     }
+  
+    /*  SITE TAB BAR  */
+    .site-tab-bar {
+      position: sticky;
+      top: 64px;
+      z-index: 90;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0 1.5rem;
+    }
+    .site-tab-bar::-webkit-scrollbar { display: none; }
+    .site-tab {
+      padding: 0.9rem 1.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .site-tab:hover { color: var(--sage); }
+    .site-tab.active { color: var(--sage); border-bottom-color: var(--sage); }
+
+    /*  PAGE PANELS  */
+    .page-panel { display: none; }
+    .page-panel.active { display: block; animation: fadeUp 0.3s ease forwards; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+    /*  MEMBERSHIP PERKS  */
+    .perk-item { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+    .perk-item:last-child { border-bottom: none; }
+    .perk-check { width: 20px; height: 20px; background: var(--sage); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
+    .perk-check::after { content: ''; color: white; font-size: 0.65rem; font-weight: 700; }
+    .perk-text { font-size: 0.8rem; color: var(--text); font-weight: 500; }
+    .perk-sub { font-size: 0.68rem; color: var(--text-light); margin-top: 0.1rem; line-height: 1.5; }
+
   </style>
+
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo"><span class="well">Well</span>ness Collective</a>
-  <ul class="nav-links">
-    <li><a href="#story">My Story</a></li>
-    <li><a href="intake-form.html">Work With Me</a></li>
-    <li><a href="#foundation">The Foundation</a></li>
-  </ul>
+<nav id="mainNav">
+  <a href="#" class="nav-logo" onclick="showTab('home'); return false;"><span class="well">Well</span>ness Collective</a>
   <div class="nav-action-btns">
     <a href="https://new.myzyia.com/BRIANAWEBER/en_US/" target="_blank" class="nav-pill nav-pill-zyia">Shop Zyia</a>
     <a href="lmnt-order.html" class="nav-pill nav-pill-lmnt">Order LMNT</a>
@@ -193,6 +233,18 @@
   </div>
 </nav>
 
+<!-- TAB BAR -->
+<div class="site-tab-bar" id="siteTabBar">
+  <button class="site-tab active" data-tab="home" onclick="showTab('home')">Home</button>
+  <button class="site-tab" data-tab="membership" onclick="showTab('membership')">Membership</button>
+  <button class="site-tab" data-tab="sessions" onclick="showTab('sessions')">Sessions</button>
+  <button class="site-tab" data-tab="foundation" onclick="showTab('foundation')">The Foundation</button>
+  <button class="site-tab" data-tab="restore" onclick="showTab('restore')">Restore Retreat</button>
+  <button class="site-tab" data-tab="shop" onclick="showTab('shop')">Shop</button>
+</div>
+
+<!-- HOME TAB -->
+<div class="page-panel active" id="panel-home">
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
@@ -225,7 +277,9 @@
   </div>
 </section>
 
-<div class="section-divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
+<div class="section-divider"><div class="divider-line"></div><div class="divider-mark"></div><div class="divider-line"></div></div>
+
+
 
 <!-- STORY -->
 <section class="story" id="story">
@@ -243,13 +297,17 @@
   </div>
 </section>
 
-<div class="section-divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
+<div class="section-divider"><div class="divider-line"></div><div class="divider-mark"></div><div class="divider-line"></div></div>
+
+
 
 <!-- PHILOSOPHY -->
 <section class="philosophy">
   <p class="philosophy-quote">"Wellness isn't a destination you arrive at — it's a <em>return.</em> A coming back to yourself, again and again, no matter how far life takes you from your center."</p>
   <p class="philosophy-attr">— The WELLness Collective</p>
 </section>
+
+
 
 <!-- OFFERINGS -->
 <section class="offerings" id="offerings">
@@ -275,19 +333,19 @@
           <input type="text" placeholder="Your name" id="mem-name" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
           <input type="email" placeholder="Your email" id="mem-email" class="lead-input" style="background:rgba(255,255,255,0.1); color:var(--cream); border-color:rgba(255,255,255,0.2);" />
           <button class="lead-submit" onclick="submitLead('mem', 'Membership — $49/month')">Send My Info →</button>
-          <div id="mem-confirm" class="lead-confirm" style="display:none; background:rgba(122,140,110,0.3); color:var(--sage-pale);">✓ You're in! Briana will be in touch soon. 🌿</div>
+          <div id="mem-confirm" class="lead-confirm" style="display:none; background:rgba(122,140,110,0.3); color:var(--sage-pale);"> You're in! Briana will be in touch soon. </div>
         </div>
       </div>
       <div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
-          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Personal training portal</div>
-          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Fresh workouts monthly</div>
-          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Nutrition guide + grocery lists</div>
-          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Habit + progress tracking</div>
-          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Weekly check-ins</div>
-          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Private Facebook community</div>
-          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Discounted session rates</div>
-          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);">✓</span> Cancel anytime</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);"></span> Personal training portal</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);"></span> Fresh workouts monthly</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);"></span> Nutrition guide + grocery lists</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);"></span> Habit + progress tracking</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);"></span> Weekly check-ins</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);"></span> Private Facebook community</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);"></span> Discounted session rates</div>
+          <div style="font-size:0.7rem; color:rgba(250,247,242,0.8); display:flex; align-items:center; gap:0.5rem;"><span style="color:var(--sage-light);"></span> Cancel anytime</div>
         </div>
       </div>
     </div>
@@ -305,7 +363,7 @@
         <input type="text" placeholder="Your name" id="fr-name" class="lead-input" />
         <input type="email" placeholder="Your email" id="fr-email" class="lead-input" />
         <button class="lead-submit" onclick="submitLead('fr', 'Wellness Retreat Notification')">Notify Me →</button>
-        <div id="fr-confirm" class="lead-confirm" style="display:none;">✓ You're on the list! Stay tuned.</div>
+        <div id="fr-confirm" class="lead-confirm" style="display:none;"> You're on the list! Stay tuned.</div>
       </div>
     </div>
 
@@ -322,7 +380,7 @@
         <input type="text" placeholder="Your name" id="fs-name" class="lead-input" />
         <input type="email" placeholder="Your email" id="fs-email" class="lead-input" />
         <button class="lead-submit" onclick="submitLead('fs', 'Summer Strength Series — Nice Juicery Collab')">Notify Me →</button>
-        <div id="fs-confirm" class="lead-confirm" style="display:none;">✓ You're on the list! Details coming soon. 🌿</div>
+        <div id="fs-confirm" class="lead-confirm" style="display:none;"> You're on the list! Details coming soon. </div>
       </div>
     </div>
 
@@ -330,164 +388,411 @@
 
 </section>
 
+
+</div>
+
+
+<!-- MEMBERSHIP TAB -->
+<div class="page-panel" id="panel-membership">
+
+  <div style="max-width:900px; margin:0 auto; padding:4rem 2rem;">
+
+    <div style="text-align:center; margin-bottom:3rem;">
+      <p class="section-eyebrow">Monthly Membership</p>
+      <h2 class="section-title">The WELLness <em>Collective</em></h2>
+      <div style="width:40px; height:1px; background:var(--sage-light); margin:1.2rem auto;"></div>
+      <p style="font-size:0.82rem; color:var(--text-light); max-width:520px; margin:0 auto; line-height:1.8;">Everything you need to show up consistently — workouts, nutrition, accountability, and community. Cancel anytime.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+
+      <!-- PRICING CARD -->
+      <div style="background:linear-gradient(135deg,var(--taupe-dark),#4a3c30); border-radius:20px; padding:2.5rem; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle,rgba(122,140,110,0.2),transparent 70%);"></div>
+        <p style="font-size:0.6rem; letter-spacing:0.24em; text-transform:uppercase; color:var(--sage-light); font-weight:600; margin-bottom:0.8rem;">Monthly Membership</p>
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:400; color:var(--cream); margin-bottom:0.5rem;">The WELLness Collective</h3>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:300; color:var(--sand-light); line-height:1; margin:0.8rem 0 0.3rem;">$49</div>
+        <div style="font-size:0.7rem; color:rgba(250,247,242,0.45); margin-bottom:2rem;">per month &middot; cancel anytime</div>
+        <a href="https://buy.stripe.com/4gM4gydDk8Be9p36AyeZ202" target="_blank" style="display:flex; align-items:center; justify-content:center; background:var(--sage); color:white; padding:0.9rem 1.5rem; border-radius:30px; font-size:0.68rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; text-decoration:none; margin-bottom:0.8rem; transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Subscribe — $49/month →</a>
+        <p style="font-size:0.6rem; color:rgba(250,247,242,0.35); text-align:center;">Secure payment via Stripe &middot; Cancel anytime</p>
+        <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.1);">
+          <p style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--sage-light); font-weight:600; margin-bottom:0.3rem;">Already signed up?</p>
+          <p style="font-size:0.72rem; color:rgba(250,247,242,0.5); line-height:1.6;">Complete your intake form so Briana can build your portal.</p>
+          <a href="intake-form.html" style="display:inline-flex; margin-top:0.8rem; color:var(--sage-light); font-size:0.68rem; font-weight:600; text-decoration:underline;">Complete Intake Form →</a>
+        </div>
+      </div>
+
+      <!-- PERKS LIST -->
+      <div>
+        <p style="font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sand); font-weight:600; margin-bottom:1.2rem;">Everything included</p>
+        <div>
+          <div class="perk-item">
+            <div class="perk-check"></div>
+            <div><div class="perk-text">Personal Training Portal</div><div class="perk-sub">Your own private portal with 4 weeks of custom programming, updated every month.</div></div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-check"></div>
+            <div><div class="perk-text">Fresh Workouts Every Month</div><div class="perk-sub">5 days/week of progressive programming — Day 1 through Day 5, always moving forward.</div></div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-check"></div>
+            <div><div class="perk-text">Nutrition Guide + Grocery Lists</div><div class="perk-sub">4 weeks of hormone-healthy, gut-friendly meal guides with organized weekly grocery lists.</div></div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-check"></div>
+            <div><div class="perk-text">Habit Tracker</div><div class="perk-sub">Daily tracking for protein, hydration, movement, sleep, steps, and personal development.</div></div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-check"></div>
+            <div><div class="perk-text">Weekly Check-Ins</div><div class="perk-sub">Reflect on wins, challenges, energy, and growth. Sent directly to Briana.</div></div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-check"></div>
+            <div><div class="perk-text">Progress Log</div><div class="perk-sub">Track weight, energy, mood, and sleep week by week — all in one place.</div></div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-check"></div>
+            <div><div class="perk-text">Private Facebook Community</div><div class="perk-sub">Connect with other WELLness Collective women. Encouragement, accountability, and community.</div></div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-check"></div>
+            <div><div class="perk-text">Discounted Session Rates</div><div class="perk-sub">Members save on all 1:1 gym, in-home, and small group sessions.</div></div>
+          </div>
+          <div class="perk-item">
+            <div class="perk-check"></div>
+            <div><div class="perk-text">Cancel Anytime</div><div class="perk-sub">No contracts. No commitment beyond the current month. Simple.</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- WHAT A MONTH LOOKS LIKE -->
+    <div style="margin-top:4rem; text-align:center;">
+      <p class="section-eyebrow">What a month looks like</p>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:400; color:var(--taupe-dark); margin-bottom:0.5rem;">Your portal, <em>your pace.</em></h3>
+      <div style="width:40px; height:1px; background:var(--sage-light); margin:1rem auto 2.5rem;"></div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1.2rem; margin-bottom:4rem;">
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--sage); margin-bottom:0.5rem;">4</div>
+        <div style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-light); font-weight:600; margin-bottom:0.4rem;">Weeks of Programming</div>
+        <p style="font-size:0.72rem; color:var(--text-light); line-height:1.6;">Fresh workouts, updated every month</p>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--sage); margin-bottom:0.5rem;">5</div>
+        <div style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-light); font-weight:600; margin-bottom:0.4rem;">Days Per Week</div>
+        <p style="font-size:0.72rem; color:var(--text-light); line-height:1.6;">Move at your pace, on your schedule</p>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--sage); margin-bottom:0.5rem;">12</div>
+        <div style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-light); font-weight:600; margin-bottom:0.4rem;">Meals + Grocery Lists</div>
+        <p style="font-size:0.72rem; color:var(--text-light); line-height:1.6;">3 nourishing recipes per week, organized shopping list</p>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:16px; padding:1.5rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--sage); margin-bottom:0.5rem;">7</div>
+        <div style="font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-light); font-weight:600; margin-bottom:0.4rem;">Daily Habits Tracked</div>
+        <p style="font-size:0.72rem; color:var(--text-light); line-height:1.6;">Protein, hydration, movement, sleep + more</p>
+      </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div style="background:linear-gradient(135deg,#e8ede0,#ede3d5); border:1px solid #d4dbc8; border-radius:20px; padding:2.5rem; text-align:center; max-width:600px; margin:0 auto;">
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--taupe-dark); margin-bottom:0.5rem;">Ready to come back to <em>yourself?</em></h3>
+      <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">$49/month. Cancel anytime. Your portal ready within 48 hours.</p>
+      <a href="https://buy.stripe.com/4gM4gydDk8Be9p36AyeZ202" target="_blank" style="display:inline-flex; align-items:center; background:var(--sage); color:white; padding:0.9rem 2.5rem; border-radius:30px; font-size:0.7rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Join The WELLness Collective →</a>
+      <p style="font-size:0.62rem; color:var(--text-light); margin-top:0.8rem;">Have questions? <a href="intake-form.html" style="color:var(--sage);">Fill out your intake form</a> and Briana will reach out.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SESSIONS TAB -->
+<div class="page-panel" id="panel-sessions">
 <!-- SESSIONS -->
 <section class="sessions" id="sessions">
   <div class="sessions-header">
     <p class="section-eyebrow">Work With Me</p>
-    <h2 class="section-title" style="text-align:center;">Simple, <em>honest pricing</em></h2>
-    <p style="font-size:0.82rem; color:var(--text-light); max-width:520px; margin:1rem auto 0; line-height:1.8; text-align:center;">One membership. Fresh programming every month. Add sessions whenever you want.</p>
+    <h2 class="section-title" style="text-align:center;">Training <em>Sessions</em></h2>
+    <p style="font-size:0.82rem; color:var(--text-light); max-width:560px; margin:1rem auto 0; line-height:1.8; text-align:center;">Members save on every session type. The $49/month membership pays for itself after just one session.</p>
   </div>
 
-  <!-- SESSIONS -->
-  <div style="max-width:900px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:2rem;">
-      <p class="section-eyebrow">Add-On Sessions</p>
-      <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; max-width:500px; margin:0.5rem auto 0;">Members get discounted rates! Book single sessions or save more with a package.</p>
-    </div>
+  <div style="max-width:960px; margin:0 auto;">
 
-    <!-- MEMBER VS NON-MEMBER TOGGLE -->
-    <div style="display:flex; justify-content:center; gap:0; margin-bottom:2rem;">
-      <button id="toggle-member" onclick="showRates('member')" style="padding:0.6rem 1.8rem; border:1.5px solid var(--sage); border-radius:30px 0 0 30px; background:var(--sage); color:white; font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer;">Member Rates</button>
-      <button id="toggle-nonmember" onclick="showRates('nonmember')" style="padding:0.6rem 1.8rem; border:1.5px solid var(--sage); border-left:none; border-radius:0 30px 30px 0; background:transparent; color:var(--sage); font-family:'Montserrat',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer;">Non-Member Rates</button>
+    <!-- TOGGLE -->
+    <div style="display:flex; justify-content:center; margin-bottom:2.5rem;">
+      <div style="background:var(--cream); border:1.5px solid var(--border); border-radius:30px; padding:0.3rem; display:flex; gap:0.3rem;">
+        <button id="toggle-member" onclick="showRates('member')" style="padding:0.6rem 2rem; border-radius:24px; background:var(--sage); color:white; border:none; font-family:'Montserrat',sans-serif; font-size:0.68rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; transition:all 0.2s;">Member Rates</button>
+        <button id="toggle-nonmember" onclick="showRates('nonmember')" style="padding:0.6rem 2rem; border-radius:24px; background:transparent; color:var(--text-light); border:none; font-family:'Montserrat',sans-serif; font-size:0.68rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; transition:all 0.2s;">Non-Member Rates</button>
+      </div>
     </div>
 
     <!-- MEMBER RATES -->
     <div id="rates-member">
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1rem;">
 
-        <div class="pricing-card">
-          <p class="pricing-sessions">Semi-Private<br><span style="font-size:0.6rem; color:var(--text-light);">2–3 people</span></p>
-          <div class="pricing-amount">$35</div>
-          <p class="pricing-per">per person · single session</p>
-          <div class="pricing-savings">6-pack $32/ea · 12-pack $30/ea</div>
-          <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
-        </div>
-
-        <div class="pricing-card featured">
-          <div class="featured-badge">Member Rate</div>
-          <p class="pricing-sessions">1:1 Gym Session</p>
-          <div class="pricing-amount">$65</div>
-          <p class="pricing-per">single session · 60 min</p>
-          <div class="pricing-savings">6-pack $55/ea · 12-pack $50/ea</div>
-          <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
-        </div>
-
-        <div class="pricing-card">
-          <p class="pricing-sessions">1:1 In-Home</p>
-          <div class="pricing-amount">$75</div>
-          <p class="pricing-per">Briana travels to you · 60 min</p>
-          <div class="pricing-savings">6-pack $65/ea · 12-pack $60/ea</div>
-          <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
-        </div>
-
+      <div style="background:linear-gradient(135deg,rgba(122,140,110,0.08),rgba(196,168,130,0.06)); border:1px solid var(--sage-light); border-radius:16px; padding:1rem 1.5rem; margin-bottom:2rem; text-align:center;">
+        <p style="font-size:0.75rem; color:var(--olive); line-height:1.7;">You are a member — these are your rates. Every package saves you more. </p>
       </div>
 
-      <!-- MEMBER PACKAGES -->
-      <div style="background:var(--white); border:1px solid var(--border); border-radius:16px; padding:1.5rem; margin-bottom:1rem;">
-        <div class="section-eyebrow" style="margin-bottom:1rem;">Session Packages — Member Pricing</div>
-        <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:0.5rem;">
-          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; padding:0.4rem 0.6rem;">Package</div>
-          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; text-align:center; padding:0.4rem;">6 Sessions</div>
-          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; text-align:center; padding:0.4rem;">12 Sessions</div>
-
-          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:var(--cream); border-radius:6px;">Semi-Private (per person)</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$192</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$360</div>
-
-          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:white; border-radius:6px;">1:1 Gym</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:white; border-radius:6px;">$330</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:white; border-radius:6px;">$600</div>
-
-          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:var(--cream); border-radius:6px;">1:1 In-Home</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$390</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--sage); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$720</div>
+      <!-- SMALL GROUP MEMBER -->
+      <div style="margin-bottom:2.5rem;">
+        <div style="margin-bottom:1.2rem;">
+          <p class="section-eyebrow">Small Group + Foundation</p>
         </div>
-        <div style="margin-top:1.2rem; text-align:center;">
-          <button class="btn-secondary" style="width:auto; display:inline-flex;" onclick="toggleLeadForm('form-member-pkg', this)">Reserve a Package →</button>
-          <div id="form-member-pkg" class="lead-form" style="display:none; max-width:420px; margin:1rem auto 0; text-align:left;">
-            <p class="lead-form-label">Tell us which package you want and Briana will follow up with payment details via Venmo.</p>
-            <input type="text" placeholder="Your name" id="mpkg-name" class="lead-input" />
-            <input type="email" placeholder="Your email" id="mpkg-email" class="lead-input" />
-            <input type="text" placeholder="Which package? e.g. 6-session gym" id="mpkg-pkg" class="lead-input" />
-            <button class="lead-submit" onclick="submitPackage('mpkg', 'Member Session Package')">Reserve My Package →</button>
-            <div id="mpkg-confirm" class="lead-confirm" style="display:none;">✓ Reserved! Briana will be in touch shortly.</div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem;">
+          <div class="pricing-card">
+            <p class="pricing-sessions">Single</p>
+            <div class="pricing-amount">$25</div>
+            <p class="pricing-per">per session</p>
+            <div style="height:1.5rem;"></div>
+            <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
+          </div>
+          <div class="pricing-card">
+            <p class="pricing-sessions">10-Pack</p>
+            <div class="pricing-amount">$200</div>
+            <p class="pricing-per">$20/session</p>
+            <div class="pricing-savings">Save $50</div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+          <div class="pricing-card">
+            <p class="pricing-sessions">20-Pack</p>
+            <div class="pricing-amount">$360</div>
+            <p class="pricing-per">$18/session</p>
+            <div class="pricing-savings">Save $140</div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+          <div class="pricing-card featured" style="position:relative;">
+            <div class="featured-badge">Best Value</div>
+            <p class="pricing-sessions">30-Pack</p>
+            <div class="pricing-amount">$450</div>
+            <p class="pricing-per">$15/session</p>
+            <div class="pricing-savings">Save $300 </div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
           </div>
         </div>
       </div>
 
-<!-- NON-MEMBER RATES -->
-    <div id="rates-nonmember" style="display:none;">
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1rem;">
-
-        <div class="pricing-card">
-          <p class="pricing-sessions">Semi-Private<br><span style="font-size:0.6rem; color:var(--text-light);">2–3 people</span></p>
-          <div class="pricing-amount">$45</div>
-          <p class="pricing-per">per person · single session</p>
-          <div class="pricing-savings">6-pack $38/ea · 12-pack $35/ea</div>
-          <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
+      <!-- 1:1 GYM MEMBER -->
+      <div style="margin-bottom:2.5rem;">
+        <div style="margin-bottom:1.2rem;">
+          <p class="section-eyebrow">1:1 Gym Sessions · 60 Min</p>
         </div>
-
-        <div class="pricing-card">
-          <p class="pricing-sessions">1:1 Gym Session</p>
-          <div class="pricing-amount">$75</div>
-          <p class="pricing-per">single session · 60 min</p>
-          <div class="pricing-savings">6-pack $65/ea · 12-pack $60/ea</div>
-          <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem;">
+          <div class="pricing-card">
+            <p class="pricing-sessions">Single</p>
+            <div class="pricing-amount">$65</div>
+            <p class="pricing-per">per session</p>
+            <div style="height:1.5rem;"></div>
+            <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
+          </div>
+          <div class="pricing-card">
+            <p class="pricing-sessions">6-Pack</p>
+            <div class="pricing-amount">$360</div>
+            <p class="pricing-per">$60/session</p>
+            <div class="pricing-savings">Save $30</div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+          <div class="pricing-card featured">
+            <div class="featured-badge">Best Value</div>
+            <p class="pricing-sessions">12-Pack</p>
+            <div class="pricing-amount">$660</div>
+            <p class="pricing-per">$55/session</p>
+            <div class="pricing-savings">Save $120 </div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
         </div>
-
-        <div class="pricing-card">
-          <p class="pricing-sessions">1:1 In-Home</p>
-          <div class="pricing-amount">$85</div>
-          <p class="pricing-per">Briana travels to you · 60 min</p>
-          <div class="pricing-savings">6-pack $75/ea · 12-pack $70/ea</div>
-          <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
-        </div>
-
       </div>
 
-      <!-- NON-MEMBER PACKAGES -->
-      <div style="background:var(--white); border:1px solid var(--border); border-radius:16px; padding:1.5rem; margin-bottom:1rem;">
-        <div class="section-eyebrow" style="margin-bottom:1rem;">Session Packages — Non-Member Pricing</div>
-        <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:0.5rem;">
-          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; padding:0.4rem 0.6rem;">Package</div>
-          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; text-align:center; padding:0.4rem;">6 Sessions</div>
-          <div style="font-size:0.6rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); font-weight:600; text-align:center; padding:0.4rem;">12 Sessions</div>
-
-          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:var(--cream); border-radius:6px;">Semi-Private (per person)</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$228</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$420</div>
-
-          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:white; border-radius:6px;">1:1 Gym</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:white; border-radius:6px;">$390</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:white; border-radius:6px;">$720</div>
-
-          <div style="font-size:0.78rem; color:var(--text); padding:0.5rem 0.6rem; background:var(--cream); border-radius:6px;">1:1 In-Home</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$450</div>
-          <div style="font-size:0.78rem; font-weight:600; color:var(--taupe); text-align:center; padding:0.5rem; background:var(--cream); border-radius:6px;">$840</div>
+      <!-- 1:1 IN-HOME MEMBER -->
+      <div style="margin-bottom:1rem;">
+        <div style="margin-bottom:1.2rem;">
+          <p class="section-eyebrow">1:1 In-Home Sessions · Briana Comes to You</p>
         </div>
-        <p style="font-size:0.72rem; color:var(--sage); text-align:center; margin-top:1rem; font-style:italic;">💡 Join the membership and save on every session.</p>
-        <div style="margin-top:1rem; text-align:center;">
-          <button class="btn-secondary" style="width:auto; display:inline-flex;" onclick="toggleLeadForm('form-nonmember-pkg', this)">Reserve a Package →</button>
-          <div id="form-nonmember-pkg" class="lead-form" style="display:none; max-width:420px; margin:1rem auto 0; text-align:left;">
-            <p class="lead-form-label">Tell us which package you want and Briana will follow up with payment details via Venmo.</p>
-            <input type="text" placeholder="Your name" id="nmpkg-name" class="lead-input" />
-            <input type="email" placeholder="Your email" id="nmpkg-email" class="lead-input" />
-            <input type="text" placeholder="Which package? e.g. 6-session gym" id="nmpkg-pkg" class="lead-input" />
-            <button class="lead-submit" onclick="submitPackage('nmpkg', 'Non-Member Session Package')">Reserve My Package →</button>
-            <div id="nmpkg-confirm" class="lead-confirm" style="display:none;">✓ Reserved! Briana will be in touch shortly.</div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem;">
+          <div class="pricing-card">
+            <p class="pricing-sessions">Single</p>
+            <div class="pricing-amount">$75</div>
+            <p class="pricing-per">per session</p>
+            <div style="height:1.5rem;"></div>
+            <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
           </div>
+          <div class="pricing-card">
+            <p class="pricing-sessions">6-Pack</p>
+            <div class="pricing-amount">$420</div>
+            <p class="pricing-per">$70/session</p>
+            <div class="pricing-savings">Save $30</div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+          <div class="pricing-card featured">
+            <div class="featured-badge">Best Value</div>
+            <p class="pricing-sessions">12-Pack</p>
+            <div class="pricing-amount">$780</div>
+            <p class="pricing-per">$65/session</p>
+            <div class="pricing-savings">Save $120 </div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAYMENT OPTIONS MEMBER -->
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; margin-top:2rem; text-align:center;">
+        <div class="section-eyebrow" style="margin-bottom:0.8rem;">Payment Options</div>
+        <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7; margin-bottom:1.2rem;">After reserving, Briana will reach out to confirm. Pay however works best for you!</p>
+        <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+          <a href="https://venmo.com/briana-weber-1" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; background:#008CFF; color:white; padding:0.7rem 1.5rem; border-radius:20px; font-size:0.68rem; font-weight:600; text-decoration:none; letter-spacing:0.1em;">Venmo @briana-weber-1</a>
+          <span style="display:inline-flex; align-items:center; padding:0.7rem 1.5rem; border:1.5px solid var(--border); border-radius:20px; font-size:0.68rem; font-weight:600; color:var(--text-light); letter-spacing:0.1em;">Cash · Check · Card on File</span>
         </div>
       </div>
 
     </div>
 
-  </div>
+    <!-- NON-MEMBER RATES -->
+    <div id="rates-nonmember" style="display:none;">
 
+      <div style="background:linear-gradient(135deg,rgba(92,80,66,0.06),rgba(196,168,130,0.08)); border:1px solid var(--border); border-radius:16px; padding:1rem 1.5rem; margin-bottom:2rem; text-align:center;">
+        <p style="font-size:0.75rem; color:var(--taupe-dark); line-height:1.7;">Members save on every session. <a href="#offerings" style="color:var(--sage); font-weight:600;">Join for $49/month →</a></p>
+      </div>
+
+      <!-- SMALL GROUP NON-MEMBER -->
+      <div style="margin-bottom:2.5rem;">
+        <div style="margin-bottom:1.2rem;">
+          <p class="section-eyebrow">Small Group + Foundation</p>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.8rem;">
+          <div class="pricing-card">
+            <p class="pricing-sessions">Single</p>
+            <div class="pricing-amount">$35</div>
+            <p class="pricing-per">per session</p>
+            <div style="height:1.5rem;"></div>
+            <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
+          </div>
+          <div class="pricing-card">
+            <p class="pricing-sessions">10-Pack</p>
+            <div class="pricing-amount">$300</div>
+            <p class="pricing-per">$30/session</p>
+            <div class="pricing-savings">Save $50</div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+          <div class="pricing-card">
+            <p class="pricing-sessions">20-Pack</p>
+            <div class="pricing-amount">$520</div>
+            <p class="pricing-per">$26/session</p>
+            <div class="pricing-savings">Save $180</div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+          <div class="pricing-card featured">
+            <div class="featured-badge">Best Value</div>
+            <p class="pricing-sessions">30-Pack</p>
+            <div class="pricing-amount">$690</div>
+            <p class="pricing-per">$23/session</p>
+            <div class="pricing-savings">Save $360 </div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1:1 GYM NON-MEMBER -->
+      <div style="margin-bottom:2.5rem;">
+        <div style="margin-bottom:1.2rem;">
+          <p class="section-eyebrow">1:1 Gym Sessions · 60 Min</p>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem;">
+          <div class="pricing-card">
+            <p class="pricing-sessions">Single</p>
+            <div class="pricing-amount">$75</div>
+            <p class="pricing-per">per session</p>
+            <div style="height:1.5rem;"></div>
+            <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
+          </div>
+          <div class="pricing-card">
+            <p class="pricing-sessions">6-Pack</p>
+            <div class="pricing-amount">$420</div>
+            <p class="pricing-per">$70/session</p>
+            <div class="pricing-savings">Save $30</div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+          <div class="pricing-card featured">
+            <div class="featured-badge">Best Value</div>
+            <p class="pricing-sessions">12-Pack</p>
+            <div class="pricing-amount">$780</div>
+            <p class="pricing-per">$65/session</p>
+            <div class="pricing-savings">Save $120 </div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1:1 IN-HOME NON-MEMBER -->
+      <div style="margin-bottom:1rem;">
+        <div style="margin-bottom:1.2rem;">
+          <p class="section-eyebrow">1:1 In-Home Sessions · Briana Comes to You</p>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem;">
+          <div class="pricing-card">
+            <p class="pricing-sessions">Single</p>
+            <div class="pricing-amount">$85</div>
+            <p class="pricing-per">per session</p>
+            <div style="height:1.5rem;"></div>
+            <a href="https://calendly.com/briweber" target="_blank" class="btn-primary">Book Now</a>
+          </div>
+          <div class="pricing-card">
+            <p class="pricing-sessions">6-Pack</p>
+            <div class="pricing-amount">$480</div>
+            <p class="pricing-per">$80/session</p>
+            <div class="pricing-savings">Save $30</div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+          <div class="pricing-card featured">
+            <div class="featured-badge">Best Value</div>
+            <p class="pricing-sessions">12-Pack</p>
+            <div class="pricing-amount">$900</div>
+            <p class="pricing-per">$75/session</p>
+            <div class="pricing-savings">Save $120 </div>
+            <a href="reserve.html" class="btn-primary" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Reserve Your Spot →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAYMENT OPTIONS NON-MEMBER -->
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.5rem; margin-top:2rem; text-align:center;">
+        <div class="section-eyebrow" style="margin-bottom:0.8rem;">Payment Options</div>
+        <p style="font-size:0.75rem; color:var(--text-light); line-height:1.7; margin-bottom:1.2rem;">After reserving, Briana will reach out to confirm. Pay however works best for you!</p>
+        <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+          <a href="https://venmo.com/briana-weber-1" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; background:#008CFF; color:white; padding:0.7rem 1.5rem; border-radius:20px; font-size:0.68rem; font-weight:600; text-decoration:none; letter-spacing:0.1em;">Venmo @briana-weber-1</a>
+          <span style="display:inline-flex; align-items:center; padding:0.7rem 1.5rem; border:1.5px solid var(--border); border-radius:20px; font-size:0.68rem; font-weight:600; color:var(--text-light); letter-spacing:0.1em;">Cash · Check · Card on File</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MAIN CTAs -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; max-width:700px; margin:3rem auto 0;">
+      <div style="background:white; border:1px solid var(--border); border-radius:16px; padding:1.8rem; text-align:center;">
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sage); font-weight:600; margin-bottom:0.6rem;">Already a Client?</div>
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--taupe-dark); font-weight:400; margin-bottom:0.5rem;">Book a Session</h3>
+        <p style="font-size:0.72rem; color:var(--text-light); line-height:1.6; margin-bottom:1.2rem;">View Briana's availability and book your next session directly on Calendly.</p>
+        <a href="https://calendly.com/briweber" target="_blank" style="display:flex; align-items:center; justify-content:center; background:var(--sage); color:white; padding:0.8rem 1.5rem; border-radius:30px; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Book Now →</a>
+      </div>
+      <div style="background:linear-gradient(135deg, var(--taupe-dark), #4a3c30); border-radius:16px; padding:1.8rem; text-align:center;">
+        <div style="font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--sage-light); font-weight:600; margin-bottom:0.6rem;">Ready to Start?</div>
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--cream); font-weight:400; margin-bottom:0.5rem;">Reserve Your Spot</h3>
+        <p style="font-size:0.72rem; color:rgba(250,247,242,0.55); line-height:1.6; margin-bottom:1.2rem;">Choose your package and get scheduled. Briana will reach out within 48 hours.</p>
+        <a href="reserve.html" style="display:flex; align-items:center; justify-content:center; background:var(--sage); color:white; padding:0.8rem 1.5rem; border-radius:30px; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Reserve Your Spot →</a>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<div class="section-divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
+<div class="section-divider"><div class="divider-line"></div><div class="divider-mark"></div><div class="divider-line"></div></div>
 
 <!-- THE FOUNDATION -->
+
+</div>
+
+<!-- FOUNDATION TAB -->
+<div class="page-panel" id="panel-foundation">
 <section id="foundation" style="padding:5rem 3rem; background:linear-gradient(180deg, #f0ede6 0%, var(--cream) 100%);">
   <div style="max-width:1100px; margin:0 auto;">
 
@@ -501,7 +806,7 @@
       <p style="font-size:0.78rem; color:var(--sage); margin-top:0.8rem; font-style:italic;">Multiple sessions offered each week — choose what fits best into your schedule!</p>
       <!-- LOCATION -->
       <div style="display:inline-flex; align-items:center; gap:0.5rem; margin-top:1.2rem; background:white; border:1px solid var(--border); border-radius:20px; padding:0.5rem 1.2rem;">
-        <span style="font-size:0.9rem;">📍</span>
+        <span style="font-size:0.9rem;"></span>
         <span style="font-size:0.72rem; color:var(--taupe-dark); font-weight:500;">The Well Studio · The Turning Leaf Business Center <span style="color:var(--text-light); font-weight:400;">(formerly Tastefully Simple)</span></span>
       </div>
     </div>
@@ -598,21 +903,300 @@
       <input type="tel" placeholder="Phone number" id="fd-phone" class="lead-input" />
       <input type="text" placeholder="Sport(s) she plays (optional)" id="fd-sport" class="lead-input" />
       <button class="lead-submit" onclick="submitFoundation()" style="margin-top:0.5rem;">Send My Info →</button>
-      <div id="fd-confirm" class="lead-confirm" style="display:none; text-align:left;">✓ Wonderful! Briana will be in touch soon. Your daughter is going to love this.</div>
+      <div id="fd-confirm" class="lead-confirm" style="display:none; text-align:left;"> Wonderful! Briana will be in touch soon. Your daughter is going to love this.</div>
     </div>
 
   </div>
 </section>
 
-<div style="max-width:700px; margin:3rem auto 0; padding:0 1.5rem;">
-  <div class="consult-banner">
-    <h3 class="consult-title">Not sure where to start?</h3>
-    <p class="consult-body">Book a free 20-minute consultation call with Briana. We'll talk through your goals, your lifestyle, and find the path that fits your life — no pressure, no commitment.</p>
-    <a href="https://calendly.com/briweber" target="_blank" class="btn-primary" style="width:auto; display:inline-flex;">Book a Free Consultation Call</a>
+
+</div>
+
+
+<!-- RESTORE RETREAT TAB -->
+<div class="page-panel" id="panel-restore">
+
+  <!-- HERO -->
+  <div style="background:linear-gradient(135deg,var(--taupe-dark) 0%,#3a2e24 100%); padding:5rem 2rem 4rem; text-align:center; position:relative; overflow:hidden;">
+    <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:url('https://www.osakissunrisecabin.com/uploads/1/5/3/4/153403089/published/sunrise-cabin-stencil-version.png?1762705520') center/cover no-repeat; opacity:0.15;"></div>
+    <div style="position:relative; z-index:1;">
+      <p style="font-size:0.6rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--sage-light);font-weight:600;margin-bottom:0.8rem;">A WELLness Collective Event</p>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,5rem);font-weight:300;color:var(--cream);line-height:1;margin-bottom:0.5rem;">Restore</h1>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--sand);margin-bottom:2rem;">A Women's Weekend Retreat</p>
+      <div style="display:flex;justify-content:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:2.5rem;">
+        <span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:0.35rem 1rem;font-size:0.65rem;color:rgba(250,247,242,0.8);letter-spacing:0.1em;">October 9–11, 2026</span>
+        <span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:0.35rem 1rem;font-size:0.65rem;color:rgba(250,247,242,0.8);letter-spacing:0.1em;">Lake Osakis, Minnesota</span>
+        <span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:0.35rem 1rem;font-size:0.65rem;color:rgba(250,247,242,0.8);letter-spacing:0.1em;">For Women · 18+</span>
+        <span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:0.35rem 1rem;font-size:0.65rem;color:rgba(250,247,242,0.8);letter-spacing:0.1em;">12 Spots Only</span>
+      </div>
+      <button onclick="document.getElementById('restore-waitlist').scrollIntoView({behavior:'smooth'})" style="background:var(--sage);color:white;border:none;border-radius:30px;padding:0.9rem 2.5rem;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Registration Coming Soon — Notify Me</button>
+      <p style="font-size:0.62rem;color:rgba(250,247,242,0.35);margin-top:1rem;">Members get first access June 1st · General registration opens June 7th</p>
+    </div>
+  </div>
+
+  <div style="max-width:960px;margin:0 auto;padding:4rem 2rem;">
+
+    <!-- OPENING JUNE 1 BANNER — TOP -->
+    <div style="background:linear-gradient(135deg,#e8ede0,#ede3d5);border:1px solid #d4dbc8;border-radius:20px;padding:2.5rem;text-align:center;max-width:700px;margin:0 auto;">
+      <p style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--olive);font-weight:600;margin-bottom:0.5rem;">Mark Your Calendar</p>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--taupe-dark);margin-bottom:0.5rem;">Early bird registration opens<br><em>June 1st, 2026</em></h3>
+      <p style="font-size:0.78rem;color:var(--text-light);line-height:1.7;margin-bottom:1.5rem;">12 spots. Early bird pricing through June 30th. Join the waitlist now to be first in line.</p>
+      <button onclick="document.getElementById('restore-waitlist').scrollIntoView({behavior:'smooth'})" style="background:var(--sage);color:white;border:none;border-radius:30px;padding:0.8rem 2rem;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Notify Me →</button>
+    </div>
+
+
+
+    <!-- WHAT IS RESTORE -->
+    <div style="text-align:center;max-width:680px;margin:0 auto 4rem;">
+      <p class="section-eyebrow">What is Restore?</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--taupe-dark);line-height:1.2;margin-bottom:1.2rem;">You give so much of yourself.<br><em>This weekend is for you.</em></h2>
+      <div style="width:40px;height:1px;background:var(--sage-light);margin:0 auto 1.5rem;"></div>
+      <p style="font-size:0.85rem;color:var(--text-light);line-height:1.9;">Maybe you can't remember the last time you truly rested. Maybe you used to love to read, to sit by the water, to just be — and somehow that got buried under everything else. Restore is a space to exhale. To nourish your body with good food, move in ways that feel good, and reconnect with the version of yourself that got a little lost in the doing.</p>
+    </div>
+
+    <!-- THE CABIN -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;margin-bottom:4rem;">
+      <div>
+        <p class="section-eyebrow">The Location</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--taupe-dark);margin-bottom:0.8rem;">Osakis Sunrise Cabin<br><em>on the Lake</em></h3>
+        <div style="width:30px;height:1px;background:var(--sage-light);margin-bottom:1.2rem;"></div>
+        <p style="font-size:0.8rem;color:var(--text-light);line-height:1.8;margin-bottom:1rem;">A private, resort-style cabin on the shores of beautiful Lake Osakis — exclusively ours for the weekend. Sweeping lake views, a wood-burning fireplace, private sauna, kayaks and canoe, and an outdoor bonfire pit under the stars.</p>
+        <p style="font-size:0.8rem;color:var(--text-light);line-height:1.8;">Almost 3 acres of land including a pine grove and gazebo. The whole place to ourselves. No strangers. No distractions. Just us.</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:20px;overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#e8ede0,#d4d9c8);height:220px;display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;padding:2rem;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--taupe-dark);margin-bottom:0.5rem;">Lake Osakis</div>
+            <div style="font-size:0.72rem;color:var(--text-light);">Osakis, Minnesota</div>
+            <div style="margin-top:1rem;font-size:2rem;"></div>
+          </div>
+        </div>
+        <div style="padding:1.2rem;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+            <div style="font-size:0.7rem;color:var(--text-light);display:flex;align-items:center;gap:0.4rem;"> 5 bedrooms, sleeps 12</div>
+            <div style="font-size:0.7rem;color:var(--text-light);display:flex;align-items:center;gap:0.4rem;"> Private sauna</div>
+            <div style="font-size:0.7rem;color:var(--text-light);display:flex;align-items:center;gap:0.4rem;"> Kayaks + canoe</div>
+            <div style="font-size:0.7rem;color:var(--text-light);display:flex;align-items:center;gap:0.4rem;"> Lakefront bonfire pit</div>
+            <div style="font-size:0.7rem;color:var(--text-light);display:flex;align-items:center;gap:0.4rem;"> Pine grove + gazebo</div>
+            <div style="font-size:0.7rem;color:var(--text-light);display:flex;align-items:center;gap:0.4rem;"> Full kitchen, seats 12</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEEKEND SCHEDULE -->
+    <div style="margin-bottom:4rem;">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <p class="section-eyebrow">The Weekend</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--taupe-dark);">A rhythm of <em>rest and renewal.</em></h3>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--sage);margin-bottom:0.3rem;">Friday</div>
+          <div style="font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:1rem;">October 9th</div>
+          <div style="font-size:0.75rem;color:var(--text-light);line-height:1.8;">
+            <div style="margin-bottom:0.5rem;"><strong style="color:var(--text);">4:00 PM</strong> Arrival + settle in</div>
+            <div style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Evening</strong> Welcome dinner, introductions, intentions</div>
+            <div><strong style="color:var(--text);">Night</strong> Bonfire by the lake, conversation under the stars</div>
+          </div>
+        </div>
+        <div style="background:linear-gradient(135deg,var(--sage-pale),#f0ede6);border:1.5px solid var(--sage-light);border-radius:16px;padding:1.5rem;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--sage);margin-bottom:0.3rem;">Saturday</div>
+          <div style="font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:1rem;">October 10th · Full Day</div>
+          <div style="font-size:0.75rem;color:var(--text-light);line-height:1.8;">
+            <div style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Morning</strong> Movement + nourishing breakfast</div>
+            <div style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Midday</strong> Free time — kayak, sauna, journaling, rest, lake walk</div>
+            <div style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Afternoon</strong> Wellness session + nutrition talk</div>
+            <div><strong style="color:var(--text);">Evening</strong> Dinner together + evening around the fire</div>
+          </div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--sage);margin-bottom:0.3rem;">Sunday</div>
+          <div style="font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sand);font-weight:600;margin-bottom:1rem;">October 11th</div>
+          <div style="font-size:0.75rem;color:var(--text-light);line-height:1.8;">
+            <div style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Morning</strong> Gentle movement + breakfast</div>
+            <div style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Optional</strong> Local church services if desired</div>
+            <div style="margin-bottom:0.5rem;"><strong style="color:var(--text);">Closing</strong> Reflection + send-off intention</div>
+            <div><strong style="color:var(--text);">11:00 AM</strong> Checkout</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT'S INCLUDED -->
+    <div style="margin-bottom:4rem;">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <p class="section-eyebrow">Everything Included</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--taupe-dark);">Show up. We handle <em>everything else.</em></h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;display:flex;align-items:flex-start;gap:0.8rem;">
+          <div style="font-size:1.3rem;flex-shrink:0;"></div>
+          <div><div style="font-size:0.78rem;font-weight:600;color:var(--text);margin-bottom:0.2rem;">All Meals Included</div><div style="font-size:0.7rem;color:var(--text-light);line-height:1.5;">Nourishing, whole-food meals from Friday dinner through Sunday breakfast.</div></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;display:flex;align-items:flex-start;gap:0.8rem;">
+          <div style="font-size:1.3rem;flex-shrink:0;"></div>
+          <div><div style="font-size:0.78rem;font-weight:600;color:var(--text);margin-bottom:0.2rem;">Lodging</div><div style="font-size:0.7rem;color:var(--text-light);line-height:1.5;">Two nights in the Osakis Sunrise Cabin — private, lakefront, all yours.</div></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;display:flex;align-items:flex-start;gap:0.8rem;">
+          <div style="font-size:1.3rem;flex-shrink:0;"></div>
+          <div><div style="font-size:0.78rem;font-weight:600;color:var(--text);margin-bottom:0.2rem;">Movement Sessions</div><div style="font-size:0.7rem;color:var(--text-light);line-height:1.5;">Guided movement with Briana — yoga, strength, breathwork. Your pace.</div></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;display:flex;align-items:flex-start;gap:0.8rem;">
+          <div style="font-size:1.3rem;flex-shrink:0;"></div>
+          <div><div style="font-size:0.78rem;font-weight:600;color:var(--text);margin-bottom:0.2rem;">Private Sauna</div><div style="font-size:0.7rem;color:var(--text-light);line-height:1.5;">Steps from the cabin. Sweat, detox, and decompress at any time.</div></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;display:flex;align-items:flex-start;gap:0.8rem;">
+          <div style="font-size:1.3rem;flex-shrink:0;"></div>
+          <div><div style="font-size:0.78rem;font-weight:600;color:var(--text);margin-bottom:0.2rem;">Kayak + Canoe Access</div><div style="font-size:0.7rem;color:var(--text-light);line-height:1.5;">Paddle out on Lake Osakis whenever the mood strikes. No agenda required.</div></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;display:flex;align-items:flex-start;gap:0.8rem;">
+          <div style="font-size:1.3rem;flex-shrink:0;"></div>
+          <div><div style="font-size:0.78rem;font-weight:600;color:var(--text);margin-bottom:0.2rem;">Lakefront Bonfires</div><div style="font-size:0.7rem;color:var(--text-light);line-height:1.5;">Evenings around the fire with good women, good conversation, and the stars overhead.</div></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;display:flex;align-items:flex-start;gap:0.8rem;">
+          <div style="font-size:1.3rem;flex-shrink:0;"></div>
+          <div><div style="font-size:0.78rem;font-weight:600;color:var(--text);margin-bottom:0.2rem;">Journaling + Reflection Time</div><div style="font-size:0.7rem;color:var(--text-light);line-height:1.5;">Guided prompts, quiet mornings, and space to actually think. All optional.</div></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.3rem;display:flex;align-items:flex-start;gap:0.8rem;">
+          <div style="font-size:1.3rem;flex-shrink:0;"></div>
+          <div><div style="font-size:0.78rem;font-weight:600;color:var(--text);margin-bottom:0.2rem;">Exclusive Retreat Gifts</div><div style="font-size:0.7rem;color:var(--text-light);line-height:1.5;">Curated gifts for every attendee — details revealed closer to the retreat.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICING -->
+    <div id="restore-register" style="margin-bottom:4rem;">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <p class="section-eyebrow">Investment</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--taupe-dark);">Reserve your <em>spot.</em></h3>
+        <p style="font-size:0.75rem;color:var(--text-light);margin-top:0.5rem;">Early bird pricing through June 30th. Spot reserved with $50 deposit.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:700px;margin:0 auto 2rem;">
+
+        <!-- MEMBER -->
+        <div style="background:linear-gradient(135deg,var(--taupe-dark),#4a3c30);border-radius:20px;padding:2rem;text-align:center;position:relative;">
+          <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--sage);color:white;font-size:0.58rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.25rem 1rem;border-radius:20px;white-space:nowrap;">Member Pricing</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--cream);margin-bottom:0.5rem;margin-top:0.5rem;">WELLness Collective Member</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--sand-light);line-height:1;">$500</div>
+          <div style="font-size:0.65rem;color:rgba(250,247,242,0.45);margin-bottom:0.3rem;">Early bird · through June 30th</div>
+          <div style="font-size:0.72rem;color:rgba(250,247,242,0.55);margin-bottom:1.5rem;">$750 after July 1st</div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:0.8rem;margin-bottom:1.2rem;">
+            <div style="font-size:0.68rem;color:rgba(250,247,242,0.6);line-height:1.7;">
+              <div>$50 deposit to reserve</div>
+              <div>Balance due September 1st</div>
+              <div style="margin-top:0.3rem;font-size:0.62rem;color:rgba(250,247,242,0.4);">Or split into 3 payments</div>
+            </div>
+          </div>
+          <button onclick="openRestoreForm('member')" style="width:100%;background:var(--sage);color:white;border:none;border-radius:25px;padding:0.8rem;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Reserve My Spot →</button>
+        </div>
+
+        <!-- NON-MEMBER -->
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:2rem;text-align:center;position:relative;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--taupe-dark);margin-bottom:0.5rem;margin-top:0.5rem;">Non-Member</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--taupe-dark);line-height:1;">$600</div>
+          <div style="font-size:0.65rem;color:var(--text-light);margin-bottom:0.3rem;">Early bird · through June 30th</div>
+          <div style="font-size:0.72rem;color:var(--text-light);margin-bottom:1.5rem;">$750 after July 1st</div>
+          <div style="background:var(--cream);border-radius:10px;padding:0.8rem;margin-bottom:1.2rem;">
+            <div style="font-size:0.68rem;color:var(--text-light);line-height:1.7;">
+              <div>$50 deposit to reserve</div>
+              <div>Balance due September 1st</div>
+              <div style="margin-top:0.3rem;font-size:0.62rem;color:var(--text-light);">Or split into 3 payments</div>
+            </div>
+          </div>
+          <button onclick="openRestoreForm('nonmember')" style="width:100%;background:var(--taupe-dark);color:white;border:none;border-radius:25px;padding:0.8rem;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--taupe)'" onmouseout="this.style.background='var(--taupe-dark)'">Reserve My Spot →</button>
+          <p style="font-size:0.62rem;color:var(--sage);margin-top:0.8rem;font-style:italic;"><a href="#" onclick="showTab('membership');return false;" style="color:var(--sage);">Join the membership</a> and save $100</p>
+        </div>
+
+      </div>
+
+      <!-- PAYMENT PLAN NOTE -->
+      <div style="background:var(--sage-pale);border:1px solid var(--sage-light);border-radius:14px;padding:1.2rem 1.5rem;max-width:700px;margin:0 auto 1.5rem;text-align:center;">
+        <p style="font-size:0.75rem;color:var(--olive);line-height:1.7;"><strong>Payment plan available.</strong> Split your balance into 3 equal payments. Briana will set this up with you after registration. Full balance due by September 1st.</p>
+      </div>
+
+      <!-- CANCELLATION -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.5rem;max-width:700px;margin:0 auto;text-align:center;">
+        <p style="font-size:0.7rem;color:var(--text-light);line-height:1.7;"><strong style="color:var(--text);">Cancellation policy:</strong> Full refund (including deposit) through September 1st. Cancellations after September 1st receive a 50% refund or may roll their spot to next year's retreat.</p>
+      </div>
+    </div>
+
+    <!-- REGISTRATION FORM -->
+    <div id="restore-form-wrap" style="display:none;max-width:600px;margin:0 auto 3rem;">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2rem;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--taupe-dark);margin-bottom:0.3rem;">Reserve Your Spot</h3>
+        <p style="font-size:0.72rem;color:var(--text-light);margin-bottom:1.5rem;">Briana will reach out within 48 hours to confirm your spot and collect your $50 deposit via Venmo or card.</p>
+        <div id="restore-pricing-note" style="background:var(--sage-pale);border-radius:10px;padding:0.8rem;margin-bottom:1.5rem;font-size:0.72rem;color:var(--olive);text-align:center;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div><label style="font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:0.4rem;">First Name *</label><input type="text" id="restore-fname" placeholder="Your first name" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;font-family:'Montserrat',sans-serif;font-size:0.8rem;outline:none;" /></div>
+          <div><label style="font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:0.4rem;">Last Name *</label><input type="text" id="restore-lname" placeholder="Your last name" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;font-family:'Montserrat',sans-serif;font-size:0.8rem;outline:none;" /></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div><label style="font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:0.4rem;">Email *</label><input type="email" id="restore-email" placeholder="your@email.com" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;font-family:'Montserrat',sans-serif;font-size:0.8rem;outline:none;" /></div>
+          <div><label style="font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:0.4rem;">Phone *</label><input type="tel" id="restore-phone" placeholder="(000) 000-0000" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;font-family:'Montserrat',sans-serif;font-size:0.8rem;outline:none;" /></div>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <label style="font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:0.4rem;">Payment preference</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;">
+            <label style="display:flex;align-items:center;gap:0.5rem;padding:0.6rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.72rem;cursor:pointer;"><input type="radio" name="restorePay" value="Pay in full"> Pay in full</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;padding:0.6rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.72rem;cursor:pointer;"><input type="radio" name="restorePay" value="2 payments"> 2 payments</label>
+            <label style="display:flex;align-items:center;gap:0.5rem;padding:0.6rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.72rem;cursor:pointer;"><input type="radio" name="restorePay" value="3 payments"> 3 payments</label>
+          </div>
+        </div>
+        <div style="margin-bottom:1.5rem;">
+          <label style="font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--taupe);display:block;margin-bottom:0.4rem;">Anything Briana should know?</label>
+          <textarea id="restore-notes" placeholder="Dietary restrictions, questions, anything at all..." style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;font-family:'Montserrat',sans-serif;font-size:0.8rem;min-height:70px;outline:none;resize:vertical;"></textarea>
+        </div>
+        <button onclick="submitRestoreForm()" style="width:100%;background:var(--sage);color:white;border:none;border-radius:30px;padding:1rem;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'" id="restoreSubmitBtn">Reserve My Spot — $50 Deposit →</button>
+        <div id="restore-confirm" style="display:none;margin-top:1rem;background:var(--sage-pale);border-radius:10px;padding:1rem;text-align:center;font-size:0.78rem;color:var(--olive);"> You're on the list! Briana will reach out within 48 hours to confirm your spot and collect your deposit.</div>
+      </div>
+    </div>
+
+    <!-- WAITLIST -->
+    <div id="restore-waitlist" style="max-width:600px;margin:0 auto 3rem;">
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2rem;text-align:center;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--taupe-dark);margin-bottom:0.5rem;">Join the Waitlist</h3>
+        <p style="font-size:0.75rem;color:var(--text-light);line-height:1.7;margin-bottom:1.5rem;">Spots are extremely limited. If Restore sells out or you're not quite ready, get on the waitlist and be first to know about availability or next year's dates.</p>
+        <input type="text" id="waitlist-name" placeholder="Your name" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;font-family:'Montserrat',sans-serif;font-size:0.8rem;outline:none;margin-bottom:0.8rem;" />
+        <input type="email" id="waitlist-email" placeholder="Your email" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;font-family:'Montserrat',sans-serif;font-size:0.8rem;outline:none;margin-bottom:0.8rem;" />
+        <input type="tel" id="waitlist-phone" placeholder="Phone (optional)" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 1rem;font-family:'Montserrat',sans-serif;font-size:0.8rem;outline:none;margin-bottom:1rem;" />
+        <button onclick="submitWaitlist()" style="width:100%;background:var(--taupe-dark);color:white;border:none;border-radius:30px;padding:0.9rem;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;">Join the Waitlist →</button>
+        <div id="waitlist-confirm" style="display:none;margin-top:1rem;font-size:0.75rem;color:var(--olive);"> You're on the waitlist! We'll be in touch.</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="section-divider"><div class="divider-line"></div><div class="divider-mark">✦</div><div class="divider-line"></div></div>
+<!-- SHOP TAB -->
+<div class="page-panel" id="panel-shop">
+  <div style="max-width:800px; margin:0 auto; padding:4rem 2rem;">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <p class="section-eyebrow">Shop</p>
+      <h2 class="section-title">Things I <em>love</em></h2>
+      <div style="width:40px; height:1px; background:var(--sage-light); margin:1.2rem auto;"></div>
+      <p style="font-size:0.82rem; color:var(--text-light); max-width:480px; margin:0 auto; line-height:1.8;">Products I use, trust, and recommend to every client. Because what you put in and on your body matters.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
+
+      <!-- ZYIA -->
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:20px; padding:2rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--taupe-dark); margin-bottom:0.5rem;">Zyia Active</div>
+        <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Inclusive, affordable activewear designed for real women. I wear it every single day — and now you can shop my line directly.</p>
+        <a href="https://new.myzyia.com/BRIANAWEBER/en_US/" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; background:var(--sand); color:white; padding:0.8rem 1.8rem; border-radius:30px; font-size:0.68rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; transition:background 0.2s; width:100%;" onmouseover="this.style.background='var(--taupe)'" onmouseout="this.style.background='var(--sand)'">Shop Zyia →</a>
+      </div>
+
+      <!-- LMNT -->
+      <div style="background:var(--white); border:1px solid var(--border); border-radius:20px; padding:2rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--taupe-dark); margin-bottom:0.5rem;">LMNT Electrolytes</div>
+        <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Zero sugar. Real salt. The electrolyte drink mix I recommend to every single client for hydration, energy, and recovery. Members get a discount.</p>
+        <a href="lmnt-order.html" style="display:inline-flex; align-items:center; justify-content:center; background:var(--sage); color:white; padding:0.8rem 1.8rem; border-radius:30px; font-size:0.68rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; transition:background 0.2s; width:100%;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Order LMNT →</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 <footer>
   <div class="footer-logo">The <span class="well">Well</span>ness Collective</div>
@@ -628,22 +1212,53 @@
   <p class="footer-copy">© 2026 The WELLness Collective · Briana Weber · Alexandria, MN</p>
 </footer>
 
+
+
 <script>
+
+//  SITE TAB NAVIGATION 
+function showTab(tabName) {
+  document.querySelectorAll('.page-panel').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  document.querySelectorAll('.site-tab').forEach(function(t) {
+    t.classList.remove('active');
+  });
+  var panel = document.getElementById('panel-' + tabName);
+  if (panel) panel.classList.add('active');
+  var tab = document.querySelector('.site-tab[data-tab="' + tabName + '"]');
+  if (tab) tab.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+//  SHOW MEMBER/NON-MEMBER RATES 
+function showRates(type) {
+  var memberEl = document.getElementById('rates-member');
+  var nonMemberEl = document.getElementById('rates-nonmember');
+  var btnMember = document.getElementById('toggle-member');
+  var btnNonMember = document.getElementById('toggle-nonmember');
+  if (!memberEl || !nonMemberEl) return;
+  if (type === 'member') {
+    memberEl.style.display = 'block';
+    nonMemberEl.style.display = 'none';
+    btnMember.style.background = 'var(--sage)';
+    btnMember.style.color = 'white';
+    btnNonMember.style.background = 'transparent';
+    btnNonMember.style.color = 'var(--text-light)';
+  } else {
+    memberEl.style.display = 'none';
+    nonMemberEl.style.display = 'block';
+    btnMember.style.background = 'transparent';
+    btnMember.style.color = 'var(--text-light)';
+    btnNonMember.style.background = 'var(--sage)';
+    btnNonMember.style.color = 'white';
+  }
+}
+
+
 const FORMSPREE_LEADS = 'https://formspree.io/f/mdabrwdk';
 
-function showRates(type) {
-  const memberEl = document.getElementById('rates-member');
-  const nonMemberEl = document.getElementById('rates-nonmember');
-  const toggleMember = document.getElementById('toggle-member');
-  const toggleNonMember = document.getElementById('toggle-nonmember');
-  if (!memberEl || !nonMemberEl) return;
-  memberEl.style.display = type === 'member' ? 'block' : 'none';
-  nonMemberEl.style.display = type === 'nonmember' ? 'block' : 'none';
-  toggleMember.style.background = type === 'member' ? 'var(--sage)' : 'transparent';
-  toggleMember.style.color = type === 'member' ? 'white' : 'var(--sage)';
-  toggleNonMember.style.background = type === 'nonmember' ? 'var(--sage)' : 'transparent';
-  toggleNonMember.style.color = type === 'nonmember' ? 'white' : 'var(--sage)';
-}
+
 
 function toggleLeadForm(formId, btn) {
   const form = document.getElementById(formId);
