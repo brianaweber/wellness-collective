@@ -264,11 +264,11 @@
     </div>
     <div class="week-tabs" id="progressWeekTabs"></div>
     <div class="progress-grid">
-      <div class="progress-card"><div class="progress-label">Weight</div><input class="progress-input" type="text" placeholder="—" /></div>
-      <div class="progress-card"><div class="progress-label">Energy (1-10)</div><input class="progress-input" type="text" placeholder="—" /></div>
-      <div class="progress-card"><div class="progress-label">Sleep Quality</div><input class="progress-input" type="text" placeholder="—" /></div>
-      <div class="progress-card"><div class="progress-label">Mood (1-10)</div><input class="progress-input" type="text" placeholder="—" /></div>
-      <div class="progress-card" style="grid-column:1/-1;"><div class="progress-label">Notes</div><input class="progress-input" type="text" placeholder="Anything to remember this week..." /></div>
+      <div class="progress-card"><div class="progress-label">Weight</div><input class="progress-input" id="pr-weight" type="text" placeholder="—" /></div>
+      <div class="progress-card"><div class="progress-label">Energy (1-10)</div><input class="progress-input" id="pr-energy" type="text" placeholder="—" /></div>
+      <div class="progress-card"><div class="progress-label">Sleep Quality</div><input class="progress-input" id="pr-sleep" type="text" placeholder="—" /></div>
+      <div class="progress-card"><div class="progress-label">Mood (1-10)</div><input class="progress-input" id="pr-mood" type="text" placeholder="—" /></div>
+      <div class="progress-card" style="grid-column:1/-1;"><div class="progress-label">Notes</div><input class="progress-input" id="pr-notes" type="text" placeholder="Anything to remember this week..." /></div>
     </div>
     <button class="save-btn" onclick="saveProgress()">Save Progress</button>
   </div>
@@ -640,10 +640,33 @@ async function saveCheckin() {
 }
 
 // ── SAVE PROGRESS ──
-function saveProgress() {
+async function saveProgress() {
   const btn = document.querySelector('#tab-progress .save-btn');
+  const weight = document.getElementById('pr-weight').value;
+  const energy = document.getElementById('pr-energy').value;
+  const sleep = document.getElementById('pr-sleep').value;
+  const mood = document.getElementById('pr-mood').value;
+  const notes = document.getElementById('pr-notes').value;
+  btn.disabled = true;
+  btn.textContent = 'Saving...';
+  try {
+    await fetch(FORMSPREE_CHECKIN, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'Notification': 'Progress Update',
+        'Client': CLIENT.fullName,
+        'Submitted': new Date().toLocaleDateString(),
+        'Weight': weight || '-',
+        'Energy': energy || '-',
+        'Sleep Quality': sleep || '-',
+        'Mood': mood || '-',
+        'Notes': notes || '-'
+      })
+    });
+  } catch(e) {}
   btn.textContent = 'Saved!';
-  setTimeout(() => { btn.textContent = 'Save Progress'; }, 2000);
+  setTimeout(() => { btn.textContent = 'Save Progress'; btn.disabled = false; }, 2000);
 }
 
 // ── RESERVE PACKAGE ──

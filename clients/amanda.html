@@ -914,23 +914,23 @@
     <div class="progress-grid" id="progressGrid">
       <div class="progress-card">
         <div class="progress-label">Weight</div>
-        <input class="progress-input" type="text" placeholder="—" />
+        <input class="progress-input" id="pr-weight" type="text" placeholder="—" />
       </div>
       <div class="progress-card">
         <div class="progress-label">Energy (1–10)</div>
-        <input class="progress-input" type="text" placeholder="—" />
+        <input class="progress-input" id="pr-energy" type="text" placeholder="—" />
       </div>
       <div class="progress-card">
         <div class="progress-label">Sleep Quality</div>
-        <input class="progress-input" type="text" placeholder="—" />
+        <input class="progress-input" id="pr-sleep" type="text" placeholder="—" />
       </div>
       <div class="progress-card">
         <div class="progress-label">Mood (1–10)</div>
-        <input class="progress-input" type="text" placeholder="—" />
+        <input class="progress-input" id="pr-mood" type="text" placeholder="—" />
       </div>
       <div class="progress-card" style="grid-column: 1 / -1;">
         <div class="progress-label">Notes</div>
-        <input class="progress-input" type="text" placeholder="Anything to remember this week..." />
+        <input class="progress-input" id="pr-notes" type="text" placeholder="Anything to remember this week..." />
       </div>
     </div>
 
@@ -2397,10 +2397,33 @@ async function saveCheckin() {
 }
 
 // ── SAVE PROGRESS ──
-function saveProgress() {
+async function saveProgress() {
   const btn = document.querySelector('#tab-progress .save-btn');
-  btn.textContent = '✓  Saved!';
-  setTimeout(() => btn.innerHTML = '✓ &nbsp;Save Progress', 2000);
+  const weight = document.getElementById('pr-weight').value;
+  const energy = document.getElementById('pr-energy').value;
+  const sleep = document.getElementById('pr-sleep').value;
+  const mood = document.getElementById('pr-mood').value;
+  const notes = document.getElementById('pr-notes').value;
+  btn.disabled = true;
+  btn.innerHTML = 'Saving...';
+  try {
+    await fetch('https://formspree.io/f/mkoyejrw', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'Notification': 'Progress Update',
+        'Client': CLIENT?.fullName || 'Client',
+        'Submitted': new Date().toLocaleDateString(),
+        'Weight': weight || '-',
+        'Energy': energy || '-',
+        'Sleep Quality': sleep || '-',
+        'Mood': mood || '-',
+        'Notes': notes || '-'
+      })
+    });
+  } catch(e) {}
+  btn.innerHTML = '✓ &nbsp;Saved!';
+  setTimeout(() => { btn.innerHTML = '✓ &nbsp;Save Progress'; btn.disabled = false; }, 2000);
 }
 
 // ── INIT ──

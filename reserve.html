@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserve a Session Package — The WELLness Collective</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #7a8c6e; --sage-light: #a8b89a; --sage-pale: #eef1eb;
+      --sand: #c4a882; --sand-light: #e8d5b8; --cream: #faf7f2;
+      --taupe: #8a7968; --taupe-dark: #5c5042; --olive: #6b7355;
+      --white: #ffffff; --text: #3a3228; --text-light: #7a6e62;
+      --border: #e0d8ce;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+
+    .header { background: var(--taupe-dark); padding: 2.5rem 1.5rem; text-align: center; }
+    .header-eyebrow { font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--sage-light); font-weight: 600; margin-bottom: 0.8rem; }
+    .header-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 300; color: var(--cream); margin-bottom: 0.5rem; }
+    .header-title em { font-style: italic; color: var(--sand); }
+    .header-sub { font-size: 0.78rem; color: rgba(250,247,242,0.55); line-height: 1.7; max-width: 480px; margin: 0 auto; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--sage-light); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; margin-top: 1.2rem; }
+    .back-link:hover { color: var(--sand-light); }
+
+    .container { max-width: 620px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+    .form-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
+    .form-section { margin-bottom: 2rem; }
+    .form-section:last-child { margin-bottom: 0; }
+    .section-label { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+
+    .field { margin-bottom: 1.2rem; }
+    .field label { display: block; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 0.4rem; }
+    .field input, .field select, .field textarea {
+      width: 100%; border: 1.5px solid var(--border); border-radius: 10px;
+      padding: 0.75rem 1rem; font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem; color: var(--text); background: var(--cream);
+      outline: none; transition: border-color 0.2s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--sage); background: var(--white); }
+    .field textarea { resize: vertical; min-height: 80px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.4rem; }
+    .package-option { position: relative; }
+    .package-option input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .package-label {
+      display: block; border: 1.5px solid var(--border); border-radius: 12px;
+      padding: 1rem; cursor: pointer; transition: all 0.2s; text-align: center;
+    }
+    .package-label:hover { border-color: var(--sage-light); }
+    .package-option input[type="radio"]:checked + .package-label {
+      border-color: var(--sage); background: var(--sage-pale);
+    }
+    .package-name { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sand); font-weight: 600; margin-bottom: 0.3rem; }
+    .package-price { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--taupe-dark); line-height: 1; }
+    .package-per { font-size: 0.6rem; color: var(--text-light); margin-top: 0.2rem; }
+    .package-savings { font-size: 0.58rem; color: var(--sage); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem; }
+
+    .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 0.4rem; }
+    .type-option { position: relative; }
+    .type-option input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .type-label {
+      display: block; border: 1.5px solid var(--border); border-radius: 12px;
+      padding: 0.8rem 1rem; cursor: pointer; transition: all 0.2s;
+    }
+    .type-label:hover { border-color: var(--sage-light); }
+    .type-option input[type="radio"]:checked + .type-label {
+      border-color: var(--sage); background: var(--sage-pale);
+    }
+    .type-name { font-size: 0.68rem; font-weight: 600; color: var(--taupe-dark); }
+    .type-desc { font-size: 0.6rem; color: var(--text-light); margin-top: 0.2rem; line-height: 1.5; }
+
+    .submit-btn {
+      width: 100%; background: var(--sage); color: white; border: none;
+      border-radius: 30px; padding: 1rem; font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; cursor: pointer; transition: background 0.2s;
+      margin-top: 1rem;
+    }
+    .submit-btn:hover { background: var(--olive); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .confirm-card { display: none; text-align: center; padding: 3rem 2rem; }
+    .confirm-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .confirm-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--taupe-dark); margin-bottom: 0.8rem; }
+    .confirm-text { font-size: 0.78rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.5rem; }
+    .confirm-back { display: inline-flex; align-items: center; justify-content: center; background: var(--taupe-dark); color: white; padding: 0.8rem 2rem; border-radius: 30px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+    .confirm-back:hover { background: var(--olive); }
+
+    .note { background: var(--sage-pale); border-left: 3px solid var(--sage); border-radius: 0 10px 10px 0; padding: 0.8rem 1rem; margin-top: 1.5rem; }
+    .note p { font-size: 0.72rem; color: var(--olive); line-height: 1.7; }
+
+    @media (max-width: 520px) {
+      .package-grid, .type-grid, .field-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-eyebrow">The WELLness Collective</div>
+  <h1 class="header-title">Reserve a <em>Session Package</em></h1>
+  <p class="header-sub">Fill out your info and Briana will reach out within 48 hours to confirm your package and get you scheduled.</p>
+  <a href="index.html" class="back-link">← Back to Site</a>
+</div>
+
+<div class="container">
+
+  <div id="formCard" class="form-card">
+
+    <div class="form-section">
+      <div class="section-label">Session Type</div>
+      <div class="type-grid">
+        <div class="type-option">
+          <input type="radio" name="sessionType" id="type-group" value="Small Group / Foundation" checked />
+          <label class="type-label" for="type-group">
+            <div class="type-name">Small Group / Foundation</div>
+            <div class="type-desc">Up to 4 people · Gym or outdoor</div>
+          </label>
+        </div>
+        <div class="type-option">
+          <input type="radio" name="sessionType" id="type-11" value="1:1 Gym — 60 Min" />
+          <label class="type-label" for="type-11">
+            <div class="type-name">1:1 Gym — 60 Min</div>
+            <div class="type-desc">Private · Personalized programming</div>
+          </label>
+        </div>
+        <div class="type-option">
+          <input type="radio" name="sessionType" id="type-home" value="1:1 In-Home — 60 Min" />
+          <label class="type-label" for="type-home">
+            <div class="type-name">1:1 In-Home — 60 Min</div>
+            <div class="type-desc">Briana comes to you</div>
+          </label>
+        </div>
+        <div class="type-option">
+          <input type="radio" name="sessionType" id="type-virtual" value="Virtual — 60 Min" />
+          <label class="type-label" for="type-virtual">
+            <div class="type-name">Virtual — 60 Min</div>
+            <div class="type-desc">Train from anywhere</div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-label">Package Size</div>
+      <div id="packageGrid" class="package-grid">
+        <!-- dynamically rendered based on session type -->
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-label">Your Info</div>
+      <div class="field-row">
+        <div class="field">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" placeholder="First name" />
+        </div>
+        <div class="field">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="Last name" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="your@email.com" />
+      </div>
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" placeholder="(555) 000-0000" />
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-label">Membership</div>
+      <div class="field">
+        <label for="isMember">Are you a WELLness Collective member?</label>
+        <select id="isMember">
+          <option value="Yes">Yes — I'm a member</option>
+          <option value="No">No — non-member rates</option>
+          <option value="Not sure">Not sure yet</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-label">Anything Else?</div>
+      <div class="field">
+        <label for="notes">Questions or notes for Briana (optional)</label>
+        <textarea id="notes" placeholder="Scheduling preferences, injuries, questions, etc."></textarea>
+      </div>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="submitReservation()">Reserve My Package →</button>
+
+    <div class="note">
+      <p>Briana will reach out within 48 hours to confirm your package, walk you through payment options, and get your first session on the calendar.</p>
+    </div>
+
+  </div>
+
+  <div id="confirmCard" class="form-card confirm-card">
+    <div class="confirm-icon">🌿</div>
+    <h2 class="confirm-title">You're reserved!</h2>
+    <p class="confirm-text">Briana will reach out within 48 hours to confirm your package and get your first session scheduled. Check your inbox — and get ready to show up!</p>
+    <a href="index.html" class="confirm-back">← Back to Home</a>
+  </div>
+
+</div>
+
+<script>
+const FORMSPREE = 'https://formspree.io/f/mdabrwdk';
+
+const PACKAGES = {
+  'Small Group / Foundation': [
+    { name: 'Single', price: '$25', per: 'per session', savings: '' },
+    { name: '10-Pack', price: '$200', per: '$20/session', savings: 'Save $50' },
+    { name: '20-Pack', price: '$360', per: '$18/session', savings: 'Save $140' },
+    { name: '30-Pack', price: '$450', per: '$15/session', savings: 'Save $300' }
+  ],
+  '1:1 Gym — 60 Min': [
+    { name: 'Single', price: '$65', per: 'per session', savings: '' },
+    { name: '6-Pack', price: '$360', per: '$60/session', savings: 'Save $30' },
+    { name: '12-Pack', price: '$660', per: '$55/session', savings: 'Save $120' }
+  ],
+  '1:1 In-Home — 60 Min': [
+    { name: 'Single', price: '$80', per: 'per session', savings: '' },
+    { name: '6-Pack', price: '$450', per: '$75/session', savings: 'Save $30' },
+    { name: '12-Pack', price: '$840', per: '$70/session', savings: 'Save $120' }
+  ],
+  'Virtual — 60 Min': [
+    { name: 'Single', price: '$55', per: 'per session', savings: '' },
+    { name: '6-Pack', price: '$300', per: '$50/session', savings: 'Save $30' },
+    { name: '12-Pack', price: '$540', per: '$45/session', savings: 'Save $120' }
+  ]
+};
+
+function buildPackages(type) {
+  const grid = document.getElementById('packageGrid');
+  const pkgs = PACKAGES[type] || [];
+  grid.innerHTML = pkgs.map((p, i) => `
+    <div class="package-option">
+      <input type="radio" name="package" id="pkg-${i}" value="${p.name} — ${p.price}" ${i === 0 ? 'checked' : ''} />
+      <label class="package-label" for="pkg-${i}">
+        <div class="package-name">${p.name}</div>
+        <div class="package-price">${p.price}</div>
+        <div class="package-per">${p.per}</div>
+        ${p.savings ? `<div class="package-savings">${p.savings}</div>` : '<div style="height:1.1rem;"></div>'}
+      </label>
+    </div>
+  `).join('');
+}
+
+document.querySelectorAll('input[name="sessionType"]').forEach(radio => {
+  radio.addEventListener('change', () => buildPackages(radio.value));
+});
+
+buildPackages('Small Group / Foundation');
+
+async function submitReservation() {
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const sessionType = document.querySelector('input[name="sessionType"]:checked')?.value || '';
+  const pkg = document.querySelector('input[name="package"]:checked')?.value || '';
+  const isMember = document.getElementById('isMember').value;
+  const notes = document.getElementById('notes').value.trim();
+
+  if (!firstName) { alert('Please enter your first name.'); return; }
+  if (!email) { alert('Please enter your email.'); return; }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    await fetch(FORMSPREE, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        'Form': 'Session Package Reservation',
+        'Name': `${firstName} ${lastName}`.trim(),
+        'Email': email,
+        'Phone': phone || 'Not provided',
+        'Session Type': sessionType,
+        'Package': pkg,
+        'Member': isMember,
+        'Notes': notes || 'None',
+        'Submitted': new Date().toLocaleDateString()
+      })
+    });
+  } catch(e) {}
+
+  document.getElementById('formCard').style.display = 'none';
+  document.getElementById('confirmCard').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
