@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restore Retreat Registration — The Well</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sage: #5C7A5F;
+      --sage-light: #8FA88F;
+      --sage-pale: #EDF2ED;
+      --sage-deep: #3A5C3D;
+      --cream: #FAF7F2;
+      --warm: #F2EDE4;
+      --bark: #6B5A4E;
+      --bark-light: #9A8778;
+      --text: #2C2C28;
+      --text-muted: #6B6660;
+      --gold: #B8975A;
+      --gold-light: #D4B87A;
+    }
+
+    body {
+      background: var(--cream);
+      font-family: 'Jost', sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(160deg, #3A5C3D 0%, #2A4230 100%);
+      padding: 4rem 2rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(184,151,90,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 40%);
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.6rem;
+      font-weight: 300;
+      color: #FAF7F2;
+      line-height: 1.1;
+      position: relative;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+      position: relative;
+    }
+    .hero-dates {
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      color: rgba(250,247,242,0.65);
+      position: relative;
+    }
+
+    /* Deadline bar */
+    .deadline {
+      background: var(--sage);
+      color: #fff;
+      text-align: center;
+      padding: 0.65rem 1rem;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    /* Pricing */
+    .price-banner {
+      background: var(--warm);
+      border-bottom: 1px solid rgba(107,90,78,0.15);
+      padding: 2rem 2rem 1.75rem;
+    }
+    .price-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .price-card {
+      background: #fff;
+      border: 1px solid rgba(92,122,95,0.2);
+      border-radius: 10px;
+      padding: 1.5rem;
+      position: relative;
+    }
+    .price-card.featured {
+      border-color: var(--sage);
+      border-width: 1.5px;
+    }
+    .price-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--sage);
+      color: #fff;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .price-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bark-light);
+      margin-bottom: 0.4rem;
+      margin-top: 0.25rem;
+    }
+    .price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 400;
+      color: var(--sage-deep);
+      line-height: 1;
+    }
+    .price-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+    .price-divider {
+      border: none;
+      border-top: 1px solid rgba(92,122,95,0.15);
+      margin: 0.85rem 0;
+    }
+    .savings-strip {
+      text-align: center;
+      margin-top: 1.25rem;
+      font-size: 12px;
+      color: var(--sage-deep);
+      letter-spacing: 0.07em;
+    }
+    .savings-strip strong { color: var(--gold); }
+
+    /* Form */
+    .form-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(92,122,95,0.2);
+    }
+    .section-gap { height: 2rem; }
+
+    .field-group {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .field-group.two-col { grid-template-columns: 1fr 1fr; }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .field > label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bark);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(107,90,78,0.25);
+      border-radius: 6px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(92,122,95,0.1);
+    }
+    textarea { resize: vertical; min-height: 90px; }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B5A4E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    .required-star { color: var(--gold); margin-left: 2px; }
+
+    /* Radio options */
+    .radio-group { display: flex; flex-direction: column; gap: 0.6rem; }
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(107,90,78,0.2);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #fff;
+    }
+    .radio-option:hover {
+      border-color: var(--sage);
+      background: var(--sage-pale);
+    }
+    .radio-option input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--sage);
+      cursor: pointer;
+      flex-shrink: 0;
+      padding: 0;
+      border: none;
+    }
+    .opt-label { font-size: 14px; color: var(--text); flex: 1; }
+    .opt-sublabel { font-size: 11px; letter-spacing: 0.05em; }
+    .opt-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      color: var(--sage-deep);
+      white-space: nowrap;
+    }
+
+    /* Deposit box */
+    .deposit-box {
+      background: var(--sage-pale);
+      border: 1px solid rgba(92,122,95,0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .deposit-box h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--sage-deep);
+      margin-bottom: 0.4rem;
+    }
+    .deposit-box > p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .deposit-methods {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .method-btn {
+      flex: 1;
+      padding: 0.7rem 0.5rem;
+      border: 1px solid rgba(92,122,95,0.3);
+      border-radius: 6px;
+      text-align: center;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      color: var(--sage-deep);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1.5;
+    }
+    .method-btn:hover { background: var(--sage); color: #fff; border-color: var(--sage); }
+    .method-btn.selected { background: var(--sage); color: #fff; border-color: var(--sage); }
+    .method-btn strong { display: block; }
+    .method-btn span { font-size: 11px; opacity: 0.8; }
+
+    .instr-box {
+      display: none;
+      margin-top: 1rem;
+      font-size: 13px;
+      color: var(--sage-deep);
+      background: #fff;
+      padding: 0.85rem 1rem;
+      border-radius: 6px;
+      border: 1px solid rgba(92,122,95,0.2);
+      line-height: 1.65;
+    }
+
+    .stripe-pay-btn {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.85rem;
+      background: var(--sage-deep);
+      color: #FAF7F2;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .stripe-pay-btn:hover { background: #2A3F2D; }
+
+    /* Checkbox */
+    .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(107,90,78,0.2);
+      border-radius: 8px;
+      cursor: pointer;
+      background: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .checkbox-option input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--sage);
+      cursor: pointer;
+      flex-shrink: 0;
+      padding: 0;
+      border: none;
+    }
+    .checkbox-option span { font-size: 13px; color: var(--text); }
+
+    /* Submit */
+    .submit-btn {
+      width: 100%;
+      background: var(--sage-deep);
+      color: #FAF7F2;
+      border: none;
+      padding: 1.1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .submit-btn:hover { background: #2A3F2D; }
+    .submit-note {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 0.85rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      .hero-title { font-size: 2.6rem; }
+      .field-group.two-col { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: 1fr; }
+      .price-card.featured { margin-top: 1rem; }
+      .form-wrap { padding: 2rem 1.25rem 3rem; }
+      .price-banner { padding: 2rem 1.25rem 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-eyebrow">The Wellness Collective · The Well</p>
+    <h1 class="hero-title"><em>Restore</em><br>Retreat</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-dates">October 9 – 11, 2026</p>
+  </div>
+
+  <!-- Deadline bar -->
+  <div class="deadline">⏳ Early bird pricing ends July 1st — save up to $150</div>
+
+  <!-- Pricing -->
+  <div class="price-banner">
+    <div class="price-grid">
+      <div class="price-card featured" style="padding-top: 1.75rem;">
+        <div class="price-badge">Early Bird · Now – July 1</div>
+        <p class="price-label">Members</p>
+        <div class="price-amount">$500</div>
+        <p class="price-note">Wellness Collective members</p>
+        <hr class="price-divider">
+        <p class="price-label">Non-Members</p>
+        <div class="price-amount" style="font-size: 2.1rem;">$600</div>
+      </div>
+      <div class="price-card" style="padding-top: 1.75rem;">
+        <div class="price-badge" style="background: var(--bark-light);">After July 1</div>
+        <p class="price-label">Members</p>
+        <div class="price-amount" style="color: var(--bark);">$650</div>
+        <p class="price-note">Wellness Collective members</p>
+        <hr class="price-divider" style="border-color: rgba(107,90,78,0.12);">
+        <p class="price-label">Non-Members</p>
+        <div class="price-amount" style="font-size: 2.1rem; color: var(--bark);">$750</div>
+      </div>
+    </div>
+    <p class="savings-strip">Register early and save <strong>$150</strong> · $50 deposit required to hold your spot</p>
+  </div>
+
+  <!-- Form -->
+  <form class="form-wrap" action="https://formspree.io/f/xbdbveoj" method="POST">
+
+    <!-- Your information -->
+    <div class="section-gap"></div>
+    <p class="section-label">Your information</p>
+
+    <div class="field-group two-col">
+      <div class="field">
+        <label for="first_name">First Name<span class="required-star">*</span></label>
+        <input type="text" id="first_name" name="first_name" placeholder="First" required>
+      </div>
+      <div class="field">
+        <label for="last_name">Last Name<span class="required-star">*</span></label>
+        <input type="text" id="last_name" name="last_name" placeholder="Last" required>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field">
+        <label for="email">Email Address<span class="required-star">*</span></label>
+        <input type="email" id="email" name="email" placeholder="you@email.com" required>
+      </div>
+    </div>
+
+    <div class="field-group two-col">
+      <div class="field">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000">
+      </div>
+      <div class="field">
+        <label for="city">City / State</label>
+        <input type="text" id="city" name="city" placeholder="Alexandria, MN">
+      </div>
+    </div>
+
+    <!-- Registration details -->
+    <div class="section-gap"></div>
+    <p class="section-label">Registration details</p>
+
+    <div class="field-group">
+      <div class="field">
+        <label>Membership Status<span class="required-star">*</span></label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="membership_status" value="member_early" required>
+            <span class="opt-label">Wellness Collective Member <span class="opt-sublabel" style="color: var(--sage);">(Early Bird)</span></span>
+            <span class="opt-price">$500</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="membership_status" value="nonmember_early">
+            <span class="opt-label">Non-Member <span class="opt-sublabel" style="color: var(--sage);">(Early Bird)</span></span>
+            <span class="opt-price">$600</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="membership_status" value="member_standard">
+            <span class="opt-label">Wellness Collective Member <span class="opt-sublabel" style="color: var(--text-muted);">(After July 1)</span></span>
+            <span class="opt-price" style="color: var(--bark);">$650</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="membership_status" value="nonmember_standard">
+            <span class="opt-label">Non-Member <span class="opt-sublabel" style="color: var(--text-muted);">(After July 1)</span></span>
+            <span class="opt-price" style="color: var(--bark);">$750</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deposit -->
+    <div class="section-gap"></div>
+    <p class="section-label">Deposit · $50 to hold your spot</p>
+
+    <div class="deposit-box">
+      <h4>Reserve Your Spot Today</h4>
+      <p>A $50 deposit is required to hold your registration. The remaining balance is due prior to the retreat. Choose how you'd like to pay below.</p>
+
+      <div class="deposit-methods">
+        <button type="button" class="method-btn" id="btn-venmo" onclick="selectMethod('venmo')">
+          <strong>Venmo</strong>
+          <span>@briana-weber-1</span>
+        </button>
+        <button type="button" class="method-btn" id="btn-stripe" onclick="selectMethod('stripe')">
+          <strong>Credit / Debit Card</strong>
+          <span>Secure checkout</span>
+        </button>
+      </div>
+
+      <input type="hidden" name="deposit_method" id="deposit_method_input" value="">
+
+      <div class="instr-box" id="venmo-instructions">
+        <strong>Venmo:</strong> Send $50 to <strong>@briana-weber-1</strong> with the note "Restore Retreat + your name," then enter your Venmo username in the field below so we can confirm your deposit.
+      </div>
+
+      <div class="instr-box" id="stripe-instructions">
+        <strong>Pay by card now</strong> — click the button below to securely pay your $50 deposit through Stripe. Once complete, return here and finish submitting your registration form.
+        <a href="https://buy.stripe.com/00weVcbvceZCdFjcYWeZ20a" target="_blank" rel="noopener" class="stripe-pay-btn">Pay $50 Deposit Now →</a>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field">
+        <label for="deposit_confirmed">Deposit confirmation</label>
+        <input type="text" id="deposit_confirmed" name="deposit_confirmed" placeholder="Venmo username or 'Stripe paid'">
+      </div>
+    </div>
+
+    <!-- About you -->
+    <div class="section-gap"></div>
+    <p class="section-label">A little more about you</p>
+
+    <div class="field-group">
+      <div class="field">
+        <label for="how_heard">How did you hear about the retreat?</label>
+        <select id="how_heard" name="how_heard">
+          <option value="">Select one…</option>
+          <option>Instagram</option>
+          <option>Facebook</option>
+          <option>Friend / word of mouth</option>
+          <option>Email newsletter</option>
+          <option>The Well studio</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field">
+        <label for="intentions">What are you hoping to restore or release on this retreat?</label>
+        <textarea id="intentions" name="intentions" placeholder="Share as much or as little as you'd like…"></textarea>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field">
+        <label for="accommodations">Any dietary needs or accommodations?</label>
+        <textarea id="accommodations" name="accommodations" rows="2" placeholder="Allergies, mobility needs, room preferences…"></textarea>
+      </div>
+    </div>
+
+    <label class="checkbox-option">
+      <input type="checkbox" name="newsletter" value="yes">
+      <span>Add me to The Wellness Collective email list for updates &amp; future events</span>
+    </label>
+
+    <!-- Hidden fields -->
+    <input type="hidden" name="_subject" value="Restore Retreat Registration — The Well">
+    <input type="hidden" name="_next" value="https://alexandriawell.com">
+
+    <!-- Submit -->
+    <button type="submit" class="submit-btn">Submit My Registration</button>
+    <p class="submit-note">
+      By submitting, you confirm your $50 deposit and agree to the retreat payment terms.<br>
+      Questions? Reach out directly — we can't wait to see you there.
+    </p>
+
+  </form>
+
+  <script>
+    function selectMethod(m) {
+      document.getElementById('btn-venmo').classList.remove('selected');
+      document.getElementById('btn-stripe').classList.remove('selected');
+      document.getElementById('btn-' + m).classList.add('selected');
+      document.getElementById('deposit_method_input').value = m;
+      document.getElementById('venmo-instructions').style.display = m === 'venmo' ? 'block' : 'none';
+      document.getElementById('stripe-instructions').style.display = m === 'stripe' ? 'block' : 'none';
+      document.getElementById('deposit_confirmed').placeholder = m === 'stripe' ? 'Stripe paid' : 'Your Venmo username';
+    }
+  </script>
+
+</body>
+</html>
