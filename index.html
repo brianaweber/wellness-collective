@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The WELLness Collective — Briana Weber</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?familyh=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --sage: #7a8c6e;
@@ -363,7 +363,7 @@
         <p class="lead-form-label">Be the first to know when retreat details drop — spots will be limited!</p>
         <input type="text" placeholder="Your name" id="fr-name" class="lead-input" />
         <input type="email" placeholder="Your email" id="fr-email" class="lead-input" />
-        <button class="lead-submit" onclick="submitLead('fr', 'Wellness Retreat Notification')">Notify Me →</button>
+        <button class="lead-submit" onclick="submitLead('fr', 'Wellness Retreat Notification')">Sign Me Up!</button>
         <div id="fr-confirm" class="lead-confirm" style="display:none;"> You're on the list! Stay tuned.</div>
       </div>
     </div>
@@ -380,7 +380,7 @@
         <p class="lead-form-label">Get on the list and be first to know when Summer Strength Series dates drop!</p>
         <input type="text" placeholder="Your name" id="fs-name" class="lead-input" />
         <input type="email" placeholder="Your email" id="fs-email" class="lead-input" />
-        <button class="lead-submit" onclick="submitLead('fs', 'Summer Strength Series — Nice Juicery Collab')">Notify Me →</button>
+        <button class="lead-submit" onclick="submitLead('fs', 'Summer Strength Series — Nice Juicery Collab')">Sign Me Up!</button>
         <div id="fs-confirm" class="lead-confirm" style="display:none;"> You're on the list! Details coming soon. </div>
       </div>
     </div>
@@ -931,7 +931,7 @@
         <span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:0.35rem 1rem;font-size:0.65rem;color:rgba(250,247,242,0.8);letter-spacing:0.1em;">For Women · 18+</span>
         <span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:0.35rem 1rem;font-size:0.65rem;color:rgba(250,247,242,0.8);letter-spacing:0.1em;">12 Spots Only</span>
       </div>
-      <button onclick="document.getElementById('restore-waitlist').scrollIntoView({behavior:'smooth'})" style="background:var(--sage);color:white;border:none;border-radius:30px;padding:0.9rem 2.5rem;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Registration Coming Soon — Notify Me</button>
+      <button onclick="window.location.href='restore-signup.html'" style="background:var(--sage);color:white;border:none;border-radius:30px;padding:0.9rem 2.5rem;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Sign Me Up!</button>
       <p style="font-size:0.62rem;color:rgba(250,247,242,0.35);margin-top:1rem;">Members get first access June 1st · General registration opens June 7th</p>
     </div>
   </div>
@@ -943,7 +943,7 @@
       <p style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--olive);font-weight:600;margin-bottom:0.5rem;">Mark Your Calendar</p>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--taupe-dark);margin-bottom:0.5rem;">Early bird registration opens<br><em>June 1st, 2026</em></h3>
       <p style="font-size:0.78rem;color:var(--text-light);line-height:1.7;margin-bottom:1.5rem;">12 spots. Early bird pricing through June 30th. Join the waitlist now to be first in line.</p>
-      <button onclick="document.getElementById('restore-waitlist').scrollIntoView({behavior:'smooth'})" style="background:var(--sage);color:white;border:none;border-radius:30px;padding:0.8rem 2rem;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Notify Me →</button>
+      <button onclick="window.location.href='restore-signup.html'" style="background:var(--sage);color:white;border:none;border-radius:30px;padding:0.8rem 2rem;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Sign Me Up!</button>
     </div>
 
 
@@ -1091,7 +1091,7 @@
               <div style="margin-top:0.3rem;font-size:0.62rem;color:rgba(250,247,242,0.4);">Or split into 3 payments</div>
             </div>
           </div>
-          <button onclick="openRestoreForm('member')" style="width:100%;background:var(--sage);color:white;border:none;border-radius:25px;padding:0.8rem;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Reserve My Spot →</button>
+          <button onclick="window.location.href='restore-signup.html'" style="width:100%;background:var(--sage);color:white;border:none;border-radius:25px;padding:0.8rem;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--olive)'" onmouseout="this.style.background='var(--sage)'">Reserve My Spot →</button>
         </div>
 
         <!-- NON-MEMBER -->
@@ -1107,7 +1107,7 @@
               <div style="margin-top:0.3rem;font-size:0.62rem;color:var(--text-light);">Or split into 3 payments</div>
             </div>
           </div>
-          <button onclick="openRestoreForm('nonmember')" style="width:100%;background:var(--taupe-dark);color:white;border:none;border-radius:25px;padding:0.8rem;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--taupe)'" onmouseout="this.style.background='var(--taupe-dark)'">Reserve My Spot →</button>
+          <button onclick="window.location.href='restore-signup.html'" style="width:100%;background:var(--taupe-dark);color:white;border:none;border-radius:25px;padding:0.8rem;font-family:'Montserrat',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--taupe)'" onmouseout="this.style.background='var(--taupe-dark)'">Reserve My Spot →</button>
           <p style="font-size:0.62rem;color:var(--sage);margin-top:0.8rem;font-style:italic;"><a href="https://buy.stripe.com/4gM4gydDk8Be9p36AyeZ202" style="color:var(--sage);">Join the membership</a> and save $100</p>
         </div>
 
