@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SHE STRONG — June 8 & 22</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0e0d0b;
+    --cream: #f5f0e8;
+    --warm: #e8ddd0;
+    --gold: #c9a84c;
+    --rust: #b84a2a;
+    --sage: #6b7c5e;
+    --text: #1a1916;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 24px;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 80%, rgba(201,168,76,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 20%, rgba(184,74,42,0.15) 0%, transparent 55%),
+      radial-gradient(ellipse 100% 100% at 50% 50%, rgba(107,124,94,0.08) 0%, transparent 70%),
+      var(--black);
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    text-align: center;
+    max-width: 760px;
+  }
+
+  .collab-line {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .collab-line span { color: rgba(201,168,76,0.4); }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(100px, 22vw, 200px);
+    line-height: 0.88;
+    letter-spacing: 0.02em;
+    color: var(--cream);
+    margin-bottom: 0;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-style: italic;
+    color: var(--warm);
+    margin: 24px 0 48px;
+    line-height: 1.4;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .date-badges {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .date-badge {
+    border: 1px solid var(--gold);
+    padding: 14px 32px;
+    text-align: center;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .date-badge:hover { background: rgba(201,168,76,0.08); }
+
+  .date-badge .month {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+  }
+
+  .date-badge .day {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--cream);
+    display: block;
+  }
+
+  .date-badge .time {
+    font-size: 11px;
+    color: rgba(245,240,232,0.5);
+    letter-spacing: 0.15em;
+    display: block;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    padding: 18px 44px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+  }
+
+  .cta-btn:hover {
+    background: var(--cream);
+    transform: translateY(-2px);
+  }
+
+  /* ── SPOTS BAR ── */
+  .spots-bar {
+    background: var(--rust);
+    padding: 14px 24px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 500;
+    overflow: hidden;
+  }
+
+  .spots-bar-inner {
+    display: inline-flex;
+    gap: 48px;
+    white-space: nowrap;
+    animation: marquee 18s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── ABOUT SECTION ── */
+  .about-wrapper {
+    background: #1a1916;
+  }
+
+  .about {
+    padding: 100px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  @media (max-width: 700px) {
+    .about { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  .about-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .about-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 28px;
+  }
+
+  .about-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #d4cfc7;
+  }
+
+  .details-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .details-list li {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .details-list li:last-child { border-bottom: none; }
+
+  .detail-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    color: var(--gold);
+  }
+
+  .detail-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .detail-value {
+    font-size: 15px;
+    color: #f5f0e8;
+    line-height: 1.5;
+  }
+
+  /* ── PARTNERS ── */
+  .partners {
+    padding: 80px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .partners-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+  }
+
+  .partner-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.15);
+  }
+
+  @media (max-width: 600px) {
+    .partner-cards { grid-template-columns: 1fr; }
+  }
+
+  .partner-card {
+    background: var(--black);
+    padding: 40px 28px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .partner-card:hover { background: rgba(201,168,76,0.05); }
+
+  .partner-icon {
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+  .partner-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .partner-desc {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #a09a90;
+  }
+
+  /* ── SIGNUP FORM ── */
+  .signup-section {
+    padding: 100px 24px;
+    background: var(--cream);
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .signup-section::before {
+    content: 'SHE STRONG';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 280px;
+    color: rgba(14,13,11,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.02em;
+  }
+
+  .signup-inner {
+    max-width: 560px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .signup-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .signup-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 6vw, 54px);
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .signup-sub {
+    font-size: 14px;
+    color: #3a3835;
+    margin-bottom: 44px;
+    line-height: 1.6;
+  }
+
+  .spots-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--rust);
+    color: white;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    margin-bottom: 40px;
+  }
+
+  .spots-dot {
+    width: 7px;
+    height: 7px;
+    background: white;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #3a3835;
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    border: 1px solid rgba(26,25,22,0.2);
+    background: white;
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: var(--gold);
+  }
+
+  .select-wrap {
+    position: relative;
+  }
+
+  .select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    pointer-events: none;
+    font-size: 12px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 480px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  .form-note {
+    font-size: 12px;
+    color: #3a3835;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    padding: 14px;
+    border-left: 2px solid var(--gold);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--black);
+    color: var(--cream);
+    border: none;
+    padding: 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .submit-btn:hover {
+    background: var(--rust);
+    transform: translateY(-2px);
+  }
+
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 48px 24px;
+  }
+
+  .success-msg .check {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .success-msg h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .success-msg p {
+    font-size: 14px;
+    color: #3a3835;
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 60px 24px;
+    text-align: center;
+  }
+
+  .footer-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .footer-address {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: rgba(245,240,232,0.7);
+    line-height: 2;
+  }
+
+  .footer-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 28px auto;
+  }
+
+  .footer-partners {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="collab-line">
+      Studio She Collective <span>✦</span> The Well <span>✦</span> Nice Juicery
+    </div>
+    <h1 class="hero-title">She<em>Strong</em></h1>
+    <p class="hero-subtitle">A strength class for every body.<br>No experience required. Just show up.</p>
+    <div class="date-badges">
+      <div class="date-badge">
+        <span class="month">June</span>
+        <span class="day">7</span>
+        <span class="time">Sunday · 5:15 PM</span>
+      </div>
+      <div class="date-badge">
+        <span class="month">June</span>
+        <span class="day">8</span>
+        <span class="time">Monday · 5:15 PM</span>
+      </div>
+      <div class="date-badge">
+        <span class="month">June</span>
+        <span class="day">22</span>
+        <span class="time">Monday · 5:15 PM</span>
+      </div>
+    </div>
+    <a href="#signup" class="cta-btn">Reserve Your Spot</a>
+  </div>
+</section>
+
+<!-- SPOTS MARQUEE -->
+<div class="spots-bar">
+  <div class="spots-bar-inner">
+    <span>⚡ 12 spots per class</span>
+    <span>✦ All ages welcome</span>
+    <span>⚡ Only $10</span>
+    <span>✦ All experience levels</span>
+    <span>⚡ Mondays · June 8 & June 22</span>
+    <span>✦ 5:15 PM</span>
+    <span>⚡ Discounted juices from Nice Juicery</span>
+    <span>✦ Alexandria, MN</span>
+    <span>⚡ 12 spots per class</span>
+    <span>✦ All ages welcome</span>
+    <span>⚡ Only $10</span>
+    <span>✦ All experience levels</span>
+    <span>⚡ Mondays · June 8 & June 22</span>
+    <span>✦ 5:15 PM</span>
+    <span>⚡ Discounted juices from Nice Juicery</span>
+    <span>✦ Alexandria, MN</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about-wrapper">
+<section class="about">
+  <div>
+    <div class="about-label">What is She Strong</div>
+    <h2 class="about-heading">Fun. Fierce.<br>Made for everyone.</h2>
+    <p class="about-body">
+      She Strong is a high-energy strength training class built around one idea: every woman deserves to feel powerful in her body. We're bringing together three of Alexandria's favorite wellness brands for two exclusive sessions you won't want to miss.<br><br>
+      Whether you've never picked up a weight or you train five days a week — you belong here. Come sweat, connect, and leave feeling like the strongest version of yourself.
+    </p>
+  </div>
+  <ul class="details-list">
+    <li>
+      <div class="detail-icon">📍</div>
+      <div>
+        <span class="detail-label">Location</span>
+        <span class="detail-value">Studio She Collective<br>510 22nd Ave E, Suite 202A<br>Alexandria, MN 56308</span>
+      </div>
+    </li>
+    <li>
+      <div class="detail-icon">📅</div>
+      <div>
+        <span class="detail-label">Dates</span>
+        <span class="detail-value">Sunday, June 7 at 5:15 PM<br>Monday, June 8 at 5:15 PM<br>Monday, June 22 at 5:15 PM</span>
+      </div>
+    </li>
+    <li>
+      <div class="detail-icon">🏋️</div>
+      <div>
+        <span class="detail-label">Format</span>
+        <span class="detail-value">Energetic strength training<br>All levels · All ages welcome</span>
+      </div>
+    </li>
+    <li>
+      <div class="detail-icon">⚡</div>
+      <div>
+        <span class="detail-label">Capacity</span>
+        <span class="detail-value">12 spots only per session<br>Limited — reserve early</span>
+      </div>
+    </li>
+    <li>
+      <div class="detail-icon">💵</div>
+      <div>
+        <span class="detail-label">Cost</span>
+        <span class="detail-value">$10 per class<br>+ discounted juices from Nice Juicery</span>
+      </div>
+    </li>
+  </ul>
+</section>
+</div>
+
+<!-- PARTNERS -->
+<section class="partners">
+  <div class="partners-label">Brought to you by</div>
+  <div class="partner-cards">
+    <div class="partner-card">
+      <div class="partner-icon">💪</div>
+      <div class="partner-name">Studio She Collective</div>
+      <p class="partner-desc">Alexandria's movement studio built for women to reclaim their full selves.</p>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">🌿</div>
+      <div class="partner-name">The Well</div>
+      <p class="partner-desc">Luxe, customized wellness programming from The Wellness Collective.</p>
+    </div>
+    <div class="partner-card">
+      <div class="partner-icon">🥤</div>
+      <div class="partner-name">Nice Juicery</div>
+      <p class="partner-desc">Cold-pressed juices and feel-good fuel to power your strongest self.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNUP -->
+<section class="signup-section" id="signup">
+  <div class="signup-inner">
+    <div id="form-wrap">
+      <div class="signup-label">Reserve your spot</div>
+      <h2 class="signup-heading">Sign up for<br>She Strong</h2>
+      <p class="signup-sub">Choose one session or both. Spots are strictly limited to 12 per class.</p>
+
+      <div class="spots-counter">
+        <span class="spots-dot"></span>
+        12 spots available per class — fill fast
+      </div>
+
+      <form action="https://formspree.io/f/xojboglg" method="POST">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="first_name" placeholder="Briana" required />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="last_name" placeholder="Smith" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(320) 000-0000" />
+        </div>
+
+        <div class="form-group">
+          <label for="session">Which session(s)?</label>
+          <div class="select-wrap">
+            <select id="session" name="session" required>
+              <option value="">Select a session</option>
+              <option value="Sunday, June 7 — 5:15 PM">Sunday, June 7 — 5:15 PM</option>
+              <option value="Monday, June 8 — 5:15 PM">Monday, June 8 — 5:15 PM</option>
+              <option value="Monday, June 22 — 5:15 PM">Monday, June 22 — 5:15 PM</option>
+              <option value="Both June 8 and June 22">Both June 8 and June 22</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="level">Experience Level</label>
+          <div class="select-wrap">
+            <select id="level" name="experience_level">
+              <option value="">Select your level</option>
+              <option value="Beginner">Beginner — new to strength training</option>
+              <option value="Some experience">Some experience</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-note">
+          💵 <strong>$10 per class</strong> — plus enjoy discounted juices from Nice Juicery after class!<br><br>
+          ✦ Open to all ages and fitness levels. No prior experience needed. Wear comfortable workout clothes and bring water!
+        </div>
+
+        <button type="submit" class="submit-btn">Claim My Spot →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-title">She Strong</div>
+  <div class="footer-address">
+    Studio She Collective · 510 22nd Ave E, Suite 202A<br>
+    Alexandria, MN 56308<br>
+    June 7 · June 8 · June 22 · 5:15 PM
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-partners">Studio She Collective · The Well · Nice Juicery</div>
+</footer>
+
+</body>
+</html>
