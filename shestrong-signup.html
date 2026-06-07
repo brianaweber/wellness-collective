@@ -594,13 +594,18 @@
     <div class="date-badges">
       <div class="date-badge">
         <span class="month">June</span>
+        <span class="day">7</span>
+        <span class="time">Sunday · 5:15 PM</span>
+      </div>
+      <div class="date-badge">
+        <span class="month">June</span>
         <span class="day">8</span>
-        <span class="time">5:15 PM</span>
+        <span class="time">Monday · 5:15 PM</span>
       </div>
       <div class="date-badge">
         <span class="month">June</span>
         <span class="day">22</span>
-        <span class="time">5:15 PM</span>
+        <span class="time">Monday · 5:15 PM</span>
       </div>
     </div>
     <a href="#signup" class="cta-btn">Reserve Your Spot</a>
@@ -652,7 +657,7 @@
       <div class="detail-icon">📅</div>
       <div>
         <span class="detail-label">Dates</span>
-        <span class="detail-value">Monday, June 8 at 5:15 PM<br>Monday, June 22 at 5:15 PM</span>
+        <span class="detail-value">Sunday, June 7 at 5:15 PM<br>Monday, June 8 at 5:15 PM<br>Monday, June 22 at 5:15 PM</span>
       </div>
     </li>
     <li>
@@ -715,7 +720,7 @@
         12 spots available per class — fill fast
       </div>
 
-      <form id="signup-form" action="https://formspree.io/f/xojboglg" method="POST">
+      <form action="https://formspree.io/f/xojboglg" method="POST">
 
         <div class="form-row">
           <div class="form-group">
@@ -743,9 +748,10 @@
           <div class="select-wrap">
             <select id="session" name="session" required>
               <option value="">Select a session</option>
+              <option value="Sunday, June 7 — 5:15 PM">Sunday, June 7 — 5:15 PM</option>
               <option value="Monday, June 8 — 5:15 PM">Monday, June 8 — 5:15 PM</option>
               <option value="Monday, June 22 — 5:15 PM">Monday, June 22 — 5:15 PM</option>
-              <option value="Both sessions">Both sessions</option>
+              <option value="Both June 8 and June 22">Both June 8 and June 22</option>
             </select>
           </div>
         </div>
@@ -771,12 +777,6 @@
         <button type="submit" class="submit-btn">Claim My Spot →</button>
       </form>
     </div>
-
-    <div class="success-msg" id="success">
-      <span class="check">✦</span>
-      <h3>You're in, She Strong!</h3>
-      <p>We'll be in touch with everything you need to know before class. See you there — get ready to feel powerful.</p>
-    </div>
   </div>
 </section>
 
@@ -786,37 +786,11 @@
   <div class="footer-address">
     Studio She Collective · 510 22nd Ave E, Suite 202A<br>
     Alexandria, MN 56308<br>
-    June 8 &amp; June 22 · Mondays · 5:15 PM
+    June 7 · June 8 · June 22 · 5:15 PM
   </div>
   <div class="footer-divider"></div>
   <div class="footer-partners">Studio She Collective · The Well · Nice Juicery</div>
 </footer>
-
-<script>
-  const form = document.getElementById('signup-form');
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const data = new FormData(form);
-    const response = await fetch('https://formspree.io/f/xojboglg', {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (response.ok) {
-      document.getElementById('form-wrap').style.display = 'none';
-      const success = document.getElementById('success');
-      success.style.display = 'block';
-      success.style.opacity = 0;
-      setTimeout(() => {
-        success.style.transition = 'opacity 0.6s';
-        success.style.opacity = 1;
-      }, 50);
-      window.scrollTo({ top: document.getElementById('signup').offsetTop, behavior: 'smooth' });
-    } else {
-      alert('Something went wrong. Please try again or email us directly.');
-    }
-  });
-</script>
 
 </body>
 </html>
