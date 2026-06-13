@@ -431,6 +431,50 @@
     .workout-body { display: block !important; }
     .meal-body { display: grid !important; }
   }
+
+/* PCOS ANNOTATIONS */
+.pcos-banner {
+  background: linear-gradient(135deg, #f3e8f7, #e8f0e9);
+  border: 1px solid #c9a4d4;
+  border-radius: 2px;
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.pcos-banner-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.pcos-banner-text { font-size: 12px; color: #5a3a6b; line-height: 1.6; font-weight: 300; }
+.pcos-banner-text strong { font-weight: 500; color: #4a2a5b; }
+.pcos-note {
+  margin-top: 0.75rem;
+  background: linear-gradient(135deg, #f9f0fc, #f0f5f1);
+  border-left: 3px solid #9b6bb5;
+  border-radius: 0 2px 2px 0;
+  padding: 0.75rem 1rem;
+  font-size: 12px;
+  color: #5a3a6b;
+  line-height: 1.6;
+  font-weight: 300;
+}
+.pcos-note strong { font-weight: 500; }
+.pcos-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f3e8f7;
+  border: 1px solid #c9a4d4;
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #6b3a8a;
+  margin-left: 8px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
 </style>
 </head>
 <body>
@@ -507,6 +551,10 @@
       <div class="section-divider"></div>
       <p id="workout-subtitle">3 days · 30–35 minutes · Low impact · Knee-friendly</p>
     </div>
+<div class="pcos-banner">
+  <div class="pcos-banner-icon">🌿</div>
+  <div class="pcos-banner-text"><strong>PCOS Exercise Notes:</strong> Exercises marked with a <strong>🌿 PCOS</strong> note below each workout are especially beneficial for PCOS. Strength training improves insulin sensitivity, low-impact cardio supports cortisol balance, and balance work activates the parasympathetic nervous system — all key for hormonal health.</div>
+</div>
     <div class="week-context-bar">
       <div class="wcb-left">
         <div class="wcb-week" id="wcb-week-label"></div>
@@ -528,6 +576,10 @@
       <div class="section-divider"></div>
       <p id="nutrition-subtitle">7 days · Breakfast, lunch &amp; dinner · Simple ingredients, real food</p>
     </div>
+<div class="pcos-banner">
+  <div class="pcos-banner-icon">🌿</div>
+  <div class="pcos-banner-text"><strong>PCOS Nutrition Notes:</strong> Meals marked with a <strong>🌿 PCOS-Friendly</strong> badge are especially supportive for PCOS. They focus on blood sugar balance, anti-inflammatory ingredients, high protein, and low glycemic load — all of which help regulate insulin, reduce inflammation, and support hormonal balance.</div>
+</div>
     <div class="nutrition-note">
       <strong>A note from your coach:</strong> Your busy job and full home life leave little energy for cooking — so all 21 meals this week are designed around that reality. Most take 20 minutes or less, ingredients overlap across the week to reduce your shopping list, and every meal includes protein to support your weight loss and energy goals. Tap any day to expand, then tap a meal to open the recipe.
     </div>
@@ -642,6 +694,7 @@ const workoutData = [
           ]}
         ],
         note: "💡 If your knees feel achy during step-ups, skip that exercise and add an extra set of glute bridges instead. Listen to your body — consistency over intensity, always."
+        pcosNote: `🌿 <strong>PCOS:</strong> Sit-to-stands and glute bridges directly improve insulin sensitivity — a core goal in PCOS management. Strength training 2-3x/week has been shown to reduce androgen levels and improve glucose metabolism. Single-leg stands also reduce cortisol by demanding focused, calm effort.`,
       },
       {
         title: "Day 2 — Upper Body & Core",
@@ -664,6 +717,7 @@ const workoutData = [
           ]}
         ],
         note: "💡 This session is a great stress-reliever after a hard day. The deep breathing in the cool-down matters — even 5 slow exhales changes your nervous system."
+        pcosNote: `🌿 <strong>PCOS:</strong> Dead bugs and torso rotations build deep core strength without spiking cortisol. For PCOS, managing cortisol is as important as managing insulin — high cortisol disrupts progesterone and worsens hormonal imbalance. This session's controlled, low-stress format is ideal.`,
       },
       {
         title: "Day 3 — Full Body & Mobility",
@@ -685,6 +739,7 @@ const workoutData = [
           ]}
         ],
         note: "💡 Day 3 is also a great day for a gentle 15–20 minute walk. Movement doesn't have to be a workout — even a slow evening walk adds up."
+        pcosNote: `🌿 <strong>PCOS:</strong> The heel-to-toe walk and bird dog are low-impact, parasympathetic-activating movements — meaning they help calm your nervous system. For PCOS, where chronic stress drives cortisol and inflammation, these calm balance exercises have real hormonal benefits.`,
       }
     ]
   },
@@ -712,6 +767,7 @@ const workoutData = [
           ]}
         ],
         note: "💡 Notice how this week's exercises are progressed versions of Week 1. That's intentional — you're not starting over, you're building on what you've already done."
+        pcosNote: `🌿 <strong>PCOS:</strong> Slow eccentric movements (the 3-4 second lowering on sit-to-stands) are especially effective at building insulin-sensitizing muscle. More muscle tissue = better glucose uptake = lower circulating insulin. Tandem stance also trains the vestibular system, linked to adrenal regulation.`,
       },
       {
         title: "Day 2 — Upper Body & Core",
@@ -733,6 +789,7 @@ const workoutData = [
           ]}
         ],
         note: "💡 The wood chop is a great functional exercise — it mimics real life movements like reaching across your body, lifting groceries, or turning to grab something behind you."
+        pcosNote: `🌿 <strong>PCOS:</strong> The standing wood chop engages the obliques and hips — areas that benefit from strengthening in PCOS to counteract fat redistribution patterns. Resistance work also stimulates testosterone use in muscle, helping normalize androgen levels over time.`,
       },
       {
         title: "Day 3 — Full Body & Agility",
@@ -754,6 +811,7 @@ const workoutData = [
           ]}
         ],
         note: "💡 The clock reach is deceptively hard. If it feels too easy, try closing your eyes — your balance system has to work entirely without visual input."
+        pcosNote: `🌿 <strong>PCOS:</strong> The clock reach requires intense focus, sustained breath, and proprioceptive engagement — activating the parasympathetic nervous system and lowering cortisol in real time. This is one of the most PCOS-supportive balance exercises available.`,
       }
     ]
   },
@@ -781,6 +839,7 @@ const workoutData = [
           ]}
         ],
         note: "💡 Three weeks in — you're already doing things that seemed hard in Week 1. Notice that. Your body has been adapting even when it didn't feel like it."
+        pcosNote: `🌿 <strong>PCOS:</strong> Week 3's power element recruits fast-twitch muscle fibers, which are highly insulin-sensitive. Lateral band walks target the outer glutes and hip abductors — muscles that become underactive with PCOS-related fat redistribution, making them a key corrective exercise.`,
       },
       {
         title: "Day 2 — Upper Body & Functional Strength",
@@ -802,6 +861,7 @@ const workoutData = [
           ]}
         ],
         note: "💡 The farmer's carry is as functional as it gets — it's literally carrying heavy things, which you do every single day. It also burns significantly more calories than it looks like it should."
+        pcosNote: `🌿 <strong>PCOS:</strong> Farmer's carries are one of the highest-value PCOS exercises — they build grip strength, stabilize the core, raise metabolic rate, and engage large muscle groups all at once, creating the kind of whole-body insulin demand that reduces chronic hyperinsulinemia. The Pallof press trains anti-rotation core strength essential for pelvic stability.`,
       },
       {
         title: "Day 3 — Full Body & Endurance",
@@ -826,6 +886,7 @@ const workoutData = [
           ]}
         ],
         note: "💡 That cardio circuit might feel easy — that's intentional at Week 3. The goal is to build the habit of elevating your heart rate, not to exhaust you."
+        pcosNote: `🌿 <strong>PCOS:</strong> This moderate cardio circuit stays in the ideal intensity zone for PCOS. High-intensity exercise can spike cortisol and worsen symptoms; this rhythmic, sustained moderate effort keeps heart rate elevated in a range that supports fat metabolism and insulin sensitivity without triggering the stress response.`,
       }
     ]
   },
@@ -853,6 +914,7 @@ const workoutData = [
           ]}
         ],
         note: "💡 Four weeks ago, sit-to-stands were your primary leg exercise. Now you're doing star excursions and wall sits. That's real, measurable progress — and it happened because you showed up."
+        pcosNote: `🌿 <strong>PCOS:</strong> Wall sits are isometric holds that improve vascular function and lower blood pressure — both concerns with insulin-resistant PCOS. Star excursions require calm, precise balance and activate deep hip stabilizers that support healthy pelvis and hip mechanics.`,
       },
       {
         title: "Day 2 — Upper Body & Total Strength",
@@ -874,6 +936,7 @@ const workoutData = [
           ]}
         ],
         note: "💡 Uneven farmer's carry is something elite athletes train. You just did it. Don't underestimate what you've built in four weeks."
+        pcosNote: `🌿 <strong>PCOS:</strong> Uneven farmer's carry forces the core to resist lateral tilt, deeply engaging the QL and obliques. Studies show this type of full-body asymmetric strength training reduces fasting insulin and improves lipid profiles in women with PCOS over an 8-week period.`,
       },
       {
         title: "Day 3 — Full Body Celebration",
@@ -899,6 +962,7 @@ const workoutData = [
           ]}
         ],
         note: "🎉 You completed four weeks. That's not nothing — that's you choosing yourself, consistently, through a busy job and a full life. Whatever comes next, this foundation is yours."
+        pcosNote: `🌿 <strong>PCOS:</strong> Four weeks of consistent strength training significantly improves insulin sensitivity, AMH levels, and menstrual regularity in women with PCOS — the research is clear. Your progressive resistance training this month has created real, measurable hormonal change. You've done the work.`,
       }
     ]
   }
@@ -913,45 +977,45 @@ const nutritionData = [
     days: [
       {
         day: "Monday",
-        breakfast: { title: `Greek Yogurt Parfait with Berries & Honey`, ingredients: [`1 cup plain Greek yogurt`,`1/2 cup mixed berries`,`2 tbsp granola`,`1 tsp honey`,`Optional: chia seeds`], directions: `Layer yogurt, berries, granola, and honey. Prep 5 jars Sunday night and grab one each morning. 3 minutes, no cooking, high protein.` },
-        lunch: { title: `Greek-Style Turkey Bowl`, ingredients: [`1 lb ground turkey`,`1 cup cooked brown rice`,`1 cup chopped cucumber`,`1/2 cup cherry tomatoes`,`2 tbsp olive oil`,`Garlic, oregano, salt`], directions: `Brown turkey with garlic and oregano. Serve over rice with cucumber, tomatoes, and a drizzle of olive oil.` },
-        dinner: { title: `Sheet Pan Chicken Thighs with Roasted Vegetables`, ingredients: [`3 bone-in chicken thighs`,`2 cups broccoli florets`,`1 cup sliced bell pepper`,`2 tbsp olive oil`,`Garlic powder, paprika, salt`], directions: `Preheat oven to 425F. Roast chicken and veggies on one pan 35-40 min. One pan, almost no cleanup.` },
+        breakfast: { title: `Greek Yogurt Parfait with Berries & Honey`, ingredients: [`1 cup plain Greek yogurt`,`1/2 cup mixed berries`,`2 tbsp granola`,`1 tsp honey`,`Optional: chia seeds`], directions: `Layer yogurt, berries, granola, and honey. Prep 5 jars Sunday night and grab one each morning. 3 minutes, no cooking, high protein.` }, pcosNote: { badge: `High Protein · Low GI`, note: `Greek yogurt is high in protein which blunts blood sugar spikes, and berries are low-glycemic antioxidants that reduce the inflammation common in PCOS.` },
+        lunch: { title: `Greek-Style Turkey Bowl`, ingredients: [`1 lb ground turkey`,`1 cup cooked brown rice`,`1 cup chopped cucumber`,`1/2 cup cherry tomatoes`,`2 tbsp olive oil`,`Garlic, oregano, salt`], directions: `Brown turkey with garlic and oregano. Serve over rice with cucumber, tomatoes, and a drizzle of olive oil.` }, pcosNote: { badge: `High Protein · Blood Sugar Stable`, note: `Ground turkey is a lean, high-protein base that supports muscle mass and keeps insulin stable. Cucumber and tomatoes add anti-inflammatory lycopene.` },
+        dinner: { title: `Sheet Pan Chicken Thighs with Roasted Vegetables`, ingredients: [`3 bone-in chicken thighs`,`2 cups broccoli florets`,`1 cup sliced bell pepper`,`2 tbsp olive oil`,`Garlic powder, paprika, salt`], directions: `Preheat oven to 425F. Roast chicken and veggies on one pan 35-40 min. One pan, almost no cleanup.` }, pcosNote: { badge: `High Protein · Anti-Inflammatory`, note: `Roasted cruciferous vegetables like broccoli support liver detoxification of excess estrogen — a key mechanism in PCOS hormonal imbalance.` },
       },
       {
         day: "Tuesday",
-        breakfast: { title: `Overnight Oats with Apple & Cinnamon`, ingredients: [`1/2 cup rolled oats`,`3/4 cup milk of choice`,`1/2 apple, diced`,`1 tsp cinnamon`,`1 tsp maple syrup`,`1 tbsp almond butter`], directions: `Combine oats, milk, cinnamon, and maple syrup in a jar. Refrigerate overnight. Top with diced apple and almond butter in the morning.` },
-        lunch: { title: `Tuna & White Bean Salad`, ingredients: [`1 can tuna in water, drained`,`1 can white beans, drained`,`2 stalks celery, diced`,`2 tbsp olive oil`,`1 tbsp lemon juice`,`Salt, pepper, parsley`,`Handful of arugula`], directions: `Combine all ingredients and toss. Zero cooking, five minutes. Keeps two days in the fridge.` },
-        dinner: { title: `Beef & Vegetable Stir-Fry with Rice`, ingredients: [`3/4 lb lean ground beef`,`2 cups broccoli florets`,`1 cup snap peas`,`1 bell pepper, sliced`,`2 tbsp soy sauce (low sodium)`,`1 tsp sesame oil`,`1 tsp garlic`,`1 cup cooked brown rice`], directions: `Cook beef until browned. Add vegetables and stir-fry 5-6 min. Add soy sauce, sesame oil, and garlic. Serve over rice. 20 minutes total.` },
+        breakfast: { title: `Overnight Oats with Apple & Cinnamon`, ingredients: [`1/2 cup rolled oats`,`3/4 cup milk of choice`,`1/2 apple, diced`,`1 tsp cinnamon`,`1 tsp maple syrup`,`1 tbsp almond butter`], directions: `Combine oats, milk, cinnamon, and maple syrup in a jar. Refrigerate overnight. Top with diced apple and almond butter in the morning.` }, pcosNote: { badge: `Low GI · Blood Sugar Stable`, note: `Oats have a low glycemic index and the overnight prep increases resistant starch, slowing glucose release — ideal for insulin-resistant PCOS.` },
+        lunch: { title: `Tuna & White Bean Salad`, ingredients: [`1 can tuna in water, drained`,`1 can white beans, drained`,`2 stalks celery, diced`,`2 tbsp olive oil`,`1 tbsp lemon juice`,`Salt, pepper, parsley`,`Handful of arugula`], directions: `Combine all ingredients and toss. Zero cooking, five minutes. Keeps two days in the fridge.` }, pcosNote: { badge: `High Protein · High Fiber`, note: `Tuna provides lean protein and omega-3s; white beans add soluble fiber that slows glucose absorption and feeds gut bacteria linked to improved estrogen metabolism.` },
+        dinner: { title: `Beef & Vegetable Stir-Fry with Rice`, ingredients: [`3/4 lb lean ground beef`,`2 cups broccoli florets`,`1 cup snap peas`,`1 bell pepper, sliced`,`2 tbsp soy sauce (low sodium)`,`1 tsp sesame oil`,`1 tsp garlic`,`1 cup cooked brown rice`], directions: `Cook beef until browned. Add vegetables and stir-fry 5-6 min. Add soy sauce, sesame oil, and garlic. Serve over rice. 20 minutes total.` }, pcosNote: { badge: `High Protein · Iron-Rich`, note: `Women with PCOS may be iron-deficient from irregular periods. Lean beef is one of the most bioavailable sources of heme iron and zinc, which supports ovarian function.` },
       },
       {
         day: "Wednesday",
-        breakfast: { title: `Egg & Veggie Scramble with Toast`, ingredients: [`3 large eggs`,`Handful baby spinach`,`1/4 cup diced bell pepper`,`1 tsp olive oil`,`Salt, pepper`,`1 slice whole grain toast`], directions: `Saute pepper in oil 2 min. Add spinach and wilt. Add whisked eggs and scramble gently. Serve with toast. High protein, 10 minutes.` },
-        lunch: { title: `Chicken & Avocado Lettuce Wraps`, ingredients: [`1 cup shredded rotisserie chicken`,`1/2 avocado, sliced`,`1/4 cup diced tomato`,`1/4 cup diced red onion`,`Romaine or butter lettuce leaves`,`Lime juice, salt, cumin`], directions: `Fill lettuce leaves with chicken, avocado, tomato, and onion. Squeeze lime and season. Use store-bought rotisserie chicken for zero effort.` },
-        dinner: { title: `Baked Salmon with Asparagus & Quinoa`, ingredients: [`2 salmon fillets (5-6 oz)`,`1 bunch asparagus, trimmed`,`1 cup cooked quinoa`,`2 tbsp olive oil`,`1 lemon, sliced`,`Salt, pepper, dried dill`], directions: `Preheat oven to 400F. Season salmon and asparagus with oil, dill, salt, and lemon. Roast 15-18 min. Serve over quinoa.` },
+        breakfast: { title: `Egg & Veggie Scramble with Toast`, ingredients: [`3 large eggs`,`Handful baby spinach`,`1/4 cup diced bell pepper`,`1 tsp olive oil`,`Salt, pepper`,`1 slice whole grain toast`], directions: `Saute pepper in oil 2 min. Add spinach and wilt. Add whisked eggs and scramble gently. Serve with toast. High protein, 10 minutes.` }, pcosNote: { badge: `High Protein · Anti-Inflammatory`, note: `Eggs provide complete protein and choline which supports liver detox of excess estrogen; spinach and peppers deliver anti-inflammatory antioxidants.` },
+        lunch: { title: `Chicken & Avocado Lettuce Wraps`, ingredients: [`1 cup shredded rotisserie chicken`,`1/2 avocado, sliced`,`1/4 cup diced tomato`,`1/4 cup diced red onion`,`Romaine or butter lettuce leaves`,`Lime juice, salt, cumin`], directions: `Fill lettuce leaves with chicken, avocado, tomato, and onion. Squeeze lime and season. Use store-bought rotisserie chicken for zero effort.` }, pcosNote: { badge: `Healthy Fat · Low Carb`, note: `Lettuce wraps remove refined carbs entirely, and avocado's monounsaturated fats improve insulin sensitivity and support absorption of fat-soluble hormonal vitamins.` },
+        dinner: { title: `Baked Salmon with Asparagus & Quinoa`, ingredients: [`2 salmon fillets (5-6 oz)`,`1 bunch asparagus, trimmed`,`1 cup cooked quinoa`,`2 tbsp olive oil`,`1 lemon, sliced`,`Salt, pepper, dried dill`], directions: `Preheat oven to 400F. Season salmon and asparagus with oil, dill, salt, and lemon. Roast 15-18 min. Serve over quinoa.` }, pcosNote: { badge: `Omega-3 · Anti-Inflammatory`, note: `Salmon's omega-3 fatty acids (EPA and DHA) have been clinically shown to reduce testosterone levels and improve menstrual regularity in women with PCOS.` },
       },
       {
         day: "Thursday",
-        breakfast: { title: `Banana Peanut Butter Smoothie`, ingredients: [`1 ripe banana`,`1 cup milk of choice`,`1 tbsp natural peanut butter`,`1/2 cup plain Greek yogurt`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Blend all ingredients until smooth. Great for rushed mornings — freeze the banana the night before for a thicker texture.` },
+        breakfast: { title: `Banana Peanut Butter Smoothie`, ingredients: [`1 ripe banana`,`1 cup milk of choice`,`1 tbsp natural peanut butter`,`1/2 cup plain Greek yogurt`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Blend all ingredients until smooth. Great for rushed mornings — freeze the banana the night before for a thicker texture.` }, pcosNote: { badge: `Protein + Healthy Fat`, note: `The protein and fat from Greek yogurt and peanut butter slow glucose absorption from the banana — making it blood-sugar-friendly for PCOS.` },
         lunch: { title: `Turkey & Cheese Wrap`, ingredients: [`2 oz sliced turkey deli meat`,`1 whole wheat tortilla`,`2 tbsp hummus`,`Handful of spinach`,`1/4 avocado, sliced`,`Sliced cucumber`], directions: `Spread hummus on tortilla. Layer turkey, spinach, avocado, and cucumber. Roll and slice. Make the night before for an effortless lunch.` },
-        dinner: { title: `Turkey & Vegetable Soup`, ingredients: [`1 lb ground turkey`,`4 cups low-sodium chicken broth`,`1 can diced tomatoes`,`1 cup diced zucchini`,`1 cup diced carrots`,`1 can white beans`,`Garlic, Italian seasoning`], directions: `Brown turkey with garlic. Add broth, tomatoes, carrots, zucchini. Simmer 15 min. Add beans and spinach. Makes 4 servings — freeze half.` },
+        dinner: { title: `Turkey & Vegetable Soup`, ingredients: [`1 lb ground turkey`,`4 cups low-sodium chicken broth`,`1 can diced tomatoes`,`1 cup diced zucchini`,`1 cup diced carrots`,`1 can white beans`,`Garlic, Italian seasoning`], directions: `Brown turkey with garlic. Add broth, tomatoes, carrots, zucchini. Simmer 15 min. Add beans and spinach. Makes 4 servings — freeze half.` }, pcosNote: { badge: `High Protein · Anti-Inflammatory`, note: `High-protein, low-glycemic soup with anti-inflammatory vegetables. White beans add soluble fiber that supports healthy estrogen elimination via the gut.` },
       },
       {
         day: "Friday",
-        breakfast: { title: `Cottage Cheese Bowl with Pineapple & Almonds`, ingredients: [`1 cup low-fat cottage cheese`,`1/2 cup pineapple chunks`,`2 tbsp slivered almonds`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Spoon cottage cheese into a bowl, top with everything else. No cooking, 2 minutes, very high protein.` },
-        lunch: { title: `Leftover Soup & Side Salad`, ingredients: [`Leftover turkey vegetable soup`,`2 cups mixed greens`,`1/4 cup cherry tomatoes`,`1 tbsp olive oil`,`1 tsp red wine vinegar`,`Salt and pepper`], directions: `Reheat soup. Toss greens, tomatoes, olive oil, and vinegar for a quick side salad. Effortless Friday — designed to use Thursday leftovers.` },
-        dinner: { title: `Garlic Herb Pork Tenderloin with Sweet Potato & Green Beans`, ingredients: [`1 lb pork tenderloin`,`2 medium sweet potatoes, cubed`,`2 cups green beans`,`3 tbsp olive oil`,`Garlic, rosemary, thyme, salt`], directions: `Rub pork with garlic and herbs. Roast with sweet potato and green beans at 425F for 25-30 min. Sheet pan dinner — impressive but easy.` },
+        breakfast: { title: `Cottage Cheese Bowl with Pineapple & Almonds`, ingredients: [`1 cup low-fat cottage cheese`,`1/2 cup pineapple chunks`,`2 tbsp slivered almonds`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Spoon cottage cheese into a bowl, top with everything else. No cooking, 2 minutes, very high protein.` }, pcosNote: { badge: `Very High Protein · Low Carb`, note: `Cottage cheese is one of the highest-protein, lowest-carb breakfasts available — exceptionally PCOS-friendly for reducing fasting insulin.` },
+        lunch: { title: `Leftover Soup & Side Salad`, ingredients: [`Leftover turkey vegetable soup`,`2 cups mixed greens`,`1/4 cup cherry tomatoes`,`1 tbsp olive oil`,`1 tsp red wine vinegar`,`Salt and pepper`], directions: `Reheat soup. Toss greens, tomatoes, olive oil, and vinegar for a quick side salad. Effortless Friday — designed to use Thursday leftovers.` }, pcosNote: { badge: `Blood Sugar Stable`, note: `Using planned leftovers reduces the likelihood of reaching for fast food or high-GI convenience foods — a consistent PCOS-smart eating strategy that supports insulin stability throughout the day.` },
+        dinner: { title: `Garlic Herb Pork Tenderloin with Sweet Potato & Green Beans`, ingredients: [`1 lb pork tenderloin`,`2 medium sweet potatoes, cubed`,`2 cups green beans`,`3 tbsp olive oil`,`Garlic, rosemary, thyme, salt`], directions: `Rub pork with garlic and herbs. Roast with sweet potato and green beans at 425F for 25-30 min. Sheet pan dinner — impressive but easy.` }, pcosNote: { badge: `Lean Protein · Low GI`, note: `Pork tenderloin is one of the leanest cuts of meat. Paired with sweet potato (lower GI than white potato) and green beans, this is a well-balanced PCOS meal.` },
       },
       {
         day: "Saturday",
-        breakfast: { title: `Veggie Omelette with Whole Grain Toast`, ingredients: [`3 large eggs`,`1/4 cup diced mushrooms`,`2 tbsp diced onion`,`1/4 cup diced bell pepper`,`1 oz shredded cheese`,`1 tsp butter`,`1 slice whole grain toast`], directions: `Saute vegetables in butter 3 min. Pour in whisked eggs, let set, fold over with cheese. Serve with toast. A proper weekend breakfast.` },
-        lunch: { title: `Quinoa Power Bowl`, ingredients: [`1 cup cooked quinoa`,`1/2 cup canned black beans`,`1/4 avocado, sliced`,`1/4 cup corn`,`1/4 cup salsa`,`2 tbsp Greek yogurt`,`Lime juice, cumin, salt`], directions: `Layer quinoa, beans, corn, and avocado in a bowl. Top with salsa and a spoon of Greek yogurt. Quick, filling, packed with protein and fiber.` },
-        dinner: { title: `Lemon Herb Baked Chicken Breast with Roasted Zucchini`, ingredients: [`2 boneless chicken breasts`,`2 medium zucchini, sliced`,`3 tbsp olive oil`,`1 lemon, zested and juiced`,`Garlic, oregano, thyme, salt`], directions: `Bake chicken at 400F 22-25 min. Roast zucchini alongside. Simple and delicious.` },
+        breakfast: { title: `Veggie Omelette with Whole Grain Toast`, ingredients: [`3 large eggs`,`1/4 cup diced mushrooms`,`2 tbsp diced onion`,`1/4 cup diced bell pepper`,`1 oz shredded cheese`,`1 tsp butter`,`1 slice whole grain toast`], directions: `Saute vegetables in butter 3 min. Pour in whisked eggs, let set, fold over with cheese. Serve with toast. A proper weekend breakfast.` }, pcosNote: { badge: `High Protein · Anti-Inflammatory`, note: `Eggs and vegetables with no refined carbs keep insulin flat — an optimal PCOS breakfast. The cheese adds satisfying fat that extends fullness.` },
+        lunch: { title: `Quinoa Power Bowl`, ingredients: [`1 cup cooked quinoa`,`1/2 cup canned black beans`,`1/4 avocado, sliced`,`1/4 cup corn`,`1/4 cup salsa`,`2 tbsp Greek yogurt`,`Lime juice, cumin, salt`], directions: `Layer quinoa, beans, corn, and avocado in a bowl. Top with salsa and a spoon of Greek yogurt. Quick, filling, packed with protein and fiber.` }, pcosNote: { badge: `Complete Protein · Low GI`, note: `Quinoa contains all nine essential amino acids and has a lower glycemic index than rice — making it an ideal PCOS-friendly grain for blood sugar management.` },
+        dinner: { title: `Lemon Herb Baked Chicken Breast with Roasted Zucchini`, ingredients: [`2 boneless chicken breasts`,`2 medium zucchini, sliced`,`3 tbsp olive oil`,`1 lemon, zested and juiced`,`Garlic, oregano, thyme, salt`], directions: `Bake chicken at 400F 22-25 min. Roast zucchini alongside. Simple and delicious.` }, pcosNote: { badge: `Lean Protein · Low Carb`, note: `Chicken breast is the gold standard lean protein for PCOS — high protein stimulates glucagon (the opposite of insulin), helping normalize blood sugar and reduce fat storage.` },
       },
       {
         day: "Sunday",
-        breakfast: { title: `Protein Pancakes with Fresh Berries`, ingredients: [`1 cup rolled oats (blended to flour)`,`2 eggs`,`1/2 cup Greek yogurt`,`1/2 tsp baking powder`,`1 tsp vanilla`,`1 tbsp honey`,`Fresh berries to serve`], directions: `Blend oats into flour. Mix all batter ingredients. Cook on a greased non-stick pan 2-3 min per side. Makes 6 small pancakes.` },
-        lunch: { title: `Big Prep Salad Bowl`, ingredients: [`3 cups mixed greens`,`1/2 cup chickpeas`,`1/4 cup shredded carrots`,`1/4 cup cucumber`,`2 hard-boiled eggs, sliced`,`2 tbsp olive oil`,`1 tbsp lemon juice`,`Salt, pepper, garlic powder`], directions: `Assemble all ingredients. Drizzle with olive oil and lemon. Use Sunday to batch-boil 6-8 eggs for the whole week.` },
-        dinner: { title: `Slow Cooker Chicken & Sweet Potato Stew`, ingredients: [`1.5 lbs boneless chicken thighs`,`2 sweet potatoes, cubed`,`1 can diced tomatoes`,`1 cup chicken broth`,`1 can black beans`,`Cumin, chili powder, garlic, salt`], directions: `Add everything to slow cooker. Cook low 6-7 hours or high 3-4 hours. Shred chicken. Set it Sunday morning, dinner is done. Leftovers for Monday lunch.` },
+        breakfast: { title: `Protein Pancakes with Fresh Berries`, ingredients: [`1 cup rolled oats (blended to flour)`,`2 eggs`,`1/2 cup Greek yogurt`,`1/2 tsp baking powder`,`1 tsp vanilla`,`1 tbsp honey`,`Fresh berries to serve`], directions: `Blend oats into flour. Mix all batter ingredients. Cook on a greased non-stick pan 2-3 min per side. Makes 6 small pancakes.` }, pcosNote: { badge: `High Protein · Lower GI`, note: `Oat flour and Greek yogurt give these pancakes a much higher protein content than traditional pancakes, moderating the glycemic impact and supporting muscle recovery.` },
+        lunch: { title: `Big Prep Salad Bowl`, ingredients: [`3 cups mixed greens`,`1/2 cup chickpeas`,`1/4 cup shredded carrots`,`1/4 cup cucumber`,`2 hard-boiled eggs, sliced`,`2 tbsp olive oil`,`1 tbsp lemon juice`,`Salt, pepper, garlic powder`], directions: `Assemble all ingredients. Drizzle with olive oil and lemon. Use Sunday to batch-boil 6-8 eggs for the whole week.` }, pcosNote: { badge: `High Protein · Anti-Inflammatory`, note: `Hard-boiled eggs and chickpeas create a protein-rich base, while diverse colorful vegetables deliver antioxidants that lower the chronic inflammation characteristic of PCOS.` },
+        dinner: { title: `Slow Cooker Chicken & Sweet Potato Stew`, ingredients: [`1.5 lbs boneless chicken thighs`,`2 sweet potatoes, cubed`,`1 can diced tomatoes`,`1 cup chicken broth`,`1 can black beans`,`Cumin, chili powder, garlic, salt`], directions: `Add everything to slow cooker. Cook low 6-7 hours or high 3-4 hours. Shred chicken. Set it Sunday morning, dinner is done. Leftovers for Monday lunch.` }, pcosNote: { badge: `Anti-Inflammatory · Blood Sugar Stable`, note: `Sweet potatoes are lower-GI and rich in beta-carotene, which supports progesterone production. Black beans add fiber that moderates the insulin response.` },
       },
     ],
     grocery: {
@@ -973,8 +1037,8 @@ const nutritionData = [
       {
         day: "Tuesday",
         breakfast: { title: `Overnight Oats with Banana & Almond Butter`, ingredients: [`1/2 cup rolled oats`,`3/4 cup milk of choice`,`1 ripe banana, sliced`,`1 tbsp almond butter`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Combine oats and milk in a jar the night before. Top with banana, almond butter, honey, and cinnamon in the morning.` },
-        lunch: { title: `Chopped Mediterranean Salad with Chickpeas`, ingredients: [`1 can chickpeas, drained`,`1 cucumber, diced`,`1 cup cherry tomatoes, halved`,`1/4 red onion, diced`,`2 tbsp olive oil`,`1 tbsp red wine vinegar`,`Dried oregano, salt, pepper`], directions: `Combine everything and toss. Keeps in the fridge 3 days. Make a big bowl to grab from all week.` },
-        dinner: { title: `Garlic Butter Chicken Thighs with Broccoli & Rice`, ingredients: [`4 bone-in chicken thighs`,`3 cups broccoli florets`,`1 cup cooked brown rice`,`3 tbsp butter`,`4 cloves garlic, minced`,`Salt, pepper, paprika`], directions: `Sear chicken skin-down 7-8 min. Flip, add garlic butter, finish in oven at 400F 20 min. Steam broccoli. Serve over rice.` },
+        lunch: { title: `Chopped Mediterranean Salad with Chickpeas`, ingredients: [`1 can chickpeas, drained`,`1 cucumber, diced`,`1 cup cherry tomatoes, halved`,`1/4 red onion, diced`,`2 tbsp olive oil`,`1 tbsp red wine vinegar`,`Dried oregano, salt, pepper`], directions: `Combine everything and toss. Keeps in the fridge 3 days. Make a big bowl to grab from all week.` }, pcosNote: { badge: `Anti-Inflammatory · High Fiber`, note: `The Mediterranean dietary pattern is the most evidence-backed eating approach for PCOS — olive oil, legumes, and colorful vegetables reduce inflammation and support hormonal balance.` },
+        dinner: { title: `Garlic Butter Chicken Thighs with Broccoli & Rice`, ingredients: [`4 bone-in chicken thighs`,`3 cups broccoli florets`,`1 cup cooked brown rice`,`3 tbsp butter`,`4 cloves garlic, minced`,`Salt, pepper, paprika`], directions: `Sear chicken skin-down 7-8 min. Flip, add garlic butter, finish in oven at 400F 20 min. Steam broccoli. Serve over rice.` }, pcosNote: { badge: `High Protein · Nutrient Dense`, note: `Chicken thighs provide more zinc and iron than breast meat — both minerals important for ovarian function in PCOS. The garlic delivers allicin, a compound shown to reduce inflammation.` },
       },
       {
         day: "Wednesday",
@@ -984,27 +1048,27 @@ const nutritionData = [
       },
       {
         day: "Thursday",
-        breakfast: { title: `Banana Peanut Butter Oatmeal`, ingredients: [`1/2 cup rolled oats`,`1 cup water or milk`,`1 ripe banana, sliced`,`1 tbsp natural peanut butter`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Cook oats 3-5 min. Top with banana, peanut butter, and honey. Staying power through a long busy morning.` },
+        breakfast: { title: `Banana Peanut Butter Oatmeal`, ingredients: [`1/2 cup rolled oats`,`1 cup water or milk`,`1 ripe banana, sliced`,`1 tbsp natural peanut butter`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Cook oats 3-5 min. Top with banana, peanut butter, and honey. Staying power through a long busy morning.` }, pcosNote: { badge: `Low GI · Blood Sugar Stable`, note: `Fat and protein from peanut butter modulate the glycemic response of the oats and banana, supporting steady insulin levels through the morning.` },
         lunch: { title: `Caprese Salad with Hard-Boiled Eggs`, ingredients: [`2 hard-boiled eggs, sliced`,`1 cup cherry tomatoes, halved`,`4 oz fresh mozzarella, sliced`,`Fresh basil`,`2 tbsp olive oil`,`Balsamic glaze`,`Salt and pepper`], directions: `Arrange eggs, tomatoes, and mozzarella on a plate. Top with basil, olive oil, and balsamic. Light and satisfying. Boil eggs in a batch Sunday.` },
-        dinner: { title: `Ground Turkey Taco Bowls`, ingredients: [`1 lb ground turkey`,`1 can black beans`,`1 cup cooked rice`,`1/2 cup salsa`,`1/4 cup corn`,`1/4 avocado, sliced`,`Cumin, chili powder, garlic, salt`], directions: `Brown turkey with spices. Assemble bowls with rice, beans, turkey, salsa, corn, and avocado. Leftovers are even better the next day.` },
+        dinner: { title: `Ground Turkey Taco Bowls`, ingredients: [`1 lb ground turkey`,`1 can black beans`,`1 cup cooked rice`,`1/2 cup salsa`,`1/4 cup corn`,`1/4 avocado, sliced`,`Cumin, chili powder, garlic, salt`], directions: `Brown turkey with spices. Assemble bowls with rice, beans, turkey, salsa, corn, and avocado. Leftovers are even better the next day.` }, pcosNote: { badge: `High Protein · Blood Sugar Stable`, note: `Black beans and rice together provide fiber and complex carbs that release glucose slowly. Avocado's fat further blunts the insulin response — genuinely PCOS-smart.` },
       },
       {
         day: "Friday",
         breakfast: { title: `Cottage Cheese with Berries & Walnuts`, ingredients: [`1 cup low-fat cottage cheese`,`1/2 cup blueberries or mixed berries`,`2 tbsp chopped walnuts`,`1 tsp honey`,`Optional: cinnamon`], directions: `Top cottage cheese with berries, walnuts, and honey. No cooking, 2 minutes, excellent protein and omega-3s from the walnuts.` },
         lunch: { title: `Leftover Taco Bowl`, ingredients: [`Leftover ground turkey taco bowl from Thursday`], directions: `Reheat turkey and rice. Reassemble bowl with fresh toppings. Friday is effortless by design — Thursday cooked double.` },
-        dinner: { title: `Baked Cod with Roasted Tomatoes & Quinoa`, ingredients: [`2 cod fillets (5-6 oz)`,`1 pint cherry tomatoes`,`3 tbsp olive oil`,`3 cloves garlic, minced`,`1 cup cooked quinoa`,`Thyme, salt, pepper, lemon`], directions: `Place cod and tomatoes in a baking dish. Drizzle with oil, garlic, thyme. Roast at 400F 15-18 min until cod flakes. Serve over quinoa.` },
+        dinner: { title: `Baked Cod with Roasted Tomatoes & Quinoa`, ingredients: [`2 cod fillets (5-6 oz)`,`1 pint cherry tomatoes`,`3 tbsp olive oil`,`3 cloves garlic, minced`,`1 cup cooked quinoa`,`Thyme, salt, pepper, lemon`], directions: `Place cod and tomatoes in a baking dish. Drizzle with oil, garlic, thyme. Roast at 400F 15-18 min until cod flakes. Serve over quinoa.` }, pcosNote: { badge: `Lean Protein · Anti-Inflammatory`, note: `White fish like cod is low in saturated fat and provides lean protein that supports muscle without promoting inflammation — important for PCOS where inflammatory markers are elevated.` },
       },
       {
         day: "Saturday",
-        breakfast: { title: `Veggie & Egg Muffin Cups (Batch Baked)`, ingredients: [`6 large eggs`,`1/4 cup diced bell pepper`,`1/4 cup diced onion`,`Handful baby spinach, chopped`,`1/4 cup shredded cheese`,`Salt, pepper, garlic powder`], directions: `Whisk eggs, mix in vegetables and cheese. Pour into greased muffin tin. Bake at 350F for 18-20 min. Makes 6 — eat 2 today, refrigerate rest for quick weekday breakfasts.` },
+        breakfast: { title: `Veggie & Egg Muffin Cups (Batch Baked)`, ingredients: [`6 large eggs`,`1/4 cup diced bell pepper`,`1/4 cup diced onion`,`Handful baby spinach, chopped`,`1/4 cup shredded cheese`,`Salt, pepper, garlic powder`], directions: `Whisk eggs, mix in vegetables and cheese. Pour into greased muffin tin. Bake at 350F for 18-20 min. Makes 6 — eat 2 today, refrigerate rest for quick weekday breakfasts.` }, pcosNote: { badge: `High Protein · Low Carb`, note: `Very high protein, low carb, and prepped in advance. Consistent high-protein breakfasts reduce androgen levels and improve insulin sensitivity in PCOS research.` },
         lunch: { title: `Smashed Avocado Toast with Eggs`, ingredients: [`2 slices whole grain bread`,`1 ripe avocado`,`2 eggs`,`Red pepper flakes, salt, lemon juice`,`Optional: cherry tomatoes`], directions: `Toast bread. Mash avocado with lemon and salt. Fry or poach eggs. Top toast with avocado and eggs. A Saturday treat that is also genuinely nutritious.` },
         dinner: { title: `Herb-Crusted Pork Chops with Roasted Carrots & Green Beans`, ingredients: [`2 bone-in pork chops`,`2 cups baby carrots`,`2 cups green beans`,`3 tbsp olive oil`,`Rosemary, thyme, garlic, Dijon mustard, salt`], directions: `Rub pork with Dijon, herbs, and garlic. Sear 3-4 min per side, then roast at 400F 12 min. Roast carrots and green beans alongside.` },
       },
       {
         day: "Sunday",
-        breakfast: { title: `French Toast with Fresh Strawberries`, ingredients: [`2 thick slices whole grain bread`,`2 eggs`,`1/4 cup milk`,`1 tsp vanilla`,`1/2 tsp cinnamon`,`1 tsp butter`,`Fresh strawberries to serve`], directions: `Whisk eggs, milk, vanilla, and cinnamon. Dip bread and cook in buttered pan 2-3 min per side. Top with sliced strawberries.` },
-        lunch: { title: `Big Greek Salad with Grilled Chicken`, ingredients: [`2 cups romaine`,`1 cup grilled or rotisserie chicken`,`1/2 cucumber, diced`,`1/2 cup cherry tomatoes`,`1/4 red onion, sliced`,`2 oz feta cheese`,`Olive oil, red wine vinegar, oregano`], directions: `Combine all ingredients. Dress with olive oil, vinegar, and oregano. Top with chicken and feta. A full satisfying Sunday lunch.` },
-        dinner: { title: `Sunday Slow Cooker Beef & Vegetable Soup`, ingredients: [`1 lb lean beef stew meat`,`3 carrots, diced`,`3 stalks celery, diced`,`2 potatoes, cubed`,`1 can diced tomatoes`,`4 cups low-sodium beef broth`,`Garlic, thyme, rosemary, bay leaf, salt`], directions: `Add all ingredients to slow cooker. Cook low 7-8 hours. Remove bay leaf. Makes 5-6 servings — eat tonight, pack lunch Monday and Tuesday.` },
+        breakfast: { title: `French Toast with Fresh Strawberries`, ingredients: [`2 thick slices whole grain bread`,`2 eggs`,`1/4 cup milk`,`1 tsp vanilla`,`1/2 tsp cinnamon`,`1 tsp butter`,`Fresh strawberries to serve`], directions: `Whisk eggs, milk, vanilla, and cinnamon. Dip bread and cook in buttered pan 2-3 min per side. Top with sliced strawberries.` }, pcosNote: { badge: `Moderate GI — Pair with Protein`, note: `Made with whole grain bread and eggs, this is a more PCOS-friendly version — the egg coating adds protein that moderates the glycemic response.` },
+        lunch: { title: `Big Greek Salad with Grilled Chicken`, ingredients: [`2 cups romaine`,`1 cup grilled or rotisserie chicken`,`1/2 cucumber, diced`,`1/2 cup cherry tomatoes`,`1/4 red onion, sliced`,`2 oz feta cheese`,`Olive oil, red wine vinegar, oregano`], directions: `Combine all ingredients. Dress with olive oil, vinegar, and oregano. Top with chicken and feta. A full satisfying Sunday lunch.` }, pcosNote: { badge: `Anti-Inflammatory · Mediterranean`, note: `Studies show women with PCOS following a Mediterranean pattern have lower testosterone, better insulin sensitivity, and more regular cycles. This salad embodies that pattern.` },
+        dinner: { title: `Sunday Slow Cooker Beef & Vegetable Soup`, ingredients: [`1 lb lean beef stew meat`,`3 carrots, diced`,`3 stalks celery, diced`,`2 potatoes, cubed`,`1 can diced tomatoes`,`4 cups low-sodium beef broth`,`Garlic, thyme, rosemary, bay leaf, salt`], directions: `Add all ingredients to slow cooker. Cook low 7-8 hours. Remove bay leaf. Makes 5-6 servings — eat tonight, pack lunch Monday and Tuesday.` }, pcosNote: { badge: `High Protein · Iron-Rich`, note: `Beef stew provides heme iron, zinc, and B12 — minerals frequently depleted in PCOS. Root vegetables add potassium, magnesium, and fiber that support insulin sensitivity and hormonal balance.` },
       },
     ],
     grocery: {
@@ -1021,41 +1085,41 @@ const nutritionData = [
         day: "Monday",
         breakfast: { title: `Greek Yogurt with Honey, Walnuts & Banana`, ingredients: [`1 cup plain Greek yogurt`,`1/2 banana, sliced`,`2 tbsp chopped walnuts`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Combine and eat. Two minutes, no cooking. By week 3 this is second nature.` },
         lunch: { title: `Leftover Beef & Vegetable Soup`, ingredients: [`Leftover Sunday slow cooker beef soup`], directions: `Reheat and serve. Add a slice of whole grain bread if you need more fuel. Sunday planned this for you.` },
-        dinner: { title: `Sheet Pan Chicken Sausage with Peppers, Onions & Potatoes`, ingredients: [`4 fully cooked chicken sausage links`,`2 bell peppers, sliced`,`1 red onion, sliced`,`3 small potatoes, cubed`,`3 tbsp olive oil`,`Garlic powder, Italian seasoning, salt`], directions: `Toss everything with oil and seasoning. Roast at 425F 30-35 min, tossing halfway. One pan, minimal prep, very satisfying.` },
+        dinner: { title: `Sheet Pan Chicken Sausage with Peppers, Onions & Potatoes`, ingredients: [`4 fully cooked chicken sausage links`,`2 bell peppers, sliced`,`1 red onion, sliced`,`3 small potatoes, cubed`,`3 tbsp olive oil`,`Garlic powder, Italian seasoning, salt`], directions: `Toss everything with oil and seasoning. Roast at 425F 30-35 min, tossing halfway. One pan, minimal prep, very satisfying.` }, pcosNote: { badge: `High Protein · Balanced`, note: `Chicken sausage provides lean protein with lower saturated fat than pork. Paired with colorful peppers and onions, this delivers anti-inflammatory antioxidants alongside blood-sugar-stable complex carbs from potato.` },
       },
       {
         day: "Tuesday",
         breakfast: { title: `Overnight Oats with Mixed Berries & Chia Seeds`, ingredients: [`1/2 cup rolled oats`,`3/4 cup milk of choice`,`1/2 cup mixed berries`,`1 tbsp chia seeds`,`1 tsp honey`,`1/2 tsp vanilla`], directions: `Mix oats, milk, chia seeds, and vanilla in a jar. Refrigerate overnight. Top with berries and honey in the morning.` },
-        lunch: { title: `Chicken Caesar Salad (No Croutons)`, ingredients: [`2 cups romaine lettuce`,`1 cup shredded rotisserie chicken`,`2 tbsp shaved Parmesan`,`2 tbsp olive oil`,`1 tbsp lemon juice`,`1/2 tsp Dijon mustard`,`Salt, pepper, garlic powder`], directions: `Whisk olive oil, lemon, and Dijon for a quick dressing. Toss with romaine and chicken, top with Parmesan.` },
-        dinner: { title: `Garlic Shrimp & Zucchini Noodles`, ingredients: [`1 lb large shrimp, peeled`,`3 medium zucchini, spiralized`,`4 cloves garlic, minced`,`3 tbsp olive oil`,`Red pepper flakes, lemon juice, salt, parsley`], directions: `Saute garlic in oil 1 min. Add shrimp and cook 3-4 min. Add zucchini noodles and toss 1-2 min. Finish with lemon. Light, high-protein, 15 minutes.` },
+        lunch: { title: `Chicken Caesar Salad (No Croutons)`, ingredients: [`2 cups romaine lettuce`,`1 cup shredded rotisserie chicken`,`2 tbsp shaved Parmesan`,`2 tbsp olive oil`,`1 tbsp lemon juice`,`1/2 tsp Dijon mustard`,`Salt, pepper, garlic powder`], directions: `Whisk olive oil, lemon, and Dijon for a quick dressing. Toss with romaine and chicken, top with Parmesan.` }, pcosNote: { badge: `High Protein · Low Carb`, note: `A high-protein, no-crouton Caesar keeps carbs low and protein high — exactly the ratio that supports insulin regulation in PCOS. Parmesan provides calcium, which has been linked to improved hormonal balance.` },
+        dinner: { title: `Garlic Shrimp & Zucchini Noodles`, ingredients: [`1 lb large shrimp, peeled`,`3 medium zucchini, spiralized`,`4 cloves garlic, minced`,`3 tbsp olive oil`,`Red pepper flakes, lemon juice, salt, parsley`], directions: `Saute garlic in oil 1 min. Add shrimp and cook 3-4 min. Add zucchini noodles and toss 1-2 min. Finish with lemon. Light, high-protein, 15 minutes.` }, pcosNote: { badge: `Low Carb · High Protein`, note: `Replacing pasta with zucchini noodles eliminates refined carbs while adding fiber and volume. Shrimp is very high in protein and low in fat — excellent for insulin management.` },
       },
       {
         day: "Wednesday",
         breakfast: { title: `Egg Muffin Cups (From Saturday Batch)`, ingredients: [`2 leftover egg muffin cups`,`Fresh fruit on the side`], directions: `Reheat egg muffins in microwave 45 seconds. Pair with fresh fruit. This is why you baked 6 on Saturday.` },
-        lunch: { title: `Lentil & Vegetable Soup`, ingredients: [`1 cup red lentils, rinsed`,`3 cups low-sodium vegetable broth`,`1 can diced tomatoes`,`1 cup diced carrots`,`1 cup baby spinach`,`Cumin, coriander, garlic, turmeric, salt`], directions: `Simmer lentils with broth, tomatoes, carrots, and spices 20 min. Stir in spinach. Makes 3-4 servings. High in protein and fiber.` },
+        lunch: { title: `Lentil & Vegetable Soup`, ingredients: [`1 cup red lentils, rinsed`,`3 cups low-sodium vegetable broth`,`1 can diced tomatoes`,`1 cup diced carrots`,`1 cup baby spinach`,`Cumin, coriander, garlic, turmeric, salt`], directions: `Simmer lentils with broth, tomatoes, carrots, and spices 20 min. Stir in spinach. Makes 3-4 servings. High in protein and fiber.` }, pcosNote: { badge: `High Fiber · Blood Sugar Stable`, note: `Lentils have one of the lowest glycemic indexes of any food, and their high fiber and protein content makes them exceptional for insulin management in PCOS.` },
         dinner: { title: `Baked Chicken Breast with Quinoa & Roasted Broccoli`, ingredients: [`2 boneless chicken breasts`,`1 cup cooked quinoa`,`3 cups broccoli florets`,`3 tbsp olive oil`,`Garlic, lemon, Italian seasoning, salt`], directions: `Season chicken and bake at 400F 22-25 min. Roast broccoli on the same pan (add at 10 min mark). Serve over quinoa.` },
       },
       {
         day: "Thursday",
-        breakfast: { title: `Smoothie Bowl with Spinach & Mango`, ingredients: [`1 frozen banana`,`1/2 cup frozen mango`,`1 cup baby spinach`,`1/2 cup Greek yogurt`,`1/4 cup milk of choice`,`Toppings: granola, berries, chia seeds`], directions: `Blend banana, mango, spinach, yogurt, and milk until thick and creamy. Pour into bowl and add toppings. The spinach disappears in flavor but not in nutrition.` },
-        lunch: { title: `Turkey Lettuce Wraps with Peanut Sauce`, ingredients: [`1 cup cooked ground turkey`,`Butter lettuce leaves`,`1/2 cup shredded carrots`,`1/4 cup cucumber, julienned`,`2 tbsp natural peanut butter`,`1 tbsp soy sauce`,`1 tsp lime juice`,`1 tsp honey`,`Warm water to thin sauce`], directions: `Mix peanut butter, soy, lime, honey, and water for sauce. Fill lettuce cups with turkey, carrots, and cucumber. Drizzle sauce.` },
-        dinner: { title: `One-Pot Pasta with Turkey & Marinara`, ingredients: [`1/2 lb whole wheat penne`,`1/2 lb ground turkey`,`2 cups marinara sauce`,`2 cups baby spinach`,`2 cloves garlic`,`1 tbsp olive oil`,`Parmesan to serve`], directions: `Brown turkey with garlic. Add marinara and 1 cup water. Add dry pasta and cook per package time, stirring. Stir in spinach at end. One pot, minimal dishes.` },
+        breakfast: { title: `Smoothie Bowl with Spinach & Mango`, ingredients: [`1 frozen banana`,`1/2 cup frozen mango`,`1 cup baby spinach`,`1/2 cup Greek yogurt`,`1/4 cup milk of choice`,`Toppings: granola, berries, chia seeds`], directions: `Blend banana, mango, spinach, yogurt, and milk until thick and creamy. Pour into bowl and add toppings. The spinach disappears in flavor but not in nutrition.` }, pcosNote: { badge: `Anti-Inflammatory · Antioxidant`, note: `Spinach and mango deliver folate, iron, and carotenoids — nutrients commonly deficient in PCOS that support ovarian health and reduce systemic inflammation.` },
+        lunch: { title: `Turkey Lettuce Wraps with Peanut Sauce`, ingredients: [`1 cup cooked ground turkey`,`Butter lettuce leaves`,`1/2 cup shredded carrots`,`1/4 cup cucumber, julienned`,`2 tbsp natural peanut butter`,`1 tbsp soy sauce`,`1 tsp lime juice`,`1 tsp honey`,`Warm water to thin sauce`], directions: `Mix peanut butter, soy, lime, honey, and water for sauce. Fill lettuce cups with turkey, carrots, and cucumber. Drizzle sauce.` }, pcosNote: { badge: `Low Carb · Anti-Inflammatory`, note: `Lettuce wraps eliminate refined carbs entirely. The peanut sauce provides healthy fat and protein that slow digestion. Carrots and cucumber add antioxidants with minimal glycemic impact.` },
+        dinner: { title: `One-Pot Pasta with Turkey & Marinara`, ingredients: [`1/2 lb whole wheat penne`,`1/2 lb ground turkey`,`2 cups marinara sauce`,`2 cups baby spinach`,`2 cloves garlic`,`1 tbsp olive oil`,`Parmesan to serve`], directions: `Brown turkey with garlic. Add marinara and 1 cup water. Add dry pasta and cook per package time, stirring. Stir in spinach at end. One pot, minimal dishes.` }, pcosNote: { badge: `High Protein · Balanced`, note: `Whole wheat pasta has more fiber and protein than white pasta. Turkey adds lean protein. Spinach delivers folate, important for PCOS hormonal health.` },
       },
       {
         day: "Friday",
-        breakfast: { title: `Peanut Butter Banana Toast`, ingredients: [`2 slices whole grain bread`,`2 tbsp natural peanut butter`,`1 banana, sliced`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Toast bread. Spread peanut butter. Top with banana, honey, and cinnamon. Classic, quick, genuinely filling. Three minutes.` },
+        breakfast: { title: `Peanut Butter Banana Toast`, ingredients: [`2 slices whole grain bread`,`2 tbsp natural peanut butter`,`1 banana, sliced`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Toast bread. Spread peanut butter. Top with banana, honey, and cinnamon. Classic, quick, genuinely filling. Three minutes.` }, pcosNote: { badge: `Protein + Healthy Fat`, note: `Peanut butter's protein and fat paired with whole grain bread slows glucose absorption — a simple upgrade that makes toast PCOS-friendly.` },
         lunch: { title: `Leftover Pasta with Turkey`, ingredients: [`Leftover one-pot pasta from Thursday`], directions: `Reheat. Add fresh spinach if available. Friday lunch should be easy — Thursday cooked enough for two.` },
         dinner: { title: `Lime-Cilantro Tilapia Tacos with Slaw`, ingredients: [`4 tilapia fillets`,`8 small corn tortillas`,`2 cups shredded cabbage`,`1/4 cup Greek yogurt`,`2 tbsp lime juice`,`Cilantro, cumin, garlic powder, salt`,`1 tbsp olive oil`], directions: `Season tilapia with cumin, garlic, and lime. Cook in oil 3-4 min per side. Mix yogurt and lime for sauce. Fill tortillas with fish and slaw.` },
       },
       {
         day: "Saturday",
-        breakfast: { title: `Ricotta Toast with Honey & Sliced Peach`, ingredients: [`2 slices whole grain bread, toasted`,`1/2 cup part-skim ricotta`,`1 peach, sliced`,`1 tsp honey`,`Fresh mint or cinnamon optional`], directions: `Spread ricotta on toast. Top with peach slices and drizzle honey. This elevated toast takes 5 minutes and feels like something from a cafe.` },
-        lunch: { title: `Salmon & Avocado Power Bowl`, ingredients: [`1 leftover salmon fillet or canned salmon`,`1 cup cooked quinoa or brown rice`,`1/4 avocado, sliced`,`1/2 cup edamame`,`1/4 cup shredded carrots`,`2 tbsp soy sauce or tamari`,`1 tsp sesame oil`], directions: `Warm the salmon and grain. Assemble bowl with avocado, edamame, and carrots. Drizzle with soy and sesame.` },
+        breakfast: { title: `Ricotta Toast with Honey & Sliced Peach`, ingredients: [`2 slices whole grain bread, toasted`,`1/2 cup part-skim ricotta`,`1 peach, sliced`,`1 tsp honey`,`Fresh mint or cinnamon optional`], directions: `Spread ricotta on toast. Top with peach slices and drizzle honey. This elevated toast takes 5 minutes and feels like something from a cafe.` }, pcosNote: { badge: `Protein + Healthy Fat`, note: `Ricotta provides protein and calcium; pairing it with fruit on whole grain toast creates a balanced macronutrient profile that prevents the insulin spike of plain toast.` },
+        lunch: { title: `Salmon & Avocado Power Bowl`, ingredients: [`1 leftover salmon fillet or canned salmon`,`1 cup cooked quinoa or brown rice`,`1/4 avocado, sliced`,`1/2 cup edamame`,`1/4 cup shredded carrots`,`2 tbsp soy sauce or tamari`,`1 tsp sesame oil`], directions: `Warm the salmon and grain. Assemble bowl with avocado, edamame, and carrots. Drizzle with soy and sesame.` }, pcosNote: { badge: `Omega-3 · Anti-Inflammatory`, note: `Combining salmon's omega-3s with avocado's monounsaturated fats creates a deeply anti-inflammatory meal. Edamame adds plant protein and phytoestrogens that may help modulate estrogen in PCOS.` },
         dinner: { title: `Lemon Rosemary Chicken Thighs with Root Vegetables`, ingredients: [`4 bone-in chicken thighs`,`3 large carrots, halved`,`2 parsnips, halved`,`1 red onion, quartered`,`4 tbsp olive oil`,`Rosemary, thyme, garlic, lemon, salt`], directions: `Toss everything with oil and herbs. Roast at 425F 40-45 min. Makes excellent leftovers for Sunday lunch.` },
       },
       {
         day: "Sunday",
-        breakfast: { title: `Veggie Frittata (Batch for the Week)`, ingredients: [`8 large eggs`,`1/4 cup milk`,`1/2 cup diced bell pepper`,`1/2 cup baby spinach`,`1/4 cup diced onion`,`1/4 cup shredded cheese`,`Salt, pepper, Italian seasoning`,`1 tbsp olive oil`], directions: `Whisk eggs and milk. Saute vegetables in oven-safe skillet. Pour egg mixture over. Cook stovetop 3 min, then bake at 350F 15 min. Makes 4 wedges.` },
+        breakfast: { title: `Veggie Frittata (Batch for the Week)`, ingredients: [`8 large eggs`,`1/4 cup milk`,`1/2 cup diced bell pepper`,`1/2 cup baby spinach`,`1/4 cup diced onion`,`1/4 cup shredded cheese`,`Salt, pepper, Italian seasoning`,`1 tbsp olive oil`], directions: `Whisk eggs and milk. Saute vegetables in oven-safe skillet. Pour egg mixture over. Cook stovetop 3 min, then bake at 350F 15 min. Makes 4 wedges.` }, pcosNote: { badge: `High Protein · Low Carb`, note: `A batch-cooked frittata is one of the most strategic PCOS breakfasts — high protein, low carb, anti-inflammatory vegetables, and ready all week so you never skip breakfast.` },
         lunch: { title: `Leftover Chicken Thighs & Roasted Veggie Grain Bowl`, ingredients: [`Leftover chicken and roasted vegetables from Saturday`,`1 cup cooked quinoa or brown rice`,`2 tbsp tahini`,`1 tsp lemon juice`,`Warm water to thin tahini`], directions: `Reheat chicken and veggies. Serve over fresh grain. Drizzle with thinned tahini. Sunday lunch at its best — zero cooking, maximum flavor.` },
         dinner: { title: `Slow Cooker White Bean & Chicken Chili`, ingredients: [`1.5 lbs boneless chicken breast`,`2 cans white beans, drained`,`1 can diced green chiles`,`3 cups low-sodium chicken broth`,`1 cup corn`,`Cumin, oregano, garlic, onion, salt`,`Greek yogurt and avocado to top`], directions: `Add everything to slow cooker except toppings. Cook low 6-7 hours or high 3 hours. Shred chicken. Top with yogurt and avocado.` },
       },
@@ -1073,42 +1137,42 @@ const nutritionData = [
       {
         day: "Monday",
         breakfast: { title: `Greek Yogurt with Honey, Granola & Berries`, ingredients: [`1 cup plain Greek yogurt`,`2 tbsp granola`,`1/2 cup mixed berries`,`1 tsp honey`], directions: `Layer and eat. By week 4 you know your rhythm. Reliable protein-packed Monday starter — no thinking required.` },
-        lunch: { title: `White Bean & Chicken Chili (Leftover)`, ingredients: [`Leftover slow cooker white bean chicken chili from Sunday`], directions: `Reheat and top with avocado or Greek yogurt. Monday lunch is always your easiest.` },
-        dinner: { title: `Baked Lemon Herb Chicken Thighs with Roasted Cauliflower & Rice`, ingredients: [`4 bone-in chicken thighs`,`1 head cauliflower, cut into florets`,`1 cup cooked brown rice`,`4 tbsp olive oil`,`Lemon juice, garlic, thyme, paprika, salt`], directions: `Season chicken with lemon, garlic, and herbs. Place on sheet pan with cauliflower. Roast at 425F 35-40 min. Serve over rice.` },
+        lunch: { title: `White Bean & Chicken Chili (Leftover)`, ingredients: [`Leftover slow cooker white bean chicken chili from Sunday`], directions: `Reheat and top with avocado or Greek yogurt. Monday lunch is always your easiest.` }, pcosNote: { badge: `High Protein · High Fiber`, note: `White beans are exceptionally high in soluble fiber and plant protein, both of which improve insulin sensitivity and support gut microbiome changes linked to better PCOS outcomes.` },
+        dinner: { title: `Baked Lemon Herb Chicken Thighs with Roasted Cauliflower & Rice`, ingredients: [`4 bone-in chicken thighs`,`1 head cauliflower, cut into florets`,`1 cup cooked brown rice`,`4 tbsp olive oil`,`Lemon juice, garlic, thyme, paprika, salt`], directions: `Season chicken with lemon, garlic, and herbs. Place on sheet pan with cauliflower. Roast at 425F 35-40 min. Serve over rice.` }, pcosNote: { badge: `Anti-Inflammatory · Low GI`, note: `Cauliflower is a cruciferous vegetable that supports liver estrogen detoxification — a key pathway disrupted in PCOS. Brown rice provides sustained energy without a sharp glucose spike.` },
       },
       {
         day: "Tuesday",
-        breakfast: { title: `Frittata Wedge (From Sunday Batch)`, ingredients: [`1-2 leftover frittata wedges`,`Fresh fruit on the side`], directions: `Reheat in microwave 60 seconds or eat cold. Week 4 is about confidence and ease — the frittata batch from Sunday is doing its job.` },
-        lunch: { title: `Tuna & Avocado Salad Lettuce Cups`, ingredients: [`2 cans tuna in water, drained`,`1/2 avocado, diced`,`2 stalks celery, diced`,`2 tbsp red onion, minced`,`1 tbsp lemon juice`,`1 tbsp olive oil`,`Salt, pepper`,`Romaine or butter lettuce leaves`], directions: `Mix tuna, avocado, celery, onion, lemon, and oil. Spoon into lettuce leaves. Fresh, fast, no mayo needed.` },
-        dinner: { title: `Garlic Butter Shrimp with Roasted Asparagus & Quinoa`, ingredients: [`1 lb large shrimp, peeled`,`1 bunch asparagus, trimmed`,`1 cup cooked quinoa`,`3 tbsp butter`,`4 cloves garlic, minced`,`Lemon, salt, pepper, parsley`], directions: `Roast asparagus at 400F 12 min. Saute garlic in butter, add shrimp and cook 3-4 min. Finish with lemon. Serve over quinoa.` },
+        breakfast: { title: `Frittata Wedge (From Sunday Batch)`, ingredients: [`1-2 leftover frittata wedges`,`Fresh fruit on the side`], directions: `Reheat in microwave 60 seconds or eat cold. Week 4 is about confidence and ease — the frittata batch from Sunday is doing its job.` }, pcosNote: { badge: `High Protein · Low Carb`, note: `Leftover frittata continues to deliver PCOS-friendly high protein, low carb fueling — showing how Sunday batch cooking directly supports hormonal health all week.` },
+        lunch: { title: `Tuna & Avocado Salad Lettuce Cups`, ingredients: [`2 cans tuna in water, drained`,`1/2 avocado, diced`,`2 stalks celery, diced`,`2 tbsp red onion, minced`,`1 tbsp lemon juice`,`1 tbsp olive oil`,`Salt, pepper`,`Romaine or butter lettuce leaves`], directions: `Mix tuna, avocado, celery, onion, lemon, and oil. Spoon into lettuce leaves. Fresh, fast, no mayo needed.` }, pcosNote: { badge: `Omega-3 · Healthy Fat`, note: `This combines omega-3-rich tuna with avocado's anti-inflammatory monounsaturated fats — both supporting hormonal balance and reducing the systemic inflammation that exacerbates PCOS.` },
+        dinner: { title: `Garlic Butter Shrimp with Roasted Asparagus & Quinoa`, ingredients: [`1 lb large shrimp, peeled`,`1 bunch asparagus, trimmed`,`1 cup cooked quinoa`,`3 tbsp butter`,`4 cloves garlic, minced`,`Lemon, salt, pepper, parsley`], directions: `Roast asparagus at 400F 12 min. Saute garlic in butter, add shrimp and cook 3-4 min. Finish with lemon. Serve over quinoa.` }, pcosNote: { badge: `High Protein · Low Carb`, note: `Asparagus and quinoa together deliver folate, prebiotic fiber, and complete protein — a combination that supports ovarian health, gut balance, and insulin regulation in PCOS.` }, pcosNote: { badge: `High Protein · Low Carb`, note: `Asparagus is rich in folate, prebiotic fiber, and anti-inflammatory compounds. Its blood-sugar-neutral profile and high nutrient density make it one of the most PCOS-friendly vegetables.` },
       },
       {
         day: "Wednesday",
-        breakfast: { title: `Banana Oat Protein Pancakes`, ingredients: [`1 cup rolled oats (blended to flour)`,`2 eggs`,`1/2 cup Greek yogurt`,`1/2 tsp baking powder`,`1 tsp vanilla`,`1 banana, mashed`,`Fresh berries to serve`], directions: `Blend oats into flour. Mix with eggs, yogurt, baking powder, vanilla, and banana. Cook 2-3 min per side. Makes 6 pancakes.` },
-        lunch: { title: `Hummus & Veggie Protein Plate`, ingredients: [`1/2 cup hummus`,`2 hard-boiled eggs`,`1 cup baby carrots`,`1 cup cucumber slices`,`1/2 cup cherry tomatoes`,`Whole grain pita or crackers`,`Salt, pepper, olive oil drizzle`], directions: `Arrange everything on a plate. No cooking needed. Hard-boil eggs in a batch Sunday. Snack-style plate that is incredibly satisfying and nutrient-dense.` },
-        dinner: { title: `Slow Cooker Chicken Tikka Masala`, ingredients: [`1.5 lbs boneless chicken thighs`,`1 can crushed tomatoes`,`1/2 cup plain Greek yogurt`,`1 tbsp olive oil`,`Garam masala, cumin, coriander, turmeric, garlic, ginger, salt`,`Cooked rice to serve`], directions: `Mix yogurt and spices, toss with chicken. Add to slow cooker with tomatoes. Cook low 5-6 hours. Stir in a splash of yogurt at end. Serve over rice.` },
+        breakfast: { title: `Banana Oat Protein Pancakes`, ingredients: [`1 cup rolled oats (blended to flour)`,`2 eggs`,`1/2 cup Greek yogurt`,`1/2 tsp baking powder`,`1 tsp vanilla`,`1 banana, mashed`,`Fresh berries to serve`], directions: `Blend oats into flour. Mix with eggs, yogurt, baking powder, vanilla, and banana. Cook 2-3 min per side. Makes 6 pancakes.` }, pcosNote: { badge: `High Protein · Lower GI`, note: `Oat flour and Greek yogurt significantly elevate protein content, moderating the glycemic impact and making this a genuinely nourishing PCOS-supportive breakfast.` },
+        lunch: { title: `Hummus & Veggie Protein Plate`, ingredients: [`1/2 cup hummus`,`2 hard-boiled eggs`,`1 cup baby carrots`,`1 cup cucumber slices`,`1/2 cup cherry tomatoes`,`Whole grain pita or crackers`,`Salt, pepper, olive oil drizzle`], directions: `Arrange everything on a plate. No cooking needed. Hard-boil eggs in a batch Sunday. Snack-style plate that is incredibly satisfying and nutrient-dense.` }, pcosNote: { badge: `High Protein · Anti-Inflammatory`, note: `Chickpea-based hummus, eggs, and colorful vegetables together deliver protein, fiber, and antioxidants shown to reduce fasting insulin and CRP inflammation markers in PCOS.` },
+        dinner: { title: `Slow Cooker Chicken Tikka Masala`, ingredients: [`1.5 lbs boneless chicken thighs`,`1 can crushed tomatoes`,`1/2 cup plain Greek yogurt`,`1 tbsp olive oil`,`Garam masala, cumin, coriander, turmeric, garlic, ginger, salt`,`Cooked rice to serve`], directions: `Mix yogurt and spices, toss with chicken. Add to slow cooker with tomatoes. Cook low 5-6 hours. Stir in a splash of yogurt at end. Serve over rice.` }, pcosNote: { badge: `Anti-Inflammatory · Spice-Rich`, note: `The spices — turmeric, cumin, coriander — are among the most studied anti-inflammatory compounds. Turmeric's curcumin specifically reduces PCOS-related inflammation and improves insulin sensitivity.` },
       },
       {
         day: "Thursday",
-        breakfast: { title: `Cottage Cheese Power Bowl with Pineapple & Nuts`, ingredients: [`1 cup low-fat cottage cheese`,`1/2 cup pineapple chunks`,`2 tbsp mixed nuts (walnuts, almonds)`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Top cottage cheese with everything. Two minutes, extremely high protein — actively supports the strength work you have been doing all month.` },
+        breakfast: { title: `Cottage Cheese Power Bowl with Pineapple & Nuts`, ingredients: [`1 cup low-fat cottage cheese`,`1/2 cup pineapple chunks`,`2 tbsp mixed nuts (walnuts, almonds)`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Top cottage cheese with everything. Two minutes, extremely high protein — actively supports the strength work you have been doing all month.` }, pcosNote: { badge: `Very High Protein · Low Carb`, note: `Cottage cheese delivers very high protein with minimal carbs — one of the most effective PCOS breakfast choices for reducing fasting insulin and supporting lean muscle.` },
         lunch: { title: `Big Prep Power Salad`, ingredients: [`3 cups mixed greens`,`1/2 cup white beans`,`1/4 cup shredded carrots`,`1/4 cup roasted red peppers`,`2 hard-boiled eggs, sliced`,`2 oz feta cheese`,`2 tbsp olive oil`,`1 tbsp red wine vinegar`,`Salt, garlic powder, oregano`], directions: `Combine all ingredients, dress with oil and vinegar. By week 4 this kind of salad feels easy and natural, not like a diet.` },
-        dinner: { title: `Turkey Meatballs with Zucchini Noodles & Marinara`, ingredients: [`1 lb ground turkey`,`1 egg`,`1/4 cup breadcrumbs or oats`,`Garlic, Italian seasoning, salt`,`3 medium zucchini, spiralized`,`1 cup marinara sauce`,`1 tbsp olive oil`,`Parmesan to top`], directions: `Mix turkey, egg, breadcrumbs, and seasoning. Roll into balls. Bake at 400F 20 min. Saute zoodles in oil 2 min. Warm marinara. Serve meatballs over zoodles with sauce and Parmesan.` },
+        dinner: { title: `Turkey Meatballs with Zucchini Noodles & Marinara`, ingredients: [`1 lb ground turkey`,`1 egg`,`1/4 cup breadcrumbs or oats`,`Garlic, Italian seasoning, salt`,`3 medium zucchini, spiralized`,`1 cup marinara sauce`,`1 tbsp olive oil`,`Parmesan to top`], directions: `Mix turkey, egg, breadcrumbs, and seasoning. Roll into balls. Bake at 400F 20 min. Saute zoodles in oil 2 min. Warm marinara. Serve meatballs over zoodles with sauce and Parmesan.` }, pcosNote: { badge: `Low Carb · High Protein`, note: `Zucchini noodles replace refined pasta with fiber-rich vegetables, and turkey meatballs deliver high protein without saturated fat — a PCOS-ideal dinner that's satisfying and low glycemic.` },
       },
       {
         day: "Friday",
         breakfast: { title: `Peanut Butter Banana Smoothie`, ingredients: [`1 frozen banana`,`1 cup milk of choice`,`1 tbsp natural peanut butter`,`1/2 cup Greek yogurt`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Blend everything until smooth. High protein, portable, zero effort. Friday mornings belong to the smoothie.` },
         lunch: { title: `Leftover Turkey Meatballs & Zoodles`, ingredients: [`Leftover turkey meatballs and zucchini noodles from Thursday`], directions: `Reheat and serve. Fresh Parmesan on top if you have it. Final Friday efficiency — the work was done last night.` },
-        dinner: { title: `Celebration: Pan-Seared Salmon with Lemon Caper Sauce & Roasted Potatoes`, ingredients: [`2 salmon fillets (6 oz each)`,`3 small potatoes, quartered`,`2 cups spinach`,`2 tbsp capers`,`3 tbsp butter`,`2 tbsp olive oil`,`Lemon, garlic, salt, pepper`], directions: `Roast potatoes at 425F 25 min. Sear salmon skin-down in oil 4 min, flip 2 min. Make sauce: butter, garlic, lemon, capers in same pan. Wilt spinach. Four weeks complete — this dinner is your celebration.` },
+        dinner: { title: `Celebration: Pan-Seared Salmon with Lemon Caper Sauce & Roasted Potatoes`, ingredients: [`2 salmon fillets (6 oz each)`,`3 small potatoes, quartered`,`2 cups spinach`,`2 tbsp capers`,`3 tbsp butter`,`2 tbsp olive oil`,`Lemon, garlic, salt, pepper`], directions: `Roast potatoes at 425F 25 min. Sear salmon skin-down in oil 4 min, flip 2 min. Make sauce: butter, garlic, lemon, capers in same pan. Wilt spinach. Four weeks complete — this dinner is your celebration.` }, pcosNote: { badge: `Omega-3 · Anti-Inflammatory`, note: `Salmon's omega-3s combined with capers (which contain quercetin, a natural anti-inflammatory) and leafy spinach make this celebration dinner genuinely therapeutic for PCOS.` },
       },
       {
         day: "Saturday",
-        breakfast: { title: `Smashed Avocado Toast with Smoked Salmon`, ingredients: [`2 slices whole grain bread, toasted`,`1/2 avocado`,`2 oz smoked salmon`,`2 tbsp cream cheese or Greek yogurt spread`,`Red onion, capers, dill`,`Lemon juice, salt, pepper`], directions: `Mash avocado on toast. Spread with cream cheese. Top with smoked salmon, onion, capers, and dill. A luxurious Saturday breakfast that is also incredibly nutritious.` },
-        lunch: { title: `Build-Your-Own Grain Bowl`, ingredients: [`1 cup cooked quinoa or farro`,`1/2 cup roasted vegetables`,`1/4 avocado`,`2 tbsp hummus`,`Handful of arugula`,`Lemon juice, olive oil, salt`], directions: `Layer grain, greens, veggies, and avocado. Dress simply. By now you know how to build a satisfying bowl from scratch.` },
-        dinner: { title: `Herb Roasted Whole Chicken with Root Vegetables`, ingredients: [`1 whole chicken (3-4 lbs)`,`4 carrots, halved`,`4 celery stalks`,`1 onion, quartered`,`1 head garlic`,`4 tbsp butter`,`Rosemary, thyme, sage, salt, pepper`], directions: `Rub chicken inside and out with herbed butter. Surround with vegetables. Roast at 425F 60-75 min. Makes 4+ servings. Use leftovers Sunday.` },
+        breakfast: { title: `Smashed Avocado Toast with Smoked Salmon`, ingredients: [`2 slices whole grain bread, toasted`,`1/2 avocado`,`2 oz smoked salmon`,`2 tbsp cream cheese or Greek yogurt spread`,`Red onion, capers, dill`,`Lemon juice, salt, pepper`], directions: `Mash avocado on toast. Spread with cream cheese. Top with smoked salmon, onion, capers, and dill. A luxurious Saturday breakfast that is also incredibly nutritious.` }, pcosNote: { badge: `Omega-3 · Anti-Inflammatory`, note: `Smoked salmon is one of the richest sources of omega-3 fatty acids, which directly reduce the systemic inflammation that drives PCOS symptom severity.` },
+        lunch: { title: `Build-Your-Own Grain Bowl`, ingredients: [`1 cup cooked quinoa or farro`,`1/2 cup roasted vegetables`,`1/4 avocado`,`2 tbsp hummus`,`Handful of arugula`,`Lemon juice, olive oil, salt`], directions: `Layer grain, greens, veggies, and avocado. Dress simply. By now you know how to build a satisfying bowl from scratch.` }, pcosNote: { badge: `Balanced · Blood Sugar Stable`, note: `Combining a low-GI grain, leafy greens, healthy fat from avocado, and protein from hummus creates a perfectly balanced PCOS meal with slow, sustained glucose release.` },
+        dinner: { title: `Herb Roasted Whole Chicken with Root Vegetables`, ingredients: [`1 whole chicken (3-4 lbs)`,`4 carrots, halved`,`4 celery stalks`,`1 onion, quartered`,`1 head garlic`,`4 tbsp butter`,`Rosemary, thyme, sage, salt, pepper`], directions: `Rub chicken inside and out with herbed butter. Surround with vegetables. Roast at 425F 60-75 min. Makes 4+ servings. Use leftovers Sunday.` }, pcosNote: { badge: `High Protein · Nutrient Dense`, note: `A whole roasted chicken provides complete protein, zinc, and B vitamins that directly support ovarian function, thyroid health (often co-occurring with PCOS), and energy production.` },
       },
       {
         day: "Sunday",
-        breakfast: { title: `Eggs Benedict (Simplified) with Whole Grain English Muffins`, ingredients: [`2 whole grain English muffins, halved`,`4 eggs (poached or fried)`,`2 slices Canadian bacon or turkey bacon`,`1 avocado, mashed`,`Lemon juice, salt, pepper, paprika`], directions: `Toast muffins. Cook bacon and eggs. Spread mashed avocado on muffin halves. Top with bacon and egg. Finish with lemon and paprika.` },
+        breakfast: { title: `Eggs Benedict (Simplified) with Whole Grain English Muffins`, ingredients: [`2 whole grain English muffins, halved`,`4 eggs (poached or fried)`,`2 slices Canadian bacon or turkey bacon`,`1 avocado, mashed`,`Lemon juice, salt, pepper, paprika`], directions: `Toast muffins. Cook bacon and eggs. Spread mashed avocado on muffin halves. Top with bacon and egg. Finish with lemon and paprika.` }, pcosNote: { badge: `High Protein · Hormone-Supportive`, note: `Eggs provide choline and vitamin D — nutrients critically important for ovarian function and estrogen metabolism that are commonly deficient in women with PCOS.` },
         lunch: { title: `Leftover Roasted Chicken Salad with Grapes & Pecans`, ingredients: [`1 cup leftover shredded roasted chicken`,`1/4 cup halved grapes`,`2 tbsp chopped pecans`,`2 tbsp plain Greek yogurt`,`1 tsp Dijon mustard`,`Salt, pepper, celery salt`,`Lettuce leaves or whole grain bread`], directions: `Mix chicken, grapes, pecans, yogurt, and mustard. Season well. Serve in lettuce wraps or on bread. Chicken salad this good is a reason to always roast a whole chicken on Saturday.` },
         dinner: { title: `Four Weeks Done: Sheet Pan Steak Fajitas with Peppers & Onions`, ingredients: [`1 lb flank or skirt steak, sliced thin`,`3 bell peppers, sliced`,`1 large red onion, sliced`,`3 tbsp olive oil`,`Lime juice, cumin, chili powder, garlic, salt`,`Whole wheat tortillas, avocado, salsa`], directions: `Marinate steak 15 min in oil and spices. Spread with peppers and onion on sheet pan. Broil 8-10 min. Serve in tortillas with avocado and salsa. Four weeks. You built new habits, a stronger body, and a better relationship with food.` },
       },
@@ -1197,6 +1261,7 @@ function renderWorkouts() {
         <div class="workout-intro">${day.intro}</div>
         ${sectionsHTML}
         <div class="workout-note">${day.note}</div>
+        ${day.pcosNote ? `<div class="pcos-note">${day.pcosNote}</div>` : ''}
       </div>`;
     container.appendChild(el);
   });
@@ -1229,7 +1294,7 @@ function renderNutrition() {
       const id = 'meal-d' + di + '-' + ml.key;
       const sec = document.createElement('div');
       sec.className = 'meal-type-section';
-      sec.innerHTML = '<div class="meal-type-divider">' + ml.label + '</div><div class="meal-card' + (mi===0&&di===0?' meal-open':'') + '" id="' + id + '"><div class="meal-card-header" onclick="toggleMeal(\'' + id + '\')"><h3>' + meal.title + '</h3><span class="meal-toggle">▾</span></div><div class="meal-body"><div class="meal-ingredients"><h4>Ingredients</h4><ul>' + meal.ingredients.map(function(i){return '<li>'+i+'</li>';}).join('') + '</ul></div><div class="meal-instructions"><h4>Directions</h4><p>' + meal.directions + '</p></div></div></div>';
+      sec.innerHTML = '<div class="meal-type-divider">' + ml.label + '</div><div class="meal-card' + (mi===0&&di===0?' meal-open':'') + '" id="' + id + '"><div class="meal-card-header" onclick="toggleMeal(\'' + id + '\')"><h3>' + meal.title + (meal.pcosNote ? '<span class="pcos-badge">🌿 PCOS-Friendly</span>' : '') + '</h3><span class="meal-toggle">▾</span></div><div class="meal-body"><div class="meal-ingredients"><h4>Ingredients</h4><ul>' + meal.ingredients.map(function(i){return '<li>'+i+'</li>';}).join('') + '</ul></div><div class="meal-instructions"><h4>Directions</h4><p>' + meal.directions + '</p>' + (meal.pcosNote ? '<div class="pcos-note"><strong>🌿 PCOS (' + meal.pcosNote.badge + '):</strong> ' + meal.pcosNote.note + '</div>' : '') + '</div></div></div>';
       mealsWrap.appendChild(sec);
     });
     daySection.appendChild(dayHeader);
