@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kayla · The Wellness Collective</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sage: #7a9e7e;
+  --sage-light: #e8f0e9;
+  --sage-mid: #c2d6c4;
+  --cream: #faf8f4;
+  --warm-white: #ffffff;
+  --forest: #1e3a2f;
+  --forest-mid: #2a4f3f;
+  --text-mid: #4a4a46;
+  --text-soft: #8a8a84;
+  --gold: #c9a84c;
+  --gold-light: #f7f0e0;
+  --border: #e4e0d8;
+  --card-bg: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--forest);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: var(--forest);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-weight: 300;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold);
+}
+.client-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-weight: 300;
+  letter-spacing: 0.12em; color: #a0b8a8; font-style: italic;
+}
+
+/* ── SCRIPTURE ── */
+.scripture-banner {
+  background: var(--gold-light);
+  border-bottom: 1px solid #e8d9b0;
+  padding: 1.25rem 2rem;
+  text-align: center;
+  animation: fadeIn 1.2s ease;
+}
+.scripture-verse {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-weight: 400; font-style: italic;
+  color: #6b5320; line-height: 1.6;
+  max-width: 680px; margin: 0 auto 6px;
+}
+.scripture-ref {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--forest);
+  padding: 3.5rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 54px; font-weight: 300;
+  letter-spacing: 0.06em; color: #f0f5f1; line-height: 1.1;
+  position: relative;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  font-size: 12px; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: #6a8c74; margin-top: 0.875rem;
+}
+.divider-gold {
+  width: 48px; height: 1px;
+  background: var(--gold); margin: 1.5rem auto 0; opacity: 0.6;
+}
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px; font-weight: 300; font-style: italic;
+  color: #a0b8a8; margin-top: 1.25rem; line-height: 1.5;
+  max-width: 420px; margin-left: auto; margin-right: auto;
+}
+.week-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--forest-mid);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 30px;
+  padding: 0.625rem 1.5rem;
+  margin-top: 1.5rem;
+}
+.week-pill span {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase; color: #a0b8a8;
+}
+.week-pill em {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px; font-style: italic; color: var(--gold);
+}
+
+/* ── OVERVIEW CARDS ── */
+.overview-strip {
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+.ov-card {
+  text-align: center;
+  padding: 0.75rem 2rem;
+  border-right: 1px solid var(--border);
+}
+.ov-card:last-child { border-right: none; }
+.ov-icon { font-size: 20px; margin-bottom: 6px; }
+.ov-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400; color: var(--forest);
+}
+.ov-lbl {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-soft); margin-top: 2px;
+}
+
+/* ── NAV TABS ── */
+.nav-tabs {
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: center;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+}
+.tab-btn {
+  background: none; border: none;
+  border-bottom: 2px solid transparent;
+  padding: 1.1rem 1.75rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-soft); cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex; align-items: center; gap: 6px;
+}
+.tab-btn:hover { color: var(--forest); }
+.tab-btn.active { color: var(--forest); border-bottom-color: var(--gold); }
+.tab-btn .tab-icon { font-size: 15px; }
+
+/* ── MAIN ── */
+main { max-width: 920px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+.tab-panel { display: none; animation: fadeIn 0.4s ease; }
+.tab-panel.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION HEADER ── */
+.section-header { text-align: center; margin-bottom: 2.5rem; }
+.section-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px; font-weight: 300;
+  letter-spacing: 0.04em; color: var(--forest);
+}
+.section-header p {
+  font-size: 14px; color: var(--text-soft);
+  margin-top: 0.5rem; font-weight: 300; letter-spacing: 0.02em;
+}
+.section-divider {
+  width: 36px; height: 1px;
+  background: var(--gold); margin: 0.875rem auto; opacity: 0.7;
+}
+
+/* ── WORKOUT CARDS ── */
+.workout-day {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 3px; margin-bottom: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s ease;
+}
+.workout-day:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+.workout-day-header {
+  background: var(--forest);
+  padding: 1.375rem 1.875rem;
+  display: flex; align-items: center; justify-content: space-between;
+  cursor: pointer; user-select: none;
+}
+.workout-day-header h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 400;
+  color: #f0f5f1; letter-spacing: 0.04em;
+}
+.workout-day-header .day-meta {
+  font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold);
+  margin-top: 3px;
+}
+.day-header-right { display: flex; align-items: center; gap: 1.25rem; }
+.day-stat {
+  text-align: right;
+}
+.day-stat-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; color: #f0f5f1;
+}
+.day-stat-lbl {
+  font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #6a8c74;
+}
+.toggle-icon {
+  color: #6a8c74; font-size: 20px;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+.workout-day.open .toggle-icon { transform: rotate(180deg); }
+.workout-body { display: none; padding: 1.75rem 1.875rem; }
+.workout-day.open .workout-body { display: block; }
+
+.workout-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-style: italic;
+  color: var(--text-mid); line-height: 1.6;
+  margin-bottom: 1.5rem; padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.section-lbl {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-soft);
+  margin: 1.5rem 0 0.75rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-lbl::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.exercise-list { list-style: none; }
+.exercise-item {
+  display: grid; grid-template-columns: 36px 1fr auto;
+  gap: 0 1rem; align-items: start;
+  padding: 1rem 0; border-bottom: 1px solid var(--border);
+}
+.exercise-item:last-child { border-bottom: none; }
+.exercise-num {
+  width: 32px; height: 32px;
+  background: var(--sage-light); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 500; color: var(--sage);
+  flex-shrink: 0; margin-top: 2px;
+}
+.exercise-name { font-size: 15px; font-weight: 500; color: var(--forest); }
+.exercise-desc {
+  font-size: 13px; color: var(--text-soft);
+  margin-top: 4px; line-height: 1.5; font-weight: 300;
+}
+.exercise-sets {
+  font-size: 12px; font-weight: 500; color: var(--sage);
+  text-align: right; white-space: nowrap; margin-top: 4px;
+  background: var(--sage-light); padding: 4px 12px; border-radius: 20px;
+}
+.workout-note {
+  margin-top: 1.25rem; background: var(--sage-light);
+  border-radius: 3px; padding: 1rem 1.125rem;
+  font-size: 13px; color: #2a4a2e; line-height: 1.65; font-weight: 300;
+}
+
+/* ── GOALS TAB ── */
+.goals-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 2rem;
+}
+@media (max-width: 600px) {
+  .goals-grid { grid-template-columns: 1fr; }
+  .ov-card { padding: 0.75rem 1rem; }
+  .hero h1 { font-size: 38px; }
+  .overview-strip { flex-wrap: wrap; }
+  .tab-btn { padding: 1rem 1rem; font-size: 11px; }
+  .workout-day-header { padding: 1.125rem 1.25rem; }
+  .workout-body { padding: 1.25rem; }
+  .exercise-item { grid-template-columns: 32px 1fr auto; }
+  .meal-body { grid-template-columns: 1fr !important; }
+  .grocery-body { grid-template-columns: 1fr !important; }
+}
+.goal-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 3px; padding: 1.75rem; position: relative; overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.goal-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%; background: var(--sage);
+}
+.goal-card.featured::before { background: var(--gold); }
+.goal-icon { font-size: 24px; margin-bottom: 0.875rem; }
+.goal-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px; font-weight: 400; color: var(--forest); margin-bottom: 0.5rem;
+}
+.goal-card p { font-size: 13px; color: var(--text-mid); line-height: 1.7; font-weight: 300; }
+.affirmation-block {
+  background: var(--forest); border-radius: 3px;
+  padding: 2.5rem 2rem; text-align: center; margin-top: 2rem;
+}
+.affirmation-block p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px; font-weight: 300; font-style: italic;
+  color: #f0f5f1; line-height: 1.65;
+}
+.affirmation-block span {
+  display: block; font-family: 'Jost', sans-serif;
+  font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-top: 1rem;
+}
+.sample-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); margin-top: 1.25rem;
+}
+
+/* ── NUTRITION ── */
+.nutrition-note {
+  background: var(--gold-light); border: 1px solid #e8d9b0;
+  border-radius: 3px; padding: 1.125rem 1.375rem;
+  font-size: 13px; color: #6b5320; line-height: 1.65;
+  margin-bottom: 2rem; font-weight: 300;
+}
+.nutrition-day-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 1rem; cursor: pointer; user-select: none;
+  padding: 0.5rem 0;
+}
+.nutrition-day-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 300; color: var(--forest);
+}
+.day-meal-count {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+}
+.nutrition-day-divider {
+  flex: 1; height: 1px; background: var(--border);
+}
+.nutrition-day-toggle {
+  color: var(--text-soft); font-size: 18px;
+  transition: transform 0.3s ease;
+}
+.nutrition-day-section { margin-bottom: 1.75rem; }
+.meal-type-divider {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 0.875rem;
+}
+.meal-type-divider::after { content: ''; flex: 1; height: 1px; background: #e8d9b0; }
+.meal-type-section { margin-bottom: 1.125rem; }
+.meal-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 3px; overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s ease;
+}
+.meal-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.07); }
+.meal-card-header {
+  padding: 1rem 1.5rem; background: var(--sage-light);
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--sage-mid);
+  cursor: pointer; user-select: none;
+}
+.meal-card-header h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px; font-weight: 400; color: var(--forest);
+}
+.meal-toggle { font-size: 16px; color: var(--sage); transition: transform 0.25s ease; }
+.meal-card.meal-open .meal-toggle { transform: rotate(180deg); }
+.meal-body {
+  display: none; padding: 1.375rem 1.5rem;
+  grid-template-columns: 1fr 1fr; gap: 1.375rem;
+}
+.meal-card.meal-open .meal-body { display: grid; }
+.meal-ingredients h4, .meal-instructions h4 {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-soft); margin-bottom: 0.75rem;
+}
+.meal-ingredients ul { list-style: none; }
+.meal-ingredients ul li {
+  font-size: 13px; color: var(--text-mid);
+  padding: 5px 0; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px; font-weight: 300;
+}
+.meal-ingredients ul li::before {
+  content: '·'; color: var(--sage); font-size: 20px; line-height: 0; margin-top: 2px;
+}
+.meal-instructions p {
+  font-size: 13px; color: var(--text-mid); line-height: 1.75; font-weight: 300;
+}
+
+/* ── GROCERY ── */
+.grocery-section {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 3px; overflow: hidden; margin-top: 2.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.grocery-header {
+  background: var(--forest); padding: 1.375rem 1.875rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.grocery-header h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px; font-weight: 300; color: #f0f5f1; letter-spacing: 0.04em;
+}
+.grocery-header span { font-size: 12px; color: #6a8c74; }
+.grocery-body {
+  padding: 1.75rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.75rem;
+}
+.grocery-cat h4 {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.875rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+}
+.grocery-cat ul { list-style: none; }
+.grocery-cat ul li {
+  font-size: 13px; color: var(--text-mid);
+  padding: 6px 0; display: flex; align-items: center; gap: 8px;
+  font-weight: 300; border-bottom: 1px solid #f0ece4; cursor: pointer;
+  transition: color 0.15s ease;
+}
+.grocery-cat ul li:last-child { border-bottom: none; }
+.check-box {
+  width: 16px; height: 16px; border: 1px solid var(--border);
+  border-radius: 3px; flex-shrink: 0; background: white;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s ease;
+}
+.check-box.checked { background: var(--sage); border-color: var(--sage); }
+.check-box.checked::after { content: '✓'; color: white; font-size: 10px; }
+.grocery-cat ul li.checked-item { text-decoration: line-through; color: var(--text-soft); }
+
+/* ── CTA ── */
+.cta-block {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--forest-mid) 100%);
+  border-radius: 3px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+.cta-block::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.06);
+  pointer-events: none;
+}
+.cta-block h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 300; font-style: italic;
+  color: #f0f5f1; margin-bottom: 0.875rem;
+}
+.cta-block p {
+  font-size: 14px; color: #6a8c74; font-weight: 300;
+  line-height: 1.7; max-width: 480px; margin: 0 auto 1.75rem;
+}
+.cta-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--forest);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+.cta-btn:hover { background: #b8962e; transform: translateY(-1px); }
+
+.print-btn {
+  display: block; margin: 2rem auto 0;
+  background: none; border: 1px solid var(--forest); color: var(--forest);
+  font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.875rem 2rem; cursor: pointer; transition: all 0.2s ease;
+  border-radius: 2px;
+}
+.print-btn:hover { background: var(--forest); color: #f0f5f1; }
+
+footer {
+  background: var(--forest); text-align: center; padding: 2.5rem 2rem;
+  font-size: 11px; letter-spacing: 0.1em; color: #4a6e58; font-weight: 300;
+}
+footer span {
+  color: var(--gold); font-family: 'Cormorant Garamond', serif;
+  font-size: 14px; font-style: italic;
+}
+footer a {
+  color: var(--sage); text-decoration: none; font-size: 11px;
+  letter-spacing: 0.1em; display: block; margin-top: 0.75rem;
+  transition: color 0.2s ease;
+}
+footer a:hover { color: var(--gold); }
+
+@media print {
+  .nav-tabs, .print-btn, .site-header, footer { display: none; }
+  .tab-panel { display: block !important; }
+  main { padding: 0; }
+  .workout-body { display: block !important; }
+  .meal-body { display: grid !important; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="brand">The Wellness Collective</div>
+  <div class="client-name">Sample Client Portal</div>
+</header>
+
+<div class="scripture-banner">
+  <div class="scripture-verse" id="scripture-text"></div>
+  <div class="scripture-ref" id="scripture-ref"></div>
+</div>
+
+<div class="hero">
+  <h1>Welcome, <em>Kayla.</em></h1>
+  <p class="hero-sub">Your personal wellness portal · The Wellness Collective</p>
+  <div class="divider-gold"></div>
+  <p class="hero-tagline">One week. Real food. Workouts that work for your life.</p>
+  <div class="week-pill">
+    <em>Week 1</em>
+    <span>·</span>
+    <span>Foundations</span>
+  </div>
+  <div style="margin-top:1.25rem;">
+    <span class="sample-badge">✦ Sample Portal</span>
+  </div>
+</div>
+
+<div class="overview-strip">
+  <div class="ov-card">
+    <div class="ov-icon">💪</div>
+    <div class="ov-val">3</div>
+    <div class="ov-lbl">Workout Days</div>
+  </div>
+  <div class="ov-card">
+    <div class="ov-icon">🥗</div>
+    <div class="ov-val">21</div>
+    <div class="ov-lbl">Planned Meals</div>
+  </div>
+  <div class="ov-card">
+    <div class="ov-icon">⏱</div>
+    <div class="ov-val">30–35</div>
+    <div class="ov-lbl">Min / Session</div>
+  </div>
+  <div class="ov-card">
+    <div class="ov-icon">🌿</div>
+    <div class="ov-val">Low</div>
+    <div class="ov-lbl">Impact Level</div>
+  </div>
+</div>
+
+<nav class="nav-tabs" role="tablist">
+  <button class="tab-btn active" onclick="showTab('goals', this)">
+    <span class="tab-icon">✦</span> Overview
+  </button>
+  <button class="tab-btn" onclick="showTab('workouts', this)">
+    <span class="tab-icon">💪</span> Workouts
+  </button>
+  <button class="tab-btn" onclick="showTab('nutrition', this)">
+    <span class="tab-icon">🥗</span> Nutrition
+  </button>
+</nav>
+
+<main>
+
+<!-- ══ OVERVIEW ══ -->
+<div id="goals" class="tab-panel active">
+  <div class="section-header">
+    <h2>Your Week at a Glance</h2>
+    <div class="section-divider"></div>
+    <p>Everything you need for a strong, nourishing week — all in one place.</p>
+  </div>
+  <div class="goals-grid">
+    <div class="goal-card featured">
+      <div class="goal-icon">⚖️</div>
+      <h3>Sustainable Weight Loss</h3>
+      <p>No crash diets, no punishment workouts. We build habits that compound — steady progress through real food and consistent movement that fits into your actual life.</p>
+    </div>
+    <div class="goal-card">
+      <div class="goal-icon">🥗</div>
+      <h3>Nourishing Nutrition</h3>
+      <p>Simple, whole ingredients with easy prep. Most meals take 20 minutes or less, and they're designed so your grocery list actually makes sense from Monday to Sunday.</p>
+    </div>
+    <div class="goal-card">
+      <div class="goal-icon">💪</div>
+      <h3>Strength That Lasts</h3>
+      <p>Three purposeful sessions per week — lower body, upper body, and full body. Every exercise builds on the last, so you feel stronger with every session.</p>
+    </div>
+    <div class="goal-card">
+      <div class="goal-icon">🌿</div>
+      <h3>Whole-Life Wellness</h3>
+      <p>Sleep, stress, movement, and nourishment all matter. Your portal tracks it all — workouts, meals, and the quiet consistency that makes transformation stick.</p>
+    </div>
+  </div>
+  <div class="affirmation-block">
+    <p>"This is what it looks like when someone builds a program around <em>your</em> life — not the other way around."</p>
+    <span>— The Wellness Collective</span>
+  </div>
+  <div class="cta-block">
+    <h3>Ready to make this yours?</h3>
+    <p>This is a sample portal. Every real client gets a fully personalized version — tailored to your goals, schedule, preferences, and starting point. Let's build yours together.</p>
+    <a href="../join.html" class="cta-btn">Start Your Journey</a>
+  </div>
+</div>
+
+<!-- ══ WORKOUTS ══ -->
+<div id="workouts" class="tab-panel">
+  <div class="section-header">
+    <h2>This Week's Workouts</h2>
+    <div class="section-divider"></div>
+    <p>3 days · 30–35 minutes · Low impact · Building strength from the ground up</p>
+  </div>
+  <div id="workout-container"></div>
+  <button class="print-btn" onclick="window.print()">Print / Save Workouts</button>
+</div>
+
+<!-- ══ NUTRITION ══ -->
+<div id="nutrition" class="tab-panel">
+  <div class="section-header">
+    <h2>This Week's Nutrition</h2>
+    <div class="section-divider"></div>
+    <p>7 days · Breakfast, lunch &amp; dinner · Simple ingredients, real food</p>
+  </div>
+  <div class="nutrition-note">
+    <strong>A note from your coach:</strong> Every meal this week is designed to be satisfying, nourishing, and genuinely easy to make. Ingredients overlap across the week so your grocery list stays short. High protein in every meal supports your energy and your progress. Tap any day to expand, then tap a meal to see the full recipe.
+  </div>
+  <div id="nutrition-container"></div>
+  <div id="grocery-container"></div>
+  <button class="print-btn" onclick="window.print()">Print / Save Nutrition Guide</button>
+</div>
+
+</main>
+
+<footer>
+  <span>The Wellness Collective</span><br>
+  Sample Client Portal · Coach Briana Weber<br>
+  <a href="../join.html">Ready to get started? Join here →</a>
+</footer>
+<script>
+// ── SCRIPTURE ──
+const verses = [
+  { text: "She is clothed with strength and dignity, and she laughs without fear of the future.", ref: "Proverbs 31:25" },
+  { text: "I can do all things through Christ who strengthens me.", ref: "Philippians 4:13" },
+  { text: "Do you not know that your bodies are temples of the Holy Spirit? Honor God with your bodies.", ref: "1 Corinthians 6:19–20" },
+  { text: "The Lord is my strength and my shield; my heart trusts in him, and he helps me.", ref: "Psalm 28:7" },
+  { text: "He gives strength to the weary and increases the power of the weak.", ref: "Isaiah 40:29" },
+  { text: "I praise you because I am fearfully and wonderfully made.", ref: "Psalm 139:14" },
+  { text: "Whatever you do, work at it with all your heart, as working for the Lord.", ref: "Colossians 3:23" },
+  { text: "Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.", ref: "Galatians 6:9" },
+  { text: "She sets about her work vigorously; her arms are strong for her tasks.", ref: "Proverbs 31:17" },
+  { text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles.", ref: "Isaiah 40:31" },
+  { text: "Be strong and courageous. Do not be afraid; do not be discouraged.", ref: "Joshua 1:9" },
+  { text: "Cast all your anxiety on him because he cares for you.", ref: "1 Peter 5:7" }
+];
+const today = new Date();
+const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+const verse = verses[dayOfYear % verses.length];
+document.getElementById('scripture-text').textContent = '"' + verse.text + '"';
+document.getElementById('scripture-ref').textContent = '— ' + verse.ref;
+
+// ── WORKOUT DATA ──
+const workouts = [
+  {
+    title: "Day 1 — Lower Body & Balance",
+    meta: "Monday or Tuesday · 30 min",
+    stats: { sets: "15", focus: "Lower Body" },
+    intro: "We start with your foundation — strong legs, stable hips, and better balance. Every movement is low-impact and knee-friendly. Focus on control and form over speed.",
+    sections: [
+      { label: "Warm-Up (5 min)", exercises: [
+        { name: "Marching in Place", desc: "Lift knees gently, swing arms. Gets blood flowing and hips warmed up.", sets: "2 min" },
+        { name: "Ankle Circles + Calf Raises", desc: "Stand near a wall. Rotate each ankle 8x, then rise onto toes 10x slowly.", sets: "3 min" }
+      ]},
+      { label: "Main Work (20 min)", exercises: [
+        { name: "Sit-to-Stand (Chair Squat)", desc: "Sit on a sturdy chair, stand fully upright using your legs. Lower slowly. Keep weight in heels, not knees.", sets: "3 × 10 reps" },
+        { name: "Glute Bridge", desc: "Lie on back, knees bent, feet flat. Press through heels and lift hips. Hold 2 sec at top, lower with control.", sets: "3 × 12 reps" },
+        { name: "Step-Up (Low Step)", desc: "Step up with right foot, bring left to meet it, step back down. Alternate leading foot. Hold railing if needed.", sets: "3 × 8/side" },
+        { name: "Side-Lying Leg Lift", desc: "Lie on side, bottom leg bent. Lift top leg to hip height, lower slowly. Strengthens outer hips.", sets: "3 × 12/side" },
+        { name: "Single-Leg Stand", desc: "Stand near a wall. Lift one foot slightly, hold steady 20 seconds. Progress: close your eyes. Builds real stability.", sets: "3 × 20 sec/side" }
+      ]},
+      { label: "Cool-Down (5 min)", exercises: [
+        { name: "Seated Hamstring Stretch + Deep Breathing", desc: "Extend one leg, reach gently toward toes. Hold 20 sec each side. Then 5 slow deep breaths — in 4, out 6.", sets: "5 min" }
+      ]}
+    ],
+    note: "💡 If your knees feel achy during step-ups, add an extra set of glute bridges instead. Consistency over intensity — always."
+  },
+  {
+    title: "Day 2 — Upper Body & Core",
+    meta: "Wednesday or Thursday · 30 min",
+    stats: { sets: "15", focus: "Upper Body" },
+    intro: "Upper body and core strengthen your posture, protect your back, and give you the kind of functional strength you feel every single day. No jumping, no floor pressure.",
+    sections: [
+      { label: "Warm-Up (5 min)", exercises: [
+        { name: "Arm Circles + Shoulder Rolls", desc: "Big slow circles forward and back, 10 each direction. Then shrug and roll shoulders to release tension.", sets: "3 min" },
+        { name: "Seated Cat-Cow Stretch", desc: "Sit on edge of chair, hands on knees. Arch back (cow), then round it (cat). 8 slow, intentional reps.", sets: "2 min" }
+      ]},
+      { label: "Main Work (20 min)", exercises: [
+        { name: "Wall Push-Up", desc: "Stand arm's length from wall, hands at chest height. Lower chest toward wall, push back. Body stays in one line.", sets: "3 × 12 reps" },
+        { name: "Seated Band Row", desc: "Loop band around feet, pull handles to your ribcage squeezing shoulder blades together. No band? Use two full water bottles.", sets: "3 × 12 reps" },
+        { name: "Overhead Press", desc: "Seated or standing, press light weights from shoulder height straight overhead. Lower slowly and with control.", sets: "3 × 10 reps" },
+        { name: "Dead Bug", desc: "Lie on back, arms straight up, knees at 90°. Lower opposite arm and leg toward floor — keep lower back pressed down the entire time.", sets: "3 × 8/side" },
+        { name: "Seated Torso Rotation", desc: "Sit tall, arms crossed at chest. Rotate slowly side to side, leading with your gaze. Strengthens obliques and improves rotational stability.", sets: "3 × 10/side" }
+      ]},
+      { label: "Cool-Down (5 min)", exercises: [
+        { name: "Chest Opener + Neck Stretch", desc: "Clasp hands behind back, open chest, hold 20 sec. Then tilt each ear toward shoulder, hold 15 sec. Release the day.", sets: "5 min" }
+      ]}
+    ],
+    note: "💡 This session is a natural stress-reliever. The deep breathing in the cool-down matters — even 5 slow exhales shifts your nervous system into rest mode."
+  },
+  {
+    title: "Day 3 — Full Body & Mobility",
+    meta: "Saturday or Sunday · 35 min",
+    stats: { sets: "15", focus: "Full Body" },
+    intro: "Your third session ties it all together — full body movement, gentle cardio, and extended mobility. The best way to close out the week feeling capable and grounded.",
+    sections: [
+      { label: "Warm-Up (5 min)", exercises: [
+        { name: "5-Minute Walk", desc: "A true warm-up walk — not workout pace. Let your joints loosen and your mind arrive.", sets: "5 min" }
+      ]},
+      { label: "Main Work (20 min)", exercises: [
+        { name: "Reverse Lunge (Supported)", desc: "Stand near a wall. Step one foot back, lower until back knee nearly touches the floor. Return to standing. Easier on knees than forward lunges.", sets: "3 × 8/side" },
+        { name: "Lateral Step", desc: "Step side to side in a slight squat position, 10 steps each direction. Works outer hips and improves lateral stability.", sets: "3 × 10/side" },
+        { name: "Bicep Curl to Shoulder Press", desc: "Curl light weights to shoulders, then press overhead. Works arms, shoulders, and challenges your balance slightly.", sets: "3 × 10 reps" },
+        { name: "Bird Dog", desc: "On hands and knees. Extend opposite arm and leg, hold 2 sec, return. Keep hips level throughout. One of the best spinal stability exercises available.", sets: "3 × 8/side" },
+        { name: "Heel-to-Toe Walk", desc: "Walk in a straight line placing heel directly in front of opposite toe. Eyes forward, not down. Directly trains the balance and coordination you want.", sets: "3 × 10 steps" }
+      ]},
+      { label: "Cool-Down + Mobility (10 min)", exercises: [
+        { name: "Full Body Stretch Sequence", desc: "Hip flexor stretch · Figure-4 glute stretch · Seated spinal twist · Child's pose. Hold each 30 seconds. This is your reward — take the full time.", sets: "10 min" }
+      ]}
+    ],
+    note: "💡 Day 3 is also a great day for a gentle 15-minute walk. Movement doesn't have to be a workout — an easy evening walk is one of the best things you can do for your body."
+  }
+];
+
+// ── RENDER WORKOUTS ──
+function renderWorkouts() {
+  const container = document.getElementById('workout-container');
+  workouts.forEach((day, i) => {
+    const el = document.createElement('div');
+    el.className = 'workout-day' + (i === 0 ? ' open' : '');
+    el.id = 'wday-' + i;
+    let sectionsHTML = '';
+    day.sections.forEach(sec => {
+      sectionsHTML += '<div class="section-lbl">' + sec.label + '</div><ul class="exercise-list">';
+      sec.exercises.forEach((ex, ei) => {
+        const isWarmCool = sec.label.toLowerCase().includes('cool') || sec.label.toLowerCase().includes('warm');
+        const num = isWarmCool ? '★' : (ei + 1);
+        sectionsHTML += '<li class="exercise-item"><div class="exercise-num">' + num + '</div><div><div class="exercise-name">' + ex.name + '</div><div class="exercise-desc">' + ex.desc + '</div></div><div class="exercise-sets">' + ex.sets + '</div></li>';
+      });
+      sectionsHTML += '</ul>';
+    });
+    el.innerHTML = '<div class="workout-day-header" onclick="toggleDay(\'' + 'wday-' + i + '\')">' +
+      '<div><h3>' + day.title + '</h3><div class="day-meta">' + day.meta + '</div></div>' +
+      '<div class="day-header-right"><div class="day-stat"><div class="day-stat-val">' + day.stats.focus + '</div><div class="day-stat-lbl">Focus</div></div>' +
+      '<div class="toggle-icon">▾</div></div></div>' +
+      '<div class="workout-body"><div class="workout-intro">' + day.intro + '</div>' + sectionsHTML +
+      '<div class="workout-note">' + day.note + '</div></div>';
+    container.appendChild(el);
+  });
+}
+
+// ── NUTRITION DATA ──
+const days = [
+  { day: "Monday",
+    breakfast: { title: "Greek Yogurt Parfait with Berries & Honey", ingredients: ["1 cup plain Greek yogurt", "½ cup mixed berries", "2 tbsp granola", "1 tsp honey", "Optional: chia seeds"], directions: "Layer yogurt in a bowl or jar. Top with berries, granola, and honey. Prep 5 jars Sunday night and grab one each morning. 3 minutes, no cooking, high protein." },
+    lunch: { title: "Greek-Style Turkey Bowl", ingredients: ["¾ cup cooked ground turkey", "1 cup cooked brown rice", "1 cup chopped cucumber", "½ cup cherry tomatoes", "2 tbsp olive oil", "Garlic, dried oregano, salt"], directions: "Brown turkey with garlic and oregano. Serve over rice with cucumber, tomatoes, and a drizzle of olive oil. Prep the rice Sunday for fast assembly all week." },
+    dinner: { title: "Sheet Pan Chicken Thighs with Roasted Vegetables", ingredients: ["2–3 bone-in chicken thighs", "2 cups broccoli florets", "1 cup sliced bell pepper", "2 tbsp olive oil", "Garlic powder, paprika, salt, pepper"], directions: "Preheat oven to 425°F. Toss veggies with half the oil and season. Rub chicken with remaining oil and spices. Roast together on one pan 35–40 min. One pan, almost no cleanup." }
+  },
+  { day: "Tuesday",
+    breakfast: { title: "Overnight Oats with Apple & Cinnamon", ingredients: ["½ cup rolled oats", "¾ cup milk of choice", "½ apple, diced", "1 tsp cinnamon", "1 tsp maple syrup", "1 tbsp almond butter"], directions: "Combine oats, milk, cinnamon, and maple syrup in a jar. Refrigerate overnight. Top with diced apple and almond butter in the morning. Zero morning effort." },
+    lunch: { title: "Chicken & Avocado Lettuce Wraps", ingredients: ["1 cup shredded rotisserie chicken", "½ avocado, sliced", "¼ cup diced tomato", "¼ cup diced red onion", "Romaine or butter lettuce leaves", "Lime juice, salt, cumin"], directions: "Fill lettuce leaves with chicken, avocado, tomato, and onion. Squeeze lime and season. Use store-bought rotisserie chicken for zero cooking." },
+    dinner: { title: "Baked Salmon with Asparagus & Quinoa", ingredients: ["2 salmon fillets (5–6 oz)", "1 bunch asparagus, trimmed", "1 cup cooked quinoa", "2 tbsp olive oil", "1 lemon, sliced", "Salt, pepper, dried dill"], directions: "Preheat oven to 400°F. Season salmon and asparagus with oil, dill, salt, and lemon. Roast 15–18 min until salmon flakes. Serve over quinoa." }
+  },
+  { day: "Wednesday",
+    breakfast: { title: "Egg & Veggie Scramble with Toast", ingredients: ["3 large eggs", "Handful baby spinach", "¼ cup diced bell pepper", "1 tsp olive oil", "Salt, pepper", "1 slice whole grain toast"], directions: "Sauté pepper in oil 2 min. Add spinach and wilt. Add whisked eggs and scramble gently until just set. Serve with toast. High protein, 10 minutes." },
+    lunch: { title: "Tuna & White Bean Salad", ingredients: ["1 can tuna in water, drained", "1 can white beans, drained", "2 stalks celery, diced", "2 tbsp olive oil", "1 tbsp lemon juice", "Salt, pepper, dried parsley", "Handful of arugula"], directions: "Combine all ingredients and toss. Zero cooking, five minutes. Keeps two days in the fridge — make extra at the start of the week." },
+    dinner: { title: "Turkey & Vegetable Soup", ingredients: ["¾ lb ground turkey", "4 cups low-sodium chicken broth", "1 can diced tomatoes", "1 cup diced zucchini", "1 cup diced carrots", "1 can white beans", "Garlic, Italian seasoning, salt"], directions: "Brown turkey with garlic. Add broth, tomatoes, carrots, zucchini. Simmer 15 min. Add beans and stir in a handful of spinach. Makes 3–4 servings." }
+  },
+  { day: "Thursday",
+    breakfast: { title: "Banana Peanut Butter Smoothie", ingredients: ["1 ripe banana", "1 cup milk of choice", "1 tbsp natural peanut butter", "½ cup plain Greek yogurt", "1 tsp honey", "Pinch of cinnamon"], directions: "Blend all ingredients until smooth. Pour and go. Great for rushed mornings — freeze the banana the night before for a thicker texture." },
+    lunch: { title: "Leftover Turkey Vegetable Soup", ingredients: ["Leftover turkey vegetable soup from Wednesday"], directions: "Reheat and serve. Thursday lunch is effortless by design — Wednesday cooked double. Add a slice of whole grain toast if you need more fuel." },
+    dinner: { title: "Garlic Herb Pork Tenderloin with Sweet Potato & Green Beans", ingredients: ["1 lb pork tenderloin", "2 medium sweet potatoes, cubed", "2 cups green beans", "3 tbsp olive oil", "Garlic, rosemary, thyme, salt"], directions: "Rub pork with garlic and herbs. Roast with sweet potato and green beans at 425°F for 25–30 min. Sheet pan dinner — impressive and easy." }
+  },
+  { day: "Friday",
+    breakfast: { title: "Cottage Cheese Bowl with Pineapple & Almonds", ingredients: ["1 cup low-fat cottage cheese", "½ cup pineapple chunks", "2 tbsp slivered almonds", "1 tsp honey", "Pinch of cinnamon"], directions: "Spoon cottage cheese into a bowl, top with everything else. No cooking, 2 minutes, very high protein. One of the best quick breakfasts for sustainable energy." },
+    lunch: { title: "Turkey & Cheese Wrap", ingredients: ["2 oz sliced turkey deli meat", "1 whole wheat tortilla", "2 tbsp hummus", "Handful of spinach", "¼ avocado, sliced", "Sliced cucumber"], directions: "Spread hummus on tortilla. Layer turkey, spinach, avocado, and cucumber. Roll and slice. Make the night before for an effortless Friday lunch." },
+    dinner: { title: "Baked Cod with Cherry Tomatoes & Quinoa", ingredients: ["2 cod fillets (5–6 oz)", "1 pint cherry tomatoes", "3 tbsp olive oil", "3 cloves garlic, minced", "1 cup cooked quinoa", "Thyme, salt, pepper, lemon"], directions: "Place cod and tomatoes in a baking dish. Drizzle with oil, garlic, and thyme. Roast at 400°F 15–18 min until cod flakes easily. Serve over quinoa." }
+  },
+  { day: "Saturday",
+    breakfast: { title: "Veggie Omelette with Whole Grain Toast", ingredients: ["3 large eggs", "¼ cup diced mushrooms", "2 tbsp diced onion", "¼ cup diced bell pepper", "1 oz shredded cheese", "1 tsp butter", "1 slice whole grain toast"], directions: "Sauté vegetables in butter 3 min. Pour in whisked eggs, let set, fold over with cheese. Serve with toast. A proper weekend breakfast worth the 12 minutes." },
+    lunch: { title: "Quinoa & Black Bean Power Bowl", ingredients: ["1 cup cooked quinoa", "½ cup canned black beans, drained", "¼ avocado, sliced", "¼ cup corn", "¼ cup salsa", "2 tbsp Greek yogurt", "Lime juice, cumin, salt"], directions: "Layer quinoa, beans, corn, and avocado in a bowl. Top with salsa and a spoon of Greek yogurt. Quick, filling, and packed with protein and fiber." },
+    dinner: { title: "Lemon Herb Baked Chicken Breast with Roasted Zucchini", ingredients: ["2 boneless chicken breasts", "2 medium zucchini, sliced", "3 tbsp olive oil", "1 lemon, zested and juiced", "Garlic, oregano, thyme, salt"], directions: "Season chicken with lemon, garlic, and herbs. Bake at 400°F 22–25 min. Roast zucchini alongside on the same pan. Simple, clean, and genuinely delicious." }
+  },
+  { day: "Sunday",
+    breakfast: { title: "Protein Pancakes with Fresh Berries", ingredients: ["1 cup rolled oats (blended to flour)", "2 eggs", "½ cup Greek yogurt", "½ tsp baking powder", "1 tsp vanilla", "1 tbsp honey", "Fresh berries to serve"], directions: "Blend oats into flour. Mix all batter ingredients. Cook on a greased non-stick pan 2–3 min per side. Makes 6 small pancakes. High protein, worth every minute." },
+    lunch: { title: "Big Prep Salad Bowl", ingredients: ["3 cups mixed greens", "½ cup chickpeas", "¼ cup shredded carrots", "¼ cup cucumber", "2 hard-boiled eggs, sliced", "2 tbsp olive oil", "1 tbsp lemon juice", "Salt, pepper, garlic powder"], directions: "Assemble all ingredients in a large bowl. Drizzle with olive oil and lemon. Use Sunday to batch-boil 6–8 eggs for the whole week ahead." },
+    dinner: { title: "Slow Cooker Chicken & Sweet Potato Stew", ingredients: ["1.5 lbs boneless chicken thighs", "2 sweet potatoes, cubed", "1 can diced tomatoes", "1 cup chicken broth", "1 can black beans", "Cumin, chili powder, garlic, salt"], directions: "Add everything to slow cooker. Cook on low 6–7 hours or high 3–4 hours. Shred chicken before serving. Set it Sunday morning — dinner is done when you need it." }
+  }
+];
+
+const grocery = {
+  "Protein": ["Bone-in chicken thighs (4–6)", "Boneless chicken breasts (2)", "Boneless chicken thighs (1.5 lbs)", "Rotisserie chicken (1)", "Ground turkey (1 lb)", "Salmon fillets (2, 5–6 oz)", "Cod fillets (2, 5–6 oz)", "Pork tenderloin (1 lb)", "Deli turkey (4 oz)", "1 dozen large eggs", "Greek yogurt, plain (32 oz tub)", "Cottage cheese (16 oz)", "Tuna in water (2 cans)"],
+  "Produce": ["Broccoli (1 head)", "Bell peppers (4)", "Asparagus (1 bunch)", "Zucchini (3)", "Green beans (1 bag)", "Baby spinach (1 bag)", "Cherry tomatoes (1 pint)", "Cucumber (2)", "Avocado (2)", "Sweet potatoes (4 medium)", "Carrots (1 bag)", "Celery (1 bunch)", "Red onion (1)", "Mushrooms (1 cup)", "Mixed greens (1 bag)", "Butter lettuce (1 head)", "Arugula (small bag)", "Lemon (4)", "Lime (2)", "Banana (1 bunch)", "Apple (2)", "Mixed berries (1.5 cups)", "Pineapple chunks (½ cup)"],
+  "Pantry & Grains": ["Brown rice", "Quinoa", "Rolled oats", "Granola (small bag)", "Whole grain bread (1 loaf)", "Whole wheat tortillas", "Olive oil", "Butter", "Garlic (1 head)", "Natural peanut butter", "Almond butter", "Hummus", "Slivered almonds", "Honey", "Maple syrup", "Cinnamon", "Vanilla extract", "Paprika, cumin, chili powder", "Dried oregano, thyme, rosemary, dill, Italian seasoning", "Salt & pepper"],
+  "Canned & Broth": ["White beans (2 cans)", "Black beans (2 cans)", "Chickpeas (1 can)", "Diced tomatoes (1 can)", "Low-sodium chicken broth (1 carton)", "Corn (1 can)"]
+};
+
+// ── RENDER NUTRITION ──
+function renderNutrition() {
+  const container = document.getElementById('nutrition-container');
+  const mealOrder = [
+    { key: 'breakfast', label: 'Breakfast' },
+    { key: 'lunch', label: 'Lunch' },
+    { key: 'dinner', label: 'Dinner' }
+  ];
+  days.forEach(function(dayData, di) {
+    const daySection = document.createElement('div');
+    daySection.className = 'nutrition-day-section';
+    const isOpen = di === 0;
+    const mealsWrap = document.createElement('div');
+    mealsWrap.id = 'nday-' + di;
+    mealsWrap.style.display = isOpen ? 'block' : 'none';
+    const dayHeader = document.createElement('div');
+    dayHeader.className = 'nutrition-day-header';
+    dayHeader.innerHTML = '<div class="nutrition-day-name">' + dayData.day + '</div>' +
+      '<div class="day-meal-count">3 meals</div>' +
+      '<div class="nutrition-day-divider"></div>' +
+      '<div class="nutrition-day-toggle" id="ntog-' + di + '" style="transform:' + (isOpen ? 'rotate(180deg)' : '') + '">▾</div>';
+    dayHeader.onclick = function() {
+      const wrap = document.getElementById('nday-' + di);
+      const tog = document.getElementById('ntog-' + di);
+      const open = wrap.style.display !== 'none';
+      wrap.style.display = open ? 'none' : 'block';
+      tog.style.transform = open ? '' : 'rotate(180deg)';
+    };
+    mealOrder.forEach(function(ml, mi) {
+      const meal = dayData[ml.key];
+      const id = 'meal-' + di + '-' + ml.key;
+      const sec = document.createElement('div');
+      sec.className = 'meal-type-section';
+      sec.innerHTML = '<div class="meal-type-divider">' + ml.label + '</div>' +
+        '<div class="meal-card' + (mi === 0 && di === 0 ? ' meal-open' : '') + '" id="' + id + '">' +
+        '<div class="meal-card-header" onclick="toggleMeal(\'' + id + '\')">' +
+        '<h3>' + meal.title + '</h3><span class="meal-toggle">▾</span></div>' +
+        '<div class="meal-body"><div class="meal-ingredients"><h4>Ingredients</h4><ul>' +
+        meal.ingredients.map(function(i) { return '<li>' + i + '</li>'; }).join('') +
+        '</ul></div><div class="meal-instructions"><h4>Directions</h4><p>' + meal.directions + '</p></div></div></div>';
+      mealsWrap.appendChild(sec);
+    });
+    daySection.appendChild(dayHeader);
+    daySection.appendChild(mealsWrap);
+    container.appendChild(daySection);
+  });
+
+  // Grocery
+  const groceryEl = document.getElementById('grocery-container');
+  let catsHTML = '';
+  Object.entries(grocery).forEach(function(entry) {
+    catsHTML += '<div class="grocery-cat"><h4>' + entry[0] + '</h4><ul>';
+    entry[1].forEach(function(item) {
+      catsHTML += '<li onclick="toggleCheck(this)"><div class="check-box"></div>' + item + '</li>';
+    });
+    catsHTML += '</ul></div>';
+  });
+  groceryEl.innerHTML = '<div class="grocery-section"><div class="grocery-header"><h3>Weekly Grocery List</h3><span>Tap items to check off as you shop</span></div><div class="grocery-body">' + catsHTML + '</div></div>';
+}
+
+// ── INIT ──
+renderWorkouts();
+renderNutrition();
+
+// ── UI ──
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function toggleDay(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+function toggleMeal(id) {
+  document.getElementById(id).classList.toggle('meal-open');
+}
+function toggleCheck(li) {
+  li.classList.toggle('checked-item');
+  li.querySelector('.check-box').classList.toggle('checked');
+}
+</script>
+</body>
+</html>
