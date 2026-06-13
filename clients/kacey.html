@@ -526,10 +526,10 @@
     <div class="section-header">
       <h2>This Week's Nutrition</h2>
       <div class="section-divider"></div>
-      <p id="nutrition-subtitle">Breakfast, lunch &amp; dinner · Simple ingredients, real food</p>
+      <p id="nutrition-subtitle">7 days · Breakfast, lunch &amp; dinner · Simple ingredients, real food</p>
     </div>
     <div class="nutrition-note">
-      <strong>A note from your coach:</strong> Your busy job and full home life leave little energy for cooking — so these meals are designed around that reality. Most take 20 minutes or less, ingredients overlap to reduce shopping, and every meal includes protein to support your weight loss and energy goals. Tap any meal to open the recipe.
+      <strong>A note from your coach:</strong> Your busy job and full home life leave little energy for cooking — so all 21 meals this week are designed around that reality. Most take 20 minutes or less, ingredients overlap across the week to reduce your shopping list, and every meal includes protein to support your weight loss and energy goals. Tap any day to expand, then tap a meal to open the recipe.
     </div>
     <div class="week-context-bar">
       <div class="wcb-left">
@@ -910,56 +910,214 @@ const workoutData = [
 const nutritionData = [
   {
     week: 1, theme: "Foundations",
-    meals: {
-      breakfast: { title: "Greek Yogurt Parfait with Berries & Honey", ingredients: ["1 cup plain Greek yogurt (full-fat or 2%)", "½ cup mixed berries (fresh or frozen/thawed)", "2 tbsp granola", "1 tsp honey", "Optional: chia seeds or flaxseed"], directions: "Layer yogurt in a bowl or jar. Top with berries, granola, and a drizzle of honey. If using frozen berries, thaw overnight in the fridge. That's it — 3 minutes, no cooking, high protein. Prep 3–4 jars on Sunday and grab one each morning." },
-      lunch: { title: "Greek-Style Turkey Bowl", ingredients: ["1 lb ground turkey", "1 cup cooked brown rice or farro", "1 cup chopped cucumber", "½ cup halved cherry tomatoes", "¼ cup plain Greek yogurt", "2 tbsp olive oil", "Garlic, dried oregano, salt", "Handful of spinach or arugula"], directions: "Brown turkey in a skillet with garlic, oregano, and salt — about 8 minutes. Assemble bowls: grain on the bottom, then turkey, greens, cucumber, and tomatoes. Drizzle with olive oil and a spoonful of Greek yogurt. Prep the grain on Sunday and this becomes a 10-minute lunch." },
-      dinner: { title: "Sheet Pan Chicken Thighs with Roasted Vegetables", ingredients: ["3 bone-in chicken thighs", "2 cups broccoli florets", "1 cup sliced bell pepper", "1 cup cherry tomatoes", "2 tbsp olive oil", "Garlic powder, paprika, salt, pepper", "Optional: 1 lemon, halved"], directions: "Preheat oven to 425°F. Toss vegetables with 1 tbsp oil and season. Rub chicken with remaining oil and spices. Place chicken in center of sheet pan, veggies around it. Roast 35–40 minutes until golden and cooked through. One pan, almost no cleanup." }
-    },
+    days: [
+      {
+        day: "Monday",
+        breakfast: { title: `Greek Yogurt Parfait with Berries & Honey`, ingredients: [`1 cup plain Greek yogurt`,`1/2 cup mixed berries`,`2 tbsp granola`,`1 tsp honey`,`Optional: chia seeds`], directions: `Layer yogurt, berries, granola, and honey. Prep 5 jars Sunday night and grab one each morning. 3 minutes, no cooking, high protein.` },
+        lunch: { title: `Greek-Style Turkey Bowl`, ingredients: [`1 lb ground turkey`,`1 cup cooked brown rice`,`1 cup chopped cucumber`,`1/2 cup cherry tomatoes`,`2 tbsp olive oil`,`Garlic, oregano, salt`], directions: `Brown turkey with garlic and oregano. Serve over rice with cucumber, tomatoes, and a drizzle of olive oil.` },
+        dinner: { title: `Sheet Pan Chicken Thighs with Roasted Vegetables`, ingredients: [`3 bone-in chicken thighs`,`2 cups broccoli florets`,`1 cup sliced bell pepper`,`2 tbsp olive oil`,`Garlic powder, paprika, salt`], directions: `Preheat oven to 425F. Roast chicken and veggies on one pan 35-40 min. One pan, almost no cleanup.` },
+      },
+      {
+        day: "Tuesday",
+        breakfast: { title: `Overnight Oats with Apple & Cinnamon`, ingredients: [`1/2 cup rolled oats`,`3/4 cup milk of choice`,`1/2 apple, diced`,`1 tsp cinnamon`,`1 tsp maple syrup`,`1 tbsp almond butter`], directions: `Combine oats, milk, cinnamon, and maple syrup in a jar. Refrigerate overnight. Top with diced apple and almond butter in the morning.` },
+        lunch: { title: `Tuna & White Bean Salad`, ingredients: [`1 can tuna in water, drained`,`1 can white beans, drained`,`2 stalks celery, diced`,`2 tbsp olive oil`,`1 tbsp lemon juice`,`Salt, pepper, parsley`,`Handful of arugula`], directions: `Combine all ingredients and toss. Zero cooking, five minutes. Keeps two days in the fridge.` },
+        dinner: { title: `Beef & Vegetable Stir-Fry with Rice`, ingredients: [`3/4 lb lean ground beef`,`2 cups broccoli florets`,`1 cup snap peas`,`1 bell pepper, sliced`,`2 tbsp soy sauce (low sodium)`,`1 tsp sesame oil`,`1 tsp garlic`,`1 cup cooked brown rice`], directions: `Cook beef until browned. Add vegetables and stir-fry 5-6 min. Add soy sauce, sesame oil, and garlic. Serve over rice. 20 minutes total.` },
+      },
+      {
+        day: "Wednesday",
+        breakfast: { title: `Egg & Veggie Scramble with Toast`, ingredients: [`3 large eggs`,`Handful baby spinach`,`1/4 cup diced bell pepper`,`1 tsp olive oil`,`Salt, pepper`,`1 slice whole grain toast`], directions: `Saute pepper in oil 2 min. Add spinach and wilt. Add whisked eggs and scramble gently. Serve with toast. High protein, 10 minutes.` },
+        lunch: { title: `Chicken & Avocado Lettuce Wraps`, ingredients: [`1 cup shredded rotisserie chicken`,`1/2 avocado, sliced`,`1/4 cup diced tomato`,`1/4 cup diced red onion`,`Romaine or butter lettuce leaves`,`Lime juice, salt, cumin`], directions: `Fill lettuce leaves with chicken, avocado, tomato, and onion. Squeeze lime and season. Use store-bought rotisserie chicken for zero effort.` },
+        dinner: { title: `Baked Salmon with Asparagus & Quinoa`, ingredients: [`2 salmon fillets (5-6 oz)`,`1 bunch asparagus, trimmed`,`1 cup cooked quinoa`,`2 tbsp olive oil`,`1 lemon, sliced`,`Salt, pepper, dried dill`], directions: `Preheat oven to 400F. Season salmon and asparagus with oil, dill, salt, and lemon. Roast 15-18 min. Serve over quinoa.` },
+      },
+      {
+        day: "Thursday",
+        breakfast: { title: `Banana Peanut Butter Smoothie`, ingredients: [`1 ripe banana`,`1 cup milk of choice`,`1 tbsp natural peanut butter`,`1/2 cup plain Greek yogurt`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Blend all ingredients until smooth. Great for rushed mornings — freeze the banana the night before for a thicker texture.` },
+        lunch: { title: `Turkey & Cheese Wrap`, ingredients: [`2 oz sliced turkey deli meat`,`1 whole wheat tortilla`,`2 tbsp hummus`,`Handful of spinach`,`1/4 avocado, sliced`,`Sliced cucumber`], directions: `Spread hummus on tortilla. Layer turkey, spinach, avocado, and cucumber. Roll and slice. Make the night before for an effortless lunch.` },
+        dinner: { title: `Turkey & Vegetable Soup`, ingredients: [`1 lb ground turkey`,`4 cups low-sodium chicken broth`,`1 can diced tomatoes`,`1 cup diced zucchini`,`1 cup diced carrots`,`1 can white beans`,`Garlic, Italian seasoning`], directions: `Brown turkey with garlic. Add broth, tomatoes, carrots, zucchini. Simmer 15 min. Add beans and spinach. Makes 4 servings — freeze half.` },
+      },
+      {
+        day: "Friday",
+        breakfast: { title: `Cottage Cheese Bowl with Pineapple & Almonds`, ingredients: [`1 cup low-fat cottage cheese`,`1/2 cup pineapple chunks`,`2 tbsp slivered almonds`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Spoon cottage cheese into a bowl, top with everything else. No cooking, 2 minutes, very high protein.` },
+        lunch: { title: `Leftover Soup & Side Salad`, ingredients: [`Leftover turkey vegetable soup`,`2 cups mixed greens`,`1/4 cup cherry tomatoes`,`1 tbsp olive oil`,`1 tsp red wine vinegar`,`Salt and pepper`], directions: `Reheat soup. Toss greens, tomatoes, olive oil, and vinegar for a quick side salad. Effortless Friday — designed to use Thursday leftovers.` },
+        dinner: { title: `Garlic Herb Pork Tenderloin with Sweet Potato & Green Beans`, ingredients: [`1 lb pork tenderloin`,`2 medium sweet potatoes, cubed`,`2 cups green beans`,`3 tbsp olive oil`,`Garlic, rosemary, thyme, salt`], directions: `Rub pork with garlic and herbs. Roast with sweet potato and green beans at 425F for 25-30 min. Sheet pan dinner — impressive but easy.` },
+      },
+      {
+        day: "Saturday",
+        breakfast: { title: `Veggie Omelette with Whole Grain Toast`, ingredients: [`3 large eggs`,`1/4 cup diced mushrooms`,`2 tbsp diced onion`,`1/4 cup diced bell pepper`,`1 oz shredded cheese`,`1 tsp butter`,`1 slice whole grain toast`], directions: `Saute vegetables in butter 3 min. Pour in whisked eggs, let set, fold over with cheese. Serve with toast. A proper weekend breakfast.` },
+        lunch: { title: `Quinoa Power Bowl`, ingredients: [`1 cup cooked quinoa`,`1/2 cup canned black beans`,`1/4 avocado, sliced`,`1/4 cup corn`,`1/4 cup salsa`,`2 tbsp Greek yogurt`,`Lime juice, cumin, salt`], directions: `Layer quinoa, beans, corn, and avocado in a bowl. Top with salsa and a spoon of Greek yogurt. Quick, filling, packed with protein and fiber.` },
+        dinner: { title: `Lemon Herb Baked Chicken Breast with Roasted Zucchini`, ingredients: [`2 boneless chicken breasts`,`2 medium zucchini, sliced`,`3 tbsp olive oil`,`1 lemon, zested and juiced`,`Garlic, oregano, thyme, salt`], directions: `Bake chicken at 400F 22-25 min. Roast zucchini alongside. Simple and delicious.` },
+      },
+      {
+        day: "Sunday",
+        breakfast: { title: `Protein Pancakes with Fresh Berries`, ingredients: [`1 cup rolled oats (blended to flour)`,`2 eggs`,`1/2 cup Greek yogurt`,`1/2 tsp baking powder`,`1 tsp vanilla`,`1 tbsp honey`,`Fresh berries to serve`], directions: `Blend oats into flour. Mix all batter ingredients. Cook on a greased non-stick pan 2-3 min per side. Makes 6 small pancakes.` },
+        lunch: { title: `Big Prep Salad Bowl`, ingredients: [`3 cups mixed greens`,`1/2 cup chickpeas`,`1/4 cup shredded carrots`,`1/4 cup cucumber`,`2 hard-boiled eggs, sliced`,`2 tbsp olive oil`,`1 tbsp lemon juice`,`Salt, pepper, garlic powder`], directions: `Assemble all ingredients. Drizzle with olive oil and lemon. Use Sunday to batch-boil 6-8 eggs for the whole week.` },
+        dinner: { title: `Slow Cooker Chicken & Sweet Potato Stew`, ingredients: [`1.5 lbs boneless chicken thighs`,`2 sweet potatoes, cubed`,`1 can diced tomatoes`,`1 cup chicken broth`,`1 can black beans`,`Cumin, chili powder, garlic, salt`], directions: `Add everything to slow cooker. Cook low 6-7 hours or high 3-4 hours. Shred chicken. Set it Sunday morning, dinner is done. Leftovers for Monday lunch.` },
+      },
+    ],
     grocery: {
-      "Protein": ["3 bone-in chicken thighs", "1 lb ground turkey", "1 dozen large eggs", "Plain Greek yogurt (32 oz tub)"],
-      "Produce": ["Broccoli florets", "Bell peppers (2–3)", "Cherry tomatoes (1 pint)", "Cucumber", "Baby spinach or arugula", "Onion", "Lemon", "Mixed berries (fresh or frozen)"],
-      "Pantry & Grains": ["Brown rice or farro", "Granola", "Olive oil", "Garlic (fresh or powder)", "Paprika", "Dried oregano", "Honey", "Salt & pepper"]
+      "Protein": ["Bone-in chicken thighs (6-8)","Ground turkey (2 lbs)","Salmon fillets (2, 5-6 oz)","1 dozen large eggs","Greek yogurt, plain (32 oz tub)","Cottage cheese (16 oz)","Pork tenderloin (1 lb)","Rotisserie chicken (1)","Lean ground beef (3/4 lb)","Deli turkey (4 oz)"],
+      "Produce": ["Broccoli (1 large head)","Bell peppers (5-6)","Cherry tomatoes (2 pints)","Asparagus (1 bunch)","Zucchini (3)","Green beans (1 lb)","Sweet potatoes (3 medium)","Baby spinach (1 bag)","Cucumber (3)","Avocado (3)","Mushrooms (1 cup)","Red onion (2)","Lemon (5)","Mixed berries (2 cups)","Banana (1 bunch)","Apple (2)","Snap peas (1 cup)","Pineapple chunks (1 cup)","Peach (1)"],
+      "Pantry & Grains": ["Brown rice","Quinoa","Rolled oats","Granola","Whole grain bread","Whole wheat tortillas","Olive oil","Garlic (1 head)","Paprika, cumin, chili powder","Dried oregano, rosemary, thyme, Italian seasoning","Honey","Natural peanut butter","Slivered almonds","Almond butter","Soy sauce (low sodium)","Sesame oil"],
+      "Canned & Broth": ["White beans (2 cans)","Black beans (2 cans)","Canned diced tomatoes (2 cans)","Low-sodium chicken broth (1 carton)","Tuna in water (2 cans)","Chickpeas (1 can)"],
     }
   },
   {
     week: 2, theme: "Building Momentum",
-    meals: {
-      breakfast: { title: "Egg & Veggie Scramble with Whole Grain Toast", ingredients: ["3 large eggs", "Handful of baby spinach", "¼ cup diced bell pepper", "2 tbsp diced onion", "1 tsp olive oil or butter", "Salt, pepper, red pepper flakes", "1 slice whole grain toast", "Optional: ¼ avocado, sliced"], directions: "Warm oil over medium heat. Sauté pepper and onion 2–3 minutes. Add spinach and let it wilt. Whisk eggs, pour over vegetables, scramble gently until just set. Season well. Serve with toast and avocado. High protein, 10 minutes, sets the tone for the whole day." },
-      lunch: { title: "Tuna & White Bean Salad", ingredients: ["1 can tuna in water, drained", "1 can white beans, drained and rinsed", "2 stalks celery, diced", "¼ red onion, finely diced", "2 tbsp olive oil", "1 tbsp lemon juice", "Salt, pepper, dried parsley", "Handful of arugula or mixed greens"], directions: "Combine tuna, white beans, celery, and red onion in a bowl. Dress with olive oil, lemon juice, salt, and pepper. Toss with greens and serve. Zero cooking, five minutes. Keeps well in the fridge for two days — a perfect option when you have nothing left to give at lunchtime." },
-      dinner: { title: "Baked Salmon with Asparagus & Quinoa", ingredients: ["2 salmon fillets (5–6 oz each)", "1 bunch asparagus, trimmed", "1 cup cooked quinoa", "2 tbsp olive oil", "2 cloves garlic, minced", "1 lemon, sliced", "Salt, pepper, dried dill or thyme"], directions: "Preheat oven to 400°F. Place salmon and asparagus on a lined baking sheet. Drizzle with olive oil, season with garlic, dill, salt, and pepper. Top salmon with lemon slices. Roast 15–18 minutes until salmon flakes easily. Serve over quinoa." }
-    },
+    days: [
+      {
+        day: "Monday",
+        breakfast: { title: `Egg & Veggie Scramble with Whole Grain Toast`, ingredients: [`3 large eggs`,`Handful baby spinach`,`1/4 cup diced bell pepper`,`1 tsp olive oil`,`Salt, pepper`,`1 slice whole grain toast`,`Optional: 1/4 avocado`], directions: `Saute pepper 2-3 min. Add spinach and wilt. Scramble eggs over vegetables until just set. Serve with toast. High protein, 10 minutes.` },
+        lunch: { title: `Leftover Chicken Stew & Side Salad`, ingredients: [`Leftover slow cooker chicken stew`,`2 cups mixed greens`,`1 tbsp olive oil`,`1 tsp lemon juice`], directions: `Reheat stew. Toss a quick greens salad alongside. Effortless Monday — the slow cooker planned ahead for you.` },
+        dinner: { title: `Sheet Pan Shrimp Fajitas`, ingredients: [`1 lb shrimp, peeled and deveined`,`2 bell peppers, sliced`,`1 red onion, sliced`,`2 tbsp olive oil`,`Cumin, chili powder, garlic, lime juice, salt`,`Whole wheat tortillas or rice to serve`], directions: `Toss shrimp, peppers, and onion with oil and spices on a sheet pan. Roast at 425F for 12-15 min. Serve in tortillas or over rice with lime.` },
+      },
+      {
+        day: "Tuesday",
+        breakfast: { title: `Overnight Oats with Banana & Almond Butter`, ingredients: [`1/2 cup rolled oats`,`3/4 cup milk of choice`,`1 ripe banana, sliced`,`1 tbsp almond butter`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Combine oats and milk in a jar the night before. Top with banana, almond butter, honey, and cinnamon in the morning.` },
+        lunch: { title: `Chopped Mediterranean Salad with Chickpeas`, ingredients: [`1 can chickpeas, drained`,`1 cucumber, diced`,`1 cup cherry tomatoes, halved`,`1/4 red onion, diced`,`2 tbsp olive oil`,`1 tbsp red wine vinegar`,`Dried oregano, salt, pepper`], directions: `Combine everything and toss. Keeps in the fridge 3 days. Make a big bowl to grab from all week.` },
+        dinner: { title: `Garlic Butter Chicken Thighs with Broccoli & Rice`, ingredients: [`4 bone-in chicken thighs`,`3 cups broccoli florets`,`1 cup cooked brown rice`,`3 tbsp butter`,`4 cloves garlic, minced`,`Salt, pepper, paprika`], directions: `Sear chicken skin-down 7-8 min. Flip, add garlic butter, finish in oven at 400F 20 min. Steam broccoli. Serve over rice.` },
+      },
+      {
+        day: "Wednesday",
+        breakfast: { title: `Greek Yogurt Parfait with Peach & Granola`, ingredients: [`1 cup plain Greek yogurt`,`1 peach, sliced`,`2 tbsp granola`,`1 tsp honey`,`Optional: hemp seeds`], directions: `Layer yogurt, peach, and granola. Drizzle honey. Prep ahead in jars for grab-and-go mornings.` },
+        lunch: { title: `Turkey & Cheese Wrap with Side Carrots`, ingredients: [`1 whole wheat tortilla`,`2 oz sliced turkey`,`1 oz cheese`,`2 tbsp hummus`,`Handful spinach`,`Baby carrots on the side`], directions: `Spread hummus, layer turkey, cheese, and spinach. Roll tightly. Pack baby carrots on the side. Make the night before.` },
+        dinner: { title: `One-Pan Salmon with Lemon Dill & Roasted Potatoes`, ingredients: [`2 salmon fillets (5-6 oz)`,`3 small Yukon gold potatoes, cubed`,`2 cups asparagus or green beans`,`3 tbsp olive oil`,`1 lemon`,`Dill, garlic, salt, pepper`], directions: `Parboil potatoes 8 min. Arrange potatoes, vegetables, and salmon on a sheet pan. Drizzle with oil and season. Roast at 400F for 18-20 min.` },
+      },
+      {
+        day: "Thursday",
+        breakfast: { title: `Banana Peanut Butter Oatmeal`, ingredients: [`1/2 cup rolled oats`,`1 cup water or milk`,`1 ripe banana, sliced`,`1 tbsp natural peanut butter`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Cook oats 3-5 min. Top with banana, peanut butter, and honey. Staying power through a long busy morning.` },
+        lunch: { title: `Caprese Salad with Hard-Boiled Eggs`, ingredients: [`2 hard-boiled eggs, sliced`,`1 cup cherry tomatoes, halved`,`4 oz fresh mozzarella, sliced`,`Fresh basil`,`2 tbsp olive oil`,`Balsamic glaze`,`Salt and pepper`], directions: `Arrange eggs, tomatoes, and mozzarella on a plate. Top with basil, olive oil, and balsamic. Light and satisfying. Boil eggs in a batch Sunday.` },
+        dinner: { title: `Ground Turkey Taco Bowls`, ingredients: [`1 lb ground turkey`,`1 can black beans`,`1 cup cooked rice`,`1/2 cup salsa`,`1/4 cup corn`,`1/4 avocado, sliced`,`Cumin, chili powder, garlic, salt`], directions: `Brown turkey with spices. Assemble bowls with rice, beans, turkey, salsa, corn, and avocado. Leftovers are even better the next day.` },
+      },
+      {
+        day: "Friday",
+        breakfast: { title: `Cottage Cheese with Berries & Walnuts`, ingredients: [`1 cup low-fat cottage cheese`,`1/2 cup blueberries or mixed berries`,`2 tbsp chopped walnuts`,`1 tsp honey`,`Optional: cinnamon`], directions: `Top cottage cheese with berries, walnuts, and honey. No cooking, 2 minutes, excellent protein and omega-3s from the walnuts.` },
+        lunch: { title: `Leftover Taco Bowl`, ingredients: [`Leftover ground turkey taco bowl from Thursday`], directions: `Reheat turkey and rice. Reassemble bowl with fresh toppings. Friday is effortless by design — Thursday cooked double.` },
+        dinner: { title: `Baked Cod with Roasted Tomatoes & Quinoa`, ingredients: [`2 cod fillets (5-6 oz)`,`1 pint cherry tomatoes`,`3 tbsp olive oil`,`3 cloves garlic, minced`,`1 cup cooked quinoa`,`Thyme, salt, pepper, lemon`], directions: `Place cod and tomatoes in a baking dish. Drizzle with oil, garlic, thyme. Roast at 400F 15-18 min until cod flakes. Serve over quinoa.` },
+      },
+      {
+        day: "Saturday",
+        breakfast: { title: `Veggie & Egg Muffin Cups (Batch Baked)`, ingredients: [`6 large eggs`,`1/4 cup diced bell pepper`,`1/4 cup diced onion`,`Handful baby spinach, chopped`,`1/4 cup shredded cheese`,`Salt, pepper, garlic powder`], directions: `Whisk eggs, mix in vegetables and cheese. Pour into greased muffin tin. Bake at 350F for 18-20 min. Makes 6 — eat 2 today, refrigerate rest for quick weekday breakfasts.` },
+        lunch: { title: `Smashed Avocado Toast with Eggs`, ingredients: [`2 slices whole grain bread`,`1 ripe avocado`,`2 eggs`,`Red pepper flakes, salt, lemon juice`,`Optional: cherry tomatoes`], directions: `Toast bread. Mash avocado with lemon and salt. Fry or poach eggs. Top toast with avocado and eggs. A Saturday treat that is also genuinely nutritious.` },
+        dinner: { title: `Herb-Crusted Pork Chops with Roasted Carrots & Green Beans`, ingredients: [`2 bone-in pork chops`,`2 cups baby carrots`,`2 cups green beans`,`3 tbsp olive oil`,`Rosemary, thyme, garlic, Dijon mustard, salt`], directions: `Rub pork with Dijon, herbs, and garlic. Sear 3-4 min per side, then roast at 400F 12 min. Roast carrots and green beans alongside.` },
+      },
+      {
+        day: "Sunday",
+        breakfast: { title: `French Toast with Fresh Strawberries`, ingredients: [`2 thick slices whole grain bread`,`2 eggs`,`1/4 cup milk`,`1 tsp vanilla`,`1/2 tsp cinnamon`,`1 tsp butter`,`Fresh strawberries to serve`], directions: `Whisk eggs, milk, vanilla, and cinnamon. Dip bread and cook in buttered pan 2-3 min per side. Top with sliced strawberries.` },
+        lunch: { title: `Big Greek Salad with Grilled Chicken`, ingredients: [`2 cups romaine`,`1 cup grilled or rotisserie chicken`,`1/2 cucumber, diced`,`1/2 cup cherry tomatoes`,`1/4 red onion, sliced`,`2 oz feta cheese`,`Olive oil, red wine vinegar, oregano`], directions: `Combine all ingredients. Dress with olive oil, vinegar, and oregano. Top with chicken and feta. A full satisfying Sunday lunch.` },
+        dinner: { title: `Sunday Slow Cooker Beef & Vegetable Soup`, ingredients: [`1 lb lean beef stew meat`,`3 carrots, diced`,`3 stalks celery, diced`,`2 potatoes, cubed`,`1 can diced tomatoes`,`4 cups low-sodium beef broth`,`Garlic, thyme, rosemary, bay leaf, salt`], directions: `Add all ingredients to slow cooker. Cook low 7-8 hours. Remove bay leaf. Makes 5-6 servings — eat tonight, pack lunch Monday and Tuesday.` },
+      },
+    ],
     grocery: {
-      "Protein": ["2 salmon fillets (5–6 oz)", "Canned tuna in water (2 cans)", "1 dozen eggs", "White beans / cannellini (1 can)"],
-      "Produce": ["Asparagus (1 bunch)", "Baby spinach", "Bell pepper", "Celery (1 bunch)", "Red onion", "Avocado", "Lemon (2–3)", "Arugula or mixed greens"],
-      "Pantry & Grains": ["Quinoa", "Whole grain bread", "Olive oil", "Garlic", "Dried dill or thyme", "Dried parsley", "Red pepper flakes", "Salt & pepper"]
+      "Protein": ["Bone-in chicken thighs (8)","Ground turkey (1 lb)","Shrimp (2 lbs)","Salmon fillets (2)","Cod fillets (2)","Lean beef stew meat (1 lb)","1 dozen eggs","Greek yogurt, plain (32 oz)","Pork chops (2 bone-in)","Deli turkey (4 oz)","Mozzarella, fresh (4 oz)","Feta cheese (2 oz)"],
+      "Produce": ["Asparagus (1 bunch)","Broccoli (1 head)","Bell peppers (5-6)","Zucchini (2)","Cherry tomatoes (2 pints)","Cucumber (3)","Baby spinach (1 bag)","Red onion (2)","Romaine lettuce (1 head)","Avocado (3)","Carrots (1 bag)","Celery (1 bunch)","Lemon (5)","Strawberries (1 cup)","Banana (1 bunch)","Peach (2)","Blueberries (1 cup)","Potatoes (6 small Yukon gold)","Baby carrots (1 bag)"],
+      "Pantry & Grains": ["Quinoa","Brown rice","Rolled oats","Whole grain bread","Whole wheat tortillas","Hummus","Olive oil","Butter","Garlic","Dried herbs (Italian, thyme, dill, oregano)","Cumin, chili powder, paprika","Dijon mustard","Red wine vinegar","Parmesan cheese","Kalamata olives","Honey","Granola"],
+      "Canned & Broth": ["Chickpeas (1 can)","Diced tomatoes (1 can)","Black beans (1 can)","Low-sodium beef broth (1 carton)","Low-sodium chicken broth (1 carton)"],
     }
   },
   {
     week: 3, theme: "Finding Your Strength",
-    meals: {
-      breakfast: { title: "Banana Peanut Butter Oatmeal", ingredients: ["½ cup rolled oats", "1 cup water or milk of choice", "1 ripe banana, sliced", "1 tbsp natural peanut butter", "1 tsp honey or maple syrup", "Pinch of cinnamon", "Optional: hemp seeds for extra protein"], directions: "Cook oats on stovetop or microwave — about 3–5 minutes. Top with banana slices, peanut butter, honey, and cinnamon. The peanut butter adds staying power that keeps you full through a busy morning. Overnight version: combine raw oats, milk, and banana in a jar the night before." },
-      lunch: { title: "Chicken & Veggie Wrap", ingredients: ["1–2 whole wheat tortillas", "1 cup shredded rotisserie chicken", "¼ cup hummus", "½ cup baby spinach", "¼ cup shredded carrots", "¼ cup diced cucumber", "2 tbsp feta cheese (optional)", "Salt, pepper, lemon squeeze"], directions: "Spread hummus on tortilla. Layer chicken, spinach, carrots, cucumber, and feta. Squeeze lemon, season, and roll tightly. Use rotisserie chicken from the store to make this completely effortless. Can be made the night before — hold the lemon until serving." },
-      dinner: { title: "Turkey & Vegetable Soup", ingredients: ["1 lb ground turkey", "4 cups low-sodium chicken broth", "1 can diced tomatoes", "1 cup diced zucchini", "1 cup diced carrots", "1 cup baby spinach", "1 can white beans, drained", "Garlic, Italian seasoning, salt, pepper"], directions: "Brown turkey in a large pot with garlic. Add broth, tomatoes, carrots, and zucchini. Simmer 15 minutes. Stir in white beans and spinach until wilted. Makes 4 portions — eat tonight, pack lunch tomorrow, freeze the rest. High protein, very low effort." }
-    },
+    days: [
+      {
+        day: "Monday",
+        breakfast: { title: `Greek Yogurt with Honey, Walnuts & Banana`, ingredients: [`1 cup plain Greek yogurt`,`1/2 banana, sliced`,`2 tbsp chopped walnuts`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Combine and eat. Two minutes, no cooking. By week 3 this is second nature.` },
+        lunch: { title: `Leftover Beef & Vegetable Soup`, ingredients: [`Leftover Sunday slow cooker beef soup`], directions: `Reheat and serve. Add a slice of whole grain bread if you need more fuel. Sunday planned this for you.` },
+        dinner: { title: `Sheet Pan Chicken Sausage with Peppers, Onions & Potatoes`, ingredients: [`4 fully cooked chicken sausage links`,`2 bell peppers, sliced`,`1 red onion, sliced`,`3 small potatoes, cubed`,`3 tbsp olive oil`,`Garlic powder, Italian seasoning, salt`], directions: `Toss everything with oil and seasoning. Roast at 425F 30-35 min, tossing halfway. One pan, minimal prep, very satisfying.` },
+      },
+      {
+        day: "Tuesday",
+        breakfast: { title: `Overnight Oats with Mixed Berries & Chia Seeds`, ingredients: [`1/2 cup rolled oats`,`3/4 cup milk of choice`,`1/2 cup mixed berries`,`1 tbsp chia seeds`,`1 tsp honey`,`1/2 tsp vanilla`], directions: `Mix oats, milk, chia seeds, and vanilla in a jar. Refrigerate overnight. Top with berries and honey in the morning.` },
+        lunch: { title: `Chicken Caesar Salad (No Croutons)`, ingredients: [`2 cups romaine lettuce`,`1 cup shredded rotisserie chicken`,`2 tbsp shaved Parmesan`,`2 tbsp olive oil`,`1 tbsp lemon juice`,`1/2 tsp Dijon mustard`,`Salt, pepper, garlic powder`], directions: `Whisk olive oil, lemon, and Dijon for a quick dressing. Toss with romaine and chicken, top with Parmesan.` },
+        dinner: { title: `Garlic Shrimp & Zucchini Noodles`, ingredients: [`1 lb large shrimp, peeled`,`3 medium zucchini, spiralized`,`4 cloves garlic, minced`,`3 tbsp olive oil`,`Red pepper flakes, lemon juice, salt, parsley`], directions: `Saute garlic in oil 1 min. Add shrimp and cook 3-4 min. Add zucchini noodles and toss 1-2 min. Finish with lemon. Light, high-protein, 15 minutes.` },
+      },
+      {
+        day: "Wednesday",
+        breakfast: { title: `Egg Muffin Cups (From Saturday Batch)`, ingredients: [`2 leftover egg muffin cups`,`Fresh fruit on the side`], directions: `Reheat egg muffins in microwave 45 seconds. Pair with fresh fruit. This is why you baked 6 on Saturday.` },
+        lunch: { title: `Lentil & Vegetable Soup`, ingredients: [`1 cup red lentils, rinsed`,`3 cups low-sodium vegetable broth`,`1 can diced tomatoes`,`1 cup diced carrots`,`1 cup baby spinach`,`Cumin, coriander, garlic, turmeric, salt`], directions: `Simmer lentils with broth, tomatoes, carrots, and spices 20 min. Stir in spinach. Makes 3-4 servings. High in protein and fiber.` },
+        dinner: { title: `Baked Chicken Breast with Quinoa & Roasted Broccoli`, ingredients: [`2 boneless chicken breasts`,`1 cup cooked quinoa`,`3 cups broccoli florets`,`3 tbsp olive oil`,`Garlic, lemon, Italian seasoning, salt`], directions: `Season chicken and bake at 400F 22-25 min. Roast broccoli on the same pan (add at 10 min mark). Serve over quinoa.` },
+      },
+      {
+        day: "Thursday",
+        breakfast: { title: `Smoothie Bowl with Spinach & Mango`, ingredients: [`1 frozen banana`,`1/2 cup frozen mango`,`1 cup baby spinach`,`1/2 cup Greek yogurt`,`1/4 cup milk of choice`,`Toppings: granola, berries, chia seeds`], directions: `Blend banana, mango, spinach, yogurt, and milk until thick and creamy. Pour into bowl and add toppings. The spinach disappears in flavor but not in nutrition.` },
+        lunch: { title: `Turkey Lettuce Wraps with Peanut Sauce`, ingredients: [`1 cup cooked ground turkey`,`Butter lettuce leaves`,`1/2 cup shredded carrots`,`1/4 cup cucumber, julienned`,`2 tbsp natural peanut butter`,`1 tbsp soy sauce`,`1 tsp lime juice`,`1 tsp honey`,`Warm water to thin sauce`], directions: `Mix peanut butter, soy, lime, honey, and water for sauce. Fill lettuce cups with turkey, carrots, and cucumber. Drizzle sauce.` },
+        dinner: { title: `One-Pot Pasta with Turkey & Marinara`, ingredients: [`1/2 lb whole wheat penne`,`1/2 lb ground turkey`,`2 cups marinara sauce`,`2 cups baby spinach`,`2 cloves garlic`,`1 tbsp olive oil`,`Parmesan to serve`], directions: `Brown turkey with garlic. Add marinara and 1 cup water. Add dry pasta and cook per package time, stirring. Stir in spinach at end. One pot, minimal dishes.` },
+      },
+      {
+        day: "Friday",
+        breakfast: { title: `Peanut Butter Banana Toast`, ingredients: [`2 slices whole grain bread`,`2 tbsp natural peanut butter`,`1 banana, sliced`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Toast bread. Spread peanut butter. Top with banana, honey, and cinnamon. Classic, quick, genuinely filling. Three minutes.` },
+        lunch: { title: `Leftover Pasta with Turkey`, ingredients: [`Leftover one-pot pasta from Thursday`], directions: `Reheat. Add fresh spinach if available. Friday lunch should be easy — Thursday cooked enough for two.` },
+        dinner: { title: `Lime-Cilantro Tilapia Tacos with Slaw`, ingredients: [`4 tilapia fillets`,`8 small corn tortillas`,`2 cups shredded cabbage`,`1/4 cup Greek yogurt`,`2 tbsp lime juice`,`Cilantro, cumin, garlic powder, salt`,`1 tbsp olive oil`], directions: `Season tilapia with cumin, garlic, and lime. Cook in oil 3-4 min per side. Mix yogurt and lime for sauce. Fill tortillas with fish and slaw.` },
+      },
+      {
+        day: "Saturday",
+        breakfast: { title: `Ricotta Toast with Honey & Sliced Peach`, ingredients: [`2 slices whole grain bread, toasted`,`1/2 cup part-skim ricotta`,`1 peach, sliced`,`1 tsp honey`,`Fresh mint or cinnamon optional`], directions: `Spread ricotta on toast. Top with peach slices and drizzle honey. This elevated toast takes 5 minutes and feels like something from a cafe.` },
+        lunch: { title: `Salmon & Avocado Power Bowl`, ingredients: [`1 leftover salmon fillet or canned salmon`,`1 cup cooked quinoa or brown rice`,`1/4 avocado, sliced`,`1/2 cup edamame`,`1/4 cup shredded carrots`,`2 tbsp soy sauce or tamari`,`1 tsp sesame oil`], directions: `Warm the salmon and grain. Assemble bowl with avocado, edamame, and carrots. Drizzle with soy and sesame.` },
+        dinner: { title: `Lemon Rosemary Chicken Thighs with Root Vegetables`, ingredients: [`4 bone-in chicken thighs`,`3 large carrots, halved`,`2 parsnips, halved`,`1 red onion, quartered`,`4 tbsp olive oil`,`Rosemary, thyme, garlic, lemon, salt`], directions: `Toss everything with oil and herbs. Roast at 425F 40-45 min. Makes excellent leftovers for Sunday lunch.` },
+      },
+      {
+        day: "Sunday",
+        breakfast: { title: `Veggie Frittata (Batch for the Week)`, ingredients: [`8 large eggs`,`1/4 cup milk`,`1/2 cup diced bell pepper`,`1/2 cup baby spinach`,`1/4 cup diced onion`,`1/4 cup shredded cheese`,`Salt, pepper, Italian seasoning`,`1 tbsp olive oil`], directions: `Whisk eggs and milk. Saute vegetables in oven-safe skillet. Pour egg mixture over. Cook stovetop 3 min, then bake at 350F 15 min. Makes 4 wedges.` },
+        lunch: { title: `Leftover Chicken Thighs & Roasted Veggie Grain Bowl`, ingredients: [`Leftover chicken and roasted vegetables from Saturday`,`1 cup cooked quinoa or brown rice`,`2 tbsp tahini`,`1 tsp lemon juice`,`Warm water to thin tahini`], directions: `Reheat chicken and veggies. Serve over fresh grain. Drizzle with thinned tahini. Sunday lunch at its best — zero cooking, maximum flavor.` },
+        dinner: { title: `Slow Cooker White Bean & Chicken Chili`, ingredients: [`1.5 lbs boneless chicken breast`,`2 cans white beans, drained`,`1 can diced green chiles`,`3 cups low-sodium chicken broth`,`1 cup corn`,`Cumin, oregano, garlic, onion, salt`,`Greek yogurt and avocado to top`], directions: `Add everything to slow cooker except toppings. Cook low 6-7 hours or high 3 hours. Shred chicken. Top with yogurt and avocado.` },
+      },
+    ],
     grocery: {
-      "Protein": ["1 lb ground turkey", "1 rotisserie chicken", "Plain Greek yogurt (for wraps)", "White beans (1 can)", "Feta cheese (optional)"],
-      "Produce": ["Zucchini (1–2)", "Carrots (1 bag)", "Baby spinach", "Cucumber", "Banana (1 bunch)", "Lemon"],
-      "Pantry & Grains": ["Rolled oats", "Whole wheat tortillas", "Hummus", "Natural peanut butter", "Honey or maple syrup", "Cinnamon", "Italian seasoning"],
-      "Canned & Broth": ["Canned diced tomatoes (1 can)", "White beans (1 can)", "Low-sodium chicken broth (1 carton)"]
+      "Protein": ["Boneless chicken breast (2 lbs)","Ground turkey (1.5 lbs)","Shrimp (1 lb)","Tilapia fillets (4)","Salmon (1-2 fillets)","1 dozen eggs","Greek yogurt, plain (32 oz)","Ricotta, part-skim (8 oz)","Rotisserie chicken (1)","Part-skim mozzarella (4 oz)"],
+      "Produce": ["Zucchini (5-6)","Broccoli (1 large head)","Bell peppers (4)","Baby spinach (1 large bag)","Romaine lettuce (1 head)","Butter lettuce (1 head)","Avocado (3)","Cucumber (2)","Carrot (1 bag)","Red onion (1)","Lemon (5)","Frozen mango (1 bag)","Banana (1 bunch)","Peach (2)","Mixed berries (1 cup)","Frozen edamame (1 bag)","Cabbage (1 small head)","Lime (3)","Parsnips (2)"],
+      "Pantry & Grains": ["Quinoa","Brown rice","Rolled oats","Granola","Corn tortillas (8 small)","Whole grain bread","Olive oil","Sesame oil","Soy sauce or tamari","Garlic","Tahini","Peanut butter","Honey","Red pepper flakes","Cumin, coriander, turmeric","Italian seasoning","Cilantro (fresh)","Red lentils (1 cup dry)","Whole wheat penne (1 lb)","Marinara sauce (1 jar)"],
+      "Canned & Broth": ["White beans (2 cans)","Diced tomatoes (2 cans)","Green chiles (1 can)","Chicken broth (1 carton)","Vegetable broth (1 carton)","Corn (1 can)"],
     }
   },
   {
     week: 4, theme: "Strong Finish",
-    meals: {
-      breakfast: { title: "Cottage Cheese Bowl with Pineapple & Almonds", ingredients: ["1 cup low-fat cottage cheese", "½ cup pineapple chunks (fresh or canned in juice)", "2 tbsp slivered almonds", "1 tsp honey", "Pinch of cinnamon"], directions: "Spoon cottage cheese into a bowl. Top with pineapple, almonds, honey, and cinnamon. No cooking, 2 minutes. One of the highest-protein breakfasts you can make — keeps you full for hours and supports muscle recovery from your workouts." },
-      lunch: { title: "Egg Salad on Whole Grain with Side Greens", ingredients: ["4 hard-boiled eggs", "2 tbsp plain Greek yogurt (or light mayo)", "1 tsp Dijon mustard", "2 stalks celery, finely diced", "Salt, pepper, paprika", "2 slices whole grain bread or lettuce wraps", "Side salad: mixed greens, olive oil, lemon"], directions: "Hard-boil eggs (12 min, then cold water), peel and chop. Mix with yogurt, mustard, celery, salt, and pepper. Spread on bread or spoon into lettuce wraps. Serve with a simple side salad. Boil a batch of 6–8 eggs on Sunday — they keep for a week." },
-      dinner: { title: "Slow Cooker Chicken & Sweet Potato Stew", ingredients: ["1.5 lbs boneless chicken thighs", "2 medium sweet potatoes, cubed", "1 can diced tomatoes", "1 cup chicken broth", "1 can black beans, drained", "1 cup frozen corn", "Cumin, chili powder, garlic, salt", "Optional: Greek yogurt, avocado, cilantro for topping"], directions: "Add everything to the slow cooker. Cook on low 6–7 hours or high 3–4 hours. Shred chicken with two forks before serving. Set it in the morning, come home to dinner already done. Leftovers are excellent for 3–4 days." }
-    },
+    days: [
+      {
+        day: "Monday",
+        breakfast: { title: `Greek Yogurt with Honey, Granola & Berries`, ingredients: [`1 cup plain Greek yogurt`,`2 tbsp granola`,`1/2 cup mixed berries`,`1 tsp honey`], directions: `Layer and eat. By week 4 you know your rhythm. Reliable protein-packed Monday starter — no thinking required.` },
+        lunch: { title: `White Bean & Chicken Chili (Leftover)`, ingredients: [`Leftover slow cooker white bean chicken chili from Sunday`], directions: `Reheat and top with avocado or Greek yogurt. Monday lunch is always your easiest.` },
+        dinner: { title: `Baked Lemon Herb Chicken Thighs with Roasted Cauliflower & Rice`, ingredients: [`4 bone-in chicken thighs`,`1 head cauliflower, cut into florets`,`1 cup cooked brown rice`,`4 tbsp olive oil`,`Lemon juice, garlic, thyme, paprika, salt`], directions: `Season chicken with lemon, garlic, and herbs. Place on sheet pan with cauliflower. Roast at 425F 35-40 min. Serve over rice.` },
+      },
+      {
+        day: "Tuesday",
+        breakfast: { title: `Frittata Wedge (From Sunday Batch)`, ingredients: [`1-2 leftover frittata wedges`,`Fresh fruit on the side`], directions: `Reheat in microwave 60 seconds or eat cold. Week 4 is about confidence and ease — the frittata batch from Sunday is doing its job.` },
+        lunch: { title: `Tuna & Avocado Salad Lettuce Cups`, ingredients: [`2 cans tuna in water, drained`,`1/2 avocado, diced`,`2 stalks celery, diced`,`2 tbsp red onion, minced`,`1 tbsp lemon juice`,`1 tbsp olive oil`,`Salt, pepper`,`Romaine or butter lettuce leaves`], directions: `Mix tuna, avocado, celery, onion, lemon, and oil. Spoon into lettuce leaves. Fresh, fast, no mayo needed.` },
+        dinner: { title: `Garlic Butter Shrimp with Roasted Asparagus & Quinoa`, ingredients: [`1 lb large shrimp, peeled`,`1 bunch asparagus, trimmed`,`1 cup cooked quinoa`,`3 tbsp butter`,`4 cloves garlic, minced`,`Lemon, salt, pepper, parsley`], directions: `Roast asparagus at 400F 12 min. Saute garlic in butter, add shrimp and cook 3-4 min. Finish with lemon. Serve over quinoa.` },
+      },
+      {
+        day: "Wednesday",
+        breakfast: { title: `Banana Oat Protein Pancakes`, ingredients: [`1 cup rolled oats (blended to flour)`,`2 eggs`,`1/2 cup Greek yogurt`,`1/2 tsp baking powder`,`1 tsp vanilla`,`1 banana, mashed`,`Fresh berries to serve`], directions: `Blend oats into flour. Mix with eggs, yogurt, baking powder, vanilla, and banana. Cook 2-3 min per side. Makes 6 pancakes.` },
+        lunch: { title: `Hummus & Veggie Protein Plate`, ingredients: [`1/2 cup hummus`,`2 hard-boiled eggs`,`1 cup baby carrots`,`1 cup cucumber slices`,`1/2 cup cherry tomatoes`,`Whole grain pita or crackers`,`Salt, pepper, olive oil drizzle`], directions: `Arrange everything on a plate. No cooking needed. Hard-boil eggs in a batch Sunday. Snack-style plate that is incredibly satisfying and nutrient-dense.` },
+        dinner: { title: `Slow Cooker Chicken Tikka Masala`, ingredients: [`1.5 lbs boneless chicken thighs`,`1 can crushed tomatoes`,`1/2 cup plain Greek yogurt`,`1 tbsp olive oil`,`Garam masala, cumin, coriander, turmeric, garlic, ginger, salt`,`Cooked rice to serve`], directions: `Mix yogurt and spices, toss with chicken. Add to slow cooker with tomatoes. Cook low 5-6 hours. Stir in a splash of yogurt at end. Serve over rice.` },
+      },
+      {
+        day: "Thursday",
+        breakfast: { title: `Cottage Cheese Power Bowl with Pineapple & Nuts`, ingredients: [`1 cup low-fat cottage cheese`,`1/2 cup pineapple chunks`,`2 tbsp mixed nuts (walnuts, almonds)`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Top cottage cheese with everything. Two minutes, extremely high protein — actively supports the strength work you have been doing all month.` },
+        lunch: { title: `Big Prep Power Salad`, ingredients: [`3 cups mixed greens`,`1/2 cup white beans`,`1/4 cup shredded carrots`,`1/4 cup roasted red peppers`,`2 hard-boiled eggs, sliced`,`2 oz feta cheese`,`2 tbsp olive oil`,`1 tbsp red wine vinegar`,`Salt, garlic powder, oregano`], directions: `Combine all ingredients, dress with oil and vinegar. By week 4 this kind of salad feels easy and natural, not like a diet.` },
+        dinner: { title: `Turkey Meatballs with Zucchini Noodles & Marinara`, ingredients: [`1 lb ground turkey`,`1 egg`,`1/4 cup breadcrumbs or oats`,`Garlic, Italian seasoning, salt`,`3 medium zucchini, spiralized`,`1 cup marinara sauce`,`1 tbsp olive oil`,`Parmesan to top`], directions: `Mix turkey, egg, breadcrumbs, and seasoning. Roll into balls. Bake at 400F 20 min. Saute zoodles in oil 2 min. Warm marinara. Serve meatballs over zoodles with sauce and Parmesan.` },
+      },
+      {
+        day: "Friday",
+        breakfast: { title: `Peanut Butter Banana Smoothie`, ingredients: [`1 frozen banana`,`1 cup milk of choice`,`1 tbsp natural peanut butter`,`1/2 cup Greek yogurt`,`1 tsp honey`,`Pinch of cinnamon`], directions: `Blend everything until smooth. High protein, portable, zero effort. Friday mornings belong to the smoothie.` },
+        lunch: { title: `Leftover Turkey Meatballs & Zoodles`, ingredients: [`Leftover turkey meatballs and zucchini noodles from Thursday`], directions: `Reheat and serve. Fresh Parmesan on top if you have it. Final Friday efficiency — the work was done last night.` },
+        dinner: { title: `Celebration: Pan-Seared Salmon with Lemon Caper Sauce & Roasted Potatoes`, ingredients: [`2 salmon fillets (6 oz each)`,`3 small potatoes, quartered`,`2 cups spinach`,`2 tbsp capers`,`3 tbsp butter`,`2 tbsp olive oil`,`Lemon, garlic, salt, pepper`], directions: `Roast potatoes at 425F 25 min. Sear salmon skin-down in oil 4 min, flip 2 min. Make sauce: butter, garlic, lemon, capers in same pan. Wilt spinach. Four weeks complete — this dinner is your celebration.` },
+      },
+      {
+        day: "Saturday",
+        breakfast: { title: `Smashed Avocado Toast with Smoked Salmon`, ingredients: [`2 slices whole grain bread, toasted`,`1/2 avocado`,`2 oz smoked salmon`,`2 tbsp cream cheese or Greek yogurt spread`,`Red onion, capers, dill`,`Lemon juice, salt, pepper`], directions: `Mash avocado on toast. Spread with cream cheese. Top with smoked salmon, onion, capers, and dill. A luxurious Saturday breakfast that is also incredibly nutritious.` },
+        lunch: { title: `Build-Your-Own Grain Bowl`, ingredients: [`1 cup cooked quinoa or farro`,`1/2 cup roasted vegetables`,`1/4 avocado`,`2 tbsp hummus`,`Handful of arugula`,`Lemon juice, olive oil, salt`], directions: `Layer grain, greens, veggies, and avocado. Dress simply. By now you know how to build a satisfying bowl from scratch.` },
+        dinner: { title: `Herb Roasted Whole Chicken with Root Vegetables`, ingredients: [`1 whole chicken (3-4 lbs)`,`4 carrots, halved`,`4 celery stalks`,`1 onion, quartered`,`1 head garlic`,`4 tbsp butter`,`Rosemary, thyme, sage, salt, pepper`], directions: `Rub chicken inside and out with herbed butter. Surround with vegetables. Roast at 425F 60-75 min. Makes 4+ servings. Use leftovers Sunday.` },
+      },
+      {
+        day: "Sunday",
+        breakfast: { title: `Eggs Benedict (Simplified) with Whole Grain English Muffins`, ingredients: [`2 whole grain English muffins, halved`,`4 eggs (poached or fried)`,`2 slices Canadian bacon or turkey bacon`,`1 avocado, mashed`,`Lemon juice, salt, pepper, paprika`], directions: `Toast muffins. Cook bacon and eggs. Spread mashed avocado on muffin halves. Top with bacon and egg. Finish with lemon and paprika.` },
+        lunch: { title: `Leftover Roasted Chicken Salad with Grapes & Pecans`, ingredients: [`1 cup leftover shredded roasted chicken`,`1/4 cup halved grapes`,`2 tbsp chopped pecans`,`2 tbsp plain Greek yogurt`,`1 tsp Dijon mustard`,`Salt, pepper, celery salt`,`Lettuce leaves or whole grain bread`], directions: `Mix chicken, grapes, pecans, yogurt, and mustard. Season well. Serve in lettuce wraps or on bread. Chicken salad this good is a reason to always roast a whole chicken on Saturday.` },
+        dinner: { title: `Four Weeks Done: Sheet Pan Steak Fajitas with Peppers & Onions`, ingredients: [`1 lb flank or skirt steak, sliced thin`,`3 bell peppers, sliced`,`1 large red onion, sliced`,`3 tbsp olive oil`,`Lime juice, cumin, chili powder, garlic, salt`,`Whole wheat tortillas, avocado, salsa`], directions: `Marinate steak 15 min in oil and spices. Spread with peppers and onion on sheet pan. Broil 8-10 min. Serve in tortillas with avocado and salsa. Four weeks. You built new habits, a stronger body, and a better relationship with food.` },
+      },
+    ],
     grocery: {
-      "Protein": ["1.5 lbs boneless chicken thighs", "1 dozen eggs", "Cottage cheese (16 oz)", "Plain Greek yogurt (small tub)", "Black beans (1 can)"],
-      "Produce": ["Sweet potatoes (2 medium)", "Celery (1 bunch)", "Mixed greens", "Avocado (optional)", "Pineapple chunks", "Lemon"],
-      "Pantry & Grains": ["Whole grain bread", "Slivered almonds", "Dijon mustard", "Honey", "Frozen corn (1 bag)", "Cumin", "Chili powder"],
-      "Canned & Broth": ["Canned diced tomatoes (1 can)", "Low-sodium chicken broth (1 carton)"]
+      "Protein": ["Boneless chicken thighs (3 lbs)","Whole chicken (3-4 lbs)","Ground turkey (2 lbs)","Shrimp (2 lbs)","Salmon fillets (4, 6 oz)","Smoked salmon (2 oz)","Flank or skirt steak (1 lb)","Canadian bacon or turkey bacon (4 oz)","Tuna in water (2 cans)","1 dozen eggs","Greek yogurt, plain (32 oz)","Cottage cheese (16 oz)","Feta cheese (4 oz)"],
+      "Produce": ["Asparagus (1 bunch)","Cauliflower (1 head)","Zucchini (3)","Bell peppers (6-7)","Baby spinach (1 large bag)","Mixed greens (1 bag)","Arugula (1 bag)","Avocado (4)","Cherry tomatoes (1 pint)","Red onion (2)","Lemon (6)","Lime (3)","Carrots (1 bag)","Celery (1 bunch)","Banana (1 bunch)","Grapes (1 cup)","Pineapple chunks (1 cup)","Potatoes (6 small)","Roasted red peppers (1 jar)"],
+      "Pantry & Grains": ["Quinoa","Farro or brown rice","Rolled oats","Whole grain English muffins","Whole grain bread","Whole wheat tortillas","Hummus","Olive oil","Butter","Capers","Cream cheese (4 oz)","Dijon mustard","Marinara sauce (1 jar)","Breadcrumbs or oats (for meatballs)","Garlic","Rosemary, thyme, sage, Italian seasoning","Honey","Peanut butter","Mixed nuts (walnuts, almonds, pecans)"],
+      "Canned & Broth": ["White beans (3 cans)","Crushed tomatoes (1 can)","Diced tomatoes (1 can)","Chicken broth (1 carton)","Corn (1 can)"],
     }
   }
 ];
@@ -1048,55 +1206,44 @@ function renderWorkouts() {
 function renderNutrition() {
   const container = document.getElementById('nutrition-meals-container');
   container.innerHTML = '';
-  const mealOrder = [
-    { key: 'breakfast', label: 'Breakfast' },
-    { key: 'lunch', label: 'Lunch' },
-    { key: 'dinner', label: 'Dinner' }
-  ];
-  mealOrder.forEach(({ key, label }, mi) => {
-    const meal = nutriData.meals[key];
-    const id = `meal-${key}`;
-    const section = document.createElement('div');
-    section.className = 'meal-type-section';
-    section.innerHTML = `
-      <div class="meal-type-divider">${label}</div>
-      <div class="meal-card${mi === 0 ? ' meal-open' : ''}" id="${id}">
-        <div class="meal-card-header" onclick="toggleMeal('${id}')">
-          <h3>${meal.title}</h3>
-          <span class="meal-toggle">▾</span>
-        </div>
-        <div class="meal-body">
-          <div class="meal-ingredients">
-            <h4>Ingredients</h4>
-            <ul>${meal.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
-          </div>
-          <div class="meal-instructions">
-            <h4>Directions</h4>
-            <p>${meal.directions}</p>
-          </div>
-        </div>
-      </div>`;
-    container.appendChild(section);
+  const mealOrder = [{key:'breakfast',label:'Breakfast'},{key:'lunch',label:'Lunch'},{key:'dinner',label:'Dinner'}];
+  nutriData.days.forEach((dayData, di) => {
+    const daySection = document.createElement('div');
+    daySection.style.cssText = 'margin-bottom:2rem;';
+    const dayHeader = document.createElement('div');
+    dayHeader.style.cssText = 'display:flex;align-items:center;gap:12px;margin-bottom:1rem;cursor:pointer;user-select:none;';
+    const isOpen = di === 0;
+    dayHeader.innerHTML = '<div style="font-family:Cormorant Garamond,serif;font-size:22px;font-weight:300;color:var(--forest);">' + dayData.day + '</div><div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);">3 meals</div><div style="flex:1;height:1px;background:var(--border);"></div><div class="toggle-icon" id="day-toggle-' + di + '" style="color:var(--text-soft);font-size:18px;transition:transform 0.3s;' + (isOpen ? 'transform:rotate(180deg)' : '') + '">▾</div>';
+    const mealsWrap = document.createElement('div');
+    mealsWrap.id = 'meals-day-' + di;
+    mealsWrap.style.display = isOpen ? 'block' : 'none';
+    dayHeader.onclick = function() {
+      const wrap = document.getElementById('meals-day-' + di);
+      const icon = document.getElementById('day-toggle-' + di);
+      const open = wrap.style.display !== 'none';
+      wrap.style.display = open ? 'none' : 'block';
+      icon.style.transform = open ? '' : 'rotate(180deg)';
+    };
+    mealOrder.forEach(function(ml, mi) {
+      const meal = dayData[ml.key];
+      const id = 'meal-d' + di + '-' + ml.key;
+      const sec = document.createElement('div');
+      sec.className = 'meal-type-section';
+      sec.innerHTML = '<div class="meal-type-divider">' + ml.label + '</div><div class="meal-card' + (mi===0&&di===0?' meal-open':'') + '" id="' + id + '"><div class="meal-card-header" onclick="toggleMeal(\'' + id + '\')"><h3>' + meal.title + '</h3><span class="meal-toggle">▾</span></div><div class="meal-body"><div class="meal-ingredients"><h4>Ingredients</h4><ul>' + meal.ingredients.map(function(i){return '<li>'+i+'</li>';}).join('') + '</ul></div><div class="meal-instructions"><h4>Directions</h4><p>' + meal.directions + '</p></div></div></div>';
+      mealsWrap.appendChild(sec);
+    });
+    daySection.appendChild(dayHeader);
+    daySection.appendChild(mealsWrap);
+    container.appendChild(daySection);
   });
-
-  // Grocery list
   const groceryEl = document.getElementById('grocery-container');
   let catsHTML = '';
-  Object.entries(nutriData.grocery).forEach(([cat, items]) => {
-    catsHTML += `<div class="grocery-cat"><h4>${cat}</h4><ul>`;
-    items.forEach(item => {
-      catsHTML += `<li onclick="toggleCheck(this)"><div class="check-box"></div>${item}</li>`;
-    });
+  Object.entries(nutriData.grocery).forEach(function(entry) {
+    catsHTML += '<div class="grocery-cat"><h4>' + entry[0] + '</h4><ul>';
+    entry[1].forEach(function(item) { catsHTML += '<li onclick="toggleCheck(this)"><div class="check-box"></div>' + item + '</li>'; });
     catsHTML += '</ul></div>';
   });
-  groceryEl.innerHTML = `
-    <div class="grocery-section">
-      <div class="grocery-header">
-        <h3>Week ${currentWeek} Grocery List</h3>
-        <span>Check items as you shop</span>
-      </div>
-      <div class="grocery-body">${catsHTML}</div>
-    </div>`;
+  groceryEl.innerHTML = '<div class="grocery-section"><div class="grocery-header"><h3>Week ' + currentWeek + ' Grocery List</h3><span>Check items as you shop</span></div><div class="grocery-body">' + catsHTML + '</div></div>';
 }
 
 renderWorkouts();
