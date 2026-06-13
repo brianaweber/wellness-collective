@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kacey Lang · The Wellness Collective</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #7a9e7e;
+    --sage-light: #e8f0e9;
+    --sage-mid: #c2d6c4;
+    --cream: #faf8f4;
+    --warm-white: #ffffff;
+    --forest: #1e3a2f;
+    --forest-mid: #2a4f3f;
+    --text-mid: #4a4a46;
+    --text-soft: #8a8a84;
+    --gold: #c9a84c;
+    --gold-light: #f7f0e0;
+    --border: #e4e0d8;
+    --card-bg: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--forest);
+    min-height: 100vh;
+  }
+
+  .site-header {
+    background: var(--forest);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-weight: 300;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .client-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-weight: 300;
+    letter-spacing: 0.12em; color: #a0b8a8; font-style: italic;
+  }
+
+  .scripture-banner {
+    background: var(--gold-light);
+    border-bottom: 1px solid #e8d9b0;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    animation: fadeIn 1.2s ease;
+  }
+  .scripture-verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-weight: 400; font-style: italic;
+    color: #6b5320; line-height: 1.6;
+    max-width: 680px; margin: 0 auto 6px;
+  }
+  .scripture-ref {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+  }
+
+  .hero {
+    background: var(--forest);
+    padding: 3rem 2rem 2.5rem; text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 300;
+    letter-spacing: 0.06em; color: #f0f5f1; line-height: 1.1;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-size: 12px; font-weight: 400;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: #6a8c74; margin-top: 0.75rem;
+  }
+  .divider-gold {
+    width: 40px; height: 1px;
+    background: var(--gold); margin: 1.25rem auto 0; opacity: 0.6;
+  }
+
+  /* WEEK BADGE */
+  .week-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--forest-mid);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 30px;
+    padding: 0.5rem 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .week-badge .wk-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-style: italic; color: var(--gold);
+  }
+  .week-badge .wk-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #a0b8a8;
+  }
+  .week-badge .wk-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(201,168,76,0.4);
+  }
+
+  /* PROGRESS DOTS */
+  .week-progress {
+    display: flex; justify-content: center; gap: 8px; margin-top: 1rem;
+  }
+  .wk-dot-outer {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+  }
+  .wk-dot-outer.active {
+    background: var(--gold); border-color: var(--gold);
+  }
+  .wk-dot-outer.done {
+    background: var(--sage); border-color: var(--sage);
+  }
+
+  .nav-tabs {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: center;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .tab-btn {
+    background: none; border: none;
+    border-bottom: 2px solid transparent;
+    padding: 1rem 1.5rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-soft); cursor: pointer; transition: all 0.2s ease;
+  }
+  .tab-btn:hover { color: var(--forest); }
+  .tab-btn.active { color: var(--forest); border-bottom-color: var(--gold); }
+
+  main { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+
+  .tab-panel { display: none; animation: fadeIn 0.4s ease; }
+  .tab-panel.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header { text-align: center; margin-bottom: 2.5rem; }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px; font-weight: 300;
+    letter-spacing: 0.04em; color: var(--forest);
+  }
+  .section-header p {
+    font-size: 14px; color: var(--text-soft);
+    margin-top: 0.5rem; font-weight: 300; letter-spacing: 0.02em;
+  }
+  .section-divider {
+    width: 32px; height: 1px;
+    background: var(--gold); margin: 0.75rem auto; opacity: 0.7;
+  }
+
+  /* WEEK CONTEXT BAR */
+  .week-context-bar {
+    background: var(--forest);
+    border-radius: 2px;
+    padding: 1rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+  .wcb-left { display: flex; flex-direction: column; gap: 3px; }
+  .wcb-week {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 300; color: #f0f5f1;
+    letter-spacing: 0.04em;
+  }
+  .wcb-theme {
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .wcb-dates {
+    font-size: 12px; color: #6a8c74; font-weight: 300;
+  }
+  .wcb-pips { display: flex; gap: 6px; align-items: center; }
+  .pip {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .pip.done { background: var(--sage); border-color: var(--sage); }
+  .pip.active { background: var(--gold); border-color: var(--gold); }
+
+  /* WORKOUT CARDS */
+  .workout-day {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 2px; margin-bottom: 1.5rem; overflow: hidden;
+  }
+  .workout-day-header {
+    background: var(--forest);
+    padding: 1.25rem 1.75rem;
+    display: flex; align-items: baseline; justify-content: space-between;
+    cursor: pointer; user-select: none;
+  }
+  .workout-day-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    color: #f0f5f1; letter-spacing: 0.04em;
+  }
+  .workout-day-header .day-meta {
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .toggle-icon {
+    color: #6a8c74; font-size: 18px; transition: transform 0.3s ease;
+  }
+  .workout-day.open .toggle-icon { transform: rotate(180deg); }
+  .workout-body { display: none; padding: 1.5rem 1.75rem; }
+  .workout-day.open .workout-body { display: block; }
+
+  .workout-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-style: italic;
+    color: var(--text-mid); line-height: 1.5;
+    margin-bottom: 1.25rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .exercise-list { list-style: none; }
+  .exercise-item {
+    display: grid; grid-template-columns: auto 1fr auto;
+    gap: 0 1rem; align-items: start;
+    padding: 0.875rem 0; border-bottom: 1px solid var(--border);
+  }
+  .exercise-item:last-child { border-bottom: none; }
+  .exercise-num {
+    width: 28px; height: 28px;
+    background: var(--sage-light); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 500; color: var(--sage);
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .exercise-name { font-size: 15px; font-weight: 500; color: var(--forest); }
+  .exercise-desc {
+    font-size: 12px; color: var(--text-soft);
+    margin-top: 3px; line-height: 1.5; font-weight: 300;
+  }
+  .exercise-sets {
+    font-size: 12px; font-weight: 500; color: var(--sage);
+    text-align: right; white-space: nowrap; margin-top: 4px;
+    background: var(--sage-light); padding: 3px 10px; border-radius: 20px;
+  }
+  .section-lbl {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-soft);
+    margin: 1.25rem 0 0.5rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-lbl::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .workout-note {
+    margin-top: 1rem; background: var(--sage-light);
+    border-radius: 2px; padding: 0.875rem 1rem;
+    font-size: 13px; color: #2a4a2e; line-height: 1.6; font-weight: 300;
+  }
+
+  /* GOALS */
+  .goals-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;
+  }
+  @media (max-width: 600px) { .goals-grid { grid-template-columns: 1fr; } }
+  .goal-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 2px; padding: 1.5rem; position: relative; overflow: hidden;
+  }
+  .goal-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%; background: var(--sage);
+  }
+  .goal-card.featured::before { background: var(--gold); }
+  .goal-icon { font-size: 22px; margin-bottom: 0.75rem; }
+  .goal-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400; color: var(--forest); margin-bottom: 0.4rem;
+  }
+  .goal-card p { font-size: 13px; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
+  .affirmation-block {
+    background: var(--forest); border-radius: 2px;
+    padding: 2rem; text-align: center; margin-top: 2rem;
+  }
+  .affirmation-block p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 300; font-style: italic;
+    color: #f0f5f1; line-height: 1.6;
+  }
+  .affirmation-block span {
+    display: block; font-family: 'Jost', sans-serif;
+    font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold); margin-top: 0.75rem;
+  }
+
+  /* NUTRITION */
+  .nutrition-note {
+    background: var(--gold-light); border: 1px solid #e8d9b0;
+    border-radius: 2px; padding: 1rem 1.25rem;
+    font-size: 13px; color: #6b5320; line-height: 1.6;
+    margin-bottom: 2rem; font-weight: 300;
+  }
+  .meal-type-divider {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem;
+  }
+  .meal-type-divider::after { content: ''; flex: 1; height: 1px; background: #e8d9b0; }
+  .meal-type-section { margin-bottom: 1rem; }
+
+  .meal-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 2px; margin-bottom: 1rem; overflow: hidden;
+  }
+  .meal-card-header {
+    padding: 0.875rem 1.5rem; background: var(--sage-light);
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--sage-mid);
+    cursor: pointer; user-select: none;
+  }
+  .meal-card-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px; font-weight: 400; color: var(--forest);
+  }
+  .meal-toggle { font-size: 16px; color: var(--sage); transition: transform 0.25s ease; }
+  .meal-card.meal-open .meal-toggle { transform: rotate(180deg); }
+  .meal-body {
+    display: none; padding: 1.25rem 1.5rem;
+    grid-template-columns: 1fr 1fr; gap: 1.25rem;
+  }
+  .meal-card.meal-open .meal-body { display: grid; }
+  @media (max-width: 600px) { .meal-body { grid-template-columns: 1fr !important; } }
+  .meal-ingredients h4, .meal-instructions h4 {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-soft); margin-bottom: 0.6rem;
+  }
+  .meal-ingredients ul { list-style: none; }
+  .meal-ingredients ul li {
+    font-size: 13px; color: var(--text-mid);
+    padding: 4px 0; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px; font-weight: 300;
+  }
+  .meal-ingredients ul li::before {
+    content: '·'; color: var(--sage); font-size: 18px; line-height: 0; margin-top: 2px;
+  }
+  .meal-instructions p {
+    font-size: 13px; color: var(--text-mid); line-height: 1.7; font-weight: 300;
+  }
+
+  /* GROCERY */
+  .grocery-section {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 2px; overflow: hidden; margin-top: 2rem;
+  }
+  .grocery-header {
+    background: var(--forest); padding: 1.25rem 1.75rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .grocery-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 300; color: #f0f5f1; letter-spacing: 0.04em;
+  }
+  .grocery-header span { font-size: 12px; color: #6a8c74; }
+  .grocery-body {
+    padding: 1.5rem 1.75rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem;
+  }
+  .grocery-cat h4 {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+  }
+  .grocery-cat ul { list-style: none; }
+  .grocery-cat ul li {
+    font-size: 13px; color: var(--text-mid);
+    padding: 5px 0; display: flex; align-items: center; gap: 8px;
+    font-weight: 300; border-bottom: 1px solid #f0ece4; cursor: pointer;
+  }
+  .grocery-cat ul li:last-child { border-bottom: none; }
+  .check-box {
+    width: 15px; height: 15px; border: 1px solid var(--border);
+    border-radius: 2px; flex-shrink: 0; background: white;
+    display: flex; align-items: center; justify-content: center; transition: all 0.15s ease;
+  }
+  .check-box.checked { background: var(--sage); border-color: var(--sage); }
+  .check-box.checked::after { content: '✓'; color: white; font-size: 10px; }
+  .grocery-cat ul li.checked-item { text-decoration: line-through; color: var(--text-soft); }
+
+  .print-btn {
+    display: block; margin: 2rem auto 0;
+    background: none; border: 1px solid var(--forest); color: var(--forest);
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 0.75rem 2rem; cursor: pointer; transition: all 0.2s ease;
+  }
+  .print-btn:hover { background: var(--forest); color: #f0f5f1; }
+
+  footer {
+    background: var(--forest); text-align: center; padding: 2rem;
+    font-size: 11px; letter-spacing: 0.1em; color: #4a6e58; font-weight: 300;
+  }
+  footer span {
+    color: var(--gold); font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-style: italic;
+  }
+
+  @media print {
+    .nav-tabs, .print-btn, .site-header { display: none; }
+    .tab-panel { display: block !important; }
+    main { padding: 0; }
+    .workout-body { display: block !important; }
+    .meal-body { display: grid !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">The Wellness Collective</div>
+  <div class="client-name">Kacey Lang</div>
+</header>
+
+<div class="scripture-banner">
+  <div class="scripture-verse" id="scripture-text"></div>
+  <div class="scripture-ref" id="scripture-ref"></div>
+</div>
+
+<div class="hero">
+  <h1>Welcome, <em>Kacey.</em></h1>
+  <p class="hero-sub">Your personal wellness portal · The Wellness Collective</p>
+  <div class="divider-gold"></div>
+  <div class="week-badge">
+    <span class="wk-num" id="hero-week-label">Week 1</span>
+    <span class="wk-dot"></span>
+    <span class="wk-label" id="hero-week-theme">Foundations</span>
+  </div>
+  <div class="week-progress" id="week-progress-dots"></div>
+</div>
+
+<nav class="nav-tabs" role="tablist">
+  <button class="tab-btn active" onclick="showTab('goals', this)">My Goals</button>
+  <button class="tab-btn" onclick="showTab('workouts', this)">Workouts</button>
+  <button class="tab-btn" onclick="showTab('nutrition', this)">Nutrition</button>
+</nav>
+
+<main>
+
+  <!-- ===== GOALS ===== -->
+  <div id="goals" class="tab-panel active">
+    <div class="section-header">
+      <h2>Your Wellness Journey</h2>
+      <div class="section-divider"></div>
+      <p>Three pillars, one sustainable life.</p>
+    </div>
+    <div class="goals-grid">
+      <div class="goal-card featured">
+        <div class="goal-icon">⚖️</div>
+        <h3>Weight Loss</h3>
+        <p>Sustainable, steady progress through consistent movement and nourishing food — not restriction. We're building habits that last beyond any program.</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-icon">🥗</div>
+        <h3>Better Nutrition</h3>
+        <p>Simple, real food that works with your busy schedule. No complicated meal plans — just whole ingredients, easy prep, and steady energy throughout your day.</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-icon">🌿</div>
+        <h3>Overall Wellness</h3>
+        <p>Sleep, stress, movement, nourishment — all connected. We're caring for your whole self, not just the number on a scale.</p>
+      </div>
+      <div class="goal-card">
+        <div class="goal-icon">🧘</div>
+        <h3>Balance &amp; Steadiness</h3>
+        <p>Improved balance and stability training will reduce fall risk, strengthen your core, and build confidence in your body every single day.</p>
+      </div>
+    </div>
+    <div class="affirmation-block">
+      <p>"I want to lose weight, develop a consistent yet realistic routine for working out, and improve my balance and steadiness."</p>
+      <span>— Kacey </span>
+    </div>
+  </div>
+
+  <!-- ===== WORKOUTS ===== -->
+  <div id="workouts" class="tab-panel">
+    <div class="section-header">
+      <h2>This Week's Workouts</h2>
+      <div class="section-divider"></div>
+      <p id="workout-subtitle">3 days · 30–35 minutes · Low impact · Knee-friendly</p>
+    </div>
+    <div class="week-context-bar">
+      <div class="wcb-left">
+        <div class="wcb-week" id="wcb-week-label"></div>
+        <div class="wcb-theme" id="wcb-week-theme"></div>
+      </div>
+      <div>
+        <div class="wcb-dates" id="wcb-dates"></div>
+        <div class="wcb-pips" id="wcb-pips" style="margin-top:6px;"></div>
+      </div>
+    </div>
+    <div id="workout-days-container"></div>
+    <button class="print-btn" onclick="window.print()">Print / Save Workouts</button>
+  </div>
+
+  <!-- ===== NUTRITION ===== -->
+  <div id="nutrition" class="tab-panel">
+    <div class="section-header">
+      <h2>This Week's Nutrition</h2>
+      <div class="section-divider"></div>
+      <p id="nutrition-subtitle">Breakfast, lunch &amp; dinner · Simple ingredients, real food</p>
+    </div>
+    <div class="nutrition-note">
+      <strong>A note from your coach:</strong> Your busy job and full home life leave little energy for cooking — so these meals are designed around that reality. Most take 20 minutes or less, ingredients overlap to reduce shopping, and every meal includes protein to support your weight loss and energy goals. Tap any meal to open the recipe.
+    </div>
+    <div class="week-context-bar">
+      <div class="wcb-left">
+        <div class="wcb-week" id="n-wcb-week-label"></div>
+        <div class="wcb-theme" id="n-wcb-week-theme"></div>
+      </div>
+      <div class="wcb-dates" id="n-wcb-dates"></div>
+    </div>
+    <div id="nutrition-meals-container"></div>
+    <div id="grocery-container"></div>
+    <button class="print-btn" onclick="window.print()">Print / Save Nutrition Guide</button>
+  </div>
+
+</main>
+
+<footer>
+  <span>The Wellness Collective</span><br>
+  Designed for Kacey Lang · Updated June 2026
+</footer>
+
+<script>
+// ─────────────────────────────────────────────
+// CONFIGURATION — change start date here only
+// ─────────────────────────────────────────────
+const PROGRAM_START = new Date('2026-06-09'); // Monday of Week 1
+const TOTAL_WEEKS = 4;
+
+// ─────────────────────────────────────────────
+// SCRIPTURE
+// ─────────────────────────────────────────────
+const verses = [
+  { text: "I can do all things through Christ who strengthens me.", ref: "Philippians 4:13" },
+  { text: "She is clothed with strength and dignity, and she laughs without fear of the future.", ref: "Proverbs 31:25" },
+  { text: "Do you not know that your bodies are temples of the Holy Spirit? Honor God with your bodies.", ref: "1 Corinthians 6:19–20" },
+  { text: "The Lord is my strength and my shield; my heart trusts in him, and he helps me.", ref: "Psalm 28:7" },
+  { text: "Dear friend, I pray that you may enjoy good health and that all may go well with you.", ref: "3 John 1:2" },
+  { text: "He gives strength to the weary and increases the power of the weak.", ref: "Isaiah 40:29" },
+  { text: "Come to me, all you who are weary and burdened, and I will give you rest.", ref: "Matthew 11:28" },
+  { text: "For I know the plans I have for you — plans to prosper you and not to harm you, plans to give you hope and a future.", ref: "Jeremiah 29:11" },
+  { text: "She sets about her work vigorously; her arms are strong for her tasks.", ref: "Proverbs 31:17" },
+  { text: "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.", ref: "Joshua 1:9" },
+  { text: "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight.", ref: "Proverbs 3:5–6" },
+  { text: "But those who hope in the Lord will renew their strength. They will soar on wings like eagles; they will run and not grow weary.", ref: "Isaiah 40:31" },
+  { text: "Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.", ref: "Galatians 6:9" },
+  { text: "I praise you because I am fearfully and wonderfully made; your works are wonderful, I know that full well.", ref: "Psalm 139:14" },
+  { text: "The Lord will fight for you; you need only to be still.", ref: "Exodus 14:14" },
+  { text: "No discipline seems pleasant at the time, but painful. Later on, however, it produces a harvest of righteousness and peace.", ref: "Hebrews 12:11" },
+  { text: "Be still and know that I am God.", ref: "Psalm 46:10" },
+  { text: "You are altogether beautiful, my darling; there is no flaw in you.", ref: "Song of Solomon 4:7" },
+  { text: "The heart of man plans his way, but the Lord establishes his steps.", ref: "Proverbs 16:9" },
+  { text: "Whatever you do, work at it with all your heart, as working for the Lord.", ref: "Colossians 3:23" },
+  { text: "Cast all your anxiety on him because he cares for you.", ref: "1 Peter 5:7" }
+];
+const today = new Date();
+const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+const verse = verses[dayOfYear % verses.length];
+document.getElementById('scripture-text').textContent = `"${verse.text}"`;
+document.getElementById('scripture-ref').textContent = `— ${verse.ref}`;
+
+// ─────────────────────────────────────────────
+// WEEK CALCULATION
+// ─────────────────────────────────────────────
+function getWeekNumber() {
+  const msPerWeek = 7 * 24 * 60 * 60 * 1000;
+  const start = new Date(PROGRAM_START);
+  start.setHours(0,0,0,0);
+  const now = new Date();
+  now.setHours(0,0,0,0);
+  const diff = now - start;
+  if (diff < 0) return 1;
+  const week = Math.floor(diff / msPerWeek) + 1;
+  return Math.min(week, TOTAL_WEEKS);
+}
+
+function getWeekDates(weekNum) {
+  const start = new Date(PROGRAM_START);
+  start.setDate(start.getDate() + (weekNum - 1) * 7);
+  const end = new Date(start);
+  end.setDate(end.getDate() + 6);
+  const fmt = d => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  return `${fmt(start)} – ${fmt(end)}`;
+}
+
+// ─────────────────────────────────────────────
+// WORKOUT DATA — 4 weeks × 3 days
+// ─────────────────────────────────────────────
+const workoutData = [
+  // ── WEEK 1 ──
+  {
+    week: 1, theme: "Foundations",
+    days: [
+      {
+        title: "Day 1 — Lower Body & Balance",
+        meta: "Monday or Tuesday · 30 min",
+        intro: "This session builds the foundation — strong legs, stable hips, and better balance. Every exercise is gentle on your knees. Go at your own pace and focus on form over speed.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "Marching in Place", desc: "Lift knees gently, swing arms. Warms up hips and gets blood flowing.", sets: "2 min" },
+            { name: "Ankle Circles + Calf Raises", desc: "Stand near a wall. Rotate each ankle 8x, then rise onto toes 10x.", sets: "3 min" }
+          ]},
+          { label: "Main Work (20 min)", exercises: [
+            { name: "Sit-to-Stand (Chair Squat)", desc: "Sit on a sturdy chair, stand fully upright using your legs. Lower slowly. Keep weight in heels, not knees.", sets: "3 × 10 reps" },
+            { name: "Step-Up (Low Step or Stair)", desc: "Step up with right foot, bring left to meet it, step back down. Alternate leading foot. Hold railing if needed.", sets: "3 × 8/side" },
+            { name: "Glute Bridge", desc: "Lie on back, knees bent, feet flat. Press through heels and lift hips. Hold 2 sec at top, lower slowly.", sets: "3 × 12 reps" },
+            { name: "Single-Leg Stand", desc: "Stand near a wall. Lift one foot slightly, hold steady. Progress: close your eyes. Builds the steadiness you want.", sets: "3 × 20 sec/side" },
+            { name: "Side-Lying Leg Lift", desc: "Lie on side, bottom leg bent. Lift top leg to hip height, lower slowly. Strengthens hips without loading the knee.", sets: "3 × 12/side" }
+          ]},
+          { label: "Cool-Down (5 min)", exercises: [
+            { name: "Seated Hamstring Stretch + Deep Breathing", desc: "Extend one leg, reach gently toward toes. Hold 20 sec each side. Then 5 slow deep breaths — inhale 4 counts, exhale 6.", sets: "5 min" }
+          ]}
+        ],
+        note: "💡 If your knees feel achy during step-ups, skip that exercise and add an extra set of glute bridges instead. Listen to your body — consistency over intensity, always."
+      },
+      {
+        title: "Day 2 — Upper Body & Core",
+        meta: "Wednesday or Thursday · 30 min",
+        intro: "This session focuses on your upper body and core — both of which contribute to better balance and posture. No jumping, no kneeling pressure. Steady, controlled strength work.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "Arm Circles + Shoulder Rolls", desc: "Big slow circles forward and back, 10 each direction. Then shrug and roll shoulders.", sets: "3 min" },
+            { name: "Seated Cat-Cow Stretch", desc: "Sit on edge of chair, hands on knees. Arch back (cow), then round it (cat). 8 slow reps.", sets: "2 min" }
+          ]},
+          { label: "Main Work (20 min)", exercises: [
+            { name: "Wall Push-Up", desc: "Stand arm's length from wall, hands at chest height. Lower chest toward wall, push back. Keep body straight.", sets: "3 × 12 reps" },
+            { name: "Seated Resistance Band Row", desc: "Loop band around feet, pull handles to ribcage squeezing shoulder blades. No band? Use two filled water bottles.", sets: "3 × 12 reps" },
+            { name: "Overhead Press", desc: "Seated or standing, press light weights from shoulder height straight overhead. Lower slowly.", sets: "3 × 10 reps" },
+            { name: "Dead Bug", desc: "Lie on back, arms straight up, knees at 90°. Lower opposite arm and leg toward floor — keep lower back pressed down. Return and switch.", sets: "3 × 8/side" },
+            { name: "Seated Torso Rotation", desc: "Sit tall, arms crossed at chest. Rotate slowly side to side, leading with your eyes. Strengthens obliques and improves rotational balance.", sets: "3 × 10/side" }
+          ]},
+          { label: "Cool-Down (5 min)", exercises: [
+            { name: "Chest Opener + Neck Stretch", desc: "Clasp hands behind back, open chest, hold 20 sec. Then tilt each ear toward shoulder, hold 15 sec. Release tension from a long day.", sets: "5 min" }
+          ]}
+        ],
+        note: "💡 This session is a great stress-reliever after a hard day. The deep breathing in the cool-down matters — even 5 slow exhales changes your nervous system."
+      },
+      {
+        title: "Day 3 — Full Body & Mobility",
+        meta: "Saturday or Sunday · 35 min",
+        intro: "Your third session ties it all together — full body movement, gentle cardio, and extended mobility. A great way to close out the week feeling strong and capable.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "5-Minute Walk", desc: "A true warm-up walk — not workout pace. Just get moving and let your joints loosen.", sets: "5 min" }
+          ]},
+          { label: "Main Work (20 min)", exercises: [
+            { name: "Lateral Step", desc: "Step side to side in a slight squat position, 10 steps each direction. Works outer hips and improves lateral stability.", sets: "3 × 10/side" },
+            { name: "Reverse Lunge (Supported)", desc: "Stand near a wall. Step one foot back, lower until back knee nearly touches the floor. Return to standing. Much easier on knees than forward lunges.", sets: "3 × 8/side" },
+            { name: "Bicep Curl to Shoulder Press", desc: "Curl light weights to shoulders, then press overhead. Works arms, shoulders, and challenges balance slightly.", sets: "3 × 10 reps" },
+            { name: "Heel-to-Toe Walk", desc: "Walk in a straight line placing heel directly in front of opposite toe. Eyes forward, not on feet. Directly trains the balance and steadiness you want.", sets: "3 × 10 steps" },
+            { name: "Bird Dog", desc: "On hands and knees. Extend opposite arm and leg, hold 2 sec, return. Keep hips level. One of the best exercises for spinal stability.", sets: "3 × 8/side" }
+          ]},
+          { label: "Cool-Down + Mobility (10 min)", exercises: [
+            { name: "Full Body Stretch Sequence", desc: "Hip flexor stretch · Figure-4 glute stretch · Spinal twist · Child's pose. Hold each 30 seconds. This is your reward — take the full time.", sets: "10 min" }
+          ]}
+        ],
+        note: "💡 Day 3 is also a great day for a gentle 15–20 minute walk. Movement doesn't have to be a workout — even a slow evening walk adds up."
+      }
+    ]
+  },
+  // ── WEEK 2 ──
+  {
+    week: 2, theme: "Building Momentum",
+    days: [
+      {
+        title: "Day 1 — Lower Body & Stability",
+        meta: "Monday or Tuesday · 32 min",
+        intro: "Week 2 builds on your foundation. You'll notice the movements feel more familiar now. Add a little more control and intention to each rep — quality over quantity.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "Marching in Place + Hip Circles", desc: "March 1 min, then stand with feet shoulder-width and draw slow big circles with your hips. 8 each direction.", sets: "5 min" }
+          ]},
+          { label: "Main Work (22 min)", exercises: [
+            { name: "Sit-to-Stand — Slow Negative", desc: "Same chair squat as Week 1, but lower yourself back down over 3–4 seconds. The slow lowering is where strength is built.", sets: "3 × 10 reps" },
+            { name: "Step-Up with Knee Drive", desc: "Step up, then drive the opposite knee up to hip height before stepping back down. Adds balance challenge and hip flexor work.", sets: "3 × 8/side" },
+            { name: "Glute Bridge with Hold", desc: "Same as Week 1, but hold the top position for 5 full seconds before lowering. Your glutes and hamstrings will feel it.", sets: "3 × 10 reps" },
+            { name: "Tandem Stance Hold", desc: "Stand with one foot directly in front of the other (heel-to-toe). Hold 20 seconds, then switch which foot is in front. More challenging than single-leg.", sets: "3 × 20 sec/side" },
+            { name: "Clamshell", desc: "Lie on side, knees bent, hips stacked. Keeping feet together, lift top knee like a clamshell. Lower slowly. Great for outer hips and knee stability.", sets: "3 × 15/side" }
+          ]},
+          { label: "Cool-Down (5 min)", exercises: [
+            { name: "Pigeon Pose (Modified) + Breathing", desc: "Seated on chair: cross right ankle over left knee, gently press right knee down, lean forward slightly. Hold 25 sec each side.", sets: "5 min" }
+          ]}
+        ],
+        note: "💡 Notice how this week's exercises are progressed versions of Week 1. That's intentional — you're not starting over, you're building on what you've already done."
+      },
+      {
+        title: "Day 2 — Upper Body & Core",
+        meta: "Wednesday or Thursday · 32 min",
+        intro: "We're adding a little more core challenge this week. You've already done the foundation movements — this week we refine them and add one new exercise.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "Band Pull-Aparts + Neck Rolls", desc: "Hold a band or towel in front with both hands, pull wide to open chest. 12 reps, then slow neck rolls side to side.", sets: "5 min" }
+          ]},
+          { label: "Main Work (22 min)", exercises: [
+            { name: "Incline Push-Up (on counter or table)", desc: "Same motion as wall push-up but with more horizontal — a harder angle that builds real chest and shoulder strength.", sets: "3 × 10 reps" },
+            { name: "Seated Row — 2-second Hold", desc: "Same band row as Week 1, but hold the squeeze at your ribcage for 2 full seconds before releasing. Feel your shoulder blades work.", sets: "3 × 12 reps" },
+            { name: "Arnold Press", desc: "Start with palms facing you at shoulder height, rotate palms forward as you press overhead. Returns with rotation. More range of motion than Week 1 press.", sets: "3 × 10 reps" },
+            { name: "Dead Bug — Extended Hold", desc: "Same as Week 1 but hold the extended position for 3 seconds before returning. Your lower back stays pressed into the floor the whole time.", sets: "3 × 8/side" },
+            { name: "Standing Wood Chop (with weight)", desc: "Stand with feet shoulder-width. Hold a weight with both hands at one hip, sweep diagonally across your body to the opposite shoulder. Slow and controlled.", sets: "3 × 10/side" }
+          ]},
+          { label: "Cool-Down (5 min)", exercises: [
+            { name: "Doorframe Chest Stretch + Shoulder Cross-Body", desc: "Press forearm against a doorframe, gently twist away to open chest — hold 20 sec. Then pull each arm across body and hold 15 sec.", sets: "5 min" }
+          ]}
+        ],
+        note: "💡 The wood chop is a great functional exercise — it mimics real life movements like reaching across your body, lifting groceries, or turning to grab something behind you."
+      },
+      {
+        title: "Day 3 — Full Body & Agility",
+        meta: "Saturday or Sunday · 35 min",
+        intro: "Week 2's full body day adds a gentle agility component — small, slow movements that train your nervous system and coordination. These are harder than they look.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "Easy Walk + Arm Swings", desc: "5-minute walk with big arm swings to open the upper body as you warm up the lower body.", sets: "5 min" }
+          ]},
+          { label: "Main Work (22 min)", exercises: [
+            { name: "Side Step with Arm Reach", desc: "Step sideways and reach the opposite arm toward the floor — then return. Combines lateral movement with a slight balance and coordination challenge.", sets: "3 × 10/side" },
+            { name: "Reverse Lunge to Balance", desc: "Same reverse lunge but after you return to standing, hold the balance on one foot for 3 seconds before stepping back. Builds single-leg strength.", sets: "3 × 8/side" },
+            { name: "Hammer Curl to Press", desc: "Same as Week 1 curl-to-press but with a neutral (palms-facing) grip throughout. Targets the brachialis — a deeper bicep muscle.", sets: "3 × 10 reps" },
+            { name: "Clock Reach Balance", desc: "Stand on one foot. Imagine a clock on the floor. Reach your free foot to 12 o'clock, then 3, then 6, then 9 — returning to center between each. One of the best balance exercises there is.", sets: "3 × 4 directions/side" },
+            { name: "Bear Crawl Hold (Quadruped)", desc: "On hands and knees, lift knees just 1–2 inches off the floor and hold completely still for 15 seconds. Your core works incredibly hard to stay stable.", sets: "3 × 15 sec" }
+          ]},
+          { label: "Cool-Down + Mobility (10 min)", exercises: [
+            { name: "Full Body Stretch — Week 2 Version", desc: "Hip flexor stretch · Lying hamstring stretch with strap or towel · Seated spinal twist held longer (40 sec) · Doorframe chest opener.", sets: "10 min" }
+          ]}
+        ],
+        note: "💡 The clock reach is deceptively hard. If it feels too easy, try closing your eyes — your balance system has to work entirely without visual input."
+      }
+    ]
+  },
+  // ── WEEK 3 ──
+  {
+    week: 3, theme: "Finding Your Strength",
+    days: [
+      {
+        title: "Day 1 — Lower Body & Power",
+        meta: "Monday or Tuesday · 33 min",
+        intro: "Week 3 introduces a small amount of power — not explosive jumping, but intentional speed on the push phase of each movement. This teaches your muscles to work efficiently.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "Leg Swings + Hip Flexor Activation", desc: "Hold wall, swing each leg forward and back 10x. Then stand tall and drive each knee up to hip height 10x. Wakes up the hip flexors.", sets: "5 min" }
+          ]},
+          { label: "Main Work (23 min)", exercises: [
+            { name: "Sit-to-Stand — Fast Up, Slow Down", desc: "Push up from the chair quickly (2 counts up), then lower slowly (4 counts down). The fast concentric builds power, the slow eccentric builds strength.", sets: "3 × 10 reps" },
+            { name: "Step-Up with Pause at Top", desc: "Step up and pause at the top, fully standing, for 3 seconds before stepping down. Hold a railing only if needed for safety.", sets: "3 × 8/side" },
+            { name: "Single-Leg Glute Bridge", desc: "Same bridge position but extend one leg straight. Press through the planted heel only. Much harder — return to two-leg version if needed.", sets: "3 × 8/side" },
+            { name: "Y-Balance Reach", desc: "Stand on one foot, reach the other foot out at three angles: forward, to the side, and behind. Control the reach — don't just kick. Excellent balance and hip work.", sets: "3 × 3 directions/side" },
+            { name: "Lateral Band Walk", desc: "With a resistance band above ankles (or just wide stance), take 12 steps sideways in each direction maintaining slight squat. Feels easy until it doesn't.", sets: "3 × 12/side" }
+          ]},
+          { label: "Cool-Down (5 min)", exercises: [
+            { name: "Standing Quad Stretch + Calf Stretch", desc: "Balance on one foot, pull opposite heel toward glute. Hold 25 sec each side. Then step back and press heel into floor for calf stretch.", sets: "5 min" }
+          ]}
+        ],
+        note: "💡 Three weeks in — you're already doing things that seemed hard in Week 1. Notice that. Your body has been adapting even when it didn't feel like it."
+      },
+      {
+        title: "Day 2 — Upper Body & Functional Strength",
+        meta: "Wednesday or Thursday · 33 min",
+        intro: "This week's upper body session focuses on functional strength — the kind that helps you carry groceries, reach overhead, and move through your day without fatigue.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "Shoulder Mobility Flow", desc: "Slow arm circles, cross-body reaches, and goalpost stretches. Spend a full minute on each. Don't rush this — it matters.", sets: "5 min" }
+          ]},
+          { label: "Main Work (23 min)", exercises: [
+            { name: "Push-Up — Floor (Modified on Knees)", desc: "Progress from incline push-ups to a floor push-up on your knees if ready. Keep hips in line with shoulders — no piking.", sets: "3 × 8–10 reps" },
+            { name: "Bent-Over Row (Standing)", desc: "Stand, hinge forward at hips (soft knee bend), pull weights to your lower ribcage. Better position for your back than seated row.", sets: "3 × 12 reps" },
+            { name: "Single-Arm Overhead Press", desc: "Press one arm at a time. Your core works harder to prevent you from tipping sideways. Alternate arms or do all reps on one side then switch.", sets: "3 × 10/side" },
+            { name: "Pallof Press (Band Anti-Rotation)", desc: "Anchor band to side at chest height, step away, press straight out and hold 3 sec, return. Your core fights the rotation the whole time. A game-changer for core stability.", sets: "3 × 10/side" },
+            { name: "Farmer's Carry", desc: "Pick up two moderately heavy objects (grocery bags, dumbbells). Walk 20 steps, turn around, return. Builds grip, shoulders, and core — one of the most functional movements possible.", sets: "3 × 20 steps" }
+          ]},
+          { label: "Cool-Down (5 min)", exercises: [
+            { name: "Thread the Needle + Child's Pose", desc: "On hands and knees, slide one arm under your body to feel a thoracic rotation stretch. Hold 20 sec each side. Finish with child's pose.", sets: "5 min" }
+          ]}
+        ],
+        note: "💡 The farmer's carry is as functional as it gets — it's literally carrying heavy things, which you do every single day. It also burns significantly more calories than it looks like it should."
+      },
+      {
+        title: "Day 3 — Full Body & Endurance",
+        meta: "Saturday or Sunday · 38 min",
+        intro: "Week 3's full body day adds a bit more volume and a short cardio circuit. Nothing intense — just enough to elevate your heart rate and build aerobic base.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "Dynamic Warm-Up Walk", desc: "Walk 3 minutes, then add high knees and heel kicks for 1 minute each. Get the heart rate up slightly before you start.", sets: "5 min" }
+          ]},
+          { label: "Cardio Circuit (8 min — 2 rounds)", exercises: [
+            { name: "Step Touch Side-to-Side", desc: "Step right, bring left to meet it, step left, bring right to meet it. Add arm swings. Keep going for the full interval — this is your cardio.", sets: "90 sec" },
+            { name: "March with High Knees", desc: "Exaggerated marching — drive knees up and swing arms. Not fast, but deliberate and tall.", sets: "90 sec" },
+            { name: "Rest and Breathe", desc: "Walk slowly in place, breathe deeply. You've earned it.", sets: "60 sec" }
+          ]},
+          { label: "Strength Work (15 min)", exercises: [
+            { name: "Goblet Squat (Chair Behind for Safety)", desc: "Hold a weight at chest, feet shoulder-width, lower into a squat. Chair is behind you as a safety net — you don't have to touch it. Deepest squat you've done yet.", sets: "3 × 10 reps" },
+            { name: "Push-Up + Row Combo", desc: "Do a push-up (wall or floor), then immediately do a dumbbell row on each side. One push-up + two rows = one rep. Full upper body.", sets: "3 × 6 reps" },
+            { name: "Single-Leg Deadlift (Supported)", desc: "Hold a weight, hinge forward on one leg while the other extends behind. Keep back flat. Use a wall nearby. Builds hamstrings and epic balance.", sets: "3 × 8/side" }
+          ]},
+          { label: "Cool-Down (10 min)", exercises: [
+            { name: "Full Stretch Sequence — Extended", desc: "Hamstring stretch · Hip flexor kneeling stretch · Thoracic rotation · Lying figure-4 · Gentle spinal twist. Hold each 35 seconds.", sets: "10 min" }
+          ]}
+        ],
+        note: "💡 That cardio circuit might feel easy — that's intentional at Week 3. The goal is to build the habit of elevating your heart rate, not to exhaust you."
+      }
+    ]
+  },
+  // ── WEEK 4 ──
+  {
+    week: 4, theme: "Strong Finish",
+    days: [
+      {
+        title: "Day 1 — Lower Body & Peak Challenge",
+        meta: "Monday or Tuesday · 35 min",
+        intro: "Final week. You've built something real over the last 28 days. This session is your strongest lower body day yet — you're ready for it.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "Full Dynamic Warm-Up", desc: "Leg swings, hip circles, calf raises, ankle circles, and marching. Take the full 5 minutes — this session is demanding enough to deserve a proper warm-up.", sets: "5 min" }
+          ]},
+          { label: "Main Work (25 min)", exercises: [
+            { name: "Sit-to-Stand — 5-Second Negative", desc: "Drive up quickly, then lower over a full 5 seconds. This is genuinely hard. Focus on control — if you have to drop, reduce the tempo.", sets: "3 × 8 reps" },
+            { name: "Step-Up with Balance + Overhead Reach", desc: "Step up, balance on one foot, and reach both arms overhead while balanced. Combines balance, stability, and full-body coordination.", sets: "3 × 8/side" },
+            { name: "Glute Bridge — Banded or Weighted", desc: "Add a resistance band above knees (or a light weight on your hips). Bridge as usual but press outward against the band. Far more glute activation.", sets: "3 × 12 reps" },
+            { name: "Star Excursion Balance", desc: "Stand on one foot. Reach out in 4 diagonal directions as far as possible while keeping the standing leg steady. Return to center between each reach. Your most advanced balance challenge yet.", sets: "3 × 4 reaches/side" },
+            { name: "Wall Sit", desc: "Slide down a wall until thighs are parallel to floor. Hold. This is an isometric hold — your muscles work hard without moving. Knee-safe and brutally effective.", sets: "3 × 20–30 sec" }
+          ]},
+          { label: "Cool-Down (5 min)", exercises: [
+            { name: "Complete Lower Body Stretch", desc: "Quad stretch · Hamstring stretch · Hip flexor stretch · Figure-4 glute stretch · Calf stretch. Hold each 30 seconds. You've earned every second of this.", sets: "5 min" }
+          ]}
+        ],
+        note: "💡 Four weeks ago, sit-to-stands were your primary leg exercise. Now you're doing star excursions and wall sits. That's real, measurable progress — and it happened because you showed up."
+      },
+      {
+        title: "Day 2 — Upper Body & Total Strength",
+        meta: "Wednesday or Thursday · 35 min",
+        intro: "Your final upper body session brings together every skill you've built. This is the most demanding upper body day of the program — and your strongest.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "Resistance Band Activation", desc: "Band pull-aparts, overhead band stretch, band rows with pause. Fully activates the shoulders, rear delts, and upper back before loading.", sets: "5 min" }
+          ]},
+          { label: "Main Work (25 min)", exercises: [
+            { name: "Full Push-Up (Floor) or Incline Progression", desc: "Attempt a full floor push-up. If not ready, use the counter. Either way, you're stronger than Week 1 — the wall is behind you now.", sets: "3 × 8–12 reps" },
+            { name: "Single-Arm Row with Hip Hinge", desc: "One hand on a chair for support, deep hip hinge, row the weight to your hip. Unilateral work forces your core to stabilize hard.", sets: "3 × 12/side" },
+            { name: "Double Press — Alternating", desc: "Press right arm overhead while left stays at shoulder. Lower and switch. Your core rotates and stabilizes with every rep.", sets: "3 × 10/side" },
+            { name: "Pallof Press — Kneeling", desc: "Same anti-rotation press from Week 3 but now performed in a half-kneeling position (one knee down). Your hips and core work in a much more unstable environment.", sets: "3 × 10/side" },
+            { name: "Farmers Carry — Uneven Load", desc: "Carry a heavier weight in one hand only. Walk 20 steps. Switch hands. Your core fights lateral lean the entire time. This is elite-level functional training.", sets: "3 × 20 steps/side" }
+          ]},
+          { label: "Cool-Down (5 min)", exercises: [
+            { name: "Upper Body Complete Stretch", desc: "Chest opener · Shoulder cross-body · Lat stretch (overhead reach on a wall) · Thread the needle · Neck side stretch. Long holds — 30 seconds each.", sets: "5 min" }
+          ]}
+        ],
+        note: "💡 Uneven farmer's carry is something elite athletes train. You just did it. Don't underestimate what you've built in four weeks."
+      },
+      {
+        title: "Day 3 — Full Body Celebration",
+        meta: "Saturday or Sunday · 40 min",
+        intro: "Your final session. This is a celebration of everything your body has learned and built over the last four weeks. Move with intention, be proud of every rep.",
+        sections: [
+          { label: "Warm-Up (5 min)", exercises: [
+            { name: "Your Best Warm-Up", desc: "By now you know what your body needs. Marching, circles, swings, calf raises — whatever gets you moving and warm. Own this warm-up.", sets: "5 min" }
+          ]},
+          { label: "Cardio Circuit (10 min — 2 rounds)", exercises: [
+            { name: "Step Touch + Overhead Reach", desc: "Add an overhead reach on every step. Keeps the heart rate up while adding movement complexity.", sets: "2 min" },
+            { name: "March + Arm Circles", desc: "High knees with big arm circles simultaneously. Coordination and cardio in one.", sets: "2 min" },
+            { name: "Active Rest Walk", desc: "Walk slowly, breathe deeply, let your heart rate drop slightly before round 2.", sets: "1 min" }
+          ]},
+          { label: "Strength Circuit — Best Of (15 min)", exercises: [
+            { name: "Sit-to-Stand — Your Best Version", desc: "Do the most challenging version you can: fast up, 5-second down, or with a pause. Show yourself how far you've come.", sets: "3 × 10 reps" },
+            { name: "Push-Up — Your Best Version", desc: "Wall, counter, incline, knees, or full floor. Whatever represents your personal best right now.", sets: "3 × 10 reps" },
+            { name: "Heel-to-Toe Walk + Clock Reach", desc: "10 heel-to-toe steps, then a clock reach on each foot. Your two best balance movements, back to back.", sets: "2 rounds" },
+            { name: "Glute Bridge — Final", desc: "Your choice: single-leg, banded, or standard. Make it count.", sets: "3 × 12 reps" }
+          ]},
+          { label: "Cool-Down & Reflection (10 min)", exercises: [
+            { name: "Complete Stretch — Take Your Time", desc: "Every stretch you've learned. Lower body, upper body, spinal. Hold them all longer today — 40 seconds each. Then sit quietly for 2 minutes and acknowledge what you've done.", sets: "10 min" }
+          ]}
+        ],
+        note: "🎉 You completed four weeks. That's not nothing — that's you choosing yourself, consistently, through a busy job and a full life. Whatever comes next, this foundation is yours."
+      }
+    ]
+  }
+];
+
+// ─────────────────────────────────────────────
+// NUTRITION DATA — 4 weeks
+// ─────────────────────────────────────────────
+const nutritionData = [
+  {
+    week: 1, theme: "Foundations",
+    meals: {
+      breakfast: { title: "Greek Yogurt Parfait with Berries & Honey", ingredients: ["1 cup plain Greek yogurt (full-fat or 2%)", "½ cup mixed berries (fresh or frozen/thawed)", "2 tbsp granola", "1 tsp honey", "Optional: chia seeds or flaxseed"], directions: "Layer yogurt in a bowl or jar. Top with berries, granola, and a drizzle of honey. If using frozen berries, thaw overnight in the fridge. That's it — 3 minutes, no cooking, high protein. Prep 3–4 jars on Sunday and grab one each morning." },
+      lunch: { title: "Greek-Style Turkey Bowl", ingredients: ["1 lb ground turkey", "1 cup cooked brown rice or farro", "1 cup chopped cucumber", "½ cup halved cherry tomatoes", "¼ cup plain Greek yogurt", "2 tbsp olive oil", "Garlic, dried oregano, salt", "Handful of spinach or arugula"], directions: "Brown turkey in a skillet with garlic, oregano, and salt — about 8 minutes. Assemble bowls: grain on the bottom, then turkey, greens, cucumber, and tomatoes. Drizzle with olive oil and a spoonful of Greek yogurt. Prep the grain on Sunday and this becomes a 10-minute lunch." },
+      dinner: { title: "Sheet Pan Chicken Thighs with Roasted Vegetables", ingredients: ["3 bone-in chicken thighs", "2 cups broccoli florets", "1 cup sliced bell pepper", "1 cup cherry tomatoes", "2 tbsp olive oil", "Garlic powder, paprika, salt, pepper", "Optional: 1 lemon, halved"], directions: "Preheat oven to 425°F. Toss vegetables with 1 tbsp oil and season. Rub chicken with remaining oil and spices. Place chicken in center of sheet pan, veggies around it. Roast 35–40 minutes until golden and cooked through. One pan, almost no cleanup." }
+    },
+    grocery: {
+      "Protein": ["3 bone-in chicken thighs", "1 lb ground turkey", "1 dozen large eggs", "Plain Greek yogurt (32 oz tub)"],
+      "Produce": ["Broccoli florets", "Bell peppers (2–3)", "Cherry tomatoes (1 pint)", "Cucumber", "Baby spinach or arugula", "Onion", "Lemon", "Mixed berries (fresh or frozen)"],
+      "Pantry & Grains": ["Brown rice or farro", "Granola", "Olive oil", "Garlic (fresh or powder)", "Paprika", "Dried oregano", "Honey", "Salt & pepper"]
+    }
+  },
+  {
+    week: 2, theme: "Building Momentum",
+    meals: {
+      breakfast: { title: "Egg & Veggie Scramble with Whole Grain Toast", ingredients: ["3 large eggs", "Handful of baby spinach", "¼ cup diced bell pepper", "2 tbsp diced onion", "1 tsp olive oil or butter", "Salt, pepper, red pepper flakes", "1 slice whole grain toast", "Optional: ¼ avocado, sliced"], directions: "Warm oil over medium heat. Sauté pepper and onion 2–3 minutes. Add spinach and let it wilt. Whisk eggs, pour over vegetables, scramble gently until just set. Season well. Serve with toast and avocado. High protein, 10 minutes, sets the tone for the whole day." },
+      lunch: { title: "Tuna & White Bean Salad", ingredients: ["1 can tuna in water, drained", "1 can white beans, drained and rinsed", "2 stalks celery, diced", "¼ red onion, finely diced", "2 tbsp olive oil", "1 tbsp lemon juice", "Salt, pepper, dried parsley", "Handful of arugula or mixed greens"], directions: "Combine tuna, white beans, celery, and red onion in a bowl. Dress with olive oil, lemon juice, salt, and pepper. Toss with greens and serve. Zero cooking, five minutes. Keeps well in the fridge for two days — a perfect option when you have nothing left to give at lunchtime." },
+      dinner: { title: "Baked Salmon with Asparagus & Quinoa", ingredients: ["2 salmon fillets (5–6 oz each)", "1 bunch asparagus, trimmed", "1 cup cooked quinoa", "2 tbsp olive oil", "2 cloves garlic, minced", "1 lemon, sliced", "Salt, pepper, dried dill or thyme"], directions: "Preheat oven to 400°F. Place salmon and asparagus on a lined baking sheet. Drizzle with olive oil, season with garlic, dill, salt, and pepper. Top salmon with lemon slices. Roast 15–18 minutes until salmon flakes easily. Serve over quinoa." }
+    },
+    grocery: {
+      "Protein": ["2 salmon fillets (5–6 oz)", "Canned tuna in water (2 cans)", "1 dozen eggs", "White beans / cannellini (1 can)"],
+      "Produce": ["Asparagus (1 bunch)", "Baby spinach", "Bell pepper", "Celery (1 bunch)", "Red onion", "Avocado", "Lemon (2–3)", "Arugula or mixed greens"],
+      "Pantry & Grains": ["Quinoa", "Whole grain bread", "Olive oil", "Garlic", "Dried dill or thyme", "Dried parsley", "Red pepper flakes", "Salt & pepper"]
+    }
+  },
+  {
+    week: 3, theme: "Finding Your Strength",
+    meals: {
+      breakfast: { title: "Banana Peanut Butter Oatmeal", ingredients: ["½ cup rolled oats", "1 cup water or milk of choice", "1 ripe banana, sliced", "1 tbsp natural peanut butter", "1 tsp honey or maple syrup", "Pinch of cinnamon", "Optional: hemp seeds for extra protein"], directions: "Cook oats on stovetop or microwave — about 3–5 minutes. Top with banana slices, peanut butter, honey, and cinnamon. The peanut butter adds staying power that keeps you full through a busy morning. Overnight version: combine raw oats, milk, and banana in a jar the night before." },
+      lunch: { title: "Chicken & Veggie Wrap", ingredients: ["1–2 whole wheat tortillas", "1 cup shredded rotisserie chicken", "¼ cup hummus", "½ cup baby spinach", "¼ cup shredded carrots", "¼ cup diced cucumber", "2 tbsp feta cheese (optional)", "Salt, pepper, lemon squeeze"], directions: "Spread hummus on tortilla. Layer chicken, spinach, carrots, cucumber, and feta. Squeeze lemon, season, and roll tightly. Use rotisserie chicken from the store to make this completely effortless. Can be made the night before — hold the lemon until serving." },
+      dinner: { title: "Turkey & Vegetable Soup", ingredients: ["1 lb ground turkey", "4 cups low-sodium chicken broth", "1 can diced tomatoes", "1 cup diced zucchini", "1 cup diced carrots", "1 cup baby spinach", "1 can white beans, drained", "Garlic, Italian seasoning, salt, pepper"], directions: "Brown turkey in a large pot with garlic. Add broth, tomatoes, carrots, and zucchini. Simmer 15 minutes. Stir in white beans and spinach until wilted. Makes 4 portions — eat tonight, pack lunch tomorrow, freeze the rest. High protein, very low effort." }
+    },
+    grocery: {
+      "Protein": ["1 lb ground turkey", "1 rotisserie chicken", "Plain Greek yogurt (for wraps)", "White beans (1 can)", "Feta cheese (optional)"],
+      "Produce": ["Zucchini (1–2)", "Carrots (1 bag)", "Baby spinach", "Cucumber", "Banana (1 bunch)", "Lemon"],
+      "Pantry & Grains": ["Rolled oats", "Whole wheat tortillas", "Hummus", "Natural peanut butter", "Honey or maple syrup", "Cinnamon", "Italian seasoning"],
+      "Canned & Broth": ["Canned diced tomatoes (1 can)", "White beans (1 can)", "Low-sodium chicken broth (1 carton)"]
+    }
+  },
+  {
+    week: 4, theme: "Strong Finish",
+    meals: {
+      breakfast: { title: "Cottage Cheese Bowl with Pineapple & Almonds", ingredients: ["1 cup low-fat cottage cheese", "½ cup pineapple chunks (fresh or canned in juice)", "2 tbsp slivered almonds", "1 tsp honey", "Pinch of cinnamon"], directions: "Spoon cottage cheese into a bowl. Top with pineapple, almonds, honey, and cinnamon. No cooking, 2 minutes. One of the highest-protein breakfasts you can make — keeps you full for hours and supports muscle recovery from your workouts." },
+      lunch: { title: "Egg Salad on Whole Grain with Side Greens", ingredients: ["4 hard-boiled eggs", "2 tbsp plain Greek yogurt (or light mayo)", "1 tsp Dijon mustard", "2 stalks celery, finely diced", "Salt, pepper, paprika", "2 slices whole grain bread or lettuce wraps", "Side salad: mixed greens, olive oil, lemon"], directions: "Hard-boil eggs (12 min, then cold water), peel and chop. Mix with yogurt, mustard, celery, salt, and pepper. Spread on bread or spoon into lettuce wraps. Serve with a simple side salad. Boil a batch of 6–8 eggs on Sunday — they keep for a week." },
+      dinner: { title: "Slow Cooker Chicken & Sweet Potato Stew", ingredients: ["1.5 lbs boneless chicken thighs", "2 medium sweet potatoes, cubed", "1 can diced tomatoes", "1 cup chicken broth", "1 can black beans, drained", "1 cup frozen corn", "Cumin, chili powder, garlic, salt", "Optional: Greek yogurt, avocado, cilantro for topping"], directions: "Add everything to the slow cooker. Cook on low 6–7 hours or high 3–4 hours. Shred chicken with two forks before serving. Set it in the morning, come home to dinner already done. Leftovers are excellent for 3–4 days." }
+    },
+    grocery: {
+      "Protein": ["1.5 lbs boneless chicken thighs", "1 dozen eggs", "Cottage cheese (16 oz)", "Plain Greek yogurt (small tub)", "Black beans (1 can)"],
+      "Produce": ["Sweet potatoes (2 medium)", "Celery (1 bunch)", "Mixed greens", "Avocado (optional)", "Pineapple chunks", "Lemon"],
+      "Pantry & Grains": ["Whole grain bread", "Slivered almonds", "Dijon mustard", "Honey", "Frozen corn (1 bag)", "Cumin", "Chili powder"],
+      "Canned & Broth": ["Canned diced tomatoes (1 can)", "Low-sodium chicken broth (1 carton)"]
+    }
+  }
+];
+
+// ─────────────────────────────────────────────
+// RENDER FUNCTIONS
+// ─────────────────────────────────────────────
+const currentWeek = getWeekNumber();
+const weekData = workoutData[currentWeek - 1];
+const nutriData = nutritionData[currentWeek - 1];
+const weekDates = getWeekDates(currentWeek);
+
+// Hero badge
+document.getElementById('hero-week-label').textContent = `Week ${currentWeek}`;
+document.getElementById('hero-week-theme').textContent = weekData.theme;
+
+// Progress dots
+const dotsEl = document.getElementById('week-progress-dots');
+for (let i = 1; i <= TOTAL_WEEKS; i++) {
+  const d = document.createElement('div');
+  d.className = 'wk-dot-outer' + (i < currentWeek ? ' done' : i === currentWeek ? ' active' : '');
+  d.title = `Week ${i}`;
+  dotsEl.appendChild(d);
+}
+
+// Week context bars
+function setContextBar(weekLabelId, weekThemeId, datesId, pipsId) {
+  document.getElementById(weekLabelId).textContent = `Week ${currentWeek} of ${TOTAL_WEEKS}`;
+  document.getElementById(weekThemeId).textContent = weekData.theme;
+  if (datesId) document.getElementById(datesId).textContent = weekDates;
+  if (pipsId) {
+    const pips = document.getElementById(pipsId);
+    for (let i = 1; i <= TOTAL_WEEKS; i++) {
+      const p = document.createElement('div');
+      p.className = 'pip' + (i < currentWeek ? ' done' : i === currentWeek ? ' active' : '');
+      pips.appendChild(p);
+    }
+  }
+}
+setContextBar('wcb-week-label', 'wcb-week-theme', 'wcb-dates', 'wcb-pips');
+setContextBar('n-wcb-week-label', 'n-wcb-week-theme', 'n-wcb-dates', null);
+
+// Render workouts
+function renderWorkouts() {
+  const container = document.getElementById('workout-days-container');
+  container.innerHTML = '';
+  weekData.days.forEach((day, i) => {
+    const el = document.createElement('div');
+    el.className = 'workout-day' + (i === 0 ? ' open' : '');
+    el.id = `wday-${i}`;
+    let sectionsHTML = '';
+    day.sections.forEach(sec => {
+      sectionsHTML += `<div class="section-lbl">${sec.label}</div><ul class="exercise-list">`;
+      sec.exercises.forEach((ex, ei) => {
+        const num = sec.label.toLowerCase().includes('cool') || sec.label.toLowerCase().includes('warm') ? '★' : ei + 1;
+        sectionsHTML += `
+          <li class="exercise-item">
+            <div class="exercise-num">${num}</div>
+            <div>
+              <div class="exercise-name">${ex.name}</div>
+              <div class="exercise-desc">${ex.desc}</div>
+            </div>
+            <div class="exercise-sets">${ex.sets}</div>
+          </li>`;
+      });
+      sectionsHTML += '</ul>';
+    });
+    el.innerHTML = `
+      <div class="workout-day-header" onclick="toggleDay('wday-${i}')">
+        <div>
+          <h3>${day.title}</h3>
+          <div class="day-meta">${day.meta}</div>
+        </div>
+        <div class="toggle-icon">▾</div>
+      </div>
+      <div class="workout-body">
+        <div class="workout-intro">${day.intro}</div>
+        ${sectionsHTML}
+        <div class="workout-note">${day.note}</div>
+      </div>`;
+    container.appendChild(el);
+  });
+}
+
+// Render nutrition
+function renderNutrition() {
+  const container = document.getElementById('nutrition-meals-container');
+  container.innerHTML = '';
+  const mealOrder = [
+    { key: 'breakfast', label: 'Breakfast' },
+    { key: 'lunch', label: 'Lunch' },
+    { key: 'dinner', label: 'Dinner' }
+  ];
+  mealOrder.forEach(({ key, label }, mi) => {
+    const meal = nutriData.meals[key];
+    const id = `meal-${key}`;
+    const section = document.createElement('div');
+    section.className = 'meal-type-section';
+    section.innerHTML = `
+      <div class="meal-type-divider">${label}</div>
+      <div class="meal-card${mi === 0 ? ' meal-open' : ''}" id="${id}">
+        <div class="meal-card-header" onclick="toggleMeal('${id}')">
+          <h3>${meal.title}</h3>
+          <span class="meal-toggle">▾</span>
+        </div>
+        <div class="meal-body">
+          <div class="meal-ingredients">
+            <h4>Ingredients</h4>
+            <ul>${meal.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
+          </div>
+          <div class="meal-instructions">
+            <h4>Directions</h4>
+            <p>${meal.directions}</p>
+          </div>
+        </div>
+      </div>`;
+    container.appendChild(section);
+  });
+
+  // Grocery list
+  const groceryEl = document.getElementById('grocery-container');
+  let catsHTML = '';
+  Object.entries(nutriData.grocery).forEach(([cat, items]) => {
+    catsHTML += `<div class="grocery-cat"><h4>${cat}</h4><ul>`;
+    items.forEach(item => {
+      catsHTML += `<li onclick="toggleCheck(this)"><div class="check-box"></div>${item}</li>`;
+    });
+    catsHTML += '</ul></div>';
+  });
+  groceryEl.innerHTML = `
+    <div class="grocery-section">
+      <div class="grocery-header">
+        <h3>Week ${currentWeek} Grocery List</h3>
+        <span>Check items as you shop</span>
+      </div>
+      <div class="grocery-body">${catsHTML}</div>
+    </div>`;
+}
+
+renderWorkouts();
+renderNutrition();
+
+// ─────────────────────────────────────────────
+// UI INTERACTIONS
+// ─────────────────────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function toggleDay(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+function toggleMeal(id) {
+  document.getElementById(id).classList.toggle('meal-open');
+}
+function toggleCheck(li) {
+  li.classList.toggle('checked-item');
+  li.querySelector('.check-box').classList.toggle('checked');
+}
+</script>
+</body>
+</html>
