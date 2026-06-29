@@ -243,24 +243,89 @@
     .footer-copy { font-size: 0.62rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
 
     /* RESPONSIVE */
+    /* Mobile nav: hamburger */
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--taupe-dark); border-radius: 2px; transition: all 0.3s; }
+    .nav-mobile-open .nav-links { display: flex !important; }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 1.25rem; height: auto; min-height: 60px; flex-wrap: wrap; position: relative; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 0.75rem 0 1rem;
+        gap: 0;
+        border-top: 1px solid var(--border);
+        margin-top: 0.5rem;
+      }
+      .nav-links button {
+        font-size: 0.65rem;
+        padding: 0.6rem 0;
+        border-bottom: none;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+        width: 100%;
+      }
+      .nav-hamburger { display: flex; }
+      .nav-pills { gap: 0.4rem; }
+      .nav-pill { font-size: 0.55rem; padding: 0.3rem 0.6rem; }
+    }
+
     @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+      .hero { grid-template-columns: 1fr; padding: 2.5rem 1.25rem; min-height: unset; }
       .hero-images { display: none; }
-      .story-section { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem; }
-      .story-content { padding-left: 0; }
+      .hero-title { font-size: 2.8rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn-primary, .hero-actions .btn-outline { text-align: center; }
+
+      .studio-intro { padding: 3rem 1.25rem; }
+      .studio-spaces { flex-direction: column; align-items: center; }
+      .studio-space-card { max-width: 100%; }
+      .studio-amenities { gap: 1rem; }
+
+      section[style*="padding: 5rem 4rem"] { padding: 3rem 1.25rem !important; }
+
       .sessions-grid { grid-template-columns: 1fr; }
+      .extras-grid { grid-template-columns: 1fr 1fr; }
+
+      .story-section { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem; }
+      .story-content { padding-left: 0; }
+      .story-img::after { display: none; }
+
+      .philosophy { padding: 3rem 1.25rem; }
+
+      .membership-section { padding: 3rem 1.25rem; }
       .membership-grid { grid-template-columns: 1fr; }
+
+      .classes-section { padding: 3rem 1.25rem; }
+      .class-descriptions { padding: 2.5rem 1.25rem; }
       .class-list { grid-template-columns: 1fr; }
+
+      .training-section { padding: 3rem 1.25rem; }
       .pricing-grid { grid-template-columns: 1fr; }
+
+      .foundation-section { padding: 3rem 1.25rem; }
       .foundation-grid { grid-template-columns: 1fr; }
-      .shop-grid { grid-template-columns: 1fr; }
-      nav { padding: 0 1rem; }
-      .nav-links { gap: 1rem; }
-      .nav-links button { font-size: 0.55rem; }
-      .grand-opening, .membership-section, .classes-section, .training-section, .foundation-section, .shop-section { padding: 3rem 1.5rem; }
-      .studio-intro, .philosophy, .retreat-hero { padding: 3rem 1.5rem; }
-      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+      .foundation-pillars { grid-template-columns: 1fr 1fr; }
+      .foundation-stats { grid-template-columns: 1fr 1fr; }
+      .foundation-form { padding: 1.5rem; }
+
+      .retreat-hero { padding: 4rem 1.25rem; }
+      .retreat-badges { flex-direction: column; align-items: center; }
       .form-grid { grid-template-columns: 1fr; }
+
+      .shop-section { padding: 3rem 1.25rem; }
+      .shop-grid { grid-template-columns: 1fr; }
+
+      footer { padding: 2rem 1.25rem; flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .extras-grid { grid-template-columns: 1fr; }
+      .foundation-pillars { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -279,7 +344,7 @@
     </div>
     <div class="nav-pills">
       <a class="nav-pill nav-pill-zyia" href="https://new.myzyia.com/BRIANAWEBER/en_US/" target="_blank">Shop Zyia</a>
-      <a class="nav-pill nav-pill-book" href="https://calendly.com/briweber" target="_blank">Book Now</a>
+      <a class="nav-pill nav-pill-book" href="mailto:brianaweber@alexandriawell.com" target="_blank">Book Now</a>
     </div>
   </nav>
 
@@ -298,7 +363,7 @@
         </p>
         <div class="hero-actions">
           <button class="btn-primary" onclick="showSection('membership')">Explore Memberships</button>
-          <a class="btn-outline" href="https://calendly.com/briweber" target="_blank">Book a Free Consultation</a>
+          <a class="btn-outline" href="mailto:brianaweber@alexandriawell.com">Get in Touch</a>
         </div>
       </div>
       <div class="hero-images">
@@ -388,8 +453,8 @@
             Walk through The Well and The Loft — see both studio spaces and everything they have to offer.
           </div>
           <div class="extra-item">
-            <strong>Everything Else Is Free</strong>
-            Come and go as you please. Bring a friend. No sign-up needed for the open house itself.
+            <strong>Bring a Friend!</strong>
+            Come and go as you please. Bring a friend and come check out Alexandria's newest wellness space! No sign-up needed for the open house itself.
           </div>
         </div>
       </div>
@@ -418,8 +483,6 @@
       <div class="studio-amenities">
         <span class="amenity">Full Locker Rooms</span>
         <span class="amenity">Showers</span>
-        <span class="amenity">Sauna</span>
-        <span class="amenity">Cold Plunge</span>
         <span class="amenity">Community</span>
       </div>
       <div class="studio-address" style="margin-top: 2.5rem; font-size: 0.8rem; letter-spacing: 0.12em;">
@@ -487,7 +550,7 @@
             <li><span>10 Classes — <strong>$90</strong> (use within 3 months)</span></li>
             <li><span>20 Classes — <strong>$180</strong> (use within 6 months)</span></li>
           </ul>
-          <a class="btn-outline" href="https://calendly.com/briweber" target="_blank" style="display:block; text-align:center;">Book Your First Class →</a>
+
         </div>
 
         <div class="membership-card featured">
@@ -542,7 +605,7 @@
         <div class="icon">🗓</div>
         <h3>Class Schedule Coming Soon</h3>
         <p>We're getting everything set up! Our online booking and full class schedule will be available here shortly through MindBody. In the meantime, reach out to Briana directly to get on the schedule.</p>
-        <a class="btn-primary" href="https://calendly.com/briweber" target="_blank" style="display:inline-block; margin-top: 2rem;">Contact Briana →</a>
+        <a class="btn-primary" href="mailto:brianaweber@alexandriawell.com" target="_blank" style="display:inline-block; margin-top: 2rem;">Contact Briana →</a>
       </div>
     </section>
 
@@ -588,6 +651,12 @@
           <div class="instructor">with Briana · 1st Tuesday of the Month</div>
           <p>A class for moms of children ages 2–4! Spots are very limited — sign up early. $10 drop in.</p>
         </div>
+        <div class="class-item" style="background: var(--sage-pale); border: 1px dashed var(--sage-light); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.75rem;">🌿</div>
+          <h4 style="color: var(--sage);">More Coming Soon</h4>
+          <div class="instructor">The Well Studio</div>
+          <p>We're just getting started! More classes and instructors will be added as we grow. Check back soon.</p>
+        </div>
       </div>
     </div>
   </div><!-- end classes section -->
@@ -612,7 +681,7 @@
           <strong style="color: var(--sand-light);">$290</strong> — includes 8 sessions + a monthly membership at Valhalla + 4 free classes at The Well!
         </p>
         <p style="font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.7;">The best way to get started. Everything you need to build momentum, learn the space, and find your people.</p>
-        <a class="btn-primary" href="https://calendly.com/briweber" target="_blank" style="display:inline-block; margin-top: 1.5rem;">Get Started →</a>
+
       </div>
 
       <div class="pricing-grid">
@@ -632,7 +701,7 @@
             <span class="price-label">20 Sessions</span>
             <div style="text-align:right;"><span class="price-amount">$400</span><br><span class="price-sub">$20/session</span></div>
           </div>
-          <a class="btn-outline" href="https://calendly.com/briweber" target="_blank" style="display:block; text-align:center; margin-top:1.5rem;">Book Small Group →</a>
+
         </div>
 
         <!-- 1:1 Personal Training -->
@@ -651,26 +720,16 @@
             <span class="price-label">12 Sessions</span>
             <div style="text-align:right;"><span class="price-amount">$780</span><br><span class="price-sub">$65/session · save $120</span></div>
           </div>
-          <a class="btn-outline" href="https://calendly.com/briweber" target="_blank" style="display:block; text-align:center; margin-top:1.5rem;">Book 1:1 Training →</a>
+
         </div>
 
         <!-- In-Home Training -->
-        <div class="pricing-card">
+        <div class="pricing-card" style="opacity: 0.75;">
           <h3>In-Home Training</h3>
-          <p style="font-size: 0.78rem; color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.7;">Briana comes to you · 60 min · Alexandria area</p>
-          <div class="price-row">
-            <span class="price-label">Drop In</span>
-            <div style="text-align:right;"><span class="price-amount">$85</span><br><span class="price-sub">per session</span></div>
+          <p style="font-size: 0.78rem; color: var(--text-light); margin-bottom: 1rem; line-height: 1.7;">Briana comes to you · 60 min · Alexandria area</p>
+          <div style="background: var(--sand-light); border-radius: 2px; padding: 1rem; font-size: 0.78rem; color: var(--taupe-dark); line-height: 1.7; font-style: italic;">
+            Not currently accepting new in-home training clients. Existing clients — reach out directly to schedule.
           </div>
-          <div class="price-row">
-            <span class="price-label">6 Sessions</span>
-            <div style="text-align:right;"><span class="price-amount">$480</span><br><span class="price-sub">$80/session · save $30</span></div>
-          </div>
-          <div class="price-row">
-            <span class="price-label">12 Sessions</span>
-            <div style="text-align:right;"><span class="price-amount">$900</span><br><span class="price-sub">$75/session · save $120</span></div>
-          </div>
-          <a class="btn-outline" href="https://calendly.com/briweber" target="_blank" style="display:block; text-align:center; margin-top:1.5rem;">Book In-Home →</a>
         </div>
 
         <!-- Couples Training -->
@@ -679,13 +738,14 @@
           <h3>Train Together</h3>
           <p style="font-size: 0.82rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.5rem;">Wellness is better together. Bring your partner, a friend, or a family member and train as a pair. Custom programming, real accountability, and a lot more fun.</p>
           <p style="font-size: 0.78rem; color: var(--text); line-height: 1.7;">Pricing based on small group training rates. Contact Briana to set up your first session.</p>
-          <a class="btn-primary" href="https://calendly.com/briweber" target="_blank" style="display:block; text-align:center; margin-top:1.5rem;">Inquire About Couples Training →</a>
+
         </div>
       </div>
 
       <div class="payment-note">
         <strong>Payment Options:</strong> Venmo <a href="https://venmo.com/briana-weber-1" style="color:var(--sage);">@briana-weber-1</a> · Cash · Check · Card on File
         <br><span style="font-style: italic;">Well members receive 10% off all training sessions.</span>
+        <br><br><strong>Online scheduling coming soon</strong> through MindBody. In the meantime, reach out to Briana directly to get on the schedule.
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
@@ -693,13 +753,13 @@
           <div class="section-eyebrow">Already a Client?</div>
           <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--taupe-dark); margin-bottom: 0.75rem;">Book a Session</h3>
           <p style="font-size: 0.8rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.5rem;">View Briana's availability and book your next session directly on Calendly.</p>
-          <a class="btn-primary" href="https://calendly.com/briweber" target="_blank">Book Now →</a>
+          
         </div>
         <div style="background: white; border: 1px solid var(--border); border-radius: 4px; padding: 2rem; text-align: center;">
           <div class="section-eyebrow">New Here?</div>
           <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--taupe-dark); margin-bottom: 0.75rem;">Free Consultation</h3>
           <p style="font-size: 0.8rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.5rem;">Not sure where to start? Book a free 30-minute consultation and Briana will help you find your path.</p>
-          <a class="btn-outline" href="https://calendly.com/briweber" target="_blank">Book Free Consult →</a>
+
         </div>
       </div>
 
@@ -717,7 +777,7 @@
       <div class="foundation-grid">
         <div>
           <p class="story-body">The Foundation is about giving young girls exactly that — a foundation. A place to build strength, discover what their bodies can do, and show up for themselves in a room full of young women doing the same thing.</p>
-          <p class="story-body">Multiple sessions offered each week — choose what fits best into your schedule! Sessions held at The Well Studio · 1920 Turning Leaf Lane, Alexandria MN</p>
+          <p class="story-body">2 sessions per week this summer — choose what fits best into your schedule. Fall schedule to be determined. Sessions held at The Well Studio · 1920 Turning Leaf Lane, Alexandria MN</p>
 
           <div class="foundation-pillars">
             <div class="pillar">
@@ -739,7 +799,7 @@
           </div>
 
           <div class="foundation-stats">
-            <div class="stat"><div class="num">2–3</div><div class="label">Sessions per Week</div></div>
+            <div class="stat"><div class="num">2</div><div class="label">Sessions/Week · Summer<br><span style="font-size:0.6rem;">Fall Schedule TBD</span></div></div>
             <div class="stat"><div class="num">8–10</div><div class="label">Spots Per Session</div></div>
             <div class="stat"><div class="num">9–14</div><div class="label">Ages Served</div></div>
             <div class="stat"><div class="num">$25</div><div class="label">Drop-In Rate</div></div>
@@ -763,7 +823,7 @@
               <div style="text-align:right;"><span style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color: var(--sage-light);">$360</span><br><span style="font-size:0.65rem; color:rgba(255,255,255,0.5);">$18/session · save $100</span></div>
             </div>
             <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-              <a class="btn-primary" href="https://calendly.com/briweber" target="_blank">Book Now →</a>
+              
               <a href="foundation-signup.html" style="display:inline-block; border: 1px solid rgba(255,255,255,0.4); color:white; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; padding:0.9rem 2rem; border-radius:2px; transition:all 0.2s;">Register →</a>
             </div>
           </div>
@@ -1026,7 +1086,7 @@
       <a href="#" onclick="showSection('retreat')">Restore Retreat</a>
       <a href="https://new.myzyia.com/BRIANAWEBER/en_US/" target="_blank">Shop Zyia</a>
       <a href="lmnt-order.html">Order LMNT</a>
-      <a href="https://calendly.com/briweber" target="_blank">Book Now</a>
+      <a href="mailto:brianaweber@alexandriawell.com" target="_blank">Book Now</a>
     </div>
     <div class="footer-copy">© 2026 The Well Studio · Briana Weber · Alexandria, MN</div>
   </footer>
