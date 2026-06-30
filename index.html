@@ -31,18 +31,18 @@
       position: sticky; top: 0; z-index: 100;
       background: var(--cream);
       border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
+      padding: 0 1.5rem;
       display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
+      flex-wrap: wrap;
+      min-height: 64px;
+      gap: 0;
     }
-    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe-dark); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe-dark); cursor: pointer; text-decoration: none; background: none; border: none; flex-shrink: 0; }
     .nav-logo .well { color: var(--sage); }
     .nav-pills { display: flex; gap: 0.6rem; align-items: center; }
-    .nav-pill { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .nav-pill { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
     .nav-pill-zyia { color: var(--sand); border: 1px solid var(--sand); }
     .nav-pill-zyia:hover { background: var(--sand); color: white; }
-    .nav-pill-book { background: var(--sage); color: white; border: 1px solid var(--sage); }
-    .nav-pill-book:hover { background: var(--olive); }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links button {
       background: none; border: none; cursor: pointer;
@@ -52,6 +52,16 @@
       border-bottom: 2px solid transparent; transition: all 0.2s;
     }
     .nav-links button:hover, .nav-links button.active { color: var(--sage); border-bottom-color: var(--sage); }
+    /* Hamburger button */
+    .nav-hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: 0.5rem; flex-direction: column; justify-content: center; gap: 5px;
+    }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--taupe-dark); border-radius: 2px; transition: all 0.3s; }
+    nav.nav-open .nav-hamburger span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
+    nav.nav-open .nav-hamburger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    nav.nav-open .nav-links { display: flex !important; }
 
     /* PAGE SECTIONS */
     .page-section { display: none; }
@@ -243,12 +253,7 @@
     .footer-copy { font-size: 0.62rem; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
 
     /* RESPONSIVE */
-    /* Mobile nav: hamburger */
-    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; flex-direction: column; gap: 5px; }
-    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--taupe-dark); border-radius: 2px; transition: all 0.3s; }
-    .nav-mobile-open .nav-links { display: flex !important; }
-
-    @media (max-width: 640px) {
+@media (max-width: 640px) {
       nav { padding: 0 1.25rem; height: auto; min-height: 60px; flex-wrap: wrap; position: relative; }
       .nav-links {
         display: none;
@@ -1103,6 +1108,9 @@
       // Activate nav button
       const navBtn = document.getElementById('nav-' + name);
       if (navBtn) navBtn.classList.add('active');
+      // Close mobile menu
+      const nav = document.getElementById('main-nav');
+      if (nav) nav.classList.remove('nav-open');
       // Scroll to top
       window.scrollTo(0, 0);
     }
