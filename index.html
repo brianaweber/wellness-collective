@@ -173,6 +173,14 @@
     .coming-soon-box .icon { font-size: 3rem; margin-bottom: 1.5rem; }
     .coming-soon-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--taupe-dark); margin-bottom: 1rem; }
     .coming-soon-box p { font-size: 0.85rem; line-height: 1.8; color: var(--text-light); max-width: 500px; margin: 0 auto; }
+    .sched-table-wrap { margin-top: 2rem; }
+    .sched-updated { text-align: center; font-size: 0.8rem; color: var(--text-light); margin-bottom: 1.5rem; }
+    .sched-table { width: 100%; border-collapse: collapse; background: white; font-size: 0.78rem; }
+    .sched-table th { background: var(--sage); color: white; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.68rem; padding: 0.75rem 0.5rem; text-align: center; }
+    .sched-table td { border: 1px solid var(--border); padding: 0.6rem 0.5rem; text-align: center; vertical-align: middle; }
+    .sched-table td.time { font-weight: 600; color: var(--taupe-dark); background: var(--sage-pale); white-space: nowrap; }
+    .sched-table td.hl { font-weight: 600; color: var(--sage); }
+    .sched-table tbody tr:nth-child(odd) { background: var(--cream); }
 
     /* CLASS DESCRIPTIONS */
     .class-descriptions { padding: 4rem; background: var(--cream); max-width: 1100px; margin: 0 auto; }
@@ -600,11 +608,25 @@
       <p style="font-size: 0.85rem; color: var(--text-light); max-width: 600px; margin: 0 auto; line-height: 1.8;">
         Classes held at The Well Studio · 1920 Turning Leaf Lane, Alexandria MN · All classes have limited spots — sign up online to reserve your spot.
       </p>
-      <div class="coming-soon-box">
-        <div class="icon">🗓</div>
-        <h3>Class Schedule Coming Soon</h3>
-        <p>We're getting everything set up! Our online booking and full class schedule will be available here shortly through MindBody. In the meantime, reach out to Briana directly to get on the schedule.</p>
-        <a class="btn-primary" href="mailto:briana.weber@icloud.com" target="_blank" style="display:inline-block; margin-top: 2rem;">Contact Briana →</a>
+      <div class="sched-table-wrap">
+        <p class="sched-updated">July Class &amp; Training Schedule &middot; <em>Schedule is new and may change &mdash; stay connected on Instagram for updates.</em></p>
+        <table class="sched-table">
+          <thead>
+            <tr><th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="time">6&ndash;6:50 AM</td><td>1:1</td><td class="hl">Women, Weights &amp; Worship</td><td>1:1</td><td class="hl">Sculpt</td><td>1:1</td></tr>
+            <tr><td class="time">7:30&ndash;8:25 AM</td><td>1:1</td><td></td><td></td><td>Small Group (Well)</td><td></td></tr>
+            <tr><td class="time">8&ndash;9 AM</td><td></td><td>Foundation</td><td>Small Group (Well)</td><td>Small Group (Well)</td><td>Foundation</td></tr>
+            <tr><td class="time">9:30&ndash;10:20 AM</td><td class="hl">Power Moves</td><td class="hl">Sculpt</td><td class="hl">Power Moves</td><td class="hl">Sculpt</td><td class="hl">Women, Weights &amp; Worship</td></tr>
+            <tr><td class="time">10:25&ndash;11 AM*</td><td>*Mom and Me I (Under 2)<br>First Monday of the month only<br>otherwise 1:1</td><td>*Mom and Me II (Ages 2-4)<br>First Tuesday of the month only<br>otherwise 1:1</td><td>Class TBD</td><td>Class TBD</td><td>Class TBD</td></tr>
+            <tr><td class="time">11&ndash;11:55 AM</td><td>1:1</td><td>Small Group (Well)</td><td>1:1</td><td>Small Group (Well)</td><td>1:1</td></tr>
+            <tr><td class="time">12&ndash;12:55 PM</td><td>Small Group (Valhalla)</td><td class="hl">Hot Sculpt</td><td>Small Group (Valhalla)</td><td class="hl">Power Moves</td><td>Small Group (Valhalla)</td></tr>
+            <tr><td class="time">1&ndash;2 PM</td><td>1:1</td><td>1:1</td><td>1:1</td><td>1:1</td><td>1:1</td></tr>
+            <tr><td class="time">5:15 PM</td><td class="hl">Power Moves</td><td></td><td class="hl">Hot Sculpt</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+        <p style="text-align:center;font-size:0.8rem;color:var(--text-light);margin-top:1.5rem;">Ready to book a spot? <a href="mailto:briana.weber@icloud.com" style="color:var(--sage);">Contact Briana</a> to get on the schedule.</p>
       </div>
     </section>
 
@@ -650,13 +672,17 @@
           <div class="instructor">with Briana · 1st Tuesday of the Month</div>
           <p>A class for moms of children ages 2–4! Spots are very limited — sign up early. $10 drop in.</p>
         </div>
-        <div class="class-item" style="background: var(--sage-pale); border: 1px dashed var(--sage-light); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
-          <div style="font-size: 1.5rem; margin-bottom: 0.75rem;">🌿</div>
-          <h4 style="color: var(--sage);">More Coming Soon</h4>
-          <div class="instructor">The Well Studio</div>
-          <p>We're just getting started! More classes and instructors will be added as we grow. Check back soon.</p>
-        </div>
+              <div class="class-item">
+        <h4>Small Group Training &amp; 1:1 Personal Training</h4>
+        <div class="instructor">The Well or Valhalla</div>
+        <p>Available by request! Sessions can be held at The Well, or Valhalla. Small group training is 2 to 4 people, no exceptions. Make your own group or request to be added to one!</p>
       </div>
+      <div class="class-item">
+        <h4>The Foundation</h4>
+        <div class="instructor">Both Studios</div>
+        <p>A unique program just for girls ages 9-14. Navigating relationships and social dynamics in a healthy way begins with a solid foundation of confidence. We build strength inside and out with conversations while learning proper lifting technique, and how to simply enjoy exercise and movement.</p>
+      </div>
+</div>
     </div>
   </div><!-- end classes section -->
   <!-- PERSONAL TRAINING SECTION -->
