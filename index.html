@@ -77,12 +77,12 @@
     .hero-tagline { font-size: 0.7rem; letter-spacing: 0.2em; color: var(--taupe); font-style: italic; margin-bottom: 2rem; }
     .hero-body { font-size: 0.85rem; line-height: 1.9; color: var(--text-light); margin-bottom: 2.5rem; max-width: 480px; }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary { display: inline-block; background: var(--sage); color: white; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.9rem 2rem; border-radius: 2px; transition: background 0.2s; border: none; cursor: pointer; }
+    .btn-primary { display: inline-block; background: var(--sage); color: white; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.9rem 2rem; border-radius: 10px; transition: background 0.2s; border: none; cursor: pointer; }
     .btn-primary:hover { background: var(--olive); }
-    .btn-outline { display: inline-block; border: 1px solid var(--taupe); color: var(--taupe); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.9rem 2rem; border-radius: 2px; transition: all 0.2s; }
+    .btn-outline { display: inline-block; border: 1px solid var(--taupe); color: var(--taupe); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.9rem 2rem; border-radius: 10px; transition: all 0.2s; }
     .btn-outline:hover { background: var(--taupe); color: white; }
     .hero-images { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0.75rem; height: 520px; }
-    .hero-images img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+    .hero-images img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
     .hero-images img:first-child { grid-row: 1 / 3; }
 
     /* STUDIO INTRO */
@@ -131,8 +131,8 @@
     /* STORY */
     .story-section { padding: 6rem 4rem; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; }
     .story-img { position: relative; }
-    .story-img img { width: 100%; border-radius: 2px; display: block; }
-    .story-img::after { content: ""; position: absolute; bottom: -20px; right: 20px; width: 60%; height: 80%; border: 1px solid var(--sage-light); border-radius: 2px; z-index: -1; }
+    .story-img img { width: 100%; border-radius: 12px; display: block; }
+    .story-img::after { content: ""; position: absolute; bottom: -20px; right: 20px; width: 60%; height: 80%; border: 1px solid var(--sage-light); border-radius: 12px; z-index: -1; }
     .story-content { padding-left: 2rem; }
     .story-body { font-size: 0.82rem; line-height: 1.9; color: var(--text-light); margin-bottom: 1.2rem; }
     .story-sig { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--taupe); margin-top: 2rem; }
@@ -377,100 +377,46 @@
         <div class="hero-actions">
           <button class="btn-primary" onclick="showSection('membership')">Explore Memberships</button>
           <a class="btn-outline" href="mailto:briana.weber@icloud.com">Get in Touch</a>
+          <button class="btn-outline" onclick="showSection('classes')">Check Out Our Classes</button>
+          <button class="btn-outline" onclick="showSection('training')">Train with Briana</button>
         </div>
       </div>
       <div class="hero-images">
-        <img src="briana-on-mat.jpg" alt="Briana Weber on yoga mat outdoors" style="grid-row:1/3; width:100%; height:100%; object-fit:cover; object-position: center 20%; border-radius:2px;">
-        <div style="background: linear-gradient(160deg, #e8ddd0, #ddc9aa); width:100%; height:100%; border-radius:2px;"></div>
-        <div style="background: linear-gradient(160deg, #b8c9a8, #a8b89a); width:100%; height:100%; border-radius:2px;"></div>
+        <img src="briana-on-mat.jpg" alt="Briana Weber on yoga mat outdoors" style="grid-row:1/3; width:100%; height:100%; object-fit:cover; object-position: center 20%; border-radius:12px;">
+        <div style="background: linear-gradient(160deg, #e8ddd0, #ddc9aa); width:100%; height:100%; border-radius:12px;"></div>
+        <div style="background: linear-gradient(160deg, #b8c9a8, #a8b89a); width:100%; height:100%; border-radius:12px;"></div>
       </div>
     </section>
 
-    <!-- GRAND OPENING -->
-    <div style="background: var(--taupe-dark); padding: 0.6rem 2rem; text-align: center;">
-      <p style="font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sand-light); font-weight: 600;">
-        ✦ &nbsp; Grand Opening — July 6, 2026 &nbsp; · &nbsp; 1920 Turning Leaf Lane, Alexandria MN &nbsp; ✦
-      </p>
-    </div>
+    <!-- THANK YOU -->
+<div style="background: var(--taupe-dark); padding: 0.6rem 2rem; text-align: center;">
+<p style="font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sand-light); font-weight: 600;">
+✦ &nbsp; Thank You, Alexandria, for an Unforgettable Grand Opening &nbsp; ✦
+</p>
+</div>
 
-    <section style="padding: 5rem 4rem; max-width: 1100px; margin: 0 auto;">
-      <div style="text-align: center; margin-bottom: 3.5rem;">
-        <div class="section-eyebrow">Mark Your Calendar</div>
-        <h2 class="section-title">The Well Studio<br>Grand <em>Opening</em></h2>
-        <p class="grand-opening-date">Monday, July 6, 2026</p>
-        <p class="grand-opening-location">1920 Turning Leaf Lane, Alexandria, MN</p>
-        <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8;">
-          Join us for an open house style celebration as we officially open the doors to The Well Studio! Two sessions — come to one or come to both. Gift bags for the first 25 guests each session. Everything is free — bring a friend!
-        </p>
-      </div>
+<section style="padding: 5rem 4rem; max-width: 1100px; margin: 0 auto; text-align: center;">
+<div class="section-eyebrow">With Gratitude</div>
+<h2 class="section-title">Thank You for Making<br>Our Opening <em>Amazing</em></h2>
+<p style="font-size: 0.85rem; color: var(--text-light); max-width: 700px; margin: 0 auto; line-height: 1.9;">
+From the very first hello to the last goodbye, our grand opening was everything we hoped it would be — and that's because of you. Thank you for showing up, trying something new, and welcoming The Well Studio into your life. This community is the heart of everything we're building, and we are just getting started. Here's to the classes still to come, the friendships still forming, and the strongest version of you still waiting to show up. We are so glad you're here.
+</p>
+</section>
 
-      <div class="sessions-grid">
-        <!-- Morning Session -->
-        <div class="session-card">
-          <span class="time-badge">Morning Session · 8 AM – 12 PM</span>
-          <h3>Morning Open House<br>+ Yoga Sculpt</h3>
-          <p>Come explore The Well Studio, meet Briana and the team, and experience everything the space has to offer. Tour the studio spaces, try the sauna and cold plunge, and start your week off right.</p>
-          <div class="detail"><strong>Open House:</strong> 8:00 AM – 12:00 PM</div>
-          <div class="detail" style="margin-bottom: 1rem;"><strong>Free Yoga Sculpt Class:</strong> 9:00 AM (sign up required — limited spots)</div>
-          <div class="detail" style="margin-bottom: 1.5rem;"><strong>Gift bags</strong> for the first 25 guests!</div>
-          <div style="border-top: 1px solid var(--border); padding-top: 1.5rem;">
-            <p style="font-size: 0.72rem; color: var(--sage); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;">Reserve Your Spot for Yoga Sculpt</p>
-            <form class="signup-form" action="https://formspree.io/f/xojzojyg" method="POST" onsubmit="handleFormSubmit(event, 'yoga-success')">
-              <input type="text" name="name" placeholder="Your name" required />
-              <input type="email" name="email" placeholder="Your email" required />
-              <input type="tel" name="phone" placeholder="Phone number" />
-              <button type="submit" class="btn-primary">Sign Up for Yoga Sculpt →</button>
-            </form>
-            <div class="form-success" id="yoga-success">You're signed up! See you July 6 at 9 AM. 🌿</div>
-          </div>
-        </div>
+<!-- RESTORE RETREAT BANNER -->
+<section style="background: linear-gradient(135deg, var(--taupe-dark), var(--olive)); padding: 3.5rem 4rem; text-align: center; color: white;">
+<div class="section-eyebrow" style="color: var(--sand-light);">Restore &middot; October 9&ndash;11, 2026 &middot; Lake Osakis, MN</div>
+<h2 style="font-family:'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 1rem; color: white;">You give so much of yourself.<br><em style="color: var(--sage-light);">This weekend is for you.</em></h2>
+<p style="font-size: 0.85rem; line-height: 1.9; max-width: 650px; margin: 0 auto 1.5rem; color: rgba(255,255,255,0.85);">
+A lakeside weekend of rest, movement, and real community — built for women who give everything to everyone else. Spots are already going, and early bird pricing won't last much longer. If you've been waiting for a sign to finally choose yourself, this is it.
+</p>
+<p style="font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sand-light); font-weight: 600; margin-bottom: 1.75rem;">
+Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
+</p>
+<button class="btn-primary" onclick="showSection('retreat')">Reserve My Spot →</button>
+</section>
 
-        <!-- Afternoon Session -->
-        <div class="session-card">
-          <span class="time-badge">Afternoon Session · 4 PM – 7 PM</span>
-          <h3>Afternoon Open House<br>+ Power Moves</h3>
-          <p>The afternoon session brings the energy! Explore the studio, connect with the community, and wrap up your evening with a high-energy strength class. The Well is designed for everyone — come see for yourself.</p>
-          <div class="detail"><strong>Open House:</strong> 4:00 PM – 7:00 PM</div>
-          <div class="detail" style="margin-bottom: 1rem;"><strong>Free Power Moves Class:</strong> 5:15 PM (sign up required — limited spots)</div>
-          <div class="detail" style="margin-bottom: 1.5rem;"><strong>Gift bags</strong> for the first 25 guests!</div>
-          <div style="border-top: 1px solid var(--border); padding-top: 1.5rem;">
-            <p style="font-size: 0.72rem; color: var(--sage); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;">Reserve Your Spot for Power Moves</p>
-            <form class="signup-form" action="https://formspree.io/f/mqevbwpo" method="POST" onsubmit="handleFormSubmit(event, 'power-success')">
-              <input type="text" name="name" placeholder="Your name" required />
-              <input type="email" name="email" placeholder="Your email" required />
-              <input type="tel" name="phone" placeholder="Phone number" />
-              <button type="submit" class="btn-primary">Sign Up for Power Moves →</button>
-            </form>
-            <div class="form-success" id="power-success">You're signed up! See you July 6 at 5:15 PM. 💪</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- All Day Extras -->
-      <div class="grand-opening-extras">
-        <h4>Available All Day</h4>
-        <div class="extras-grid">
-          <div class="extra-item">
-            <strong>Sauna + Cold Plunge</strong>
-            $10 — use as many times as you'd like throughout the day. Venmo or cash.
-          </div>
-          <div class="extra-item">
-            <strong>Locker Rooms + Showers</strong>
-            Full locker rooms and showers available for your use all day.
-          </div>
-          <div class="extra-item">
-            <strong>Studio Tours</strong>
-            Walk through The Well and The Loft — see both studio spaces and everything they have to offer.
-          </div>
-          <div class="extra-item">
-            <strong>Bring a Friend!</strong>
-            Come and go as you please. Bring a friend and come check out Alexandria's newest wellness space! No sign-up needed for the open house itself.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STUDIO INTRO -->
+<!-- STUDIO INTRO -->
     <section class="studio-intro">
       <div class="eyebrow">Now Open · Alexandria, MN</div>
       <h2>A place where you feel<br>at home. Where you want<br>to come <em>back.</em></h2>
@@ -503,7 +449,7 @@
     <!-- MY STORY -->
     <section class="story-section" id="story">
       <div class="story-img">
-        <img src="briana-family.jpg" alt="Briana Weber and her family" style="width:100%; border-radius:2px; display:block; object-fit:cover;">
+        <img src="briana-family.jpg" alt="Briana Weber and her family" style="width:100%; border-radius:12px; display:block; object-fit:cover;">
       </div>
       <div class="story-content">
         <div class="section-eyebrow">My Story</div>
@@ -850,7 +796,7 @@
             </div>
             <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
               
-              <a href="foundation-signup.html" style="display:inline-block; border: 1px solid rgba(255,255,255,0.4); color:white; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; padding:0.9rem 2rem; border-radius:2px; transition:all 0.2s;">Register →</a>
+              <a href="foundation-signup.html" style="display:inline-block; border: 1px solid rgba(255,255,255,0.4); color:white; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; padding:0.9rem 2rem; border-radius:10px; transition:all 0.2s;">Register →</a>
             </div>
           </div>
 
@@ -899,7 +845,7 @@
         <span class="retreat-badge">October 9–11, 2026</span>
         <span class="retreat-badge">Lake Osakis, Minnesota</span>
         <span class="retreat-badge">For Women · 18+</span>
-        <span class="retreat-badge">12 Spots Only</span>
+        <span class="retreat-badge">11 Spots Only</span>
       </div>
       <div style="margin-top: 2rem;">
         <button class="btn-primary" onclick="document.getElementById('retreat-register').scrollIntoView({behavior:'smooth'})">Sign Me Up!</button>
@@ -910,7 +856,7 @@
       <div style="text-align: center; margin-bottom: 3rem; background: var(--sage-pale); padding: 2rem; border-radius: 4px;">
         <div class="section-eyebrow">Registration is Open!</div>
         <h2 class="section-title">Save your spot <em>today</em></h2>
-        <p style="font-size: 0.85rem; color: var(--text-light); line-height: 1.8; max-width: 600px; margin: 0 auto 1.5rem;">12 spots. Early bird pricing through June 30th. Reserve with just a $50 deposit.</p>
+        <p style="font-size: 0.85rem; color: var(--text-light); line-height: 1.8; max-width: 600px; margin: 0 auto 1.5rem;">11 spots. Early bird pricing through July 31st. Reserve with just a $50 deposit.</p>
         <button class="btn-primary" onclick="document.getElementById('retreat-register').scrollIntoView({behavior:'smooth'})">Sign Me Up!</button>
       </div>
 
@@ -989,14 +935,14 @@
       <div id="retreat-register">
         <div class="section-eyebrow" style="text-align:center;">Investment</div>
         <h2 class="section-title" style="text-align:center; margin-bottom: 0.5rem;">Reserve your <em>spot.</em></h2>
-        <p style="text-align:center; font-size:0.8rem; color:var(--text-light); margin-bottom: 2rem;">Early bird pricing through June 30th. Spot reserved with $50 deposit.</p>
+        <p style="text-align:center; font-size:0.8rem; color:var(--text-light); margin-bottom: 2rem;">Early bird pricing through July 31st. Spot reserved with $50 deposit.</p>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
           <div style="background: var(--sage-pale); border: 1px solid var(--sage-light); border-radius: 4px; padding: 2.5rem; text-align:center;">
             <div class="section-eyebrow">Well Member</div>
             <div style="font-family:'Cormorant Garamond',serif; font-size: 3rem; color: var(--sage);">$500</div>
-            <div style="font-size:0.72rem; color:var(--text-light);">Early bird · through June 30th</div>
-            <div style="font-size:0.72rem; color:var(--text-light); margin-bottom:1.5rem;">$750 after July 1st</div>
+            <div style="font-size:0.72rem; color:var(--text-light);">Early bird · through July 31st</div>
+            <div style="font-size:0.72rem; color:var(--text-light); margin-bottom:1.5rem;">$750 after July 31st</div>
             <div style="font-size:0.75rem; color:var(--text); margin-bottom: 0.5rem;">$50 deposit to reserve</div>
             <div style="font-size:0.75rem; color:var(--text); margin-bottom: 1.5rem;">Balance due September 1st · or split into 3 payments</div>
             <button class="btn-primary" onclick="document.getElementById('retreat-form').scrollIntoView({behavior:'smooth'})">Reserve My Spot →</button>
@@ -1004,8 +950,8 @@
           <div style="background: white; border: 1px solid var(--border); border-radius: 4px; padding: 2.5rem; text-align:center;">
             <div class="section-eyebrow">Non-Member</div>
             <div style="font-family:'Cormorant Garamond',serif; font-size: 3rem; color: var(--sage);">$600</div>
-            <div style="font-size:0.72rem; color:var(--text-light);">Early bird · through June 30th</div>
-            <div style="font-size:0.72rem; color:var(--text-light); margin-bottom:1.5rem;">$750 after July 1st</div>
+            <div style="font-size:0.72rem; color:var(--text-light);">Early bird · through July 31st</div>
+            <div style="font-size:0.72rem; color:var(--text-light); margin-bottom:1.5rem;">$750 after July 31st</div>
             <div style="font-size:0.75rem; color:var(--text); margin-bottom: 0.5rem;">$50 deposit to reserve</div>
             <div style="font-size:0.75rem; color:var(--text); margin-bottom: 1.5rem;">Balance due September 1st · or split into 3 payments</div>
             <button class="btn-outline" onclick="document.getElementById('retreat-form').scrollIntoView({behavior:'smooth'})">Reserve My Spot →</button>
