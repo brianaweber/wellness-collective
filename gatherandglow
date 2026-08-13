@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gather & Glow — September 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Alex+Brush&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5F0E6;
+    --cream-deep:#EDE6D6;
+    --olive:#4A4A30;
+    --olive-soft:#6B6B47;
+    --pink:#E7A6B3;
+    --pink-deep:#DD8FA0;
+    --pink-pale:#F4D6DC;
+    --ink:#3A3A28;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+
+  /* ---------- decorative brushstrokes (pure CSS, no images needed) ---------- */
+  .brush{
+    position:absolute;
+    pointer-events:none;
+    opacity:.55;
+    filter:blur(.5px);
+    z-index:0;
+  }
+  .brush.tl{
+    top:-40px; left:-60px; width:340px; height:180px;
+    background:var(--pink-pale);
+    border-radius:48% 52% 60% 40% / 40% 45% 55% 60%;
+    transform:rotate(-18deg);
+  }
+  .brush.br{
+    bottom:-60px; right:-80px; width:380px; height:220px;
+    background:var(--pink-pale);
+    border-radius:55% 45% 40% 60% / 50% 55% 45% 50%;
+    transform:rotate(12deg);
+  }
+
+  .wrap{max-width:640px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:76px 0 46px;
+    text-align:center;
+  }
+  .eyebrow{
+    position:relative; z-index:1;
+    font-family:'Jost', sans-serif;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    font-size:11px;
+    color:var(--olive-soft);
+    margin-bottom:18px;
+  }
+  .eyebrow span{
+    display:inline-block;
+    padding-bottom:6px;
+    border-bottom:1px solid var(--pink-deep);
+  }
+  h1.title{
+    position:relative; z-index:1;
+    margin:0;
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    color:var(--olive);
+    font-size:clamp(40px, 9vw, 58px);
+    letter-spacing:.02em;
+    line-height:1.02;
+  }
+  .glow-script{
+    display:block;
+    font-family:'Alex Brush', cursive;
+    color:var(--pink-deep);
+    font-size:clamp(64px, 15vw, 96px);
+    line-height:1;
+    margin-top:2px;
+    transform:rotate(-2deg);
+  }
+  .tagline{
+    position:relative; z-index:1;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:17px;
+    color:var(--olive-soft);
+    margin-top:16px;
+  }
+  .details-row{
+    position:relative; z-index:1;
+    margin-top:26px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--olive);
+    color:var(--cream);
+    padding:11px 24px;
+    border-radius:2px;
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .details-row .dot{opacity:.55;}
+
+  .partners{
+    position:relative; z-index:1;
+    margin-top:34px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    font-family:'Playfair Display', serif;
+    font-size:13px;
+    letter-spacing:.05em;
+    color:var(--olive-soft);
+  }
+  .partners .x{
+    color:var(--pink-deep);
+    font-family:'Jost', sans-serif;
+    font-weight:500;
+  }
+  .partner-badge{
+    border:1px solid var(--olive-soft);
+    border-radius:999px;
+    padding:8px 18px;
+  }
+
+  /* ---------- section shell ---------- */
+  section{position:relative; padding:0 0 56px;}
+  .card{
+    background:#fff;
+    border:1px solid var(--cream-deep);
+    border-radius:4px;
+    padding:36px 28px;
+    box-shadow:0 18px 40px -28px rgba(74,74,48,.35);
+  }
+  h2.section-title{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    color:var(--olive);
+    font-size:24px;
+    margin:0 0 6px;
+  }
+  .section-sub{
+    font-size:14px;
+    color:var(--olive-soft);
+    margin:0 0 26px;
+  }
+
+  /* ---------- form ---------- */
+  label{
+    display:block;
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--olive-soft);
+    margin-bottom:6px;
+  }
+  .field{margin-bottom:18px;}
+  input, select{
+    width:100%;
+    font-family:'Jost', sans-serif;
+    font-size:15px;
+    color:var(--ink);
+    padding:12px 14px;
+    border:1px solid #DED6C4;
+    border-radius:3px;
+    background:var(--cream);
+    outline-offset:2px;
+  }
+  input:focus, select:focus{outline:2px solid var(--pink-deep);}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:480px){.field-row{grid-template-columns:1fr;}}
+
+  .price-line{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:14px 16px;
+    background:var(--cream);
+    border:1px dashed #DED6C4;
+    border-radius:3px;
+    margin-bottom:22px;
+    font-size:14px;
+  }
+  .price-line .amount{
+    font-family:'Playfair Display', serif;
+    font-size:20px;
+    color:var(--olive);
+  }
+
+  button.submit{
+    width:100%;
+    background:var(--olive);
+    color:var(--cream);
+    border:none;
+    padding:15px;
+    font-family:'Jost', sans-serif;
+    font-size:14px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    border-radius:3px;
+    cursor:pointer;
+    transition:background .2s ease;
+  }
+  button.submit:hover{background:#3a3a24;}
+  button.submit:disabled{opacity:.6; cursor:default;}
+
+  .form-msg{
+    margin-top:14px;
+    font-size:13px;
+    display:none;
+  }
+  .form-msg.show{display:block;}
+  .form-msg.error{color:#a4463a;}
+  .form-msg.ok{color:var(--olive);}
+
+  /* ---------- payment (revealed after signup) ---------- */
+  #payment-section{display:none;}
+  #payment-section.show{display:block;}
+  .pay-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:6px;
+  }
+  @media (max-width:480px){.pay-options{grid-template-columns:1fr;}}
+  .pay-card{
+    border:1px solid var(--cream-deep);
+    border-radius:4px;
+    padding:20px;
+    text-align:center;
+  }
+  .pay-card .label{
+    font-family:'Playfair Display', serif;
+    font-size:17px;
+    color:var(--olive);
+    margin-bottom:6px;
+  }
+  .pay-card .hint{
+    font-size:12.5px;
+    color:var(--olive-soft);
+    margin-bottom:14px;
+    min-height:32px;
+  }
+  .pay-btn{
+    display:inline-block;
+    width:100%;
+    padding:12px;
+    border-radius:3px;
+    font-size:13px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    box-sizing:border-box;
+  }
+  .pay-btn.venmo{background:var(--pink-pale); color:var(--olive);}
+  .pay-btn.stripe{background:var(--olive); color:var(--cream);}
+  .banner-note{
+    margin-top:22px;
+    background:var(--pink-pale);
+    color:var(--olive);
+    padding:14px 18px;
+    border-radius:3px;
+    font-size:13px;
+    text-align:center;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+  }
+
+  footer{
+    text-align:center;
+    padding:30px 24px 50px;
+    font-size:12px;
+    color:var(--olive-soft);
+    letter-spacing:.05em;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="brush tl"></div>
+  <div class="brush br"></div>
+  <div class="wrap">
+    <div class="eyebrow"><span>Grace &amp; Gather Boutique × The Wellness Collective</span></div>
+    <h1 class="title">Gather<span class="glow-script">&amp; Glow</span></h1>
+    <p class="tagline">A morning of wellness, shopping &amp; community</p>
+    <div class="details-row">
+      <span>September 5</span><span class="dot">•</span><span>9–11 AM</span>
+    </div>
+    <div class="partners">
+      <span class="partner-badge">Grace &amp; Gather</span>
+      <span class="x">×</span>
+      <span class="partner-badge">The Wellness Collective</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section>
+    <div class="card">
+      <h2 class="section-title">Save your spot</h2>
+      <p class="section-sub">Spots are limited — fill this out, then reserve with payment below.</p>
+
+      <form id="signup-form">
+        <div class="field-row">
+          <div class="field">
+            <label for="first">First name</label>
+            <input type="text" id="first" name="First name" required>
+          </div>
+          <div class="field">
+            <label for="last">Last name</label>
+            <input type="text" id="last" name="Last name" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="Email" required>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="Phone" required>
+        </div>
+
+        <div class="field">
+          <label for="guests">Number of spots</label>
+          <select id="guests" name="Number of spots">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+
+        <div class="price-line">
+          <span>Price per spot</span>
+          <span class="amount">$25</span>
+        </div>
+
+        <button type="submit" class="submit" id="submit-btn">Reserve my spot</button>
+        <p class="form-msg" id="form-msg"></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="payment-section">
+    <div class="card">
+      <h2 class="section-title">Complete payment</h2>
+      <p class="section-sub">You're on the list! Send payment below to confirm your spot — we'll match it to your name.</p>
+
+      <div class="pay-options">
+        <div class="pay-card">
+          <div class="label">Venmo</div>
+          <div class="hint">@briana-weber-1<br>Note: Gather &amp; Glow + your name</div>
+          <a class="pay-btn venmo" href="https://venmo.com/briana-weber-1" target="_blank" rel="noopener">Pay with Venmo</a>
+        </div>
+        <div class="pay-card">
+          <div class="label">Card</div>
+          <div class="hint">Pay securely by card via Stripe</div>
+          <a class="pay-btn stripe" href="https://buy.stripe.com/6oU5kCar8g3Gat73omeZ20e" target="_blank" rel="noopener">Pay with card</a>
+        </div>
+      </div>
+
+      <div class="banner-note">+ a few fun surprises for everyone who joins us</div>
+    </div>
+  </section>
+</div>
+
+<footer>Gather &amp; Glow · Hosted by Grace &amp; Gather Boutique and The Wellness Collective</footer>
+
+<script>
+  // TODO(Briana): replace with your real Formspree endpoint once you create it
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mkjwbzyw";
+
+  const form = document.getElementById('signup-form');
+  const msg = document.getElementById('form-msg');
+  const btn = document.getElementById('submit-btn');
+  const paymentSection = document.getElementById('payment-section');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.classList.remove('show','ok','error');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+
+      if (res.ok) {
+        msg.textContent = "You're on the list! Scroll down to complete payment.";
+        msg.classList.add('show','ok');
+        form.reset();
+        btn.textContent = 'Reserved ✓';
+        paymentSection.classList.add('show');
+        paymentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        throw new Error('Formspree returned an error');
+      }
+    } catch (err) {
+      msg.textContent = "Something went wrong sending your info — please try again, or text us directly.";
+      msg.classList.add('show','error');
+      btn.disabled = false;
+      btn.textContent = 'Reserve my spot';
+    }
+  });
+</script>
+
+</body>
+</html>
