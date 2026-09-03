@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Well Studio — Alexandria, MN</title>
+  <title>The Wellness Collective Studios — Alexandria, MN</title>
   <link href="https://fonts.googleapis.com/css2?familhy=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -174,9 +174,10 @@
     .coming-soon-box .icon { font-size: 3rem; margin-bottom: 1.5rem; }
     .coming-soon-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--taupe-dark); margin-bottom: 1rem; }
     .coming-soon-box p { font-size: 0.85rem; line-height: 1.8; color: var(--text-light); max-width: 500px; margin: 0 auto; }
-    .sched-table-wrap { margin-top: 2rem; }
+    .sched-table-wrap { margin-top: 2rem; overflow-x: auto; }
+    .sched-table .who { display: block; font-size: 0.68rem; font-weight: 400; color: var(--text-light); margin-top: 0.15rem; }
     .sched-updated { text-align: center; font-size: 0.8rem; color: var(--text-light); margin-bottom: 1.5rem; }
-    .sched-table { width: 100%; border-collapse: collapse; background: white; font-size: 0.78rem; }
+    .sched-table { width: 100%; min-width: 700px; border-collapse: collapse; background: white; font-size: 0.78rem; }
     .sched-table th { background: var(--sage); color: white; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.68rem; padding: 0.75rem 0.5rem; text-align: center; }
     .sched-table td { border: 1px solid var(--border); padding: 0.6rem 0.5rem; text-align: center; vertical-align: middle; }
     .sched-table td.time { font-weight: 600; color: var(--taupe-dark); background: var(--sage-pale); white-space: nowrap; }
@@ -368,17 +369,16 @@
     <section class="hero">
       <div class="hero-content">
         <div class="hero-eyebrow">Healing · Strength · Renewal</div>
-        <div class="hero-brand">The Well Studio</div>
+        <div class="hero-brand">The Wellness Collective Studios</div>
         <h1 class="hero-title">Come back<br>to <em>yourself.</em></h1>
-        <div class="hero-tagline">refresh · restore · renew at The Well</div>
+        <div class="hero-tagline">refresh · restore · renew at The Wellness Collective</div>
         <p class="hero-body">
-          Life is full. You give it your all — to the people you love, the work you do, the things that matter. The Well Studio is where you come back to yourself. Where wellness isn't about doing more or working harder — it's about returning to who you were created to be. Whole. Strong. Grounded. <strong>WELL.</strong>
+          Life is full. We see you giving your all — to the people you love, the work you do, the things that matter. The Wellness Collective Studios are where you come back to yourself, where you're reminded that wellness isn't about doing more or working harder — it's about returning to who you were created to be. Whole. Strong. Grounded. <strong>WELL.</strong>
         </p>
         <div class="hero-actions">
           <button class="btn-primary" onclick="showSection('membership')">Explore Memberships</button>
           <a class="btn-outline" href="mailto:briana.weber@icloud.com">Get in Touch</a>
           <button class="btn-outline" onclick="showSection('classes')">Check Out Our Classes</button>
-          <button class="btn-outline" onclick="showSection('training')">Train with Briana</button>
         </div>
       </div>
       <div class="hero-images">
@@ -388,32 +388,71 @@
       </div>
     </section>
 
-    <!-- THANK YOU -->
-<div style="background: var(--taupe-dark); padding: 0.6rem 2rem; text-align: center;">
-<p style="font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sand-light); font-weight: 600;">
-✦ &nbsp; Thank You, Alexandria, for an Unforgettable Grand Opening &nbsp; ✦
+    <!-- GATHER & GLOW EVENT BANNER -->
+<section style="background: linear-gradient(135deg, var(--sage), var(--olive)); padding: 3rem 2rem; text-align: center; color: white;">
+<div class="section-eyebrow" style="color: var(--sand-light);">This Saturday &middot; Sept 5 &middot; 9 AM&ndash;12 PM</div>
+<h2 style="font-family:'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 0.75rem; color: white;">Our First Wellness Event:<br><em style="color: var(--sand-light);">Gather &amp; Glow</em></h2>
+<p style="font-size: 0.85rem; line-height: 1.8; max-width: 600px; margin: 0 auto 1.5rem; color: rgba(255,255,255,0.9);">
+Get glowing with a mat class taught by Briana Weber, a curated drink ticket from Ollie Birch, and be the first to shop Grace &amp; Gather's fall arrivals! $25, tickets are limited!!!
 </p>
-</div>
-
-<section style="padding: 5rem 4rem; max-width: 1100px; margin: 0 auto; text-align: center;">
-<div class="section-eyebrow">With Gratitude</div>
-<h2 class="section-title">Thank You for Making<br>Our Opening <em>Amazing</em></h2>
-<p style="font-size: 0.85rem; color: var(--text-light); max-width: 700px; margin: 0 auto; line-height: 1.9;">
-From the very first hello to the last goodbye, our grand opening was everything we hoped it would be — and that's because of you. Thank you for showing up, trying something new, and welcoming The Well Studio into your life. This community is the heart of everything we're building, and we are just getting started. Here's to the classes still to come, the friendships still forming, and the strongest version of you still waiting to show up. We are so glad you're here.
-</p>
+<a class="btn-primary" href="gatherandglow.html" style="display:inline-block;">See Details &amp; Save Your Spot →</a>
 </section>
+
+<!-- MEMBERSHIP CTA STRIP -->
+<section style="background: var(--sage-pale); padding: 2.5rem 2rem; text-align: center;">
+<h2 class="section-title" style="margin-bottom: 0.5rem;">Your first class is <em>always free.</em></h2>
+<p style="font-size: 0.82rem; color: var(--text-light); max-width: 560px; margin: 0 auto 1.5rem; line-height: 1.8;">Come see why Alexandria is talking about The Wellness Collective Studios! Try a class on us!</p>
+<div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+<button class="btn-primary" onclick="showSection('membership')">Join for $69/Month →</button>
+<button class="btn-outline" onclick="showSection('classes')">See the Schedule</button>
+</div>
+</section>
+
+    <!-- LEAVE A REVIEW -->
+    <section style="background: var(--sage-pale); padding: 4rem 2rem; text-align: center;">
+      <div class="section-eyebrow">Loved Your Class?</div>
+      <h2 class="section-title" style="margin-bottom: 0.5rem;">Leave us a <em>review.</em></h2>
+      <p style="font-size: 0.85rem; color: var(--text-light); max-width: 550px; margin: 0 auto 2rem; line-height: 1.8;">
+        Your words help others find their way here too! Let us know what you loved, and how we can make your experience even better!
+      </p>
+      <div style="background: white; border: 1px solid var(--border); border-radius: 4px; padding: 2.5rem; max-width: 600px; margin: 0 auto; text-align: left;">
+        <form action="https://formspree.io/f/xwlkbgek" method="POST" onsubmit="handleFormSubmit(event, 'review-success')" class="form-grid">
+          <input type="hidden" name="_subject" value="New Review — alexandriawell.com" />
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label>Rating *</label>
+            <select name="rating" required style="font-family:'Montserrat',sans-serif; font-size:0.8rem; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:2px; background:var(--cream); color:var(--text); width:100%;">
+              <option value="">Select a rating…</option>
+              <option value="5 stars">★★★★★ — Excellent</option>
+              <option value="4 stars">★★★★ — Great</option>
+              <option value="3 stars">★★★ — Good</option>
+              <option value="2 stars">★★ — Fair</option>
+              <option value="1 star">★ — Poor</option>
+            </select>
+          </div>
+          <div class="form-group form-full">
+            <label>Your Review *</label>
+            <textarea name="review" placeholder="Tell us about your experience..." rows="4" required style="resize:vertical;"></textarea>
+          </div>
+          <div class="form-full">
+            <button type="submit" class="btn-primary" style="width:100%;">Submit My Review →</button>
+          </div>
+        </form>
+        <div class="form-success" id="review-success" style="margin-top:1rem;">Thank you so much for sharing! We're so glad you're part of this community.</div>
+      </div>
+    </section>
 
 <!-- RESTORE RETREAT BANNER -->
 <section style="background: linear-gradient(135deg, var(--taupe-dark), var(--olive)); padding: 3.5rem 4rem; text-align: center; color: white;">
-<div class="section-eyebrow" style="color: var(--sand-light);">Restore &middot; October 9&ndash;11, 2026 &middot; Lake Osakis, MN</div>
+<div class="section-eyebrow" style="color: var(--sand-light);">Restore &middot; A Women's Weekend Retreat &middot; Date TBA</div>
 <h2 style="font-family:'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 1rem; color: white;">You give so much of yourself.<br><em style="color: var(--sage-light);">This weekend is for you.</em></h2>
 <p style="font-size: 0.85rem; line-height: 1.9; max-width: 650px; margin: 0 auto 1.5rem; color: rgba(255,255,255,0.85);">
-A lakeside weekend of rest, movement, and real community — built for women who give everything to everyone else. Spots are already going, and early bird pricing won't last much longer. If you've been waiting for a sign to finally choose yourself, this is it.
+Here's the truth: the studio has grown faster than we ever imagined, and Restore deserves to be planned with the same care — not rushed to fit a date. So we're taking the time to do it right. A new date is coming soon, and it'll be worth the wait. Join the waitlist to hear first.
 </p>
-<p style="font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sand-light); font-weight: 600; margin-bottom: 1.75rem;">
-Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
-</p>
-<button class="btn-primary" onclick="showSection('retreat')">Reserve My Spot →</button>
+<button class="btn-primary" onclick="showSection('retreat')">Join the Waitlist →</button>
 </section>
 
 <!-- STUDIO INTRO -->
@@ -421,7 +460,7 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
       <div class="eyebrow">Now Open · Alexandria, MN</div>
       <h2>A place where you feel<br>at home. Where you want<br>to come <em>back.</em></h2>
       <p>
-        The Well Studio is a place you walk into and immediately feel at ease. Comfortable. Welcome. A community of real people showing up for themselves — and for each other.
+        The Wellness Collective Studios is a place you walk into and immediately feel at ease. Comfortable. Welcome. A community of real people showing up for themselves — and for each other.
       </p>
       <p>
         You leave feeling better than when you arrived. Refreshed. Renewed. Like yourself again.
@@ -461,12 +500,12 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
           I've spent ten years in the fitness industry — working in gyms, training clients one on one, and building a presence in the wellness community. And through all of it, I kept coming back to one truth: sustainable wellness isn't about doing more. It's about coming back to the well. Returning to what gives you life.
         </p>
         <p class="story-body">
-          The Well Studio was born from that truth. It's for anyone who is busy, stretched thin, and still showing up every day — and who wants to feel strong, healthy, and genuinely good in their body. Whether you're just starting out or you've been at it for years, whether you're coming alone or bringing your partner, you deserve a plan, a coach, and a community that actually gets it.
+          The Wellness Collective Studios was born from that truth. It's for anyone who is busy, stretched thin, and still showing up every day — and who wants to feel strong, healthy, and genuinely good in their body. Whether you're just starting out or you've been at it for years, whether you're coming alone or bringing your partner, you deserve a plan, a coach, and a community that actually gets it.
         </p>
         <p class="story-body">
           Whole body wellness. For life. Not doing more — doing <em>good.</em> That's what we're building here.
         </p>
-        <div class="story-sig">I'll meet you at the Well. — Briana</div>
+        <div class="story-sig">We can't wait to meet you!</div>
       </div>
     </section>
 
@@ -475,7 +514,7 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
       <blockquote>
         "Wellness isn't a destination you arrive at — it's a <em>return.</em> A coming back to yourself, again and again, no matter how far life takes you from your center."
       </blockquote>
-      <cite>— The Well Studio</cite>
+      <cite>— The Wellness Collective Studios</cite>
     </section>
 
   </div><!-- end home section -->
@@ -484,9 +523,9 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
     <section class="membership-section">
       <div class="membership-header">
         <div class="section-eyebrow">Work With Me</div>
-        <h2 class="section-title">Choose your path<br>to <em>the Well</em></h2>
+        <h2 class="section-title">Choose your path<br>to <em>The Wellness Collective</em></h2>
         <p style="font-size: 0.85rem; color: var(--text-light); max-width: 600px; margin: 0 auto; line-height: 1.8;">
-          Your first class is always free. After that, choose what works best for you — drop in when you can, or commit to a membership and get the most out of everything The Well has to offer.
+          Your first class is always free. After that, choose what works best for you — drop in when you can, or commit to a membership and get the most out of everything The Wellness Collective has to offer.
         </p>
       </div>
 
@@ -509,29 +548,33 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
 
         <div class="membership-card featured">
           <div class="card-eyebrow">Best Value</div>
-          <h3>Membership at The Well</h3>
-          <div class="price">$49</div>
+          <h3>All-Access Membership</h3>
+          <div class="price">$69</div>
           <div class="price-note">per month · renews automatically · cancel anytime · no contract</div>
           <ul class="features">
             <li><span>Includes all classes (except Mom &amp; Me — $10 drop in)</span></li>
             <li><span>10% off personal and small group training sessions</span></li>
             <li><span>10% off products, merchandise, and Restore Wellness Retreats</span></li>
             <li><span>Discounted Valhalla Lifting Club membership</span></li>
+            <li><span>Early access to events &amp; Restore Wellness Retreats</span></li>
             <li><span>Cancel anytime — no cancellation fee</span></li>
           </ul>
-          <a class="btn-primary" href="https://buy.stripe.com/4gM4gydDk8Be9p36AyeZ202" target="_blank" style="display:block; text-align:center; margin-top: 1rem;">Join for $49/Month →</a>
+          <a class="btn-primary" href="https://buy.stripe.com/4gM4gydDk8Be9p36AyeZ202" target="_blank" style="display:block; text-align:center; margin-top: 1rem;">Join for $69/Month →</a>
+          <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.75rem; color: rgba(255,255,255,0.75); line-height: 1.7;">
+            Want to save more? <strong style="color:var(--sand-light);">6 months for $345</strong> (1 month free) or go <strong style="color:var(--sand-light);">annual for $720</strong> (over $100 off). <a href="mailto:briana.weber@icloud.com?subject=6-Month%20or%20Annual%20Membership" style="color:var(--sand-light); text-decoration:underline;">Contact Briana to set one up →</a>
+          </div>
         </div>
 
-        <div class="membership-card">
-          <div class="card-eyebrow">For Young Athletes</div>
+        <div class="membership-card" style="opacity:0.85;">
+          <div class="card-eyebrow">Summer Program &middot; Currently Closed</div>
           <h3>The Foundation</h3>
-          <p style="font-size: 0.78rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.2rem;">Specialized programming for girls ages 9–14. Sessions work like a punch card — use them whenever a session fits your schedule.</p>
+          <p style="font-size: 0.78rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.2rem;">Specialized programming for girls ages 9–14 — this year's summer sessions have wrapped. The Foundation returns next summer!</p>
           <ul class="features">
             <li><span>Drop In — <strong>$25</strong> per session</span></li>
             <li><span>10 Sessions — <strong>$200</strong> ($20/session · save $50)</span></li>
             <li><span>20 Sessions — <strong>$360</strong> ($18/session · save $100)</span></li>
           </ul>
-          <button class="btn-outline" onclick="showSection('foundation')" style="display:block; width:100%; margin-top:1rem;">Learn More →</button>
+          <button class="btn-outline" onclick="showSection('foundation')" style="display:block; width:100%; margin-top:1rem;">Get Notified for Next Summer →</button>
         </div>
       </div>
 
@@ -539,9 +582,9 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
       <div class="valhalla-box" style="margin-top: 2rem;">
         <div class="section-eyebrow" style="margin-bottom: 0.75rem;">Partner Gym</div>
         <h3>Valhalla Lifting Club</h3>
-        <p>Want to take your lifting to the next level? Well members receive a discounted membership to Valhalla Lifting Club — top tier weight machines, free weights, and a sauna.</p>
+        <p>Want to take your lifting to the next level? Wellness Collective members receive a discounted membership to Valhalla Lifting Club — top tier weight machines, free weights, and a sauna.</p>
         <p>Non-members can still access the discounted rate of <strong>$40/month</strong> full access to Valhalla by purchasing small group or personal training sessions.</p>
-        <p style="margin-top: 0.75rem; font-style: italic; color: var(--sage);">Already have a Valhalla membership? Valhalla members receive one free class every month at The Well, plus 20% off classes and membership.</p>
+        <p style="margin-top: 0.75rem; font-style: italic; color: var(--sage);">Already have a Valhalla membership? Valhalla members receive one free class every month at The Wellness Collective, plus 20% off classes and membership.</p>
       </div>
 
     </section>
@@ -550,29 +593,27 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
   <!-- CLASSES SECTION -->
   <div id="section-classes" class="page-section">
     <section class="classes-section">
-      <div class="section-eyebrow">The Well Studio</div>
+      <div class="section-eyebrow">The Wellness Collective Studios</div>
       <h2 class="section-title">Class <em>Schedule</em></h2>
       <p style="font-size: 0.85rem; color: var(--text-light); max-width: 600px; margin: 0 auto; line-height: 1.8;">
-        Classes held at The Well Studio · 1920 Turning Leaf Lane, Alexandria MN · All classes have limited spots — sign up online to reserve your spot.
+        Classes held at The Wellness Collective Studios · 1920 Turning Leaf Lane, Alexandria MN · All classes have limited spots — sign up online to reserve your spot.
       </p>
       <div class="sched-table-wrap">
-        <p class="sched-updated">July Class &amp; Training Schedule &middot; <em>Schedule is new and may change &mdash; stay connected on Instagram for updates.</em></p>
+        <p class="sched-updated">September Class Schedule &middot; <em>Schedule is new and may change &mdash; stay connected on Instagram for updates.</em></p>
         <table class="sched-table">
           <thead>
             <tr><th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
           </thead>
           <tbody>
-            <tr><td class="time">6&ndash;6:50 AM</td><td>1:1</td><td class="hl">Women, Weights &amp; Worship</td><td>1:1</td><td class="hl">Sculpt</td><td>1:1</td></tr>
-            <tr><td class="time">7:30&ndash;8:25 AM</td><td>1:1</td><td></td><td></td><td>Small Group (Well)</td><td></td></tr>
-            <tr><td class="time">8&ndash;9 AM</td><td></td><td>Foundation</td><td>Small Group (Well)</td><td>Small Group (Well)</td><td>Foundation</td></tr>
-            <tr><td class="time">9:30&ndash;10:20 AM</td><td class="hl">Power Moves</td><td class="hl">Sculpt</td><td class="hl">Power Moves</td><td class="hl">Sculpt</td><td class="hl">Women, Weights &amp; Worship</td></tr>
-            <tr><td class="time">10:25&ndash;11 AM*</td><td>*Mom and Me I (Under 2)<br>First Monday of the month only<br>otherwise 1:1</td><td>*Mom and Me II (Ages 2-4)<br>First Tuesday of the month only<br>otherwise 1:1</td><td>Class TBD</td><td>Class TBD</td><td>Class TBD</td></tr>
-            <tr><td class="time">11&ndash;11:55 AM</td><td>1:1</td><td>Small Group (Well)</td><td>1:1</td><td>Small Group (Well)</td><td>1:1</td></tr>
-            <tr><td class="time">12&ndash;12:55 PM</td><td>Small Group (Valhalla)</td><td class="hl">Hot Sculpt</td><td>Small Group (Valhalla)</td><td class="hl">Power Moves</td><td>Small Group (Valhalla)</td></tr>
-            <tr><td class="time">1&ndash;2 PM</td><td>1:1</td><td>1:1</td><td>1:1</td><td>1:1</td><td>1:1</td></tr>
-            <tr><td class="time">5:15 PM</td><td class="hl">Power Moves</td><td></td><td class="hl">Hot Sculpt</td><td></td><td></td></tr>
+            <tr><td class="time">6&ndash;6:55 AM</td><td class="hl">Sculpt Strong <span class="who">w/ Katie &middot; Loft</span></td><td class="hl">Power Moves <span class="who">w/ Briana &middot; The Well</span></td><td class="hl">Sculpt Strong <span class="who">w/ Katie &middot; Loft</span></td><td class="hl">Yoga &ndash; Vinyasa Flow <span class="who">w/ Sheila &middot; Loft</span></td><td class="hl">Sculpt Classic <span class="who">w/ Kia &middot; Loft</span></td></tr>
+            <tr><td class="time">8:30&ndash;9:20 AM</td><td class="hl">Sculpt Classic <span class="who">w/ Briana &middot; Loft</span></td><td class="hl">Yoga &ndash; Vinyasa Flow <span class="who">w/ Sheila &middot; Loft</span></td><td class="hl">Women, Weights &amp; Worship <span class="who">w/ Briana &middot; Loft</span></td><td class="hl">Power Moves <span class="who">w/ Kia &middot; The Well</span></td><td></td></tr>
+            <tr><td class="time">9:30&ndash;10:25 AM</td><td class="hl">Stretch &amp; Flow <span class="who">w/ Briana &middot; Loft</span></td><td></td><td class="hl">Mom &amp; Me <span class="who">w/ Briana &middot; Loft</span></td><td></td><td class="hl">Women, Weights &amp; Worship <span class="who">w/ Kia &middot; Loft</span></td></tr>
+            <tr><td class="time">11 AM&ndash;12 PM</td><td></td><td></td><td></td><td></td><td class="hl">Small Group Training <span class="who">w/ Briana &middot; Valhalla</span></td></tr>
+            <tr><td class="time">12&ndash;1 PM</td><td class="hl">Small Group Training <span class="who">w/ Briana &middot; Valhalla</span></td><td></td><td class="hl">Small Group Training <span class="who">w/ Briana &middot; Valhalla</span></td><td></td><td></td></tr>
+            <tr><td class="time">4:15&ndash;5:10 PM</td><td></td><td class="hl">Power Moves <span class="who">w/ Morgan &middot; The Well</span></td><td>The Well Studio reserved 4&ndash;8 PM</td><td class="hl">Sculpt Classic <span class="who">w/ Kia &middot; Loft</span></td><td></td></tr>
           </tbody>
         </table>
+        <p style="text-align:center;font-size:0.7rem;color:var(--text-light);margin-top:0.75rem;">The Loft &middot; upper studio &nbsp;|&nbsp; The Well &middot; lower studio &nbsp;|&nbsp; Small Group Training held at Valhalla Lifting Club</p>
         <p style="text-align:center;font-size:0.8rem;color:var(--text-light);margin-top:1.5rem;">Ready to book a spot? <a href="mailto:briana.weber@icloud.com" style="color:var(--sage);">Contact Briana</a> to get on the schedule.</p>
       </div>
     </section>
@@ -584,51 +625,51 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
       <p style="text-align:center; font-size: 0.8rem; color: var(--text-light); margin-bottom: 1rem;">All levels and abilities welcome — unless otherwise noted.</p>
       <div class="class-list">
         <div class="class-item">
-          <h4>Yoga Flow</h4>
-          <div class="instructor">with Lindsey</div>
-          <p>A yoga class that will stretch and strengthen your body. All levels and abilities welcome.</p>
+          <h4>Yoga &ndash; Vinyasa Flow</h4>
+          <div class="instructor">The Loft</div>
+          <p>Move, breathe, and reconnect. Vinyasa Flow links breath with intentional movement through a fluid sequence designed to build strength, improve mobility, and create space in both body and mind. Expect a thoughtful balance of challenge and restoration, with options to make the practice your own. All levels are welcome.</p>
         </div>
         <div class="class-item">
-          <h4>Sculpt</h4>
-          <div class="instructor">with Briana</div>
-          <p>A mat yoga/pilates style class. Best for those with some exercise experience looking for a challenge. We will work on stretching, mobility, core strength, and muscle endurance.</p>
+          <h4>Sculpt Classic</h4>
+          <div class="instructor">The Loft</div>
+          <p>This Pilates-inspired mat class will challenge your muscular endurance, building strength by maximizing your movement. Using time, tension, pulses, holds, and high energy music, you'll feel strengthened throughout your entire body.</p>
         </div>
         <div class="class-item">
-          <h4>Hot Sculpt</h4>
-          <div class="instructor">with Briana</div>
-          <p>Level up with a heated version of Sculpt! We'll crank up the heat and get our detox on.</p>
+          <h4>Sculpt Strong</h4>
+          <div class="instructor">The Well</div>
+          <p>Grab your weights and get ready to work. Sculpt Strong combines focused strength training with targeted sculpting exercises to challenge your entire body. Expect defined sets, purposeful repetitions, and a mix of heavier strength work and smaller movements that bring the burn.</p>
         </div>
         <div class="class-item">
           <h4>Power Moves</h4>
-          <div class="instructor">with Briana</div>
-          <p>Strength Training with free weights — high energy and a fun way to get into weight training. If you're experienced, you'll be challenged. If you're a beginner, welcome! Come see why we keep coming back.</p>
+          <div class="instructor">The Well</div>
+          <p>Turn up the music and bring the energy. Power Moves is an upbeat, strength-focused class built around powerful, functional movement. Expect dumbbells, dynamic exercises, and athletic combinations designed to help you feel stronger and more capable — without turning the class into an all-out HIIT session. You'll work hard, move well, and leave feeling accomplished.</p>
         </div>
         <div class="class-item">
           <h4>Women, Weights &amp; Worship</h4>
-          <div class="instructor">with Briana</div>
+          <div class="instructor">The Loft</div>
           <span class="women-only">Women Only</span>
-          <p>Ladies only! Spend an hour lifting weights, working out, and letting go. What we do with our body connects to our soul — you can't build one and not the other, when ALL of you has been created by the same God. Beginners welcome!</p>
+          <p>A space to strengthen your body, quiet your mind, and fill your spirit. Women, Weights &amp; Worship combines approachable strength training with Christian music, intentional movement, and moments of reflection. Each class begins and ends with purpose, creating space to set down what you're carrying and reconnect with what matters. Come exactly as you are — no fitness level or faith journey required to have it all figured out.</p>
         </div>
         <div class="class-item">
-          <h4>Mom &amp; Me I</h4>
-          <div class="instructor">with Briana · 1st Monday of the Month</div>
-          <p>A class for moms and children under 2! Bring your babe, move your body. The postpartum season is better with community and movement. Spots are very limited — sign up early. $10 drop in.</p>
+          <h4>Mom &amp; Me</h4>
+          <div class="instructor">The Loft</div>
+          <p>A class for moms and children under 2! Bring your babe, move your body. The postpartum season is better with community and movement. Spots are limited to 6 — sign up early.</p>
         </div>
         <div class="class-item">
-          <h4>Mom &amp; Me II</h4>
-          <div class="instructor">with Briana · 1st Tuesday of the Month</div>
-          <p>A class for moms of children ages 2–4! Spots are very limited — sign up early. $10 drop in.</p>
+          <h4>Stretch &amp; Flow</h4>
+          <div class="instructor">The Loft</div>
+          <p>Designed to leave you feeling limber, relaxed, and strong, this class takes you through gentle stretching and mobility movements, and integrates functional core work to improve your overall well-being!</p>
         </div>
-              <div class="class-item">
-        <h4>Small Group Training &amp; 1:1 Personal Training</h4>
-        <div class="instructor">The Well or Valhalla</div>
-        <p>Available by request! Sessions can be held at The Well, or Valhalla. Small group training is 2 to 4 people, no exceptions. Make your own group or request to be added to one!</p>
-      </div>
-      <div class="class-item">
-        <h4>The Foundation</h4>
-        <div class="instructor">Both Studios</div>
-        <p>A unique program just for girls ages 9-14. Navigating relationships and social dynamics in a healthy way begins with a solid foundation of confidence. We build strength inside and out with conversations while learning proper lifting technique, and how to simply enjoy exercise and movement.</p>
-      </div>
+        <div class="class-item">
+          <h4>Small Group Training</h4>
+          <div class="instructor">Valhalla Lifting Club</div>
+          <p>Available by request! Sessions are held at Valhalla Lifting Club. Small group training is max 4 people, built around customized programming. Make your own group or request to be added to one — if you're ready to level up your strength training, this is for you!</p>
+        </div>
+        <div class="class-item" style="opacity:0.85;">
+          <h4>The Foundation</h4>
+          <div class="instructor">Summer Program &middot; Currently Closed</div>
+          <p>Our program for young female athletes ages 9–14 runs each summer and has wrapped for the season — thank you to everyone who joined us! The Foundation will be back next summer; <a href="foundation-signup.html" style="color:var(--sage);">get on the interest list</a> to be the first to know when registration opens.</p>
+        </div>
 </div>
     </div>
   </div><!-- end classes section -->
@@ -643,14 +684,14 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
         Sessions are available by request at The Well or at Valhalla. Small group training is 2–4 people — make your own group or request to be added to one. Personalized, intentional, and designed to get you real results.
       </p>
       <p class="training-intro" style="margin-top: 0.5rem;">
-        Well members receive 10% off all training sessions.
+        Wellness Collective members receive 10% off all training sessions.
       </p>
 
       <div style="background: var(--taupe-dark); border-radius: 4px; padding: 2.5rem; margin: 3rem 0; color: white;">
         <div style="font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand-light); margin-bottom: 0.75rem;">Small Group Training</div>
         <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; margin-bottom: 1rem;">🌟 Intro Package</h3>
         <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 1rem;">
-          <strong style="color: var(--sand-light);">$290</strong> — includes 8 sessions + a monthly membership at Valhalla + 4 free classes at The Well!
+          <strong style="color: var(--sand-light);">$290</strong> — includes 8 sessions + a monthly membership at Valhalla + 4 free classes at The Wellness Collective!
         </p>
         <p style="font-size: 0.8rem; color: rgba(255,255,255,0.65); line-height: 1.7;">The best way to get started. Everything you need to build momentum, learn the space, and find your people.</p>
 
@@ -679,7 +720,7 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
         <!-- 1:1 Personal Training -->
         <div class="pricing-card">
           <h3>1:1 Personal Training</h3>
-          <p style="font-size: 0.78rem; color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.7;">60 min · At The Well Studio or Valhalla · Fully customized to your goals</p>
+          <p style="font-size: 0.78rem; color: var(--text-light); margin-bottom: 1.5rem; line-height: 1.7;">60 min · At The Wellness Collective Studios or Valhalla · Fully customized to your goals</p>
           <div class="price-row">
             <span class="price-label">Drop In</span>
             <div style="text-align:right;"><span class="price-amount">$75</span><br><span class="price-sub">per session</span></div>
@@ -716,7 +757,7 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
 
       <div class="payment-note">
         <strong>Payment Options:</strong> Venmo <a href="https://venmo.com/briana-weber-1" style="color:var(--sage);">@briana-weber-1</a> · Cash · Check · Card on File
-        <br><span style="font-style: italic;">Well members receive 10% off all training sessions.</span>
+        <br><span style="font-style: italic;">Wellness Collective members receive 10% off all training sessions.</span>
         <br><br><strong>Online scheduling coming soon</strong> through MindBody. In the meantime, reach out to Briana directly to get on the schedule.
       </div>
 
@@ -741,7 +782,7 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
   <div id="section-foundation" class="page-section">
     <section class="foundation-section">
       <div class="foundation-header">
-        <div class="section-eyebrow">A Well Studio Program</div>
+        <div class="section-eyebrow">A Wellness Collective Program</div>
         <h2 class="section-title">The <em>Foundation</em></h2>
         <p style="font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 0.5rem;">For Young Female Athletes · Ages 9–14</p>
       </div>
@@ -749,7 +790,7 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
       <div class="foundation-grid">
         <div>
           <p class="story-body">The Foundation is about giving young girls exactly that — a foundation. A place to build strength, discover what their bodies can do, and show up for themselves in a room full of young women doing the same thing.</p>
-          <p class="story-body">2 sessions per week this summer — choose what fits best into your schedule. Fall schedule to be determined. Sessions held at The Well Studio · 1920 Turning Leaf Lane, Alexandria MN</p>
+          <p class="story-body">2 sessions per week this summer — choose what fits best into your schedule. Fall schedule to be determined. Sessions held at The Wellness Collective Studios · 1920 Turning Leaf Lane, Alexandria MN</p>
 
           <div class="foundation-pillars">
             <div class="pillar">
@@ -838,26 +879,25 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
   <div id="section-retreat" class="page-section">
 
     <div class="retreat-hero">
-      <div class="eyebrow">A Well Studio Event</div>
+      <div class="eyebrow">A Wellness Collective Event</div>
       <h1>Restore</h1>
       <h2>A Women's Weekend Retreat</h2>
       <div class="retreat-badges">
-        <span class="retreat-badge">October 9–11, 2026</span>
+        <span class="retreat-badge">Date to Be Announced</span>
         <span class="retreat-badge">Lake Osakis, Minnesota</span>
         <span class="retreat-badge">For Women · 18+</span>
-        <span class="retreat-badge">11 Spots Only</span>
       </div>
       <div style="margin-top: 2rem;">
-        <button class="btn-primary" onclick="document.getElementById('retreat-register').scrollIntoView({behavior:'smooth'})">Sign Me Up!</button>
+        <button class="btn-primary" onclick="document.getElementById('retreat-register').scrollIntoView({behavior:'smooth'})">Join the Waitlist</button>
       </div>
     </div>
 
     <section style="padding: 5rem 4rem; max-width: 1100px; margin: 0 auto;">
       <div style="text-align: center; margin-bottom: 3rem; background: var(--sage-pale); padding: 2rem; border-radius: 4px;">
-        <div class="section-eyebrow">Registration is Open!</div>
-        <h2 class="section-title">Save your spot <em>today</em></h2>
-        <p style="font-size: 0.85rem; color: var(--text-light); line-height: 1.8; max-width: 600px; margin: 0 auto 1.5rem;">11 spots. Early bird pricing through July 31st. Reserve with just a $50 deposit.</p>
-        <button class="btn-primary" onclick="document.getElementById('retreat-register').scrollIntoView({behavior:'smooth'})">Sign Me Up!</button>
+        <div class="section-eyebrow">Worth the Wait</div>
+        <h2 class="section-title">A new date is <em>coming soon</em></h2>
+        <p style="font-size: 0.85rem; color: var(--text-light); line-height: 1.8; max-width: 650px; margin: 0 auto 1.5rem;">Here's the honest truth: the studio has grown faster than we ever expected, and Restore deserves our full attention — not a rushed weekend squeezed in around it. So we're taking the time to plan it right. A new date is coming, and it'll be worth it. Join the waitlist to be the first to know.</p>
+        <button class="btn-primary" onclick="document.getElementById('retreat-register').scrollIntoView({behavior:'smooth'})">Join the Waitlist</button>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 4rem; align-items: start;">
@@ -889,7 +929,7 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
         <h2 class="section-title" style="text-align:center; margin-bottom: 2rem;">A rhythm of rest <em>and renewal.</em></h2>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
           <div style="background: white; border: 1px solid var(--border); border-radius: 4px; padding: 2rem;">
-            <div class="section-eyebrow">Friday · Oct 9</div>
+            <div class="section-eyebrow">Day One · Friday</div>
             <div style="font-size:0.8rem; color:var(--text-light); line-height:1.9;">
               <div style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);"><strong>4:00 PM</strong> Arrival + settle in</div>
               <div style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);"><strong>Evening</strong> Welcome dinner, introductions, intentions</div>
@@ -897,7 +937,7 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
             </div>
           </div>
           <div style="background: white; border: 1px solid var(--border); border-radius: 4px; padding: 2rem;">
-            <div class="section-eyebrow">Saturday · Oct 10</div>
+            <div class="section-eyebrow">Day Two · Saturday</div>
             <div style="font-size:0.8rem; color:var(--text-light); line-height:1.9;">
               <div style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);"><strong>Morning</strong> Movement + nourishing breakfast</div>
               <div style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);"><strong>Midday</strong> Free time — kayak, sauna, journaling, rest</div>
@@ -906,7 +946,7 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
             </div>
           </div>
           <div style="background: white; border: 1px solid var(--border); border-radius: 4px; padding: 2rem;">
-            <div class="section-eyebrow">Sunday · Oct 11</div>
+            <div class="section-eyebrow">Day Three · Sunday</div>
             <div style="font-size:0.8rem; color:var(--text-light); line-height:1.9;">
               <div style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);"><strong>Morning</strong> Gentle movement + breakfast</div>
               <div style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);"><strong>Optional</strong> Local church services</div>
@@ -931,44 +971,18 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
         </div>
       </div>
 
-      <!-- Pricing + Registration -->
+      <!-- Waitlist -->
       <div id="retreat-register">
-        <div class="section-eyebrow" style="text-align:center;">Investment</div>
-        <h2 class="section-title" style="text-align:center; margin-bottom: 0.5rem;">Reserve your <em>spot.</em></h2>
-        <p style="text-align:center; font-size:0.8rem; color:var(--text-light); margin-bottom: 2rem;">Early bird pricing through July 31st. Spot reserved with $50 deposit.</p>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
-          <div style="background: var(--sage-pale); border: 1px solid var(--sage-light); border-radius: 4px; padding: 2.5rem; text-align:center;">
-            <div class="section-eyebrow">Well Member</div>
-            <div style="font-family:'Cormorant Garamond',serif; font-size: 3rem; color: var(--sage);">$500</div>
-            <div style="font-size:0.72rem; color:var(--text-light);">Early bird · through July 31st</div>
-            <div style="font-size:0.72rem; color:var(--text-light); margin-bottom:1.5rem;">$750 after July 31st</div>
-            <div style="font-size:0.75rem; color:var(--text); margin-bottom: 0.5rem;">$50 deposit to reserve</div>
-            <div style="font-size:0.75rem; color:var(--text); margin-bottom: 1.5rem;">Balance due September 1st · or split into 3 payments</div>
-            <button class="btn-primary" onclick="document.getElementById('retreat-form').scrollIntoView({behavior:'smooth'})">Reserve My Spot →</button>
-          </div>
-          <div style="background: white; border: 1px solid var(--border); border-radius: 4px; padding: 2.5rem; text-align:center;">
-            <div class="section-eyebrow">Non-Member</div>
-            <div style="font-family:'Cormorant Garamond',serif; font-size: 3rem; color: var(--sage);">$600</div>
-            <div style="font-size:0.72rem; color:var(--text-light);">Early bird · through July 31st</div>
-            <div style="font-size:0.72rem; color:var(--text-light); margin-bottom:1.5rem;">$750 after July 31st</div>
-            <div style="font-size:0.75rem; color:var(--text); margin-bottom: 0.5rem;">$50 deposit to reserve</div>
-            <div style="font-size:0.75rem; color:var(--text); margin-bottom: 1.5rem;">Balance due September 1st · or split into 3 payments</div>
-            <button class="btn-outline" onclick="document.getElementById('retreat-form').scrollIntoView({behavior:'smooth'})">Reserve My Spot →</button>
-          </div>
-        </div>
-
-        <div style="font-size:0.75rem; color:var(--text-light); text-align:center; margin-bottom:3rem; line-height:1.8;">
-          <a href="https://buy.stripe.com/4gM4gydDk8Be9p36AyeZ202" style="color:var(--sage);">Join the membership</a> and save $100.<br>
-          Payment plan available — Briana will set this up with you after registration.<br>
-          <em>Full refund (including deposit) through September 1st. After September 1st: 50% refund.</em>
-        </div>
+        <div class="section-eyebrow" style="text-align:center;">Be the First to Know</div>
+        <h2 class="section-title" style="text-align:center; margin-bottom: 0.5rem;">Join the <em>waitlist.</em></h2>
+        <p style="text-align:center; font-size:0.8rem; color:var(--text-light); margin-bottom: 2rem; max-width:600px; margin-left:auto; margin-right:auto;">No payment, no commitment — just drop your info below and Briana will personally reach out the moment the new date and pricing are set, before it's announced anywhere else. <a href="https://buy.stripe.com/4gM4gydDk8Be9p36AyeZ202" style="color:var(--sage);">Wellness Collective members</a> get early access and a discount when registration opens.</p>
 
         <!-- Registration Form -->
         <div id="retreat-form" style="background: white; border: 1px solid var(--border); border-radius: 4px; padding: 3rem; max-width: 700px; margin: 0 auto;">
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--taupe-dark); margin-bottom:0.5rem;">Reserve Your Spot</h3>
-          <p style="font-size:0.8rem; color:var(--text-light); margin-bottom: 2rem; line-height:1.7;">Briana will reach out within 48 hours to confirm your spot and collect your $50 deposit via Venmo or card.</p>
-          <form onsubmit="handleRetreatForm(event)" class="form-grid">
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--taupe-dark); margin-bottom:0.5rem;">Join the Waitlist</h3>
+          <p style="font-size:0.8rem; color:var(--text-light); margin-bottom: 2rem; line-height:1.7;">We'll email you as soon as Restore's new date and pricing are announced.</p>
+          <form action="https://formspree.io/f/xbdbveoj" method="POST" onsubmit="handleFormSubmit(event, 'retreat-success')" class="form-grid">
+            <input type="hidden" name="_subject" value="Restore Retreat Waitlist — via alexandriawell.com" />
             <div class="form-group">
               <label>First Name *</label>
               <input type="text" name="first_name" placeholder="Your first name" required />
@@ -982,38 +996,18 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
               <input type="email" name="email" placeholder="your@email.com" required />
             </div>
             <div class="form-group">
-              <label>Phone *</label>
-              <input type="tel" name="phone" placeholder="(000) 000-0000" required />
-            </div>
-            <div class="form-group form-full">
-              <label>Payment Preference</label>
-              <select name="payment_preference" style="font-family:'Montserrat',sans-serif; font-size:0.8rem; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:2px; background:var(--cream); color:var(--text);">
-                <option>Pay in full</option>
-                <option>2 payments</option>
-                <option>3 payments</option>
-              </select>
+              <label>Phone</label>
+              <input type="tel" name="phone" placeholder="(000) 000-0000" />
             </div>
             <div class="form-group form-full">
               <label>Anything Briana should know?</label>
-              <textarea name="notes" placeholder="Dietary restrictions, questions, anything at all..." rows="3" style="resize:vertical;"></textarea>
+              <textarea name="notes" placeholder="Questions, anything at all..." rows="3" style="resize:vertical;"></textarea>
             </div>
             <div class="form-full">
-              <button type="submit" class="btn-primary" style="width:100%;">Reserve My Spot — $50 Deposit →</button>
+              <button type="submit" class="btn-primary" style="width:100%;">Join the Waitlist →</button>
             </div>
           </form>
-          <div class="form-success" id="retreat-success" style="margin-top:1rem;">You're on the list! Briana will reach out within 48 hours to confirm your spot and collect your deposit.</div>
-
-          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);">
-            <h4 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--taupe-dark); margin-bottom:0.75rem;">Join the Waitlist</h4>
-            <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Spots are extremely limited. If Restore sells out, get on the waitlist and you'll be first to know if a spot opens up.</p>
-            <form onsubmit="handleWaitlist(event)" style="display:flex; flex-direction:column; gap:0.75rem;">
-              <input type="text" name="name" placeholder="Your name" style="font-family:'Montserrat',sans-serif; font-size:0.8rem; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:2px; background:var(--cream); color:var(--text);" />
-              <input type="email" name="email" placeholder="Your email" style="font-family:'Montserrat',sans-serif; font-size:0.8rem; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:2px; background:var(--cream); color:var(--text);" />
-              <input type="tel" name="phone" placeholder="Phone (optional)" style="font-family:'Montserrat',sans-serif; font-size:0.8rem; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:2px; background:var(--cream); color:var(--text);" />
-              <button type="submit" class="btn-outline">Join the Waitlist →</button>
-            </form>
-            <div class="form-success" id="waitlist-success">You're on the waitlist! We'll be in touch.</div>
-          </div>
+          <div class="form-success" id="retreat-success" style="margin-top:1rem;">You're on the list! Briana will reach out as soon as the new date and pricing are announced.</div>
         </div>
       </div>
     </section>
@@ -1046,7 +1040,7 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
   <footer>
     <div>
       <div class="footer-logo"><span class="well">WELL</span>NESS COLLECTIVE</div>
-      <div class="footer-tagline">refresh · restore · renew at the Well</div>
+      <div class="footer-tagline">refresh · restore · renew at The Wellness Collective</div>
       <div style="font-size:0.65rem; color:rgba(255,255,255,0.5); margin-top:0.5rem;">1920 Turning Leaf Lane · Alexandria, MN</div>
       <div style="font-size:0.65rem; color:rgba(255,255,255,0.5); margin-top:0.25rem;"><a href="tel:9703809595" style="color:rgba(255,255,255,0.5);">970-380-9595</a> · <a href="mailto:briana.weber@icloud.com" style="color:rgba(255,255,255,0.5);">briana.weber@icloud.com</a></div>
     </div>
@@ -1061,7 +1055,7 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
       <a href="lmnt-order.html">Order LMNT</a>
       <a href="mailto:briana.weber@icloud.com" target="_blank">Book Now</a>
     </div>
-    <div class="footer-copy">© 2026 The Well Studio · Briana Weber · Alexandria, MN</div>
+    <div class="footer-copy">© 2026 The Wellness Collective Studios · Briana Weber · Alexandria, MN</div>
   </footer>
   <script>
     function showSection(name) {
@@ -1107,17 +1101,6 @@ Only 11 Spots Remaining &middot; Early Bird Pricing Ends July 31
       document.getElementById('foundation-success').style.display = 'block';
     }
 
-    function handleRetreatForm(event) {
-      event.preventDefault();
-      event.target.style.display = 'none';
-      document.getElementById('retreat-success').style.display = 'block';
-    }
-
-    function handleWaitlist(event) {
-      event.preventDefault();
-      event.target.style.display = 'none';
-      document.getElementById('waitlist-success').style.display = 'block';
-    }
   </script>
 </body>
 </html>
