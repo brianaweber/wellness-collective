@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSVP · Drop It Like It's Haunted | The Wellness Collective Studios</title>
+<meta name="description" content="RSVP for Drop It Like It's Haunted — a Halloween Happy Hour at The Wellness Collective Studios. Friday, October 30, 6:00–7:30 PM.">
+<meta property="og:title" content="Drop It Like It's Haunted · Halloween Happy Hour RSVP">
+<meta property="og:description" content="A TWC workout, mocktails, a costume contest & community. Friday, Oct 30 · 6:00–7:30 PM · The Wellness Collective Studios.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alexandriawell.com/haunted-rsvp.html">
+<meta property="og:image" content="https://alexandriawell.com/haunted-happy-hour.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #3a3228;
+    --ink-soft: #5c5042;
+    --rose: #7a8c6e;
+    --rose-deep: #6b7355;
+    --blush: #eef1eb;
+    --blush-2: #dfe5da;
+    --cream: #faf7f2;
+    --line: #e0d8ce;
+    --muted: #7a6e62;
+    --error: #b3261e;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255,255,255,.75) 0 2px, transparent 3px),
+      radial-gradient(circle at 80% 22%, rgba(255,255,255,.6) 0 1.5px, transparent 2.5px),
+      radial-gradient(circle at 60% 70%, rgba(255,255,255,.5) 0 2px, transparent 3px),
+      radial-gradient(ellipse at top, #dfe5da 0%, var(--blush) 40%, var(--cream) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 32px 16px 56px; }
+
+  /* ---------- Hero ---------- */
+  .brand {
+    display: block; text-decoration: none; text-align: center; font-size: 12px; letter-spacing: .32em; text-transform: uppercase;
+    color: var(--ink-soft); font-weight: 500; margin-bottom: 22px;
+  }
+  .hero { text-align: center; position: relative; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500;
+    font-size: clamp(40px, 11vw, 68px); line-height: 1; margin: 0; letter-spacing: .005em;
+  }
+  .hero h1 .haunted { display: block; color: var(--rose); font-style: italic; }
+  .flyer { display: block; width: 100%; max-width: 420px; margin: 26px auto 0; border-radius: 14px; box-shadow: 0 12px 34px rgba(92,80,66,.18); }
+  .hero .sub {
+    margin-top: 12px; font-size: clamp(13px, 3.6vw, 17px); letter-spacing: .34em;
+    text-transform: uppercase; font-weight: 500;
+  }
+  .spark { position: absolute; color: var(--sand, #c4a882); font-size: 22px; opacity: .85; }
+  .spark.s1 { top: -6px; left: 6%; }
+  .spark.s2 { top: 38%; right: 2%; font-size: 16px; }
+  .spark.s3 { bottom: 22%; left: 0; font-size: 14px; color: var(--ink); }
+  .tagline { text-align: center; font-size: 18px; margin: 22px auto 0; max-width: 460px; color: var(--ink-soft); }
+
+  /* ---------- Event card ---------- */
+  .card {
+    background: rgba(255,255,255,.88); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: 0 10px 34px rgba(92, 80, 66, .10); padding: 24px 20px; margin-top: 28px;
+  }
+  .facts { display: grid; gap: 14px; }
+  .fact { display: flex; gap: 14px; align-items: flex-start; }
+  .fact .ic {
+    flex: 0 0 38px; height: 38px; border-radius: 50%; background: var(--blush);
+    display: grid; place-items: center; font-size: 18px;
+  }
+  .fact b { display: block; font-weight: 600; }
+  .fact span { color: var(--muted); font-size: 15px; }
+  .cal-link { color: var(--rose-deep); font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid currentColor; }
+
+  .expect { margin-top: 22px; padding-top: 20px; border-top: 1px dashed var(--line); }
+  .expect h2, .form-head h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; text-transform: uppercase;
+    letter-spacing: .02em; font-size: 28px; margin: 0 0 12px; text-transform: none;
+  }
+  .expect ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .expect li { display: flex; gap: 10px; }
+  .note { margin-top: 14px; font-size: 15px; color: var(--ink-soft); background: var(--blush); border-radius: 10px; padding: 12px 14px; }
+
+  /* ---------- Form ---------- */
+  .form-head p { margin: 0 0 18px; color: var(--muted); font-size: 15px; }
+  .row { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 520px) { .row { grid-template-columns: 1fr; } }
+  .field { margin-bottom: 16px; }
+  label, legend { display: block; font-weight: 500; font-size: 15px; margin-bottom: 6px; }
+  .req { color: var(--rose-deep); }
+  .opt { color: var(--muted); font-weight: 400; font-size: 13px; }
+  input[type=text], input[type=email], input[type=tel], textarea, select {
+    width: 100%; font: inherit; font-size: 16px; color: var(--ink);
+    padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  textarea { min-height: 84px; resize: vertical; }
+  input:focus, textarea:focus, select:focus {
+    outline: none; border-color: var(--rose); box-shadow: 0 0 0 3px rgba(122,140,110,.2);
+  }
+  fieldset { border: 0; padding: 0; margin: 0 0 16px; }
+  .choices { display: grid; gap: 8px; }
+  .choice {
+    display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--line);
+    border-radius: 10px; background: #fff; cursor: pointer; font-weight: 400; margin: 0;
+  }
+  .choice:has(input:checked) { border-color: var(--rose); background: #f4f6f1; }
+  .choice input { accent-color: var(--rose-deep); width: 18px; height: 18px; margin: 0; }
+  .friend-box { display: none; padding: 16px; border-radius: 10px; background: var(--blush); margin-bottom: 16px; }
+  .friend-box.show { display: block; }
+  .friend-box .field:last-child { margin-bottom: 0; }
+  .waiver { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: 14px; color: var(--ink-soft); }
+  .waiver input { accent-color: var(--rose-deep); width: 18px; height: 18px; margin-top: 3px; flex: 0 0 18px; }
+  .hp { position: absolute; left: -9999px; }
+
+  button {
+    width: 100%; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .16em;
+    text-transform: uppercase; color: #fff; background: var(--rose); border: 0; border-radius: 10px;
+    padding: 16px; cursor: pointer; transition: background .15s, transform .1s; margin-top: 6px;
+  }
+  button:hover { background: var(--rose-deep); }
+  button:active { transform: scale(.99); }
+  button:disabled { opacity: .6; cursor: wait; }
+  .err-msg { display: none; margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: #fdecea; color: var(--error); font-size: 15px; }
+  .err-msg.show { display: block; }
+
+  .success { display: none; text-align: center; padding: 10px 4px; }
+  .success.show { display: block; }
+  .success .big { font-size: 46px; }
+  .success h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 34px; margin: 6px 0 8px; }
+  .success p { color: var(--ink-soft); margin: 0 0 14px; }
+
+  footer { text-align: center; margin-top: 30px; font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <a class="brand" href="https://alexandriawell.com/">The Wellness Collective Studios</a>
+
+  <header class="hero">
+    <span class="spark s1">✦</span><span class="spark s2">✦</span><span class="spark s3">🦇</span>
+    <h1>Drop It Like It's <span class="haunted">Haunted</span></h1>
+    <div class="sub">Halloween Happy Hour</div>
+  </header>
+
+  <img class="flyer" src="haunted-happy-hour.jpg" alt="Drop It Like It's Haunted Halloween Happy Hour flyer — Friday, October 30, 2026, 6:00–7:30 PM at The Wellness Collective Studios">
+
+  <p class="tagline">Come for the workout. Stay for the mocktails, laughs, and community. 🖤</p>
+
+  <section class="card">
+    <div class="facts">
+      <div class="fact"><div class="ic">📅</div><div><b>Friday, October 30</b><span>6:00 – 7:30 PM</span></div></div>
+      <div class="fact"><div class="ic">📍</div><div><b>The Wellness Collective Studios</b><span>1920 Turning Leaf Lane · Alexandria, MN</span></div></div>
+      <div class="fact"><div class="ic">🎃</div><div><b>Costumes optional</b><span>…but there's a prize for best costume!</span></div></div>
+      <div class="fact"><div class="ic">🗓️</div><div>
+        <a class="cal-link" target="_blank" rel="noopener"
+           href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Drop%20It%20Like%20It%27s%20Haunted%20%E2%80%93%20Halloween%20Happy%20Hour&dates=20261030T230000Z/20261031T003000Z&details=A%20TWC%20workout%2C%20mocktails%2C%20costume%20contest%20%26%20community.&location=The%20Wellness%20Collective%20Studios%2C%201920%20Turning%20Leaf%20Lane%2C%20Alexandria%2C%20MN">Add to Google Calendar</a>
+      </div></div>
+    </div>
+
+    <div class="expect">
+      <h2>What to expect</h2>
+      <ul>
+        <li>🏋️‍♀️ <span>A fun TWC workout to kick things off</span></li>
+        <li>🍸 <span>Delicious mocktails afterward</span></li>
+        <li>🎃 <span>Costume contest — with a prize!</span></li>
+        <li>🤍 <span>Connection + community</span></li>
+        <li>✨ <span>Plenty of Halloween fun</span></li>
+      </ul>
+      <div class="note">Whether you're already part of the TWC community or you've been wanting to see what we're all about — you belong here. Bring a friend!</div>
+    </div>
+  </section>
+
+  <section class="card" id="rsvp">
+    <form id="rsvp-form" action="https://formspree.io/f/xbgdqgpq" method="POST" novalidate>
+      <div class="form-head">
+        <h2>Save your spot</h2>
+        <p>Takes less than a minute. We'll use this to plan the workout space and mocktails.</p>
+      </div>
+
+      <input type="hidden" name="_subject" value="New RSVP: Drop It Like It's Haunted (Oct 30)">
+      <input type="hidden" name="event" value="Drop It Like It's Haunted – Halloween Happy Hour – Fri Oct 30, 2026, 6:00–7:30 PM">
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="row">
+        <div class="field">
+          <label for="first">First name <span class="req">*</span></label>
+          <input type="text" id="first" name="first_name" autocomplete="given-name" required>
+        </div>
+        <div class="field">
+          <label for="last">Last name <span class="req">*</span></label>
+          <input type="text" id="last" name="last_name" autocomplete="family-name" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone <span class="opt">(for day-of updates)</span></label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel">
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Are you a TWC member? <span class="req">*</span></legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="member_status" value="Current member" required> Yes, I'm a current member</label>
+          <label class="choice"><input type="radio" name="member_status" value="Been to a class, not a member"> I've taken a class, but I'm not a member</label>
+          <label class="choice"><input type="radio" name="member_status" value="Brand new to TWC"> Nope — brand new to TWC!</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Bringing a friend? <span class="req">*</span></legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="bringing_friend" value="No, just me" required> Just me</label>
+          <label class="choice"><input type="radio" name="bringing_friend" value="Yes"> Yes, I'm bringing a friend</label>
+        </div>
+      </fieldset>
+
+      <div class="friend-box" id="friend-box">
+        <div class="field">
+          <label for="friend-name">Friend's name <span class="req">*</span></label>
+          <input type="text" id="friend-name" name="friend_name">
+        </div>
+        <div class="field">
+          <label for="friend-email">Friend's email <span class="opt">(optional — so we can send them details)</span></label>
+          <input type="email" id="friend-email" name="friend_email">
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Planning to dress up? <span class="opt">(no pressure!)</span></legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="costume" value="Yes — entering the contest"> Absolutely — I'm in it to win it 🏆</label>
+          <label class="choice"><input type="radio" name="costume" value="Maybe"> Maybe… still deciding 👻</label>
+          <label class="choice"><input type="radio" name="costume" value="No"> Coming in workout clothes</label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="notes">Injuries, modifications, or anything we should know? <span class="opt">(optional)</span></label>
+        <textarea id="notes" name="notes"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="waiver">
+          <input type="checkbox" name="waiver" value="Agreed" required>
+          <span>I understand this event includes physical activity, I'm participating at my own risk, and I'll listen to my body and modify as needed. <span class="req">*</span></span>
+        </label>
+      </div>
+
+      <button type="submit" id="submit-btn">RSVP — I'm in! 💀</button>
+      <div class="err-msg" id="err-msg" role="alert"></div>
+    </form>
+
+    <div class="success" id="success" role="status" aria-live="polite">
+      <div class="big">🖤</div>
+      <h2>You're on the list!</h2>
+      <p>We can't wait to see you <b>Friday, October 30 at 6:00 PM</b> at The Wellness Collective Studios. Bring water, a friend, and your best costume (if you dare).</p>
+      <a class="cal-link" target="_blank" rel="noopener"
+         href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Drop%20It%20Like%20It%27s%20Haunted%20%E2%80%93%20Halloween%20Happy%20Hour&dates=20261030T230000Z/20261031T003000Z&details=A%20TWC%20workout%2C%20mocktails%2C%20costume%20contest%20%26%20community.&location=The%20Wellness%20Collective%20Studios%2C%201920%20Turning%20Leaf%20Lane%2C%20Alexandria%2C%20MN">Add it to your calendar</a>
+    </div>
+  </section>
+
+  <footer>Good workouts. Delicious drinks. Great company. ✨<br><a href="https://alexandriawell.com/" style="color:inherit">The Wellness Collective · The Well &amp; The Loft Studios</a></footer>
+</main>
+
+<script>
+(function () {
+  var form = document.getElementById('rsvp-form');
+  var btn = document.getElementById('submit-btn');
+  var errBox = document.getElementById('err-msg');
+  var success = document.getElementById('success');
+  var friendBox = document.getElementById('friend-box');
+  var friendName = document.getElementById('friend-name');
+
+  // Show/hide friend fields
+  form.querySelectorAll('input[name="bringing_friend"]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      var bringing = form.querySelector('input[name="bringing_friend"]:checked').value === 'Yes';
+      friendBox.classList.toggle('show', bringing);
+      friendName.required = bringing;
+      if (!bringing) { friendName.value = ''; document.getElementById('friend-email').value = ''; }
+    });
+  });
+
+  function showError(msg) {
+    errBox.textContent = msg;
+    errBox.classList.add('show');
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errBox.classList.remove('show');
+
+    if (!form.checkValidity()) {
+      var firstBad = form.querySelector(':invalid');
+      form.reportValidity();
+      if (firstBad) firstBad.focus();
+      showError('Please fill in the required fields marked with *.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function (res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        success.classList.add('show');
+        document.getElementById('rsvp').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+      return res.json().then(function (data) {
+        var msg = (data && data.errors && data.errors.length)
+          ? data.errors.map(function (x) { return x.message; }).join(', ')
+          : 'Something went wrong.';
+        throw new Error(msg);
+      }, function () { throw new Error('Something went wrong.'); });
+    })
+    .catch(function (err) {
+      showError((err && err.message ? err.message : 'Something went wrong.') +
+        ' Your RSVP was NOT sent — please try again, or message us on Facebook to save your spot.');
+      btn.disabled = false;
+      btn.textContent = "RSVP — I'm in! 💀";
+    });
+  });
+})();
+</script>
+</body>
+</html>
