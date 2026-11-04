@@ -342,6 +342,49 @@
       .foundation-pillars { grid-template-columns: 1fr; }
       .hero-title { font-size: 2.2rem; }
     }
+
+    /* THANK YOU + NOVEMBER (Nov 2026) */
+    .ty-section { background: linear-gradient(135deg, var(--sage), var(--olive)); padding: 4rem 2rem; color: white; }
+    .ty-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; align-items: center; }
+    .ty-photo { width: 100%; max-width: 400px; margin: 0 auto; display: block; border-radius: 12px; box-shadow: 0 14px 34px rgba(0,0,0,0.22); transform: rotate(-1.5deg); border: 6px solid var(--cream); }
+    .ty-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.4vw, 2.8rem); font-weight: 300; line-height: 1.15; margin-bottom: 1rem; color: white; }
+    .ty-title em { color: var(--sand-light); }
+    .ty-body { font-size: 0.86rem; line-height: 1.9; color: rgba(255,255,255,0.92); margin-bottom: 1.5rem; }
+    .ty-winners { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 12px; padding: 1.4rem 1.5rem; }
+    .ty-winners h3 { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--sand-light); margin-bottom: 0.4rem; }
+    .ty-winners p.note { font-size: 0.78rem; color: rgba(255,255,255,0.85); margin-bottom: 0.9rem; font-style: italic; }
+    .ty-names { list-style: none; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .ty-names li { font-size: 0.72rem; background: var(--cream); color: var(--taupe-dark); padding: 0.32rem 0.75rem; border-radius: 20px; font-weight: 500; }
+
+    .nov-section { background: var(--cream); padding: 5rem 2rem; text-align: center; }
+    .nov-intro { font-size: 0.88rem; color: var(--text-light); max-width: 640px; margin: 0 auto 3rem; line-height: 1.9; }
+    .nov-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; text-align: left; }
+    .nov-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 2rem 1.75rem; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+    .nov-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--sage); }
+    .nov-card:nth-child(2)::before { background: var(--sand); }
+    .nov-card:nth-child(3)::before { background: var(--taupe); }
+    .nov-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: var(--sage-light); line-height: 1; margin-bottom: 0.5rem; }
+    .nov-kicker { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--sand); margin-bottom: 0.4rem; }
+    .nov-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 500; color: var(--taupe-dark); line-height: 1.2; margin-bottom: 0.9rem; }
+    .nov-card p { font-size: 0.8rem; line-height: 1.8; color: var(--text-light); margin-bottom: 1rem; }
+    .nov-highlight { background: var(--sage-pale); border-radius: 10px; padding: 0.9rem 1rem; font-size: 0.78rem; line-height: 1.7; color: var(--taupe-dark); margin-bottom: 1.25rem; }
+    .nov-highlight strong { color: var(--olive); }
+    .nov-link { margin-top: auto; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); }
+    .nov-link:hover { color: var(--olive); }
+    .nov-footer { max-width: 700px; margin: 3rem auto 0; font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic; color: var(--taupe-dark); line-height: 1.5; }
+    .nov-footer span { display: block; font-family: 'Montserrat', sans-serif; font-style: normal; font-size: 0.8rem; color: var(--text-light); margin: 0.75rem 0 1.5rem; }
+
+    /* November schedule grid */
+    .sched-nov { table-layout: fixed; min-width: 820px; }
+    .sched-nov th:nth-child(1) { width: 70px; } .sched-nov th:nth-child(2) { width: 88px; }
+    .sched-nov td.studio { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); background: var(--sage-pale); white-space: nowrap; font-weight: 600; }
+    .sched-nov td.time { font-size: 0.95rem; }
+    .sched-nov td.time small { display: block; font-size: 0.58rem; letter-spacing: 0.12em; color: var(--text-light); font-weight: 500; }
+    .sched-nov tbody tr { background: white !important; }
+    .sched-nov tbody tr.well-row td { border-bottom: 2px solid var(--sage-light); }
+    .sched-nov td.hl { font-size: 0.76rem; }
+    .sched-nov td.res { color: var(--text-light); font-style: italic; font-size: 0.72rem; }
+    .sched-banner { background: var(--sage); color: white; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; text-align: center; padding: 0.7rem 1rem; border-radius: 8px 8px 0 0; }
   </style>
 </head>
 <body>
@@ -386,20 +429,68 @@
       </div>
     </section>
 
-    <!-- HALLOWEEN HAPPY HOUR EVENT BANNER -->
-<section style="background: linear-gradient(135deg, var(--sage), var(--olive)); padding: 3rem 2rem; color: white;">
-<div style="max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; align-items: center;">
-<img src="haunted-happy-hour.jpg" alt="Drop It Like It's Haunted Halloween Happy Hour — Friday, October 30, 2026, 6:00–7:30 PM at The Wellness Collective Studios" style="width: 100%; max-width: 440px; margin: 0 auto; display: block; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-<div style="text-align: center;">
-<div class="section-eyebrow" style="color: var(--sand-light);">Friday &middot; Oct 30 &middot; 6&ndash;7:30 PM</div>
-<h2 style="font-family:'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 0.75rem; color: white;">Drop It Like It's Haunted:<br><em style="color: var(--sand-light);">Halloween Happy Hour</em></h2>
-<p style="font-size: 0.85rem; line-height: 1.8; max-width: 460px; margin: 0 auto 1.5rem; color: rgba(255,255,255,0.9);">
-Workout &middot; Mocktails &middot; Community. Grab your friends, bring your best spooky spirit, and join us for a Halloween workout followed by mocktails and good company at The Wellness Collective Studios!
-</p>
-<a class="btn-primary" href="haunted-rsvp.html" style="display:inline-block; text-decoration:none; background: var(--cream); color: var(--taupe-dark); margin-bottom: 1rem;">RSVP — Save Your Spot →</a>
-<div style="font-style: italic; font-size: 0.8rem; color: rgba(255,255,255,0.9);">1920 Turning Leaf Lane &middot; Alexandria, MN</div>
-</div>
-</div>
+    <!-- THANK YOU: DROP IT LIKE IT'S HAUNTED -->
+<section class="ty-section">
+  <div class="ty-inner">
+    <img class="ty-photo" src="haunted-thank-you.jpg" alt="The Wellness Collective team in costume at the Drop It Like It's Haunted Halloween event">
+    <div>
+      <div class="section-eyebrow" style="color: var(--sand-light);">Drop It Like It's Haunted &middot; Thank You!</div>
+      <h2 class="ty-title">Turns out it wasn't spooky at all &mdash;<br><em>just a really fun time.</em></h2>
+      <p class="ty-body">THANK YOU to our incredible team and to every single person who showed up and made our first Halloween event such a success. We had so much fun, and we can't wait to see you all back in the studios!</p>
+      <div class="ty-winners">
+        <h3>Congrats to our giveaway winners!</h3>
+        <p class="note">Pick up your gift at the front desk next time you're in the studio.</p>
+        <ul class="ty-names">
+          <li>Brooke Frisell</li>
+          <li>Joanna Bring</li>
+          <li>April Kalal</li>
+          <li>Amber Jensen</li>
+          <li>Sheyenne Ritter</li>
+          <li>Amanda Anderson</li>
+          <li>Brooke Franzen</li>
+          <li>Tonya Bitzan</li>
+          <li>Jessica Davis</li>
+          <li>Amy Westrom</li>
+          <li>Mandy Johnson</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOVEMBER: TOGETHER = STRONG -->
+<section class="nov-section">
+  <div class="section-eyebrow">This November at TWC</div>
+  <h2 class="section-title" style="margin-bottom: 1rem;">Together = <em>Strong.</em></h2>
+  <p class="nov-intro">Our studio is built on the belief that true wellness happens on all fronts &mdash; physical, mental, emotional, and spiritual. This month we're bringing you more ways to get strong <strong>and</strong> strengthen others.</p>
+  <div class="nov-grid">
+    <div class="nov-card">
+      <div class="nov-num">01</div>
+      <div class="nov-kicker">Partnership</div>
+      <h3>Valhalla Lifting Club</h3>
+      <p>We couldn't be more proud to partner with this community of strength. Purchase a punch card <em>or</em> membership at TWC and you can add on a deeply discounted, all-access Valhalla membership.</p>
+      <div class="nov-highlight"><strong>$40/month + tax</strong> (about $43) for all-access Valhalla. Not sure yet? Start with a day pass and see what you think!</div>
+      <a class="nov-link" href="https://valhallaliftingclub.com/" target="_blank" rel="noopener">Visit Valhalla &rarr;</a>
+    </div>
+    <div class="nov-card">
+      <div class="nov-num">02</div>
+      <div class="nov-kicker">Give Back</div>
+      <h3>Safe Families for Children</h3>
+      <p>SFFC practices radical hospitality, disruptive generosity, and intentional compassion &mdash; addressing the social isolation, limited resources, and parental stress that often lead to foster care and family separation. We can get behind that!</p>
+      <div class="nov-highlight"><strong>Every dollar you donate through us</strong> is an entry to win a free month at TWC for you <em>and</em> a friend.</div>
+      <a class="nov-link" href="mailto:briana.weber@icloud.com?subject=Safe%20Families%20Donation">Ask how to donate &rarr;</a>
+    </div>
+    <div class="nov-card">
+      <div class="nov-num">03</div>
+      <div class="nov-kicker">Giveaway &middot; Nov 20</div>
+      <h3>Dragonfly Mental Wellness Foundation</h3>
+      <p>Dragonfly supports local organizations and families, and this month they're hosting <strong>The Empty Chair Gala</strong> on November 20 at Willow Creek. We're joining in on the chair decorating &mdash; and giving away 2 gala tickets!</p>
+      <div class="nov-highlight"><strong>How to enter:</strong> help decorate our auction chair, or share our posts on social media (tag us so we see it!). Each counts as an entry.</div>
+      <a class="nov-link" href="https://dragonflymentalwellness.com/" target="_blank" rel="noopener">Learn about Dragonfly &rarr;</a>
+    </div>
+  </div>
+  <p class="nov-footer">Is it a lot? Yes! Are we also adding more class times? Also yes!<span>We believe the gains &mdash; inside and out &mdash; will be immeasurable. We hope you'll join us.</span></p>
+  <button class="btn-primary" onclick="showSection('classes')">See the November Schedule &rarr;</button>
 </section>
 
 <!-- MEMBERSHIP CTA STRIP -->
@@ -621,20 +712,27 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
         <script async src="https://brandedweb.mindbodyonline.com/embed/widget.js"></script>
         <!-- Mindbody Schedules widget end -->
       </div>
-      <div class="sched-table-wrap">
-        <p class="sched-updated">Weekly Overview &middot; September &middot; <em>Schedule is new and may change &mdash; stay connected on Instagram for updates.</em></p>
-        <table class="sched-table">
+      <div class="sched-table-wrap" style="margin-top:3rem;">
+        <p class="sched-updated">November Class Schedule &middot; <em>You asked, we listened! New 5 AM and 5:30 PM time slots, plus more of our most popular 6 AM and 8:30 AM classes.</em></p>
+        <div class="sched-banner">First class is always free! &nbsp;&middot;&nbsp; Find us on Mindbody to book &nbsp;&middot;&nbsp; Membership, punch card &amp; drop-in options</div>
+        <table class="sched-table sched-nov">
           <thead>
-            <tr><th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
+            <tr><th>Time</th><th>Studio</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
           </thead>
           <tbody>
-            <tr><td class="time">6&ndash;6:55 AM</td><td class="hl">Sculpt Strong <span class="who">w/ Katie &middot; Loft</span></td><td class="hl">Power Moves <span class="who">w/ Briana &middot; The Well</span></td><td class="hl">Sculpt Strong <span class="who">w/ Katie &middot; Loft</span></td><td class="hl">Yoga &ndash; Vinyasa Flow <span class="who">w/ Sheila &middot; Loft</span></td><td class="hl">Sculpt Classic <span class="who">w/ Kia &middot; Loft</span></td><td></td></tr>
-            <tr><td class="time">8:30&ndash;9:20 AM</td><td class="hl">Sculpt Classic <span class="who">w/ Briana &middot; Loft</span></td><td class="hl">Yoga &ndash; Vinyasa Flow <span class="who">w/ Sheila &middot; Loft</span></td><td class="hl">Women, Weights &amp; Worship <span class="who">w/ Briana &middot; Loft</span></td><td class="hl">Power Moves <span class="who">w/ Kia &middot; The Well</span></td><td class="hl">Women, Weights &amp; Worship <span class="who">w/ Kia &middot; Loft</span></td><td class="hl">Sculpt Strong <span class="who">w/ Katie &middot; Loft</span></td></tr>
-            <tr><td class="time">9:30&ndash;10:25 AM</td><td class="hl">Stretch &amp; Flow <span class="who">w/ Briana &middot; Loft</span></td><td></td><td class="hl">Mom &amp; Me <span class="who">w/ Briana &middot; Loft</span></td><td></td><td></td><td></td></tr>
-            
-            
-            <tr><td class="time">4:15&ndash;5:10 PM</td><td></td><td class="hl">Power Moves <span class="who">w/ Morgan &middot; The Well</span></td><td>The Well Studio reserved 4&ndash;8 PM</td><td class="hl">Sculpt Classic <span class="who">w/ Kia &middot; Loft</span></td><td></td><td></td></tr>
-          <tr><td class="time">5:15&ndash;6:05 PM</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody>
+            <tr><td class="time" rowspan="2">5:00<small>AM</small></td><td class="studio">The Loft</td><td></td><td></td><td></td><td class="hl">Sculpt <span class="who">w/ Katie</span></td><td></td><td></td></tr>
+            <tr class="well-row"><td class="studio">The Well</td><td class="hl">Power Moves <span class="who">w/ Katie</span></td><td></td><td class="hl">Power Moves <span class="who">w/ Katie</span></td><td></td><td></td><td></td></tr>
+            <tr><td class="time" rowspan="2">6:00<small>AM</small></td><td class="studio">The Loft</td><td class="hl">Sculpt <span class="who">w/ Katie</span></td><td class="hl">Yoga Sculpt <span class="who">w/ Sheila</span></td><td class="hl">Sculpt <span class="who">w/ Katie</span></td><td class="hl">Vinyasa Flow <span class="who">w/ Sheila</span></td><td class="hl">Sculpt <span class="who">w/ Kia</span></td><td></td></tr>
+            <tr class="well-row"><td class="studio">The Well</td><td></td><td class="hl">Power Moves <span class="who">w/ Briana</span></td><td></td><td class="hl">Power Moves <span class="who">w/ Morgan</span></td><td></td><td></td></tr>
+            <tr><td class="time" rowspan="2">8:30<small>AM</small></td><td class="studio">The Loft</td><td class="hl">Women, Weights &amp; Worship <span class="who">w/ Briana</span></td><td class="hl">Vinyasa Flow <span class="who">w/ Sheila</span></td><td class="hl">Women, Weights &amp; Worship <span class="who">w/ Briana</span></td><td class="hl">Sculpt <span class="who">w/ Katie</span></td><td class="hl">Women, Weights &amp; Worship <span class="who">w/ Kia</span></td><td class="hl">7:30 AM Power Moves <span class="who">Alternating</span></td></tr>
+            <tr class="well-row"><td class="studio">The Well</td><td class="hl">Power Moves <span class="who">w/ Katie</span></td><td class="hl">Mom &amp; Me <span class="who">w/ Briana</span></td><td class="hl">Sculpt <span class="who">w/ Katie</span></td><td class="hl">Power Moves <span class="who">w/ Kia</span></td><td class="hl">Power Moves <span class="who">w/ Katie</span></td><td class="hl">8:30 AM Sculpt <span class="who">w/ Katie</span></td></tr>
+            <tr><td class="time" rowspan="2">4:15<small>PM</small></td><td class="studio">The Loft</td><td></td><td></td><td></td><td class="hl">Sculpt <span class="who">w/ Kia</span></td><td></td><td></td></tr>
+            <tr class="well-row"><td class="studio">The Well</td><td></td><td class="hl">Sculpt Strong <span class="who">w/ Katie</span></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td class="time" rowspan="2">5:30<small>PM</small></td><td class="studio">The Loft</td><td class="hl">Vinyasa Flow <span class="who">w/ Sheila</span></td><td class="hl">Vinyasa Flow <span class="who">w/ Sheila</span></td><td></td><td class="hl">Sculpt <span class="who">w/ Briana</span></td><td></td><td></td></tr>
+            <tr class="well-row"><td class="studio">The Well</td><td></td><td class="hl">Power Moves <span class="who">w/ Briana</span></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td class="time" rowspan="2">6:30<small>PM</small></td><td class="studio">The Loft</td><td></td><td></td><td class="hl">Sculpt <span class="who">w/ Morgan</span></td><td></td><td></td><td></td></tr>
+            <tr class="well-row"><td class="studio">The Well</td><td></td><td></td><td class="res">Reserved</td><td></td><td></td><td></td></tr>
+          </tbody>
         </table>
         <p style="text-align:center;font-size:0.7rem;color:var(--text-light);margin-top:0.75rem;">The Loft &middot; upper studio &nbsp;|&nbsp; The Well &middot; lower studio &nbsp;|&nbsp; Small Group Training held at Valhalla Lifting Club</p>
         <p style="text-align:center;font-size:0.8rem;color:var(--text-light);margin-top:1.5rem;">Book your spot in the schedule above. Questions? <a href="mailto:briana.weber@icloud.com" style="color:var(--sage);">Contact Briana</a>.</p>
