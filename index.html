@@ -183,7 +183,14 @@
     .perks-shared ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem 2rem; }
     .perks-shared li { font-size: 0.8rem; line-height: 1.7; color: var(--text-light); padding: 0.35rem 0; display: flex; gap: 0.5rem; }
     .perks-shared li::before { content: "✦"; color: var(--sage); font-size: 0.55rem; margin-top: 0.4rem; }
-    .mb-contract { text-align: center; }
+    .mb-link { text-align: center; }
+    .mb-annual a { display: block; background: var(--sage); color: white; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.9rem 2rem; border-radius: 10px; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+    .mb-annual a:hover { background: var(--sage-light); color: var(--taupe-dark); }
+    .mb-dropin { display: inline-block; margin-top: 1rem; }
+    .mb-dropin a { display: inline-block; background: var(--sage); color: white; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.8rem 1.6rem; border-radius: 10px; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+    .mb-dropin a:hover { background: var(--taupe-dark); }
+    .dropin-strip { display: flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap; background: var(--sage-pale); border-radius: 4px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; font-size: 0.82rem; color: var(--text-light); }
+    .dropin-strip .mb-dropin { margin-top: 0; }
     .mb-contract .healcode-contract-text-link, .mb-contract a { display: block; border: 1px solid var(--taupe); color: var(--taupe); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.9rem 2rem; border-radius: 10px; text-decoration: none; cursor: pointer; transition: all 0.2s; }
     .mb-contract .healcode-contract-text-link:hover, .mb-contract a:hover { background: var(--taupe); color: white; }
     .pause-note { text-align: center; font-size: 0.8rem; line-height: 1.7; color: var(--text-light); margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
@@ -534,7 +541,7 @@
 <h2 class="section-title" style="margin-bottom: 0.5rem;">Your first class is <em>always free.</em></h2>
 <p style="font-size: 0.82rem; color: var(--text-light); max-width: 560px; margin: 0 auto 1.5rem; line-height: 1.8;">Come see why Alexandria is talking about The Wellness Collective Studios! Try a class on us!</p>
 <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-<button class="btn-primary" onclick="showSection('membership')">Memberships: Save Up to $120 →</button>
+<button class="btn-primary" onclick="showSection('membership')">Memberships: Save Up to $118 →</button>
 <button class="btn-outline" onclick="showSection('classes')">See the Schedule</button>
 </div>
 </section>
@@ -668,21 +675,23 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
           <div class="tier-badge">Best Value &middot; Most Savings</div>
           <div class="card-eyebrow">12-Month Membership</div>
           <h3>All In for the Year</h3>
-          <div class="tier-was"><s>$828</s> &nbsp;$708 paid once</div>
+          <div class="tier-was"><s>$828</s> &nbsp;$710 paid once</div>
           <div class="price">$59<span class="per">/mo</span></div>
-          <div class="tier-save">Save $120 &middot; almost 2 months free</div>
+          <div class="tier-save">Save $118 &middot; almost 2 months free</div>
           <p class="tier-pitch">Your best rate, locked in for a full year. One decision, twelve months of showing up for yourself &mdash; and your community showing up for you.</p>
-          <a class="btn-primary tier-cta" href="mailto:briana.weber@icloud.com?subject=Annual%20Membership" data-mb="annual">Start My Year &rarr;</a>
+          <!-- Mindbody contract 107 -->
+          <div class="tier-cta mb-link mb-annual" data-fallback="Annual%20Membership"><healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link" data-site-id="135672" data-mb-site-id="5754554" data-service-id="107" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Start My Year &rarr;"></healcode-widget></div>
         </div>
 
         <div class="membership-card">
           <div class="card-eyebrow">6-Month Membership</div>
           <h3>Build the Habit</h3>
-          <div class="tier-was"><s>$414</s> &nbsp;$384 paid once</div>
+          <div class="tier-was"><s>$414</s> &nbsp;$385 paid once</div>
           <div class="price">$64<span class="per">/mo</span></div>
-          <div class="tier-save">Save $30</div>
+          <div class="tier-save">Save $29</div>
           <p class="tier-pitch">Six months is where consistency turns into results. Commit to the season and save on every month.</p>
-          <a class="btn-outline tier-cta" href="mailto:briana.weber@icloud.com?subject=6-Month%20Membership" data-mb="sixmonth">Start My 6 Months &rarr;</a>
+          <!-- Mindbody contract 108 -->
+          <div class="tier-cta mb-link mb-contract" data-fallback="6-Month%20Membership"><healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link" data-site-id="135672" data-mb-site-id="5754554" data-service-id="108" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Start My 6 Months &rarr;"></healcode-widget></div>
         </div>
 
         <div class="membership-card">
@@ -693,7 +702,7 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
           <div class="tier-save">No contract</div>
           <p class="tier-pitch">Total flexibility. Renews automatically, cancel anytime &mdash; no cancellation fee.</p>
           <!-- Mindbody: $69 monthly contract -->
-          <div class="tier-cta mb-contract">
+          <div class="tier-cta mb-link mb-contract" data-fallback="Monthly%20Membership">
             <healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link" data-site-id="135672" data-mb-site-id="5754554" data-service-id="102" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Join Monthly &rarr;"></healcode-widget>
           </div>
         </div>
@@ -718,6 +727,8 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
         <div>
           <h3>Not ready to commit? Grab a punch card.</h3>
           <p>Attend any class, including Mom &amp; Me, whenever it fits. <strong>Your first class is always free.</strong></p>
+          <!-- Mindbody: $10 drop-in -->
+          <div class="mb-link mb-dropin" data-fallback="Drop-In%20Class"><healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="135672" data-mb-site-id="5754554" data-service-id="100062" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Drop In for $10 &rarr;"></healcode-widget></div>
         </div>
         <div class="punch-prices">
           <div><strong>$10</strong>drop-in</div>
@@ -749,6 +760,10 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
       <!-- Mindbody booking widget -->
       <div id="book" class="sched-table-wrap" style="margin-top:2rem;">
         <p class="sched-updated">Book a Class &middot; <em>Pick a class below to reserve your spot.</em></p>
+        <div class="dropin-strip">
+          <span><strong>New here?</strong> Your first class is free. After that, drop in anytime for $10.</span>
+          <div class="mb-link mb-dropin" data-fallback="Drop-In%20Class"><healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="135672" data-mb-site-id="5754554" data-service-id="100062" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Buy a $10 Drop-In &rarr;"></healcode-widget></div>
+        </div>
         <!-- Mindbody Schedules widget begin -->
         <div class="mindbody-widget" data-widget-type="Schedules" data-widget-id="3a679647b40"></div>
         <script async src="https://brandedweb.mindbodyonline.com/embed/widget.js"></script>
@@ -1192,26 +1207,17 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
 
   </script>
 <script>
-/* MINDBODY BUY LINKS: paste each Mindbody "buy" link between the quotes.
-   Any link left blank falls back to emailing Briana, so no button is ever broken. */
-const MINDBODY_LINKS = {
-  annual:   '',  // Annual Membership, $708
-  sixmonth: '',  // 6-Month Membership, $384
-  monthly:  ''   // (not used: Monthly now uses the Mindbody widget on the card)
-};
-/* Safety net: if the Mindbody widget hasn't drawn its button after 6 seconds
-   (blocked script, slow network), show an email button so the card is never empty. */
+/* Safety net: if a Mindbody button hasn't appeared after 6 seconds (blocked script, slow network),
+   show an email button instead so no card is ever left without one. */
 setTimeout(function () {
-  document.querySelectorAll('.mb-contract').forEach(function (box) {
+  document.querySelectorAll('.mb-link').forEach(function (box) {
     if (!box.querySelector('a')) {
-      box.insertAdjacentHTML('beforeend', '<a href="mailto:briana.weber@icloud.com?subject=Monthly%20Membership">Join Monthly &rarr;</a>');
+      var w = box.querySelector('healcode-widget');
+      var label = w ? w.getAttribute('data-inner-html') : 'Get Started';
+      box.insertAdjacentHTML('beforeend', '<a href="mailto:briana.weber@icloud.com?subject=' + box.getAttribute('data-fallback') + '">' + label + '</a>');
     }
   });
 }, 6000);
-document.querySelectorAll('[data-mb]').forEach(function (a) {
-  var url = MINDBODY_LINKS[a.getAttribute('data-mb')];
-  if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
-});
 </script>
 </body>
 </html>
