@@ -164,6 +164,38 @@
     .membership-card.featured .features li::before { color: var(--sage-light); }
     .feature-note { font-size: 0.72rem; font-style: italic; color: var(--text-light); margin-bottom: 1.5rem; }
     .membership-card.featured .feature-note { color: rgba(255,255,255,0.6); }
+    /* MEMBERSHIP PRICING TIERS */
+    .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: stretch; margin-top: 1rem; }
+    .tier-grid .membership-card { display: flex; flex-direction: column; }
+    .tier-grid .membership-card .tier-cta { margin-top: auto; display: block; text-align: center; }
+    .membership-card.featured { transform: scale(1.04); box-shadow: 0 18px 40px rgba(92,80,66,0.25); z-index: 1; }
+    .tier-badge { position: absolute; top: -0.85rem; left: 50%; transform: translateX(-50%); background: var(--sand); color: white; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.45rem 1.1rem; border-radius: 20px; white-space: nowrap; }
+    .tier-was { font-size: 0.78rem; color: var(--text-light); margin-bottom: 0.2rem; }
+    .tier-was s { opacity: 0.8; }
+    .membership-card.featured .tier-was { color: rgba(255,255,255,0.6); }
+    .price .per { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 500; margin-left: 0.15rem; }
+    .tier-save { align-self: flex-start; display: inline-block; background: var(--sage-pale); color: var(--sage); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 20px; margin-bottom: 1.25rem; }
+    .membership-card.featured .tier-save { background: var(--sand-light); color: var(--taupe-dark); }
+    .tier-pitch { font-size: 0.78rem; line-height: 1.8; color: var(--text-light); margin-bottom: 1.2rem; }
+    .membership-card.featured .tier-pitch { color: rgba(255,255,255,0.8); }
+    .perks-shared { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 2rem 2.5rem; margin-top: 2.5rem; }
+    .perks-shared h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--taupe-dark); margin-bottom: 1rem; text-align: center; }
+    .perks-shared ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem 2rem; }
+    .perks-shared li { font-size: 0.8rem; line-height: 1.7; color: var(--text-light); padding: 0.35rem 0; display: flex; gap: 0.5rem; }
+    .perks-shared li::before { content: "✦"; color: var(--sage); font-size: 0.55rem; margin-top: 0.4rem; }
+    .punch-box { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; background: var(--cream); border: 1px dashed var(--border); border-radius: 4px; padding: 2rem 2.5rem; margin-top: 2rem; }
+    .punch-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--taupe-dark); margin-bottom: 0.4rem; }
+    .punch-box p { font-size: 0.78rem; line-height: 1.7; color: var(--text-light); }
+    .punch-prices { display: flex; gap: 1.5rem; font-size: 0.78rem; color: var(--text-light); text-align: center; }
+    .punch-prices strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--sage); }
+    @media (max-width: 900px) {
+      .tier-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .membership-card.featured { transform: none; }
+      .perks-shared ul { grid-template-columns: 1fr; }
+      .perks-shared, .punch-box { padding: 1.75rem 1.25rem; }
+      .punch-box { grid-template-columns: 1fr; }
+      .punch-prices { justify-content: space-between; }
+    }
     .valhalla-box { background: var(--sage-pale); border: 1px solid var(--border); border-radius: 4px; padding: 2.5rem; margin-top: 2rem; }
     .valhalla-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--taupe-dark); margin-bottom: 0.75rem; }
     .valhalla-box p { font-size: 0.82rem; line-height: 1.8; color: var(--text-light); margin-bottom: 0.75rem; }
@@ -498,7 +530,7 @@
 <h2 class="section-title" style="margin-bottom: 0.5rem;">Your first class is <em>always free.</em></h2>
 <p style="font-size: 0.82rem; color: var(--text-light); max-width: 560px; margin: 0 auto 1.5rem; line-height: 1.8;">Come see why Alexandria is talking about The Wellness Collective Studios! Try a class on us!</p>
 <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-<button class="btn-primary" onclick="showSection('membership')">Join for $69/Month →</button>
+<button class="btn-primary" onclick="showSection('membership')">Memberships: Save Up to $118 →</button>
 <button class="btn-outline" onclick="showSection('classes')">See the Schedule</button>
 </div>
 </section>
@@ -626,61 +658,63 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
         </div>
       </div>
 
-      <!-- Monthly / Annual / 6-Month / Punch Card -->
-      <div class="membership-grid">
+      <!-- Annual (anchor + featured) / 6-Month / Monthly, then Punch Card -->
+      <div class="tier-grid">
         <div class="membership-card featured">
-          <div class="card-eyebrow">Best Value</div>
-          <h3>All-Access Membership</h3>
-          <div class="price">$69</div>
-          <div class="price-note">per month · renews automatically · cancel anytime · no contract</div>
-          <ul class="features">
-            <li><span>Includes all classes, including Mom &amp; Me</span></li>
-            <li><span>10% off personal and small group training sessions</span></li>
-            <li><span>10% off products, merchandise, and Restore Wellness Retreats</span></li>
-            <li><span>Discounted Valhalla Lifting Club membership</span></li>
-            <li><span>Early access to events &amp; Restore Wellness Retreats</span></li>
-            <li><span>Cancel anytime — no cancellation fee</span></li>
-          </ul>
-          <a class="btn-primary" href="mailto:briana.weber@icloud.com?subject=New%20Membership%20Sign-Up" style="display:block; text-align:center; margin-top: 1rem;">Email Briana to Join →</a>
+          <div class="tier-badge">Best Value &middot; Most Savings</div>
+          <div class="card-eyebrow">12-Month Membership</div>
+          <h3>All In for the Year</h3>
+          <div class="tier-was"><s>$828</s> &nbsp;$710 paid once</div>
+          <div class="price">$59.17<span class="per">/mo</span></div>
+          <div class="tier-save">Save $118 &middot; almost 2 months free</div>
+          <p class="tier-pitch">Your best rate, locked in for a full year. One decision, twelve months of showing up for yourself &mdash; and your community showing up for you.</p>
+          <a class="btn-primary tier-cta" href="mailto:briana.weber@icloud.com?subject=Annual%20Membership%20%E2%80%94%20%24710">Start My Year &rarr;</a>
         </div>
 
         <div class="membership-card">
-          <div class="card-eyebrow">Best Savings</div>
-          <h3>Annual Membership</h3>
-          <p style="font-size: 0.78rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.2rem;">Go all in for the year and save over $100 — all the same perks as the Monthly membership.</p>
-          <div class="price">$720</div>
-          <div class="price-note">one-time · equals $60/month · over $100 off</div>
-          <ul class="features" style="margin-top:1.2rem;">
-            <li><span>All the same perks as the Monthly membership</span></li>
-          </ul>
-          <a class="btn-outline" href="mailto:briana.weber@icloud.com?subject=Annual%20Membership" style="display:block; text-align:center; margin-top: 1rem;">Contact Briana to Set Up →</a>
+          <div class="card-eyebrow">6-Month Membership</div>
+          <h3>Build the Habit</h3>
+          <div class="tier-was"><s>$414</s> &nbsp;$385 paid once</div>
+          <div class="price">$64.17<span class="per">/mo</span></div>
+          <div class="tier-save">Save $29</div>
+          <p class="tier-pitch">Six months is where consistency turns into results. Commit to the season and save on every month.</p>
+          <a class="btn-outline tier-cta" href="mailto:briana.weber@icloud.com?subject=6-Month%20Membership%20%E2%80%94%20%24385">Start My 6 Months &rarr;</a>
         </div>
 
         <div class="membership-card">
-          <div class="card-eyebrow">Save More</div>
-          <h3>6-Month Membership</h3>
-          <p style="font-size: 0.78rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.2rem;">Commit to 6 months and save — all the same perks as the Monthly membership.</p>
-          <div class="price">$345</div>
-          <div class="price-note">one-time · saves over $10 per month</div>
-          <ul class="features" style="margin-top:1.2rem;">
-            <li><span>All the same perks as the Monthly membership</span></li>
-          </ul>
-          <a class="btn-outline" href="mailto:briana.weber@icloud.com?subject=6-Month%20Membership" style="display:block; text-align:center; margin-top: 1rem;">Contact Briana to Set Up →</a>
+          <div class="card-eyebrow">Monthly Membership</div>
+          <h3>Month to Month</h3>
+          <div class="tier-was">Billed monthly</div>
+          <div class="price">$69<span class="per">/mo</span></div>
+          <div class="tier-save">No contract</div>
+          <p class="tier-pitch">Total flexibility. Renews automatically, cancel anytime &mdash; no cancellation fee.</p>
+          <a class="btn-outline tier-cta" href="mailto:briana.weber@icloud.com?subject=Monthly%20Membership%20Sign-Up">Join Monthly &rarr;</a>
         </div>
+      </div>
 
-        <div class="membership-card">
-          <div class="card-eyebrow">Classes Only</div>
-          <h3>Class Punch Card</h3>
-          <p style="font-size: 0.78rem; color: var(--text-light); line-height: 1.8; margin-bottom: 1.2rem;">Use like a punch card — attend any class, including Mom &amp; Me, whenever it fits your schedule. No fixed commitment.</p>
-          <div class="features">
-            <li>✦ &nbsp;<strong>Your first class is always free!</strong></li>
-          </div>
-          <ul class="features" style="margin-bottom: 1.5rem;">
-            <li><span>Drop In — <strong>$10</strong> per class</span></li>
-            <li><span>10 Classes — <strong>$90</strong> (use within 3 months)</span></li>
-            <li><span>20 Classes — <strong>$180</strong> (use within 6 months)</span></li>
-          </ul>
+      <!-- Shared perks -->
+      <div class="perks-shared">
+        <h3>Every membership includes</h3>
+        <ul>
+          <li><span>All classes, including Mom &amp; Me</span></li>
+          <li><span>10% off personal and small group training</span></li>
+          <li><span>10% off products, merchandise, and Restore Wellness Retreats</span></li>
+          <li><span>Discounted Valhalla Lifting Club membership</span></li>
+          <li><span>Early access to events &amp; Restore Wellness Retreats</span></li>
+          <li><span>A community that notices when you're not there</span></li>
+        </ul>
+      </div>
 
+      <!-- Punch card (de-emphasized alternative) -->
+      <div class="punch-box">
+        <div>
+          <h3>Not ready to commit? Grab a punch card.</h3>
+          <p>Attend any class, including Mom &amp; Me, whenever it fits. <strong>Your first class is always free.</strong></p>
+        </div>
+        <div class="punch-prices">
+          <div><strong>$10</strong>drop-in</div>
+          <div><strong>$90</strong>10 classes<br><small>use in 3 mo</small></div>
+          <div><strong>$180</strong>20 classes<br><small>use in 6 mo</small></div>
         </div>
       </div>
 
