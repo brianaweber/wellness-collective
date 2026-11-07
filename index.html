@@ -183,6 +183,10 @@
     .perks-shared ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem 2rem; }
     .perks-shared li { font-size: 0.8rem; line-height: 1.7; color: var(--text-light); padding: 0.35rem 0; display: flex; gap: 0.5rem; }
     .perks-shared li::before { content: "✦"; color: var(--sage); font-size: 0.55rem; margin-top: 0.4rem; }
+    .mb-contract { text-align: center; }
+    .mb-contract .healcode-contract-text-link, .mb-contract a { display: block; border: 1px solid var(--taupe); color: var(--taupe); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.9rem 2rem; border-radius: 10px; text-decoration: none; cursor: pointer; transition: all 0.2s; }
+    .mb-contract .healcode-contract-text-link:hover, .mb-contract a:hover { background: var(--taupe); color: white; }
+    .pause-note { text-align: center; font-size: 0.8rem; line-height: 1.7; color: var(--text-light); margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
     .punch-box { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; background: var(--cream); border: 1px dashed var(--border); border-radius: 4px; padding: 2rem 2.5rem; margin-top: 2rem; }
     .punch-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--taupe-dark); margin-bottom: 0.4rem; }
     .punch-box p { font-size: 0.78rem; line-height: 1.7; color: var(--text-light); }
@@ -418,6 +422,7 @@
     .sched-nov td.res { color: var(--text-light); font-style: italic; font-size: 0.72rem; }
     .sched-banner { background: var(--sage); color: white; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; text-align: center; padding: 0.7rem 1rem; border-radius: 8px 8px 0 0; }
   </style>
+  <script src="https://widgets.mindbodyonline.com/javascripts/healcode.js" type="text/javascript"></script>
 </head>
 <body>
   <!-- NAV -->
@@ -432,7 +437,6 @@
       <button onclick="showSection('retreat')" id="nav-retreat">Restore Retreat</button>
     </div>
     <div class="nav-pills">
-      <a class="nav-pill nav-pill-zyia" href="https://new.myzyia.com/BRIANAWEBER/en_US/" target="_blank">Shop Zyia</a>
       <a class="nav-pill nav-pill-book" href="#" onclick="showSection('classes'); return false;">Book Now</a>
     </div>
   </nav>
@@ -530,7 +534,7 @@
 <h2 class="section-title" style="margin-bottom: 0.5rem;">Your first class is <em>always free.</em></h2>
 <p style="font-size: 0.82rem; color: var(--text-light); max-width: 560px; margin: 0 auto 1.5rem; line-height: 1.8;">Come see why Alexandria is talking about The Wellness Collective Studios! Try a class on us!</p>
 <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-<button class="btn-primary" onclick="showSection('membership')">Memberships: Save Up to $118 →</button>
+<button class="btn-primary" onclick="showSection('membership')">Memberships: Save Up to $120 →</button>
 <button class="btn-outline" onclick="showSection('classes')">See the Schedule</button>
 </div>
 </section>
@@ -664,21 +668,21 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
           <div class="tier-badge">Best Value &middot; Most Savings</div>
           <div class="card-eyebrow">12-Month Membership</div>
           <h3>All In for the Year</h3>
-          <div class="tier-was"><s>$828</s> &nbsp;$710 paid once</div>
-          <div class="price">$59.17<span class="per">/mo</span></div>
-          <div class="tier-save">Save $118 &middot; almost 2 months free</div>
+          <div class="tier-was"><s>$828</s> &nbsp;$708 paid once</div>
+          <div class="price">$59<span class="per">/mo</span></div>
+          <div class="tier-save">Save $120 &middot; almost 2 months free</div>
           <p class="tier-pitch">Your best rate, locked in for a full year. One decision, twelve months of showing up for yourself &mdash; and your community showing up for you.</p>
-          <a class="btn-primary tier-cta" href="mailto:briana.weber@icloud.com?subject=Annual%20Membership%20%E2%80%94%20%24710">Start My Year &rarr;</a>
+          <a class="btn-primary tier-cta" href="mailto:briana.weber@icloud.com?subject=Annual%20Membership" data-mb="annual">Start My Year &rarr;</a>
         </div>
 
         <div class="membership-card">
           <div class="card-eyebrow">6-Month Membership</div>
           <h3>Build the Habit</h3>
-          <div class="tier-was"><s>$414</s> &nbsp;$385 paid once</div>
-          <div class="price">$64.17<span class="per">/mo</span></div>
-          <div class="tier-save">Save $29</div>
+          <div class="tier-was"><s>$414</s> &nbsp;$384 paid once</div>
+          <div class="price">$64<span class="per">/mo</span></div>
+          <div class="tier-save">Save $30</div>
           <p class="tier-pitch">Six months is where consistency turns into results. Commit to the season and save on every month.</p>
-          <a class="btn-outline tier-cta" href="mailto:briana.weber@icloud.com?subject=6-Month%20Membership%20%E2%80%94%20%24385">Start My 6 Months &rarr;</a>
+          <a class="btn-outline tier-cta" href="mailto:briana.weber@icloud.com?subject=6-Month%20Membership" data-mb="sixmonth">Start My 6 Months &rarr;</a>
         </div>
 
         <div class="membership-card">
@@ -688,7 +692,10 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
           <div class="price">$69<span class="per">/mo</span></div>
           <div class="tier-save">No contract</div>
           <p class="tier-pitch">Total flexibility. Renews automatically, cancel anytime &mdash; no cancellation fee.</p>
-          <a class="btn-outline tier-cta" href="mailto:briana.weber@icloud.com?subject=Monthly%20Membership%20Sign-Up">Join Monthly &rarr;</a>
+          <!-- Mindbody: $69 monthly contract -->
+          <div class="tier-cta mb-contract">
+            <healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link" data-site-id="135672" data-mb-site-id="5754554" data-service-id="102" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Join Monthly &rarr;"></healcode-widget>
+          </div>
         </div>
       </div>
 
@@ -703,6 +710,7 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
           <li><span>Early access to events &amp; Restore Wellness Retreats</span></li>
           <li><span>A community that notices when you're not there</span></li>
         </ul>
+        <p class="pause-note"><strong>Life happens.</strong> Injured, sick, or facing something big? Prepaid memberships can be paused &mdash; just let us know and we'll hold your remaining time.</p>
       </div>
 
       <!-- Punch card (de-emphasized alternative) -->
@@ -826,8 +834,8 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
         </div>
         <div class="class-item" style="opacity:0.85;">
           <h4>The Foundation</h4>
-          <div class="instructor">Summer Program &middot; Currently Closed</div>
-          <p>Our program for young female athletes ages 9–14 runs each summer and has wrapped for the season — thank you to everyone who joined us! The Foundation will be back next summer; <a href="foundation-signup.html" style="color:var(--sage);">get on the interest list</a> to be the first to know when registration opens.</p>
+          <div class="instructor">Summer Program &middot; Returning Soon</div>
+          <p>Our program for young female athletes ages 9–14 runs each summer and has wrapped for the season — thank you to everyone who joined us! The Foundation will be back next summer; <a href="#" onclick="showSection('foundation'); return false;" style="color:var(--sage);">get on the interest list</a> to be the first to know when registration opens.</p>
         </div>
 </div>
     </div>
@@ -891,7 +899,7 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
   <div id="section-foundation" class="page-section">
     <section class="foundation-section">
       <div class="foundation-header">
-        <div class="section-eyebrow">A Wellness Collective Program</div>
+        <div class="section-eyebrow">A Wellness Collective Program &middot; Returning Soon</div>
         <h2 class="section-title">The <em>Foundation</em></h2>
         <p style="font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-light); margin-top: 0.5rem;">For Young Female Athletes · Ages 9–14</p>
       </div>
@@ -899,7 +907,7 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
       <div class="foundation-grid">
         <div>
           <p class="story-body">The Foundation is about giving young girls exactly that — a foundation. A place to build strength, discover what their bodies can do, and show up for themselves in a room full of young women doing the same thing.</p>
-          <p class="story-body">2 sessions per week this summer — choose what fits best into your schedule. Fall schedule to be determined. Sessions held at The Wellness Collective Studios · 1920 Turning Leaf Lane, Alexandria MN</p>
+          <p class="story-body"><strong>The Foundation is returning soon.</strong> Our summer session has wrapped &mdash; thank you to every athlete who joined us! New dates and details are coming. Drop your info below and you'll be the first to know.</p>
 
           <div class="foundation-pillars">
             <div class="pillar">
@@ -920,39 +928,17 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
             </div>
           </div>
 
-          <div class="foundation-stats">
-            <div class="stat"><div class="num">2</div><div class="label">Sessions/Week · Summer<br><span style="font-size:0.6rem;">Fall Schedule TBD</span></div></div>
+          <div class="foundation-stats" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="stat"><div class="num">2</div><div class="label">Sessions/Week</div></div>
             <div class="stat"><div class="num">8–10</div><div class="label">Spots Per Session</div></div>
             <div class="stat"><div class="num">9–14</div><div class="label">Ages Served</div></div>
-            <div class="stat"><div class="num">$25</div><div class="label">Drop-In Rate</div></div>
           </div>
         </div>
 
         <div>
-          <div class="foundation-pricing">
-            <h3>Investment</h3>
-            <p style="font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; line-height: 1.7;">Sessions work like a punch card — use them whenever a session fits your schedule. No fixed commitment.</p>
-            <div class="price-row" style="border-bottom-color: rgba(255,255,255,0.1);">
-              <span style="font-size:0.78rem; color: rgba(255,255,255,0.75);">Drop-In</span>
-              <div style="text-align:right;"><span style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color: var(--sage-light);">$25</span><br><span style="font-size:0.65rem; color:rgba(255,255,255,0.5);">per session</span></div>
-            </div>
-            <div class="price-row" style="border-bottom-color: rgba(255,255,255,0.1);">
-              <span style="font-size:0.78rem; color: rgba(255,255,255,0.75);">10 Sessions</span>
-              <div style="text-align:right;"><span style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color: var(--sage-light);">$200</span><br><span style="font-size:0.65rem; color:rgba(255,255,255,0.5);">$20/session · save $50</span></div>
-            </div>
-            <div class="price-row" style="border-bottom-color: rgba(255,255,255,0.1);">
-              <span style="font-size:0.78rem; color: rgba(255,255,255,0.75);">20 Sessions</span>
-              <div style="text-align:right;"><span style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color: var(--sage-light);">$360</span><br><span style="font-size:0.65rem; color:rgba(255,255,255,0.5);">$18/session · save $100</span></div>
-            </div>
-            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-              
-              <a href="foundation-signup.html" style="display:inline-block; border: 1px solid rgba(255,255,255,0.4); color:white; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; padding:0.9rem 2rem; border-radius:10px; transition:all 0.2s;">Register →</a>
-            </div>
-          </div>
-
           <div class="foundation-form">
-            <h3>Want More Info?</h3>
-            <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">Drop your info below and Briana will reach out with details to help you decide if this is the right fit.</p>
+            <h3>Be the First to Know</h3>
+            <p style="font-size:0.78rem; color:var(--text-light); line-height:1.7; margin-bottom:1.5rem;">The Foundation is returning soon. Drop your info below and Briana will reach out as soon as new dates are set.</p>
             <form action="https://formspree.io/f/mdabrwdk" method="POST" onsubmit="handleFormSubmit(event, 'foundation-success')">
               <div class="form-grid">
                 <div class="form-group">
@@ -976,7 +962,7 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
                   <input type="text" name="sports" placeholder="Soccer, volleyball, dance..." />
                 </div>
               </div>
-              <button type="submit" class="btn-primary" style="margin-top: 1rem; width: 100%;">Send My Info →</button>
+              <button type="submit" class="btn-primary" style="margin-top: 1rem; width: 100%;">Notify Me →</button>
             </form>
             <div class="form-success" id="foundation-success">Wonderful! Briana will be in touch soon. Your daughter is going to love this.</div>
           </div>
@@ -992,7 +978,7 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
       <h1>Restore</h1>
       <h2>A Women's Weekend Retreat</h2>
       <div class="retreat-badges">
-        <span class="retreat-badge">Date to Be Announced</span>
+        <span class="retreat-badge">Returning Soon</span>
         <span class="retreat-badge">Lake Osakis, Minnesota</span>
         <span class="retreat-badge">For Women · 18+</span>
       </div>
@@ -1132,11 +1118,6 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
       </p>
       <div class="shop-grid">
         <div class="shop-card">
-          <h3>Zyia Active</h3>
-          <p>High quality activewear and leisurewear that will make you feel like going to the gym! Zyia also has amazing, clean, quality supplements that I trust. My go to is the NAD+!</p>
-          <a class="btn-primary" href="https://new.myzyia.com/BRIANAWEBER/en_US/" target="_blank">Shop Zyia →</a>
-        </div>
-        <div class="shop-card">
           <h3>LMNT Electrolytes</h3>
           <p>Zero sugar. Real salt. The electrolyte drink mix I recommend to every single client for hydration, energy, and performance.</p>
           <a class="btn-outline" href="lmnt-order.html" target="_blank">Order LMNT →</a>
@@ -1160,7 +1141,6 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
       <a href="#" onclick="showSection('training')">Small Group Training</a>
       <a href="#" onclick="showSection('foundation')">The Foundation</a>
       <a href="#" onclick="showSection('retreat')">Restore Retreat</a>
-      <a href="https://new.myzyia.com/BRIANAWEBER/en_US/" target="_blank">Shop Zyia</a>
       <a href="lmnt-order.html">Order LMNT</a>
       <a href="#" onclick="showSection('classes'); return false;">Book Now</a>
     </div>
@@ -1211,5 +1191,27 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
     }
 
   </script>
+<script>
+/* MINDBODY BUY LINKS: paste each Mindbody "buy" link between the quotes.
+   Any link left blank falls back to emailing Briana, so no button is ever broken. */
+const MINDBODY_LINKS = {
+  annual:   '',  // Annual Membership, $708
+  sixmonth: '',  // 6-Month Membership, $384
+  monthly:  ''   // (not used: Monthly now uses the Mindbody widget on the card)
+};
+/* Safety net: if the Mindbody widget hasn't drawn its button after 6 seconds
+   (blocked script, slow network), show an email button so the card is never empty. */
+setTimeout(function () {
+  document.querySelectorAll('.mb-contract').forEach(function (box) {
+    if (!box.querySelector('a')) {
+      box.insertAdjacentHTML('beforeend', '<a href="mailto:briana.weber@icloud.com?subject=Monthly%20Membership">Join Monthly &rarr;</a>');
+    }
+  });
+}, 6000);
+document.querySelectorAll('[data-mb]').forEach(function (a) {
+  var url = MINDBODY_LINKS[a.getAttribute('data-mb')];
+  if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
+});
+</script>
 </body>
 </html>
