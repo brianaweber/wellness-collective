@@ -32,7 +32,7 @@
       position: sticky; top: 0; z-index: 100;
       background: var(--cream);
       border-bottom: 1px solid var(--border);
-      padding: 0 1.5rem;
+      padding: 0.5rem 1.5rem;
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap;
       min-height: 64px;
@@ -259,7 +259,7 @@
     /* FOUNDATION */
     .foundation-section { padding: 6rem 4rem; max-width: 1200px; margin: 0 auto; }
     .foundation-header { margin-bottom: 3rem; }
-    .foundation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .foundation-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
     .foundation-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
     .pillar { }
     .pillar h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--sage); margin-bottom: 0.5rem; }
@@ -272,10 +272,11 @@
     .foundation-pricing h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; margin-bottom: 1.5rem; }
     .foundation-form { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 2.5rem; margin-top: 2rem; }
     .foundation-form h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--taupe-dark); margin-bottom: 1.5rem; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .form-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.75rem; }
     .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
     .form-group label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
     .form-group input, .form-group textarea, .form-group select { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 2px; background: var(--cream); color: var(--text); }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; min-width: 0; box-sizing: border-box; }
     .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--sage); }
     .form-full { grid-column: 1 / -1; }
 
@@ -307,7 +308,7 @@
 
     /* RESPONSIVE */
 @media (max-width: 640px) {
-      nav { padding: 0 1.25rem; height: auto; min-height: 60px; flex-wrap: wrap; position: relative; }
+      nav { padding: 0.25rem 1.25rem; height: auto; min-height: 60px; flex-wrap: wrap; position: relative; }
       .nav-links {
         display: none;
         flex-direction: column;
@@ -326,6 +327,9 @@
         width: 100%;
       }
       .nav-hamburger { display: flex; }
+      .nav-logo { order: 1; font-size: 0.95rem; letter-spacing: 0.1em; }
+      .nav-pills { order: 2; }
+      .nav-links { order: 3; }
       .nav-pills { gap: 0.4rem; }
       .nav-pill { font-size: 0.55rem; padding: 0.3rem 0.6rem; }
     }
@@ -433,7 +437,7 @@
 </head>
 <body>
   <!-- NAV -->
-  <nav>
+  <nav id="main-nav">
     <a class="nav-logo" href="#"><span class="well">WELL</span>NESS COLLECTIVE</a>
     <div class="nav-links">
       <button onclick="showSection('home')" class="active" id="nav-home">Home</button>
@@ -445,6 +449,7 @@
     </div>
     <div class="nav-pills">
       <a class="nav-pill nav-pill-book" href="#" onclick="showSection('classes'); return false;">Book Now</a>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" onclick="var n=this.closest('nav'); var o=n.classList.toggle('nav-open'); this.setAttribute('aria-expanded', o);"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
@@ -1202,14 +1207,23 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
   </script>
 <script>
 /* Safety net: if a Mindbody button hasn't appeared after 6 seconds (blocked script, slow network),
-   show an email button instead so no card is ever left without one. */
+   show an email button instead so no card is ever left without one.
+   If the real Mindbody button shows up later, the email button removes itself (prevents doubled buttons). */
 setTimeout(function () {
   document.querySelectorAll('.mb-link').forEach(function (box) {
-    if (!box.querySelector('a')) {
-      var w = box.querySelector('healcode-widget');
-      var label = w ? w.getAttribute('data-inner-html') : 'Get Started';
-      box.insertAdjacentHTML('beforeend', '<a href="mailto:briana.weber@icloud.com?subject=' + box.getAttribute('data-fallback') + '">' + label + '</a>');
-    }
+    var hasReal = function () { return box.querySelector('a:not(.mb-fallback)'); };
+    if (hasReal() || box.querySelector('.mb-fallback')) return;
+    var w = box.querySelector('healcode-widget');
+    var label = w ? w.getAttribute('data-inner-html') : 'Get Started';
+    box.insertAdjacentHTML('beforeend', '<a class="mb-fallback" href="mailto:briana.weber@icloud.com?subject=' + box.getAttribute('data-fallback') + '">' + label + '</a>');
+    var obs = new MutationObserver(function () {
+      if (hasReal()) {
+        var fb = box.querySelector('.mb-fallback');
+        if (fb) fb.remove();
+        obs.disconnect();
+      }
+    });
+    obs.observe(box, { childList: true, subtree: true });
   });
 }, 6000);
 </script>
