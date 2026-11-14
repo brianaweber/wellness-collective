@@ -448,7 +448,7 @@
       <button onclick="showSection('retreat')" id="nav-retreat">Restore Retreat</button>
     </div>
     <div class="nav-pills">
-      <a class="nav-pill nav-pill-book" href="#" onclick="showSection('classes'); return false;">Book Now</a>
+      <a class="nav-pill nav-pill-book" href="#book" onclick="showSection('classes'); document.getElementById('book').scrollIntoView({behavior: 'smooth'}); return false;">Book Now</a>
       <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" onclick="var n=this.closest('nav'); var o=n.classList.toggle('nav-open'); this.setAttribute('aria-expanded', o);"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -762,7 +762,7 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
         Classes held at The Wellness Collective Studios · 1920 Turning Leaf Lane, Alexandria MN · All classes have limited spots — sign up online to reserve your mat.
       </p>
       <!-- Mindbody booking widget -->
-      <div id="book" class="sched-table-wrap" style="margin-top:2rem;">
+      <div id="book" class="sched-table-wrap" style="margin-top:2rem; scroll-margin-top:110px;">
         <p class="sched-updated">Book a Class &middot; <em>Pick a class below to reserve your mat.</em></p>
         <div class="dropin-strip">
           <span><strong>New here?</strong> Your first class is free. After that, drop in anytime for $10.</span>
@@ -1156,7 +1156,7 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
       <a href="#" onclick="showSection('foundation')">The Foundation</a>
       <a href="#" onclick="showSection('retreat')">Restore Retreat</a>
       <a href="lmnt-order.html">Order LMNT</a>
-      <a href="#" onclick="showSection('classes'); return false;">Book Now</a>
+      <a href="#book" onclick="showSection('classes'); document.getElementById('book').scrollIntoView({behavior: 'smooth'}); return false;">Book Now</a>
     </div>
     <div class="footer-copy">© 2026 The Wellness Collective Studios · Briana Weber · Alexandria, MN</div>
   </footer>
