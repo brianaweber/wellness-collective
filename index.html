@@ -404,6 +404,28 @@
     .ty-names { list-style: none; display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .ty-names li { font-size: 0.72rem; background: var(--cream); color: var(--taupe-dark); padding: 0.32rem 0.75rem; border-radius: 20px; font-weight: 500; }
 
+    .bf-section { background: #161616; padding: 4.5rem 2rem; color: white; }
+    .bf-inner { max-width: 1150px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 0.8fr 0.8fr; gap: 1.75rem; align-items: center; }
+    .bf-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 3.6vw, 3rem); font-weight: 300; line-height: 1.1; margin-bottom: 1rem; color: white; }
+    .bf-title em { color: var(--sand-light); }
+    .bf-body { font-size: 0.86rem; line-height: 1.8; color: rgba(255,255,255,0.88); margin-bottom: 1.5rem; }
+    .bf-offer { border: 1px solid rgba(255,255,255,0.28); border-radius: 10px; padding: 0.9rem 1.1rem; margin-bottom: 0.75rem; }
+    .bf-offer-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; }
+    .bf-offer-head strong { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; letter-spacing: 0; color: var(--sand-light); }
+    .bf-offer p { font-size: 0.78rem; line-height: 1.6; color: rgba(255,255,255,0.85); margin-top: 0.25rem; }
+    .bf-btn { margin-top: 1rem; }
+    .bf-video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 12px; background: #000; display: block; }
+    .bf-ads { display: grid; gap: 0.9rem; }
+    .bf-ads img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 12px; display: block; }
+    @media (max-width: 900px) {
+      .bf-section { padding: 3rem 1.25rem; }
+      .bf-inner { grid-template-columns: 1fr 1fr; }
+      .bf-copy { grid-column: 1 / -1; }
+    }
+    @media (max-width: 560px) {
+      .bf-inner { grid-template-columns: 1fr; }
+      .bf-video { max-width: 340px; margin: 0 auto; }
+    }
     .nov-section { background: var(--cream); padding: 5rem 2rem; text-align: center; }
     .nov-intro { font-size: 0.88rem; color: var(--text-light); max-width: 640px; margin: 0 auto 3rem; line-height: 1.9; }
     .nov-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; text-align: left; }
@@ -473,35 +495,35 @@
         </div>
       </div>
       <div class="hero-images" style="grid-template-columns:1fr; grid-template-rows:1fr;">
-        <img src="briana-on-mat.jpg" alt="Briana Weber on yoga mat outdoors" style="width:100%; height:100%; object-fit:cover; object-position: center 20%; border-radius:12px;">
+        <img src="briana-balcony.jpg" alt="Briana Weber smiling on a balcony with a mug of coffee" style="width:100%; height:100%; object-fit:cover; object-position: center 45%; border-radius:12px;">
       </div>
     </section>
 
-    <!-- THANK YOU: DROP IT LIKE IT'S HAUNTED -->
-<section class="ty-section">
-  <div class="ty-inner">
-    <img class="ty-photo" src="haunted-thank-you.jpg" alt="The Wellness Collective team in costume at the Drop It Like It's Haunted Halloween event">
-    <div>
-      <div class="section-eyebrow" style="color: var(--sand-light);">Drop It Like It's Haunted &middot; Thank You!</div>
-      <h2 class="ty-title">Turns out it wasn't spooky at all &mdash;<br><em>just a really fun time.</em></h2>
-      <p class="ty-body">THANK YOU to our incredible team and to every single person who showed up and made our first Halloween event such a success. We had so much fun, and we can't wait to see you all back in the studios!</p>
-      <div class="ty-winners">
-        <h3>Congrats to our giveaway winners!</h3>
-        <p class="note">Pick up your gift at the front desk next time you're in the studio.</p>
-        <ul class="ty-names">
-          <li>Brooke Frisell</li>
-          <li>Joanna Bring</li>
-          <li>April Kalal</li>
-          <li>Amber Jensen</li>
-          <li>Sheyenne Ritter</li>
-          <li>Amanda Anderson</li>
-          <li>Brooke Franzen</li>
-          <li>Tonya Bitzan</li>
-          <li>Jessica Davis</li>
-          <li>Amy Westrom</li>
-          <li>Mandy Johnson</li>
-        </ul>
+    <!-- BLACK FRIDAY SPECIAL · NOV 20–27, 2026 (replace after the sale ends) -->
+<section class="bf-section" id="black-friday">
+  <div class="bf-inner">
+    <div class="bf-copy">
+      <div class="section-eyebrow" style="color: var(--sand-light);">Black Friday Special &middot; Nov 20 &ndash; Nov 27</div>
+      <h2 class="bf-title">Gift yourself <em>with wellness.</em></h2>
+      <p class="bf-body">Our biggest offers of the year are here &mdash; for you, or for someone you love. Sale ends Thursday, November 27.</p>
+      <div class="bf-offer">
+        <div class="bf-offer-head"><span>3 Months Unlimited</span><strong>$180</strong></div>
+        <p>Unlimited classes for three months, one-time payment, no contract. <strong>Plus a free TWC 40oz tumbler</strong> while supplies last.</p>
       </div>
+      <div class="bf-offer">
+        <div class="bf-offer-head"><span>12-Class Pack</span><strong>$90</strong></div>
+        <p>Pay for 10, get 2 free classes.</p>
+      </div>
+      <div class="bf-offer">
+        <div class="bf-offer-head"><span>25-Class Pack</span><strong>$180</strong></div>
+        <p>Pay for 20, get 5 free classes. Class packs make a perfect holiday gift!</p>
+      </div>
+      <button class="btn-primary bf-btn" onclick="showSection('membership')">Shop the Sale &rarr;</button>
+    </div>
+    <video class="bf-video" src="bf-promo.mp4" poster="bf-promo-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Black Friday Special video: 3 months unlimited for $180 with a free 40oz tumbler"></video>
+    <div class="bf-ads">
+      <img src="bf-3-month.jpg" alt="Black Friday Special: 3 months unlimited classes for $180, one-time payment, with an exclusive TWC 40oz tumbler while supplies last" loading="lazy">
+      <img src="bf-class-packs.jpg" alt="Black Friday Special bonus classes: 12-class pack for $90 and 25-class pack for $180" loading="lazy">
     </div>
   </div>
 </section>
@@ -530,11 +552,11 @@
     </div>
     <div class="nov-card">
       <div class="nov-num">03</div>
-      <div class="nov-kicker">Giveaway &middot; Nov 20</div>
+      <div class="nov-kicker">Give Back</div>
       <h3>Dragonfly Mental Wellness Foundation</h3>
-      <p>Dragonfly supports local organizations and families, and this month they're hosting <strong>The Empty Chair Gala</strong> on November 20 at Willow Creek. We're joining in on the chair decorating &mdash; and giving away 2 gala tickets!</p>
-      <div class="nov-highlight"><strong>How to enter:</strong> help decorate our auction chair, or share our posts on social media (tag us so we see it!). Each counts as an entry.</div>
-      <a class="nov-link" href="https://dragonflymentalwellness.com/" target="_blank" rel="noopener">Learn about Dragonfly &rarr;</a>
+      <p>Dragonfly supports local organizations and families working toward better mental wellness in our community. The Empty Chair Gala has been cancelled, but you can still give &mdash; and we'd love to help.</p>
+      <div class="nov-highlight"><strong>Donate through us</strong> the same way as Safe Families &mdash; just ask at the front desk or reach out.</div>
+      <a class="nov-link" href="mailto:briana.weber@icloud.com?subject=Dragonfly%20Donation">Ask how to donate &rarr;</a>
     </div>
   </div>
   <p class="nov-footer">Is it a lot? Yes! Are we also adding more class times? Also yes!<span>We believe the gains &mdash; inside and out &mdash; will be immeasurable. We hope you'll join us.</span></p>
@@ -546,7 +568,7 @@
 <h2 class="section-title" style="margin-bottom: 0.5rem;">Your first class is <em>always free.</em></h2>
 <p style="font-size: 0.82rem; color: var(--text-light); max-width: 560px; margin: 0 auto 1.5rem; line-height: 1.8;">Come see why Alexandria is talking about The Wellness Collective Studios! Try a class on us!</p>
 <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-<button class="btn-primary" onclick="showSection('membership')">Memberships: Save Up to $118 →</button>
+<button class="btn-primary" onclick="showSection('membership')">Black Friday: 3 Months for $180 →</button>
 <button class="btn-outline" onclick="showSection('classes')">See the Schedule</button>
 </div>
 </section>
