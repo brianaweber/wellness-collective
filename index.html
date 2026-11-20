@@ -192,6 +192,7 @@
     .dropin-strip { display: flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap; background: var(--sage-pale); border-radius: 4px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; font-size: 0.82rem; color: var(--text-light); }
     .dropin-strip .mb-dropin { margin-top: 0; }
     .mb-contract .healcode-contract-text-link, .mb-contract a { display: block; border: 1px solid var(--taupe); color: var(--taupe); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.9rem 2rem; border-radius: 10px; text-decoration: none; cursor: pointer; transition: all 0.2s; }
+    .mb-pricing-wrap { max-width: 1100px; margin: 0 auto 2.5rem; padding: 0 1rem; min-height: 200px; }
     .mb-contract .healcode-contract-text-link:hover, .mb-contract a:hover { background: var(--taupe); color: white; }
     .pause-note { text-align: center; font-size: 0.8rem; line-height: 1.7; color: var(--text-light); margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
     .punch-box { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; background: var(--cream); border: 1px dashed var(--border); border-radius: 4px; padding: 2rem 2.5rem; margin-top: 2rem; }
@@ -673,44 +674,11 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
         </div>
       </div>
 
-      <!-- Annual (anchor + featured) / 6-Month / Monthly, then Punch Card -->
-      <div class="tier-grid">
-        <div class="membership-card featured">
-          <div class="tier-badge">Best Value &middot; Most Savings</div>
-          <div class="card-eyebrow">12-Month Membership</div>
-          <h3>All In for the Year</h3>
-          <div class="tier-was"><s>$828</s> &nbsp;$710 paid once</div>
-          <div class="price">$59<span class="per">/mo</span></div>
-          <div class="tier-save">Save $118 &middot; almost 2 months free</div>
-          <p class="tier-pitch">Your best rate, locked in for a full year. One decision, twelve months of showing up for yourself &mdash; and your community showing up for you.</p>
-          <!-- Mindbody contract 107 -->
-          <div class="tier-cta mb-link mb-annual" data-fallback="Annual%20Membership"><healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link" data-site-id="135672" data-mb-site-id="5754554" data-service-id="107" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Start My Year &rarr;"></healcode-widget></div>
-        </div>
-
-        <div class="membership-card">
-          <div class="card-eyebrow">6-Month Membership</div>
-          <h3>Build the Habit</h3>
-          <div class="tier-was"><s>$414</s> &nbsp;$385 paid once</div>
-          <div class="price">$64<span class="per">/mo</span></div>
-          <div class="tier-save">Save $29</div>
-          <p class="tier-pitch">Six months is where consistency turns into results. Commit to the season and save on every month.</p>
-          <!-- Mindbody contract 108 -->
-          <div class="tier-cta mb-link mb-contract" data-fallback="6-Month%20Membership"><healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link" data-site-id="135672" data-mb-site-id="5754554" data-service-id="108" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Start My 6 Months &rarr;"></healcode-widget></div>
-        </div>
-
-        <div class="membership-card">
-          <div class="card-eyebrow">Monthly Membership</div>
-          <h3>Month to Month</h3>
-          <div class="tier-was">Billed monthly</div>
-          <div class="price">$69<span class="per">/mo</span></div>
-          <div class="tier-save">No contract</div>
-          <p class="tier-pitch">Total flexibility. Renews automatically, cancel anytime &mdash; no cancellation fee.</p>
-          <!-- Mindbody: $69 monthly contract -->
-          <div class="tier-cta mb-link mb-contract" data-fallback="Monthly%20Membership">
-            <healcode-widget data-version="0.2" data-link-class="healcode-contract-text-link" data-site-id="135672" data-mb-site-id="5754554" data-service-id="102" data-bw-identity-site="true" data-type="contract-link" data-inner-html="Join Monthly &rarr;"></healcode-widget>
-          </div>
-        </div>
+      <!-- Mindbody Pricing widget begin (live membership + class pack pricing) -->
+      <div class="mb-pricing-wrap">
+        <div class="mindbody-widget" data-widget-type="Pricing" data-widget-id="3a56317b40"></div>
       </div>
+      <!-- Mindbody Pricing widget end (widget.js is loaded once, in the Classes section) -->
 
       <!-- Shared perks -->
       <div class="perks-shared">
@@ -726,18 +694,13 @@ Here's the truth: the studio has grown faster than we ever imagined, and Restore
         <p class="pause-note"><strong>Life happens.</strong> Injured, sick, or facing something big? Prepaid memberships can be paused &mdash; just let us know and we'll hold your remaining time.</p>
       </div>
 
-      <!-- Punch card (de-emphasized alternative) -->
+      <!-- Drop-in -->
       <div class="punch-box">
         <div>
-          <h3>Not ready to commit? Grab a punch card.</h3>
+          <h3>Just want one class?</h3>
           <p>Attend any class, including Mom &amp; Me, whenever it fits. <strong>Your first class is always free.</strong></p>
-          <!-- Mindbody: $10 drop-in -->
+          <!-- Mindbody: drop-in -->
           <div class="mb-link mb-dropin" data-fallback="Drop-In%20Class"><healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="135672" data-mb-site-id="5754554" data-service-id="100062" data-bw-identity-site="true" data-type="pricing-link" data-inner-html="Drop In for $10 &rarr;"></healcode-widget></div>
-        </div>
-        <div class="punch-prices">
-          <div><strong>$10</strong>drop-in</div>
-          <div><strong>$90</strong>10 classes<br><small>use in 3 mo</small></div>
-          <div><strong>$180</strong>20 classes<br><small>use in 6 mo</small></div>
         </div>
       </div>
 
